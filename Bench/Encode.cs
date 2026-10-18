@@ -18,6 +18,7 @@ public unsafe class Encode
 #if NET9_0_OR_GREATER
     delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> registers;
     delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> structures;
+    delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> pairs;
     delegate*<float*, nint, int, byte*, int, void> pointers;
 #endif
 
@@ -52,6 +53,7 @@ public unsafe class Encode
         };
         registers = Variant("registers");
         structures = Variant("structures");
+        pairs = Variant("pairs");
         Library();
         var expected = data.ToArray();
         Array.Clear(data);
@@ -59,6 +61,7 @@ public unsafe class Encode
         if (!data.AsSpan().SequenceEqual(expected)) throw new InvalidOperationException($"{Format} {Channels}: the pointer kernel's output differs");
         Check(registers, expected, "register");
         Check(structures, expected, "structure");
+        Check(pairs, expected, "paired");
 #endif
     }
 
@@ -84,6 +87,9 @@ public unsafe class Encode
 
     [Benchmark]
     public void Structures() => Run(structures);
+
+    [Benchmark]
+    public void Pairs() => Run(pairs);
 #endif
 
     [Benchmark(Baseline = true)]

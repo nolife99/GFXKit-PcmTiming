@@ -90,6 +90,13 @@ static unsafe class NeonVariants
         ("encode", "F32", 4, "structures", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x4Structures),
         ("encode", "F32", 6, "structures", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x6Structures),
         ("encode", "F32", 8, "structures", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x8Structures),
+        ("decode", "U8", 4, "pairs", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x4Pairs),
+        ("decode", "S16", 4, "pairs", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x4Pairs),
+        ("decode", "S32", 4, "pairs", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x4Pairs),
+        ("decode", "F32", 4, "pairs", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x4Pairs),
+        ("encode", "S16", 4, "pairs", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x4Pairs),
+        ("encode", "S32", 4, "pairs", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x4Pairs),
+        ("encode", "F32", 4, "pairs", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x4Pairs),
     ];
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -4186,5 +4193,294 @@ static unsafe class NeonVariants
             }
         }
         Interleave.Scalar<F32>(input[f..], stride, 8, data[(f * 32)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveU8x4Pairs(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var target = new Planes(output, stride, 4, frames);
+        var scale = Vector128.Create(1f / 128);
+        var minus = Vector128.Create(-1f);
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var source = new Pinned(pinned, data.Length, 4, frames);
+            for (; f <= frames - 16; f += 16)
+            {
+                var at = source.At(f, 16);
+                ref var into = ref target.At(f, 16);
+                var (a0_0, a1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((ushort*)at);
+                var (b0_0, b1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((ushort*)(at + 32));
+                var w0_0 = AdvSimd.Arm64.UnzipEven(a0_0.AsByte(), b0_0.AsByte()).AsByte();
+                into.Store(stride, 0, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(w0_0.GetLower()).GetLower())), scale));
+                into.Store(stride, 0, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(w0_0.GetLower()))), scale));
+                into.Store(stride, 0, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(w0_0).GetLower())), scale));
+                into.Store(stride, 0, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(w0_0))), scale));
+                var w0_1 = AdvSimd.Arm64.UnzipOdd(a0_0.AsByte(), b0_0.AsByte()).AsByte();
+                into.Store(stride, 1, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(w0_1.GetLower()).GetLower())), scale));
+                into.Store(stride, 1, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(w0_1.GetLower()))), scale));
+                into.Store(stride, 1, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(w0_1).GetLower())), scale));
+                into.Store(stride, 1, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(w0_1))), scale));
+                var w0_2 = AdvSimd.Arm64.UnzipEven(a1_0.AsByte(), b1_0.AsByte()).AsByte();
+                into.Store(stride, 2, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(w0_2.GetLower()).GetLower())), scale));
+                into.Store(stride, 2, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(w0_2.GetLower()))), scale));
+                into.Store(stride, 2, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(w0_2).GetLower())), scale));
+                into.Store(stride, 2, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(w0_2))), scale));
+                var w0_3 = AdvSimd.Arm64.UnzipOdd(a1_0.AsByte(), b1_0.AsByte()).AsByte();
+                into.Store(stride, 3, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(w0_3.GetLower()).GetLower())), scale));
+                into.Store(stride, 3, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(w0_3.GetLower()))), scale));
+                into.Store(stride, 3, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(w0_3).GetLower())), scale));
+                into.Store(stride, 3, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(w0_3))), scale));
+            }
+        }
+        Deinterleave.Scalar<U8>(data[(f * 4)..], 4, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS16x4Pairs(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var target = new Planes(output, stride, 4, frames);
+        var scale = Vector128.Create(1f / 32768);
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var source = new Pinned(pinned, data.Length, 8, frames);
+            for (; f <= frames - 16; f += 16)
+            {
+                var at = source.At(f, 16);
+                ref var into = ref target.At(f, 16);
+                var (a0_0, a1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)at);
+                var (b0_0, b1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 32));
+                var w0_0 = AdvSimd.Arm64.UnzipEven(a0_0.AsUInt16(), b0_0.AsUInt16()).AsByte();
+                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(w0_0.AsInt16().GetLower())), scale));
+                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(w0_0.AsInt16())), scale));
+                var w0_1 = AdvSimd.Arm64.UnzipOdd(a0_0.AsUInt16(), b0_0.AsUInt16()).AsByte();
+                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(w0_1.AsInt16().GetLower())), scale));
+                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(w0_1.AsInt16())), scale));
+                var w0_2 = AdvSimd.Arm64.UnzipEven(a1_0.AsUInt16(), b1_0.AsUInt16()).AsByte();
+                into.Store(stride, 2, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(w0_2.AsInt16().GetLower())), scale));
+                into.Store(stride, 2, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(w0_2.AsInt16())), scale));
+                var w0_3 = AdvSimd.Arm64.UnzipOdd(a1_0.AsUInt16(), b1_0.AsUInt16()).AsByte();
+                into.Store(stride, 3, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(w0_3.AsInt16().GetLower())), scale));
+                into.Store(stride, 3, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(w0_3.AsInt16())), scale));
+                var (a0_1, a1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 64));
+                var (b0_1, b1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 96));
+                var w1_0 = AdvSimd.Arm64.UnzipEven(a0_1.AsUInt16(), b0_1.AsUInt16()).AsByte();
+                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(w1_0.AsInt16().GetLower())), scale));
+                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(w1_0.AsInt16())), scale));
+                var w1_1 = AdvSimd.Arm64.UnzipOdd(a0_1.AsUInt16(), b0_1.AsUInt16()).AsByte();
+                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(w1_1.AsInt16().GetLower())), scale));
+                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(w1_1.AsInt16())), scale));
+                var w1_2 = AdvSimd.Arm64.UnzipEven(a1_1.AsUInt16(), b1_1.AsUInt16()).AsByte();
+                into.Store(stride, 2, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(w1_2.AsInt16().GetLower())), scale));
+                into.Store(stride, 2, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(w1_2.AsInt16())), scale));
+                var w1_3 = AdvSimd.Arm64.UnzipOdd(a1_1.AsUInt16(), b1_1.AsUInt16()).AsByte();
+                into.Store(stride, 3, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(w1_3.AsInt16().GetLower())), scale));
+                into.Store(stride, 3, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(w1_3.AsInt16())), scale));
+            }
+        }
+        Deinterleave.Scalar<S16>(data[(f * 8)..], 4, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS32x4Pairs(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var target = new Planes(output, stride, 4, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var source = new Pinned(pinned, data.Length, 16, frames);
+            for (; f <= frames - 16; f += 16)
+            {
+                var at = source.At(f, 16);
+                ref var into = ref target.At(f, 16);
+                var (a0_0, a1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)at);
+                var (b0_0, b1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 32));
+                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipEven(a0_0.AsUInt32(), b0_0.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a0_0.AsUInt32(), b0_0.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 2, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipEven(a1_0.AsUInt32(), b1_0.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 3, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a1_0.AsUInt32(), b1_0.AsUInt32()).AsByte().AsInt32()), scale));
+                var (a0_1, a1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 64));
+                var (b0_1, b1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 96));
+                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipEven(a0_1.AsUInt32(), b0_1.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a0_1.AsUInt32(), b0_1.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 2, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipEven(a1_1.AsUInt32(), b1_1.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 3, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a1_1.AsUInt32(), b1_1.AsUInt32()).AsByte().AsInt32()), scale));
+                var (a0_2, a1_2) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 128));
+                var (b0_2, b1_2) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 160));
+                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipEven(a0_2.AsUInt32(), b0_2.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a0_2.AsUInt32(), b0_2.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 2, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipEven(a1_2.AsUInt32(), b1_2.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 3, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a1_2.AsUInt32(), b1_2.AsUInt32()).AsByte().AsInt32()), scale));
+                var (a0_3, a1_3) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 192));
+                var (b0_3, b1_3) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 224));
+                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipEven(a0_3.AsUInt32(), b0_3.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a0_3.AsUInt32(), b0_3.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 2, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipEven(a1_3.AsUInt32(), b1_3.AsUInt32()).AsByte().AsInt32()), scale));
+                into.Store(stride, 3, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a1_3.AsUInt32(), b1_3.AsUInt32()).AsByte().AsInt32()), scale));
+            }
+        }
+        Deinterleave.Scalar<S32>(data[(f * 16)..], 4, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF32x4Pairs(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var target = new Planes(output, stride, 4, frames);
+
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var source = new Pinned(pinned, data.Length, 16, frames);
+            for (; f <= frames - 16; f += 16)
+            {
+                var at = source.At(f, 16);
+                ref var into = ref target.At(f, 16);
+                var (a0_0, a1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)at);
+                var (b0_0, b1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 32));
+                into.Store(stride, 0, 0, AdvSimd.Arm64.UnzipEven(a0_0.AsUInt32(), b0_0.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 1, 0, AdvSimd.Arm64.UnzipOdd(a0_0.AsUInt32(), b0_0.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 2, 0, AdvSimd.Arm64.UnzipEven(a1_0.AsUInt32(), b1_0.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 3, 0, AdvSimd.Arm64.UnzipOdd(a1_0.AsUInt32(), b1_0.AsUInt32()).AsByte().AsSingle());
+                var (a0_1, a1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 64));
+                var (b0_1, b1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 96));
+                into.Store(stride, 0, 4, AdvSimd.Arm64.UnzipEven(a0_1.AsUInt32(), b0_1.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 1, 4, AdvSimd.Arm64.UnzipOdd(a0_1.AsUInt32(), b0_1.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 2, 4, AdvSimd.Arm64.UnzipEven(a1_1.AsUInt32(), b1_1.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 3, 4, AdvSimd.Arm64.UnzipOdd(a1_1.AsUInt32(), b1_1.AsUInt32()).AsByte().AsSingle());
+                var (a0_2, a1_2) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 128));
+                var (b0_2, b1_2) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 160));
+                into.Store(stride, 0, 8, AdvSimd.Arm64.UnzipEven(a0_2.AsUInt32(), b0_2.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 1, 8, AdvSimd.Arm64.UnzipOdd(a0_2.AsUInt32(), b0_2.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 2, 8, AdvSimd.Arm64.UnzipEven(a1_2.AsUInt32(), b1_2.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 3, 8, AdvSimd.Arm64.UnzipOdd(a1_2.AsUInt32(), b1_2.AsUInt32()).AsByte().AsSingle());
+                var (a0_3, a1_3) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 192));
+                var (b0_3, b1_3) = AdvSimd.Arm64.Load2xVector128AndUnzip((ulong*)(at + 224));
+                into.Store(stride, 0, 12, AdvSimd.Arm64.UnzipEven(a0_3.AsUInt32(), b0_3.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 1, 12, AdvSimd.Arm64.UnzipOdd(a0_3.AsUInt32(), b0_3.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 2, 12, AdvSimd.Arm64.UnzipEven(a1_3.AsUInt32(), b1_3.AsUInt32()).AsByte().AsSingle());
+                into.Store(stride, 3, 12, AdvSimd.Arm64.UnzipOdd(a1_3.AsUInt32(), b1_3.AsUInt32()).AsByte().AsSingle());
+            }
+        }
+        Deinterleave.Scalar<F32>(data[(f * 16)..], 4, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS16x4Pairs(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 4, frames);
+        var top = Vector128.Create(S16.Top);
+        var scale = Vector128.Create(32768f);
+        var minus = Vector128.Create(-1f);
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var target = new Pinned(pinned, data.Length, 8, frames);
+            for (; f <= frames - 16; f += 16)
+            {
+                ref var from = ref source.At(f, 16);
+                var at = target.At(f, 16);
+                var n0_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top), scale))), AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top), scale))).AsByte();
+                var n0_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top), scale))), AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top), scale))).AsByte();
+                var n0_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top), scale))), AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top), scale))).AsByte();
+                var n0_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top), scale))), AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top), scale))).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((uint*)at, (AdvSimd.Arm64.ZipLow(n0_0.AsUInt16(), n0_1.AsUInt16()).AsByte().AsUInt32(), AdvSimd.Arm64.ZipLow(n0_2.AsUInt16(), n0_3.AsUInt16()).AsByte().AsUInt32()));
+                AdvSimd.Arm64.StoreVectorAndZip((uint*)(at + 32), (AdvSimd.Arm64.ZipHigh(n0_0.AsUInt16(), n0_1.AsUInt16()).AsByte().AsUInt32(), AdvSimd.Arm64.ZipHigh(n0_2.AsUInt16(), n0_3.AsUInt16()).AsByte().AsUInt32()));
+                var n1_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top), scale))), AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top), scale))).AsByte();
+                var n1_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top), scale))), AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top), scale))).AsByte();
+                var n1_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top), scale))), AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top), scale))).AsByte();
+                var n1_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top), scale))), AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top), scale))).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((uint*)(at + 64), (AdvSimd.Arm64.ZipLow(n1_0.AsUInt16(), n1_1.AsUInt16()).AsByte().AsUInt32(), AdvSimd.Arm64.ZipLow(n1_2.AsUInt16(), n1_3.AsUInt16()).AsByte().AsUInt32()));
+                AdvSimd.Arm64.StoreVectorAndZip((uint*)(at + 96), (AdvSimd.Arm64.ZipHigh(n1_0.AsUInt16(), n1_1.AsUInt16()).AsByte().AsUInt32(), AdvSimd.Arm64.ZipHigh(n1_2.AsUInt16(), n1_3.AsUInt16()).AsByte().AsUInt32()));
+            }
+        }
+        Interleave.Scalar<S16>(input[f..], stride, 4, data[(f * 8)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS32x4Pairs(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 4, frames);
+        var top = Vector128.Create(S32.Top);
+        var scale = Vector128.Create(2147483648f);
+        var minus = Vector128.Create(-1f);
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var target = new Pinned(pinned, data.Length, 16, frames);
+            for (; f <= frames - 16; f += 16)
+            {
+                ref var from = ref source.At(f, 16);
+                var at = target.At(f, 16);
+                var n0_0 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top), scale)).AsByte();
+                var n0_1 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top), scale)).AsByte();
+                var n0_2 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top), scale)).AsByte();
+                var n0_3 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top), scale)).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)at, (AdvSimd.Arm64.ZipLow(n0_0.AsUInt32(), n0_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipLow(n0_2.AsUInt32(), n0_3.AsUInt32()).AsByte().AsUInt64()));
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 32), (AdvSimd.Arm64.ZipHigh(n0_0.AsUInt32(), n0_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipHigh(n0_2.AsUInt32(), n0_3.AsUInt32()).AsByte().AsUInt64()));
+                var n1_0 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top), scale)).AsByte();
+                var n1_1 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top), scale)).AsByte();
+                var n1_2 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top), scale)).AsByte();
+                var n1_3 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top), scale)).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 64), (AdvSimd.Arm64.ZipLow(n1_0.AsUInt32(), n1_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipLow(n1_2.AsUInt32(), n1_3.AsUInt32()).AsByte().AsUInt64()));
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 96), (AdvSimd.Arm64.ZipHigh(n1_0.AsUInt32(), n1_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipHigh(n1_2.AsUInt32(), n1_3.AsUInt32()).AsByte().AsUInt64()));
+                var n2_0 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top), scale)).AsByte();
+                var n2_1 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top), scale)).AsByte();
+                var n2_2 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top), scale)).AsByte();
+                var n2_3 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top), scale)).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 128), (AdvSimd.Arm64.ZipLow(n2_0.AsUInt32(), n2_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipLow(n2_2.AsUInt32(), n2_3.AsUInt32()).AsByte().AsUInt64()));
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 160), (AdvSimd.Arm64.ZipHigh(n2_0.AsUInt32(), n2_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipHigh(n2_2.AsUInt32(), n2_3.AsUInt32()).AsByte().AsUInt64()));
+                var n3_0 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top), scale)).AsByte();
+                var n3_1 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top), scale)).AsByte();
+                var n3_2 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top), scale)).AsByte();
+                var n3_3 = AdvSimd.ConvertToInt32RoundToEven(AdvSimd.Multiply(AdvSimd.Min(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top), scale)).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 192), (AdvSimd.Arm64.ZipLow(n3_0.AsUInt32(), n3_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipLow(n3_2.AsUInt32(), n3_3.AsUInt32()).AsByte().AsUInt64()));
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 224), (AdvSimd.Arm64.ZipHigh(n3_0.AsUInt32(), n3_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipHigh(n3_2.AsUInt32(), n3_3.AsUInt32()).AsByte().AsUInt64()));
+            }
+        }
+        Interleave.Scalar<S32>(input[f..], stride, 4, data[(f * 16)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveF32x4Pairs(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 4, frames);
+
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var target = new Pinned(pinned, data.Length, 16, frames);
+            for (; f <= frames - 16; f += 16)
+            {
+                ref var from = ref source.At(f, 16);
+                var at = target.At(f, 16);
+                var n0_0 = from.Load4(stride, 0, 0).AsByte();
+                var n0_1 = from.Load4(stride, 1, 0).AsByte();
+                var n0_2 = from.Load4(stride, 2, 0).AsByte();
+                var n0_3 = from.Load4(stride, 3, 0).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)at, (AdvSimd.Arm64.ZipLow(n0_0.AsUInt32(), n0_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipLow(n0_2.AsUInt32(), n0_3.AsUInt32()).AsByte().AsUInt64()));
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 32), (AdvSimd.Arm64.ZipHigh(n0_0.AsUInt32(), n0_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipHigh(n0_2.AsUInt32(), n0_3.AsUInt32()).AsByte().AsUInt64()));
+                var n1_0 = from.Load4(stride, 0, 4).AsByte();
+                var n1_1 = from.Load4(stride, 1, 4).AsByte();
+                var n1_2 = from.Load4(stride, 2, 4).AsByte();
+                var n1_3 = from.Load4(stride, 3, 4).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 64), (AdvSimd.Arm64.ZipLow(n1_0.AsUInt32(), n1_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipLow(n1_2.AsUInt32(), n1_3.AsUInt32()).AsByte().AsUInt64()));
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 96), (AdvSimd.Arm64.ZipHigh(n1_0.AsUInt32(), n1_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipHigh(n1_2.AsUInt32(), n1_3.AsUInt32()).AsByte().AsUInt64()));
+                var n2_0 = from.Load4(stride, 0, 8).AsByte();
+                var n2_1 = from.Load4(stride, 1, 8).AsByte();
+                var n2_2 = from.Load4(stride, 2, 8).AsByte();
+                var n2_3 = from.Load4(stride, 3, 8).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 128), (AdvSimd.Arm64.ZipLow(n2_0.AsUInt32(), n2_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipLow(n2_2.AsUInt32(), n2_3.AsUInt32()).AsByte().AsUInt64()));
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 160), (AdvSimd.Arm64.ZipHigh(n2_0.AsUInt32(), n2_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipHigh(n2_2.AsUInt32(), n2_3.AsUInt32()).AsByte().AsUInt64()));
+                var n3_0 = from.Load4(stride, 0, 12).AsByte();
+                var n3_1 = from.Load4(stride, 1, 12).AsByte();
+                var n3_2 = from.Load4(stride, 2, 12).AsByte();
+                var n3_3 = from.Load4(stride, 3, 12).AsByte();
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 192), (AdvSimd.Arm64.ZipLow(n3_0.AsUInt32(), n3_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipLow(n3_2.AsUInt32(), n3_3.AsUInt32()).AsByte().AsUInt64()));
+                AdvSimd.Arm64.StoreVectorAndZip((ulong*)(at + 224), (AdvSimd.Arm64.ZipHigh(n3_0.AsUInt32(), n3_1.AsUInt32()).AsByte().AsUInt64(), AdvSimd.Arm64.ZipHigh(n3_2.AsUInt32(), n3_3.AsUInt32()).AsByte().AsUInt64()));
+            }
+        }
+        Interleave.Scalar<F32>(input[f..], stride, 4, data[(f * 16)..], frames - f);
     }
 }
