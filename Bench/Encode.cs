@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using BenchmarkDotNet.Attributes;
 using GFXKit.Media.Codecs;
 #if NET9_0_OR_GREATER
@@ -11,9 +12,13 @@ public unsafe class Encode
     const int Frames = 48000;
     const int Packet = 1024;
     const int Stride = 1088;
+    const int Layouts = 8;
+    const int LayoutStep = 128;
 
-    byte[] data = [];
-    float[] planes = [];
+    byte* bytes;
+    float* samples;
+    int length;
+    int count;
     delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> kernel;
 #if NET9_0_OR_GREATER
     delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> registers;
@@ -28,13 +33,23 @@ public unsafe class Encode
     [Params(1, 2, 3, 4, 6, 8)]
     public int Channels { get; set; }
 
+    Span<byte> Data => new(bytes, length);
+
+    Span<float> Planes => new(samples, count);
+
     int Bytes => Format switch { "S16" => 2, "S24" => 3, _ => 4 };
 
     [GlobalSetup]
     public void Setup()
     {
-        data = new byte[Frames * Channels * Bytes];
-        planes = new float[Channels * Stride];
+        length = Frames * Channels * Bytes;
+        bytes = (byte*)NativeMemory.AlignedAlloc((nuint)length, 4096);
+        var data = Data;
+        data.Clear();
+        count = Channels * Stride + Layouts * LayoutStep;
+        samples = (float*)NativeMemory.AlignedAlloc((nuint)count * 4, 4096);
+        var planes = Planes;
+        planes.Clear();
         for (var i = 0; i < planes.Length; i++) planes[i] = (i * 7919 % 4001 - 2000) / 1900f;
         kernel = Format switch
         {
@@ -55,10 +70,10 @@ public unsafe class Encode
         structures = Variant("structures");
         pairs = Variant("pairs");
         Library();
-        var expected = data.ToArray();
-        Array.Clear(data);
+        var expected = Data.ToArray();
+        Data.Clear();
         Pointers();
-        if (!data.AsSpan().SequenceEqual(expected)) throw new InvalidOperationException($"{Format} {Channels}: the pointer kernel's output differs");
+        if (!Data.SequenceEqual(expected)) throw new InvalidOperationException($"{Format} {Channels}: the pointer kernel's output differs");
         Check(registers, expected, "register");
         Check(structures, expected, "structure");
         Check(pairs, expected, "paired");
@@ -75,11 +90,11 @@ public unsafe class Encode
         return kernel;
     }
 
-    void Check(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> variant, byte[] expected, string kind)
+    void Check(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> variant, Span<byte> expected, string kind)
     {
-        Array.Clear(data);
+        Data.Clear();
         Run(variant);
-        if (!data.AsSpan().SequenceEqual(expected)) throw new InvalidOperationException($"{Format} {Channels}: the {kind} variant's output differs");
+        if (!Data.SequenceEqual(expected)) throw new InvalidOperationException($"{Format} {Channels}: the {kind} variant's output differs");
     }
 
     [Benchmark]
@@ -92,6 +107,13 @@ public unsafe class Encode
     public void Pairs() => Run(pairs);
 #endif
 
+    [GlobalCleanup]
+    public void Cleanup()
+    {
+        NativeMemory.AlignedFree(bytes);
+        NativeMemory.AlignedFree(samples);
+    }
+
     [Benchmark(Baseline = true)]
     public void Library() => Run(kernel);
 
@@ -100,8 +122,8 @@ public unsafe class Encode
         var frameBytes = Channels * Bytes;
         for (var f = 0; f < Frames; f += Packet)
         {
-            var count = Math.Min(Packet, Frames - f);
-            kernel(planes, Stride, Channels, data.AsSpan(f * frameBytes, count * frameBytes), count);
+            var frames = Math.Min(Packet, Frames - f);
+            kernel(Planes[(f / Packet % Layouts * LayoutStep)..], Stride, Channels, Data.Slice(f * frameBytes, frames * frameBytes), frames);
         }
     }
 
@@ -110,9 +132,7 @@ public unsafe class Encode
     public void Pointers()
     {
         var frameBytes = Channels * Bytes;
-        fixed (byte* raw = data)
-        fixed (float* samples = planes)
-            for (var f = 0; f < Frames; f += Packet) pointers(samples, Stride, Channels, raw + f * frameBytes, Math.Min(Packet, Frames - f));
+        for (var f = 0; f < Frames; f += Packet) pointers(samples + f / Packet % Layouts * LayoutStep, Stride, Channels, bytes + f * frameBytes, Math.Min(Packet, Frames - f));
     }
 #endif
 }
