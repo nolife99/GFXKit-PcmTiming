@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net10.0;net8.0;net6.0</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Bench" />
+    <Compile Remove="Legacy/**" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net10.0'">
+    <Compile Include="Legacy/net8.0/*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <Compile Include="Legacy/net7.0/*.cs;Legacy/net6.0/*.cs" />
+    <Compile Remove="Avx512Interleaving.cs;Avx512Transposes.g.cs" />
+  </ItemGroup>
+</Project>

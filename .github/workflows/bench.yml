@@ -1,0 +1,56 @@
+name: Bench
+
+on:
+  workflow_dispatch:
+    inputs:
+      filter:
+        description: BenchmarkDotNet filter
+        default: "*"
+
+permissions:
+  contents: write
+
+jobs:
+  bench:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04-arm, windows-11-arm, macos-15]
+        runtime: ["6.0", "7.0", "8.0", "9.0", "10.0"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            ${{ matrix.runtime }}.x
+            10.0.x
+      - name: Run
+        shell: bash
+        run: |
+          mkdir -p out
+          dotnet run -c Release -f net${{ matrix.runtime }} --project Bench -- --filter '${{ inputs.filter }}' --artifacts out > out/console.txt 2>&1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.os }}-net${{ matrix.runtime }}
+          path: |
+            out/console.txt
+            out/results
+
+  collect:
+    needs: bench
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: results/${{ github.run_id }}
+      - name: Commit
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add results
+          git commit -m "Run ${{ github.run_id }}"
+          git push
