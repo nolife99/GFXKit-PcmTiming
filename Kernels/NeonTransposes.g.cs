@@ -9,6 +9,7 @@ static unsafe class NeonTransposes
 {
     public static delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> DecodeKernel<T>(int channels) where T : struct, IPcmSample
     {
+        if (typeof(T) == typeof(S24)) return channels switch { 1 => &DeinterleaveS24x1, 2 => &DeinterleaveS24x2, _ => null };
         if (typeof(T) == typeof(U8)) return channels switch { 1 => &DeinterleaveU8x1, 2 => &DeinterleaveU8x2, 3 => &DeinterleaveU8x3, 4 => &DeinterleaveU8x4, 6 => &DeinterleaveU8x6, 8 => &DeinterleaveU8x8, _ => null };
         if (typeof(T) == typeof(S16)) return channels switch { 1 => &DeinterleaveS16x1, 2 => &DeinterleaveS16x2, 3 => &DeinterleaveS16x3, 4 => &DeinterleaveS16x4, 6 => &DeinterleaveS16x6, 8 => &DeinterleaveS16x8, _ => null };
         if (typeof(T) == typeof(S32)) return channels switch { 1 => &DeinterleaveS32x1, 2 => &DeinterleaveS32x2, 3 => &DeinterleaveS32x3, 4 => &DeinterleaveS32x4, 6 => &DeinterleaveS32x6, 8 => &DeinterleaveS32x8, _ => null };
@@ -23,6 +24,57 @@ static unsafe class NeonTransposes
         if (typeof(T) == typeof(S32)) return channels switch { 1 => &InterleaveS32x1, 2 => &InterleaveS32x2, 3 => &InterleaveS32x3, 4 => &InterleaveS32x4, 6 => &InterleaveS32x6, 8 => &InterleaveS32x8, _ => null };
         if (typeof(T) == typeof(F32)) return channels switch { 2 => &InterleaveF32x2, 3 => &InterleaveF32x3, 4 => &InterleaveF32x4, 6 => &InterleaveF32x6, 8 => &InterleaveF32x8, _ => null };
         return null;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS24x1(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var target = new Planes(output, stride, 1, frames);
+
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var source = new Pinned(pinned, data.Length, 3, frames);
+            for (; f <= frames - 16; f += 16)
+            {
+                var (r0, r1, r2) = AdvSimd.Arm64.Load3xVector128AndUnzip(source.At(f, 16));
+                ref var into = ref target.At(f, 16);
+                var low = AdvSimd.Arm64.ZipLow(Vector128<byte>.Zero, r0).AsUInt16();
+                var high = AdvSimd.Arm64.ZipHigh(Vector128<byte>.Zero, r0).AsUInt16();
+                var top = AdvSimd.Arm64.ZipLow(r1, r2).AsUInt16();
+                var bottom = AdvSimd.Arm64.ZipHigh(r1, r2).AsUInt16();
+                into.Store(stride, 0, 0, Neon.Convert24(AdvSimd.Arm64.ZipLow(low, top)));
+                into.Store(stride, 0, 4, Neon.Convert24(AdvSimd.Arm64.ZipHigh(low, top)));
+                into.Store(stride, 0, 8, Neon.Convert24(AdvSimd.Arm64.ZipLow(high, bottom)));
+                into.Store(stride, 0, 12, Neon.Convert24(AdvSimd.Arm64.ZipHigh(high, bottom)));
+            }
+        }
+        Deinterleave.Scalar<S24>(data[(f * 3)..], 1, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS24x2(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var target = new Planes(output, stride, 2, frames);
+        var mask = Vector128.Create((ushort)0xFF00);
+        var f = 0;
+        fixed (byte* pinned = data)
+        {
+            var source = new Pinned(pinned, data.Length, 6, frames);
+            for (; f <= frames - 8; f += 8)
+            {
+                var (r0, r1, r2) = AdvSimd.Arm64.Load3xVector128AndUnzip((ushort*)source.At(f, 8));
+                ref var into = ref target.At(f, 8);
+                var lower = AdvSimd.ShiftLeftLogical(r0, 8);
+                var upper = AdvSimd.ShiftLeftAndInsert(AdvSimd.ShiftRightLogical(r0, 8), r1, 8);
+                var start = AdvSimd.And(r1, mask);
+                into.Store(stride, 0, 0, Neon.Convert24(AdvSimd.Arm64.ZipLow(lower, upper)));
+                into.Store(stride, 0, 4, Neon.Convert24(AdvSimd.Arm64.ZipHigh(lower, upper)));
+                into.Store(stride, 1, 0, Neon.Convert24(AdvSimd.Arm64.ZipLow(start, r2)));
+                into.Store(stride, 1, 4, Neon.Convert24(AdvSimd.Arm64.ZipHigh(start, r2)));
+            }
+        }
+        Deinterleave.Scalar<S24>(data[(f * 6)..], 2, output[f..], stride, frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]

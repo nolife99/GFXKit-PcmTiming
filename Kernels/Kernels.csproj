@@ -8,6 +8,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' != 'net10.0'">
     <Compile Include="Legacy/net8.0/*.cs" />
+    <Compile Remove="NeonTransposes.g.cs" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
     <Compile Include="Legacy/net7.0/*.cs;Legacy/net6.0/*.cs" />
