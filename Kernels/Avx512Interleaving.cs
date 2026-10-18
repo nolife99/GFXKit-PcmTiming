@@ -12,15 +12,15 @@ static unsafe class Avx512Deinterleave
         Supported ? Avx512Transposes.DecodeKernel<T>(channels) : null;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector512<float> Read<T>(scoped ReadOnlySpan<byte> block, int offset) where T : struct, IPcmSample
+    public static Vector512<float> Read<T>(ref byte block, int offset) where T : struct, IPcmSample
     {
-        if (typeof(T) == typeof(F32)) return Packed512.Read(block, offset).AsSingle();
-        if (typeof(T) == typeof(S32)) return Times(Packed512.Read(block, offset).AsInt32(), 1f / 2147483648);
-        if (typeof(T) == typeof(S16)) return Times(Avx512F.ConvertToVector512Int32(Packed.Read32(block, offset).AsInt16()), 1f / 32768);
+        if (typeof(T) == typeof(F32)) return Packed512.Read(ref block, offset).AsSingle();
+        if (typeof(T) == typeof(S32)) return Times(Packed512.Read(ref block, offset).AsInt32(), 1f / 2147483648);
+        if (typeof(T) == typeof(S16)) return Times(Avx512F.ConvertToVector512Int32(Packed.Read32(ref block, offset).AsInt16()), 1f / 32768);
         if (typeof(T) == typeof(U8))
-            return Avx512F.FusedMultiplyAdd(Avx512F.ConvertToVector512Single(Avx512F.ConvertToVector512Int32(Packed.Read16(block, offset))), Vector512.Create(1f / 128), Vector512.Create(-1f));
+            return Avx512F.FusedMultiplyAdd(Avx512F.ConvertToVector512Single(Avx512F.ConvertToVector512Int32(Packed.Read16(ref block, offset))), Vector512.Create(1f / 128), Vector512.Create(-1f));
         if (typeof(T) == typeof(F64))
-            return Avx512F.InsertVector256(Avx512F.ConvertToVector256Single(Packed512.Read(block, offset).AsDouble()).ToVector512Unsafe(), Avx512F.ConvertToVector256Single(Packed512.Read(block, offset + 64).AsDouble()), 1);
+            return Avx512F.InsertVector256(Avx512F.ConvertToVector256Single(Packed512.Read(ref block, offset).AsDouble()).ToVector512Unsafe(), Avx512F.ConvertToVector256Single(Packed512.Read(ref block, offset + 64).AsDouble()), 1);
         throw new NotSupportedException();
     }
 
@@ -54,11 +54,11 @@ static unsafe class Avx512Interleave
         Avx512F.ConvertToVector512Int32(Avx512F.Multiply(Avx512F.Min(Avx512F.Max(values, Vector512.Create(-1f)), Vector512.Create(top)), Vector512.Create(scale)));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Write<T>(scoped Span<byte> block, int offset, Vector512<float> values) where T : struct, IPcmTarget
+    public static void Write<T>(ref byte block, int offset, Vector512<float> values) where T : struct, IPcmTarget
     {
-        if (typeof(T) == typeof(F32)) Packed512.Write(block, offset, values.AsByte());
-        else if (typeof(T) == typeof(S32)) Packed512.Write(block, offset, Quantize(values, S32.Top, 2147483648).AsByte());
-        else if (typeof(T) == typeof(S16)) Packed.Write32(block, offset, Avx512F.ConvertToVector256Int16WithSaturation(Quantize(values, S16.Top, 32768)).AsByte());
+        if (typeof(T) == typeof(F32)) Packed512.Write(ref block, offset, values.AsByte());
+        else if (typeof(T) == typeof(S32)) Packed512.Write(ref block, offset, Quantize(values, S32.Top, 2147483648).AsByte());
+        else if (typeof(T) == typeof(S16)) Packed.Write32(ref block, offset, Avx512F.ConvertToVector256Int16WithSaturation(Quantize(values, S16.Top, 32768)).AsByte());
         else throw new NotSupportedException();
     }
 
@@ -70,16 +70,16 @@ static unsafe class Avx512Interleave
 static class Packed512
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector512<byte> Read(scoped ReadOnlySpan<byte> block, int offset) => Unsafe.ReadUnaligned<Vector512<byte>>(ref Packed.At(block, offset, 64));
+    public static Vector512<byte> Read(ref byte block, int offset) => Unsafe.ReadUnaligned<Vector512<byte>>(ref Unsafe.Add(ref block, offset));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Write(scoped Span<byte> block, int offset, Vector512<byte> values) => Unsafe.WriteUnaligned(ref Packed.At(block, offset, 64), values);
+    public static void Write(ref byte block, int offset, Vector512<byte> values) => Unsafe.WriteUnaligned(ref Unsafe.Add(ref block, offset), values);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Store(this scoped Planes.Block block, int channel, int frame, Vector512<float> values) =>
-        Unsafe.WriteUnaligned(ref Unsafe.As<float, byte>(ref block.At(channel, frame, 16)), values);
+    public static void Store(this ref float block, int stride, int channel, int frame, Vector512<float> values) =>
+        Unsafe.WriteUnaligned(ref Unsafe.As<float, byte>(ref Unsafe.Add(ref block, channel * stride + frame)), values);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector512<float> Load16(this scoped Planes.Block block, int channel, int frame) =>
-        Unsafe.ReadUnaligned<Vector512<float>>(ref Unsafe.As<float, byte>(ref block.At(channel, frame, 16)));
+    public static Vector512<float> Load16(this ref float block, int stride, int channel, int frame) =>
+        Unsafe.ReadUnaligned<Vector512<float>>(ref Unsafe.As<float, byte>(ref Unsafe.Add(ref block, channel * stride + frame)));
 }

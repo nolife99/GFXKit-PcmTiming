@@ -30,86 +30,57 @@ readonly ref struct Planes
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Block At(int frame, int width)
+    public ref float At(int frame, int width)
     {
         if (frame < 0 || frame > frames - width) Throws.Frames(frame, width, frames);
-        return new Block(ref Unsafe.Add(ref MemoryMarshal.GetReference(data), frame), stride, channels, width);
+        return ref Unsafe.Add(ref MemoryMarshal.GetReference(data), frame);
     }
+}
 
-    public readonly ref struct Block
-    {
-        readonly Span<float> start;
-        readonly int stride;
-        readonly int channels;
-        readonly int width;
+static class Blocks
+{
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void Store(this ref float block, int stride, int channel, int frame, Vector256<float> values) =>
+        Unsafe.WriteUnaligned(ref Unsafe.As<float, byte>(ref Unsafe.Add(ref block, channel * stride + frame)), values);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Block(ref float start, int stride, int channels, int width)
-        {
-            this.start = MemoryMarshal.CreateSpan(ref start, 1);
-            (this.stride, this.channels, this.width) = (stride, channels, width);
-        }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void Store(this ref float block, int stride, int channel, int frame, Vector128<float> values) =>
+        Unsafe.WriteUnaligned(ref Unsafe.As<float, byte>(ref Unsafe.Add(ref block, channel * stride + frame)), values);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ref float At(int channel, int frame, int count)
-        {
-            if ((uint)channel >= (uint)channels || (uint)frame + (uint)count > (uint)width) Throws.Channel(channel, frame, count, channels, width);
-            return ref Unsafe.Add(ref MemoryMarshal.GetReference(start), channel * stride + frame);
-        }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<float> Load8(this ref float block, int stride, int channel, int frame) =>
+        Unsafe.ReadUnaligned<Vector256<float>>(ref Unsafe.As<float, byte>(ref Unsafe.Add(ref block, channel * stride + frame)));
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Store(int channel, int frame, Vector256<float> values) => Unsafe.WriteUnaligned(ref Unsafe.As<float, byte>(ref At(channel, frame, 8)), values);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Store(int channel, int frame, Vector128<float> values) => Unsafe.WriteUnaligned(ref Unsafe.As<float, byte>(ref At(channel, frame, 4)), values);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Vector256<float> Load8(int channel, int frame) => Unsafe.ReadUnaligned<Vector256<float>>(ref Unsafe.As<float, byte>(ref At(channel, frame, 8)));
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Vector128<float> Load4(int channel, int frame) => Unsafe.ReadUnaligned<Vector128<float>>(ref Unsafe.As<float, byte>(ref At(channel, frame, 4)));
-    }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> Load4(this ref float block, int stride, int channel, int frame) =>
+        Unsafe.ReadUnaligned<Vector128<float>>(ref Unsafe.As<float, byte>(ref Unsafe.Add(ref block, channel * stride + frame)));
 }
 
 static class Packed
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref byte At(ReadOnlySpan<byte> block, int offset, int count)
-    {
-        if ((ulong)(uint)offset + (uint)count > (uint)block.Length) Throws.Bytes(offset, count, block.Length);
-        return ref Unsafe.Add(ref MemoryMarshal.GetReference(block), offset);
-    }
+    public static Vector256<byte> Read32(ref byte block, int offset) => Unsafe.ReadUnaligned<Vector256<byte>>(ref Unsafe.Add(ref block, offset));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref byte At(Span<byte> block, int offset, int count)
-    {
-        if ((ulong)(uint)offset + (uint)count > (uint)block.Length) Throws.Bytes(offset, count, block.Length);
-        return ref Unsafe.Add(ref MemoryMarshal.GetReference(block), offset);
-    }
+    public static Vector128<byte> Read16(ref byte block, int offset) => Unsafe.ReadUnaligned<Vector128<byte>>(ref Unsafe.Add(ref block, offset));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<byte> Read32(scoped ReadOnlySpan<byte> block, int offset) => Unsafe.ReadUnaligned<Vector256<byte>>(ref At(block, offset, 32));
+    public static Vector128<byte> Read8(ref byte block, int offset) => Vector128.CreateScalar(Unsafe.ReadUnaligned<long>(ref Unsafe.Add(ref block, offset))).AsByte();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector128<byte> Read16(scoped ReadOnlySpan<byte> block, int offset) => Unsafe.ReadUnaligned<Vector128<byte>>(ref At(block, offset, 16));
+    public static int Read4(ref byte block, int offset) => Unsafe.ReadUnaligned<int>(ref Unsafe.Add(ref block, offset));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector128<byte> Read8(scoped ReadOnlySpan<byte> block, int offset) => Vector128.CreateScalar(Unsafe.ReadUnaligned<long>(ref At(block, offset, 8))).AsByte();
+    public static void Write32(ref byte block, int offset, Vector256<byte> values) => Unsafe.WriteUnaligned(ref Unsafe.Add(ref block, offset), values);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static int Read4(scoped ReadOnlySpan<byte> block, int offset) => Unsafe.ReadUnaligned<int>(ref At(block, offset, 4));
+    public static void Write16(ref byte block, int offset, Vector128<byte> values) => Unsafe.WriteUnaligned(ref Unsafe.Add(ref block, offset), values);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Write32(scoped Span<byte> block, int offset, Vector256<byte> values) => Unsafe.WriteUnaligned(ref At(block, offset, 32), values);
+    public static void Write8(ref byte block, int offset, Vector128<byte> values) => Unsafe.WriteUnaligned(ref Unsafe.Add(ref block, offset), values.AsInt64().ToScalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Write16(scoped Span<byte> block, int offset, Vector128<byte> values) => Unsafe.WriteUnaligned(ref At(block, offset, 16), values);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Write8(scoped Span<byte> block, int offset, Vector128<byte> values) => Unsafe.WriteUnaligned(ref At(block, offset, 8), values.AsInt64().ToScalar());
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Write4(scoped Span<byte> block, int offset, int value) => Unsafe.WriteUnaligned(ref At(block, offset, 4), value);
+    public static void Write4(ref byte block, int offset, int value) => Unsafe.WriteUnaligned(ref Unsafe.Add(ref block, offset), value);
 }
 
 readonly ref struct Interleaved
@@ -133,10 +104,10 @@ readonly ref struct Interleaved
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ReadOnlySpan<byte> At(int frame, int width)
+    public ref byte At(int frame, int width)
     {
         if (frame < 0 || frame > frames - width) Throws.Frames(frame, width, frames);
-        return MemoryMarshal.CreateReadOnlySpan(ref Unsafe.Add(ref MemoryMarshal.GetReference(data), frame * frameBytes), width * frameBytes);
+        return ref Unsafe.Add(ref MemoryMarshal.GetReference(data), frame * frameBytes);
     }
 }
 
@@ -155,10 +126,10 @@ readonly ref struct InterleavedTarget
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Span<byte> At(int frame, int width)
+    public ref byte At(int frame, int width)
     {
         if (frame < 0 || frame > frames - width) Throws.Frames(frame, width, frames);
-        return MemoryMarshal.CreateSpan(ref Unsafe.Add(ref MemoryMarshal.GetReference(data), frame * frameBytes), width * frameBytes);
+        return ref Unsafe.Add(ref MemoryMarshal.GetReference(data), frame * frameBytes);
     }
 }
 
@@ -198,11 +169,5 @@ static class Throws
     public static void Frames(int frame, int width, int frames) =>
         throw new ArgumentOutOfRangeException(nameof(frame), frame, $"frames {frame} to {frame + width} are outside the {frames}");
 
-    [DoesNotReturn]
-    public static void Channel(int channel, int frame, int count, int channels, int width) =>
-        throw new ArgumentOutOfRangeException(nameof(channel), $"channel {channel}, frames {frame} to {frame + count} are outside the block's {channels} channels of {width}");
 
-    [DoesNotReturn]
-    public static void Bytes(int offset, int count, int length) =>
-        throw new ArgumentOutOfRangeException(nameof(offset), offset, $"bytes {offset} to {offset + count} are outside the block's {length}");
 }

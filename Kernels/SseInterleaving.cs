@@ -45,10 +45,10 @@ static unsafe class SseDeinterleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            into.Store(0, 0, default(T).Read4(block, 0));
-            into.Store(0, 4, default(T).Read4(block, 4 * bytes));
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            into.Store(stride, 0, 0, default(T).Read4(ref block, 0));
+            into.Store(stride, 0, 4, default(T).Read4(ref block, 4 * bytes));
         }
         Deinterleave.Scalar<T>(data[(f * bytes)..], 1, output[f..], stride, frames - f);
     }
@@ -62,11 +62,11 @@ static unsafe class SseDeinterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseNetworks.Split2(default(T).Read4(block, 0), default(T).Read4(block, 4 * bytes), out var c0, out var c1);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseNetworks.Split2(default(T).Read4(ref block, 0), default(T).Read4(ref block, 4 * bytes), out var c0, out var c1);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
         }
         Deinterleave.Scalar<T>(data[(f * 2 * bytes)..], 2, output[f..], stride, frames - f);
     }
@@ -80,14 +80,14 @@ static unsafe class SseDeinterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseNetworks.Transpose(default(T).Read4(block, 0), default(T).Read4(block, 4 * bytes), default(T).Read4(block, 8 * bytes), default(T).Read4(block, 12 * bytes),
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseNetworks.Transpose(default(T).Read4(ref block, 0), default(T).Read4(ref block, 4 * bytes), default(T).Read4(ref block, 8 * bytes), default(T).Read4(ref block, 12 * bytes),
                 out var c0, out var c1, out var c2, out var c3);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
         }
         Deinterleave.Scalar<T>(data[(f * 4 * bytes)..], 4, output[f..], stride, frames - f);
     }
@@ -101,33 +101,33 @@ static unsafe class SseDeinterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseNetworks.Transpose(default(T).Read4(block, 0), default(T).Read4(block, 8 * bytes), default(T).Read4(block, 16 * bytes), default(T).Read4(block, 24 * bytes),
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseNetworks.Transpose(default(T).Read4(ref block, 0), default(T).Read4(ref block, 8 * bytes), default(T).Read4(ref block, 16 * bytes), default(T).Read4(ref block, 24 * bytes),
                 out var c0, out var c1, out var c2, out var c3);
-            SseNetworks.Transpose(default(T).Read4(block, 4 * bytes), default(T).Read4(block, 12 * bytes), default(T).Read4(block, 20 * bytes), default(T).Read4(block, 28 * bytes),
+            SseNetworks.Transpose(default(T).Read4(ref block, 4 * bytes), default(T).Read4(ref block, 12 * bytes), default(T).Read4(ref block, 20 * bytes), default(T).Read4(ref block, 28 * bytes),
                 out var c4, out var c5, out var c6, out var c7);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
-            into.Store(6, 0, c6);
-            into.Store(7, 0, c7);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
+            into.Store(stride, 6, 0, c6);
+            into.Store(stride, 7, 0, c7);
         }
         Deinterleave.Scalar<T>(data[(f * 8 * bytes)..], 8, output[f..], stride, frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static Vector128<float> Load(scoped ReadOnlySpan<byte> block, int offset) => Packed.Read16(block, offset).AsSingle();
+    static Vector128<float> Load(ref byte block, int offset) => Packed.Read16(ref block, offset).AsSingle();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static void Split(scoped Planes.Block into, int channel, int frame, Vector128<float> pairs)
+    static void Split(ref float into, int stride, int channel, int frame, Vector128<float> pairs)
     {
         var samples = pairs.AsInt16();
-        into.Store(channel, frame, PcmScale.Scale(Sse2.MultiplyAddAdjacent(samples, Vector128.Create(1).AsInt16()), 1f / 32768));
-        into.Store(channel + 1, frame, PcmScale.Scale(Sse2.MultiplyAddAdjacent(samples, Vector128.Create(1 << 16).AsInt16()), 1f / 32768));
+        into.Store(stride, channel, frame, PcmScale.Scale(Sse2.MultiplyAddAdjacent(samples, Vector128.Create(1).AsInt16()), 1f / 32768));
+        into.Store(stride, channel + 1, frame, PcmScale.Scale(Sse2.MultiplyAddAdjacent(samples, Vector128.Create(1 << 16).AsInt16()), 1f / 32768));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -138,10 +138,10 @@ static unsafe class SseDeinterleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            Split(into, 0, 0, Load(block, 0));
-            Split(into, 0, 4, Load(block, 16));
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            Split(ref into, stride, 0, 0, Load(ref block, 0));
+            Split(ref into, stride, 0, 4, Load(ref block, 16));
         }
         Deinterleave.Scalar<S16>(data[(f * 4)..], 2, output[f..], stride, frames - f);
     }
@@ -154,11 +154,11 @@ static unsafe class SseDeinterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseNetworks.Split2(Load(block, 0), Load(block, 16), out var p0, out var p1);
-            Split(into, 0, 0, p0);
-            Split(into, 2, 0, p1);
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseNetworks.Split2(Load(ref block, 0), Load(ref block, 16), out var p0, out var p1);
+            Split(ref into, stride, 0, 0, p0);
+            Split(ref into, stride, 2, 0, p1);
         }
         Deinterleave.Scalar<S16>(data[(f * 8)..], 4, output[f..], stride, frames - f);
     }
@@ -171,12 +171,12 @@ static unsafe class SseDeinterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            Transposes.SseSplit3(Load(block, 0), Load(block, 16), Load(block, 32), out var p0, out var p1, out var p2);
-            Split(into, 0, 0, p0);
-            Split(into, 2, 0, p1);
-            Split(into, 4, 0, p2);
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            Transposes.SseSplit3(Load(ref block, 0), Load(ref block, 16), Load(ref block, 32), out var p0, out var p1, out var p2);
+            Split(ref into, stride, 0, 0, p0);
+            Split(ref into, stride, 2, 0, p1);
+            Split(ref into, stride, 4, 0, p2);
         }
         Deinterleave.Scalar<S16>(data[(f * 12)..], 6, output[f..], stride, frames - f);
     }
@@ -189,13 +189,13 @@ static unsafe class SseDeinterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseNetworks.Transpose(Load(block, 0), Load(block, 16), Load(block, 32), Load(block, 48), out var p0, out var p1, out var p2, out var p3);
-            Split(into, 0, 0, p0);
-            Split(into, 2, 0, p1);
-            Split(into, 4, 0, p2);
-            Split(into, 6, 0, p3);
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseNetworks.Transpose(Load(ref block, 0), Load(ref block, 16), Load(ref block, 32), Load(ref block, 48), out var p0, out var p1, out var p2, out var p3);
+            Split(ref into, stride, 0, 0, p0);
+            Split(ref into, stride, 2, 0, p1);
+            Split(ref into, stride, 4, 0, p2);
+            Split(ref into, stride, 6, 0, p3);
         }
         Deinterleave.Scalar<S16>(data[(f * 16)..], 8, output[f..], stride, frames - f);
     }
@@ -241,10 +241,10 @@ static unsafe class SseInterleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var from = source.At(f, 8);
-            var block = target.At(f, 8);
-            default(T).Write4(block, 0, from.Load4(0, 0));
-            default(T).Write4(block, 4 * bytes, from.Load4(0, 4));
+            ref var from = ref source.At(f, 8);
+            ref var block = ref target.At(f, 8);
+            default(T).Write4(ref block, 0, from.Load4(stride, 0, 0));
+            default(T).Write4(ref block, 4 * bytes, from.Load4(stride, 0, 4));
         }
         Interleave.Scalar<T>(input[f..], stride, 1, data[(f * bytes)..], frames - f);
     }
@@ -258,11 +258,11 @@ static unsafe class SseInterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            var (l, r) = (from.Load4(0, 0), from.Load4(1, 0));
-            default(T).Write4(block, 0, Sse.UnpackLow(l, r));
-            default(T).Write4(block, 4 * bytes, Sse.UnpackHigh(l, r));
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            var (l, r) = (from.Load4(stride, 0, 0), from.Load4(stride, 1, 0));
+            default(T).Write4(ref block, 0, Sse.UnpackLow(l, r));
+            default(T).Write4(ref block, 4 * bytes, Sse.UnpackHigh(l, r));
         }
         Interleave.Scalar<T>(input[f..], stride, 2, data[(f * 2 * bytes)..], frames - f);
     }
@@ -276,13 +276,13 @@ static unsafe class SseInterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            SseNetworks.Transpose(from.Load4(0, 0), from.Load4(1, 0), from.Load4(2, 0), from.Load4(3, 0), out var i0, out var i1, out var i2, out var i3);
-            default(T).Write4(block, 0, i0);
-            default(T).Write4(block, 4 * bytes, i1);
-            default(T).Write4(block, 8 * bytes, i2);
-            default(T).Write4(block, 12 * bytes, i3);
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            SseNetworks.Transpose(from.Load4(stride, 0, 0), from.Load4(stride, 1, 0), from.Load4(stride, 2, 0), from.Load4(stride, 3, 0), out var i0, out var i1, out var i2, out var i3);
+            default(T).Write4(ref block, 0, i0);
+            default(T).Write4(ref block, 4 * bytes, i1);
+            default(T).Write4(ref block, 8 * bytes, i2);
+            default(T).Write4(ref block, 12 * bytes, i3);
         }
         Interleave.Scalar<T>(input[f..], stride, 4, data[(f * 4 * bytes)..], frames - f);
     }
@@ -296,26 +296,26 @@ static unsafe class SseInterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            SseNetworks.Transpose(from.Load4(0, 0), from.Load4(1, 0), from.Load4(2, 0), from.Load4(3, 0), out var i0, out var i2, out var i4, out var i6);
-            SseNetworks.Transpose(from.Load4(4, 0), from.Load4(5, 0), from.Load4(6, 0), from.Load4(7, 0), out var i1, out var i3, out var i5, out var i7);
-            default(T).Write4(block, 0, i0);
-            default(T).Write4(block, 4 * bytes, i1);
-            default(T).Write4(block, 8 * bytes, i2);
-            default(T).Write4(block, 12 * bytes, i3);
-            default(T).Write4(block, 16 * bytes, i4);
-            default(T).Write4(block, 20 * bytes, i5);
-            default(T).Write4(block, 24 * bytes, i6);
-            default(T).Write4(block, 28 * bytes, i7);
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            SseNetworks.Transpose(from.Load4(stride, 0, 0), from.Load4(stride, 1, 0), from.Load4(stride, 2, 0), from.Load4(stride, 3, 0), out var i0, out var i2, out var i4, out var i6);
+            SseNetworks.Transpose(from.Load4(stride, 4, 0), from.Load4(stride, 5, 0), from.Load4(stride, 6, 0), from.Load4(stride, 7, 0), out var i1, out var i3, out var i5, out var i7);
+            default(T).Write4(ref block, 0, i0);
+            default(T).Write4(ref block, 4 * bytes, i1);
+            default(T).Write4(ref block, 8 * bytes, i2);
+            default(T).Write4(ref block, 12 * bytes, i3);
+            default(T).Write4(ref block, 16 * bytes, i4);
+            default(T).Write4(ref block, 20 * bytes, i5);
+            default(T).Write4(ref block, 24 * bytes, i6);
+            default(T).Write4(ref block, 28 * bytes, i7);
         }
         Interleave.Scalar<T>(input[f..], stride, 8, data[(f * 8 * bytes)..], frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static Vector128<byte> Join(scoped Planes.Block from, int channel) =>
-        Sse41.Blend(PcmScale.Quantize(from.Load4(channel, 0), 32767f / 32768, 32768).AsInt16(),
-            Sse2.ShiftLeftLogical(PcmScale.Quantize(from.Load4(channel + 1, 0), 32767f / 32768, 32768), 16).AsInt16(), 0xAA).AsByte();
+    static Vector128<byte> Join(ref float from, int stride, int channel) =>
+        Sse41.Blend(PcmScale.Quantize(from.Load4(stride, channel, 0), 32767f / 32768, 32768).AsInt16(),
+            Sse2.ShiftLeftLogical(PcmScale.Quantize(from.Load4(stride, channel + 1, 0), 32767f / 32768, 32768), 16).AsInt16(), 0xAA).AsByte();
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     static void Pairs2(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
@@ -323,7 +323,7 @@ static unsafe class SseInterleave
         var source = new Planes(input, stride, 2, frames);
         var target = new InterleavedTarget(data, 4, frames);
         var f = 0;
-        for (; f <= frames - 4; f += 4) Packed.Write16(target.At(f, 4), 0, Join(source.At(f, 4), 0));
+        for (; f <= frames - 4; f += 4) Packed.Write16(ref target.At(f, 4), 0, Join(ref source.At(f, 4), stride, 0));
         Interleave.Scalar<S16>(input[f..], stride, 2, data[(f * 4)..], frames - f);
     }
 
@@ -335,11 +335,11 @@ static unsafe class SseInterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            var (p0, p1) = (Join(from, 0).AsSingle(), Join(from, 2).AsSingle());
-            Packed.Write16(block, 0, Sse.UnpackLow(p0, p1).AsByte());
-            Packed.Write16(block, 16, Sse.UnpackHigh(p0, p1).AsByte());
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            var (p0, p1) = (Join(ref from, stride, 0).AsSingle(), Join(ref from, stride, 2).AsSingle());
+            Packed.Write16(ref block, 0, Sse.UnpackLow(p0, p1).AsByte());
+            Packed.Write16(ref block, 16, Sse.UnpackHigh(p0, p1).AsByte());
         }
         Interleave.Scalar<S16>(input[f..], stride, 4, data[(f * 8)..], frames - f);
     }
@@ -352,12 +352,12 @@ static unsafe class SseInterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            Transposes.SseMerge3(Join(from, 0).AsSingle(), Join(from, 2).AsSingle(), Join(from, 4).AsSingle(), out var i0, out var i1, out var i2);
-            Packed.Write16(block, 0, i0.AsByte());
-            Packed.Write16(block, 16, i1.AsByte());
-            Packed.Write16(block, 32, i2.AsByte());
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            Transposes.SseMerge3(Join(ref from, stride, 0).AsSingle(), Join(ref from, stride, 2).AsSingle(), Join(ref from, stride, 4).AsSingle(), out var i0, out var i1, out var i2);
+            Packed.Write16(ref block, 0, i0.AsByte());
+            Packed.Write16(ref block, 16, i1.AsByte());
+            Packed.Write16(ref block, 32, i2.AsByte());
         }
         Interleave.Scalar<S16>(input[f..], stride, 6, data[(f * 12)..], frames - f);
     }
@@ -370,13 +370,13 @@ static unsafe class SseInterleave
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            SseNetworks.Transpose(Join(from, 0).AsSingle(), Join(from, 2).AsSingle(), Join(from, 4).AsSingle(), Join(from, 6).AsSingle(), out var i0, out var i1, out var i2, out var i3);
-            Packed.Write16(block, 0, i0.AsByte());
-            Packed.Write16(block, 16, i1.AsByte());
-            Packed.Write16(block, 32, i2.AsByte());
-            Packed.Write16(block, 48, i3.AsByte());
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            SseNetworks.Transpose(Join(ref from, stride, 0).AsSingle(), Join(ref from, stride, 2).AsSingle(), Join(ref from, stride, 4).AsSingle(), Join(ref from, stride, 6).AsSingle(), out var i0, out var i1, out var i2, out var i3);
+            Packed.Write16(ref block, 0, i0.AsByte());
+            Packed.Write16(ref block, 16, i1.AsByte());
+            Packed.Write16(ref block, 32, i2.AsByte());
+            Packed.Write16(ref block, 48, i3.AsByte());
         }
         Interleave.Scalar<S16>(input[f..], stride, 8, data[(f * 16)..], frames - f);
     }

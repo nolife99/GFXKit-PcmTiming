@@ -410,11 +410,11 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain2(Avx512Deinterleave.Read<T>(block, 0 * bytes), Avx512Deinterleave.Read<T>(block, 16 * bytes), out var c0, out var c1);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain2(Avx512Deinterleave.Read<T>(ref block, 0 * bytes), Avx512Deinterleave.Read<T>(ref block, 16 * bytes), out var c0, out var c1);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(2)(data[(f * 2 * bytes)..], 2, output[f..], stride, frames - f);
     }
@@ -428,12 +428,12 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain3(Avx512Deinterleave.Read<T>(block, 0 * bytes), Avx512Deinterleave.Read<T>(block, 16 * bytes), Avx512Deinterleave.Read<T>(block, 32 * bytes), out var c0, out var c1, out var c2);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain3(Avx512Deinterleave.Read<T>(ref block, 0 * bytes), Avx512Deinterleave.Read<T>(ref block, 16 * bytes), Avx512Deinterleave.Read<T>(ref block, 32 * bytes), out var c0, out var c1, out var c2);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(3)(data[(f * 3 * bytes)..], 3, output[f..], stride, frames - f);
     }
@@ -447,13 +447,13 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain4(Avx512Deinterleave.Read<T>(block, 0 * bytes), Avx512Deinterleave.Read<T>(block, 16 * bytes), Avx512Deinterleave.Read<T>(block, 32 * bytes), Avx512Deinterleave.Read<T>(block, 48 * bytes), out var c0, out var c1, out var c2, out var c3);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain4(Avx512Deinterleave.Read<T>(ref block, 0 * bytes), Avx512Deinterleave.Read<T>(ref block, 16 * bytes), Avx512Deinterleave.Read<T>(ref block, 32 * bytes), Avx512Deinterleave.Read<T>(ref block, 48 * bytes), out var c0, out var c1, out var c2, out var c3);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(4)(data[(f * 4 * bytes)..], 4, output[f..], stride, frames - f);
     }
@@ -467,14 +467,14 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitBlend5(Avx512Deinterleave.Read<T>(block, 0 * bytes), Avx512Deinterleave.Read<T>(block, 16 * bytes), Avx512Deinterleave.Read<T>(block, 32 * bytes), Avx512Deinterleave.Read<T>(block, 48 * bytes), Avx512Deinterleave.Read<T>(block, 64 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitBlend5(Avx512Deinterleave.Read<T>(ref block, 0 * bytes), Avx512Deinterleave.Read<T>(ref block, 16 * bytes), Avx512Deinterleave.Read<T>(ref block, 32 * bytes), Avx512Deinterleave.Read<T>(ref block, 48 * bytes), Avx512Deinterleave.Read<T>(ref block, 64 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(5)(data[(f * 5 * bytes)..], 5, output[f..], stride, frames - f);
     }
@@ -488,15 +488,15 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain6(Avx512Deinterleave.Read<T>(block, 0 * bytes), Avx512Deinterleave.Read<T>(block, 16 * bytes), Avx512Deinterleave.Read<T>(block, 32 * bytes), Avx512Deinterleave.Read<T>(block, 48 * bytes), Avx512Deinterleave.Read<T>(block, 64 * bytes), Avx512Deinterleave.Read<T>(block, 80 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain6(Avx512Deinterleave.Read<T>(ref block, 0 * bytes), Avx512Deinterleave.Read<T>(ref block, 16 * bytes), Avx512Deinterleave.Read<T>(ref block, 32 * bytes), Avx512Deinterleave.Read<T>(ref block, 48 * bytes), Avx512Deinterleave.Read<T>(ref block, 64 * bytes), Avx512Deinterleave.Read<T>(ref block, 80 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(6)(data[(f * 6 * bytes)..], 6, output[f..], stride, frames - f);
     }
@@ -510,16 +510,16 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitBlend7(Avx512Deinterleave.Read<T>(block, 0 * bytes), Avx512Deinterleave.Read<T>(block, 16 * bytes), Avx512Deinterleave.Read<T>(block, 32 * bytes), Avx512Deinterleave.Read<T>(block, 48 * bytes), Avx512Deinterleave.Read<T>(block, 64 * bytes), Avx512Deinterleave.Read<T>(block, 80 * bytes), Avx512Deinterleave.Read<T>(block, 96 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
-            into.Store(6, 0, c6);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitBlend7(Avx512Deinterleave.Read<T>(ref block, 0 * bytes), Avx512Deinterleave.Read<T>(ref block, 16 * bytes), Avx512Deinterleave.Read<T>(ref block, 32 * bytes), Avx512Deinterleave.Read<T>(ref block, 48 * bytes), Avx512Deinterleave.Read<T>(ref block, 64 * bytes), Avx512Deinterleave.Read<T>(ref block, 80 * bytes), Avx512Deinterleave.Read<T>(ref block, 96 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
+            into.Store(stride, 6, 0, c6);
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(7)(data[(f * 7 * bytes)..], 7, output[f..], stride, frames - f);
     }
@@ -533,9 +533,9 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            into.Store(0, 0, Avx512Deinterleave.Read<T>(block, 0 * bytes));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            into.Store(stride, 0, 0, Avx512Deinterleave.Read<T>(ref block, 0 * bytes));
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(1)(data[(f * 1 * bytes)..], 1, output[f..], stride, frames - f);
     }
@@ -549,14 +549,14 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain5(Avx512Deinterleave.Read<T>(block, 0 * bytes), Avx512Deinterleave.Read<T>(block, 16 * bytes), Avx512Deinterleave.Read<T>(block, 32 * bytes), Avx512Deinterleave.Read<T>(block, 48 * bytes), Avx512Deinterleave.Read<T>(block, 64 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain5(Avx512Deinterleave.Read<T>(ref block, 0 * bytes), Avx512Deinterleave.Read<T>(ref block, 16 * bytes), Avx512Deinterleave.Read<T>(ref block, 32 * bytes), Avx512Deinterleave.Read<T>(ref block, 48 * bytes), Avx512Deinterleave.Read<T>(ref block, 64 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(5)(data[(f * 5 * bytes)..], 5, output[f..], stride, frames - f);
     }
@@ -570,13 +570,13 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain2(Packed512.Read(block, 0).AsSingle(), Packed512.Read(block, 64).AsSingle(), out var p0, out var p1);
-            into.Store(0, 0, Avx512Deinterleave.Even(p0));
-            into.Store(1, 0, Avx512Deinterleave.Odd(p0));
-            into.Store(2, 0, Avx512Deinterleave.Even(p1));
-            into.Store(3, 0, Avx512Deinterleave.Odd(p1));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain2(Packed512.Read(ref block, 0).AsSingle(), Packed512.Read(ref block, 64).AsSingle(), out var p0, out var p1);
+            into.Store(stride, 0, 0, Avx512Deinterleave.Even(p0));
+            into.Store(stride, 1, 0, Avx512Deinterleave.Odd(p0));
+            into.Store(stride, 2, 0, Avx512Deinterleave.Even(p1));
+            into.Store(stride, 3, 0, Avx512Deinterleave.Odd(p1));
         }
         if (f < frames) Deinterleave.Avx2Kernel<S16>(4)(data[(f * 4 * bytes)..], 4, output[f..], stride, frames - f);
     }
@@ -590,15 +590,15 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain3(Packed512.Read(block, 0).AsSingle(), Packed512.Read(block, 64).AsSingle(), Packed512.Read(block, 128).AsSingle(), out var p0, out var p1, out var p2);
-            into.Store(0, 0, Avx512Deinterleave.Even(p0));
-            into.Store(1, 0, Avx512Deinterleave.Odd(p0));
-            into.Store(2, 0, Avx512Deinterleave.Even(p1));
-            into.Store(3, 0, Avx512Deinterleave.Odd(p1));
-            into.Store(4, 0, Avx512Deinterleave.Even(p2));
-            into.Store(5, 0, Avx512Deinterleave.Odd(p2));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain3(Packed512.Read(ref block, 0).AsSingle(), Packed512.Read(ref block, 64).AsSingle(), Packed512.Read(ref block, 128).AsSingle(), out var p0, out var p1, out var p2);
+            into.Store(stride, 0, 0, Avx512Deinterleave.Even(p0));
+            into.Store(stride, 1, 0, Avx512Deinterleave.Odd(p0));
+            into.Store(stride, 2, 0, Avx512Deinterleave.Even(p1));
+            into.Store(stride, 3, 0, Avx512Deinterleave.Odd(p1));
+            into.Store(stride, 4, 0, Avx512Deinterleave.Even(p2));
+            into.Store(stride, 5, 0, Avx512Deinterleave.Odd(p2));
         }
         if (f < frames) Deinterleave.Avx2Kernel<S16>(6)(data[(f * 6 * bytes)..], 6, output[f..], stride, frames - f);
     }
@@ -612,17 +612,17 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain4(Packed512.Read(block, 0).AsSingle(), Packed512.Read(block, 64).AsSingle(), Packed512.Read(block, 128).AsSingle(), Packed512.Read(block, 192).AsSingle(), out var p0, out var p1, out var p2, out var p3);
-            into.Store(0, 0, Avx512Deinterleave.Even(p0));
-            into.Store(1, 0, Avx512Deinterleave.Odd(p0));
-            into.Store(2, 0, Avx512Deinterleave.Even(p1));
-            into.Store(3, 0, Avx512Deinterleave.Odd(p1));
-            into.Store(4, 0, Avx512Deinterleave.Even(p2));
-            into.Store(5, 0, Avx512Deinterleave.Odd(p2));
-            into.Store(6, 0, Avx512Deinterleave.Even(p3));
-            into.Store(7, 0, Avx512Deinterleave.Odd(p3));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain4(Packed512.Read(ref block, 0).AsSingle(), Packed512.Read(ref block, 64).AsSingle(), Packed512.Read(ref block, 128).AsSingle(), Packed512.Read(ref block, 192).AsSingle(), out var p0, out var p1, out var p2, out var p3);
+            into.Store(stride, 0, 0, Avx512Deinterleave.Even(p0));
+            into.Store(stride, 1, 0, Avx512Deinterleave.Odd(p0));
+            into.Store(stride, 2, 0, Avx512Deinterleave.Even(p1));
+            into.Store(stride, 3, 0, Avx512Deinterleave.Odd(p1));
+            into.Store(stride, 4, 0, Avx512Deinterleave.Even(p2));
+            into.Store(stride, 5, 0, Avx512Deinterleave.Odd(p2));
+            into.Store(stride, 6, 0, Avx512Deinterleave.Even(p3));
+            into.Store(stride, 7, 0, Avx512Deinterleave.Odd(p3));
         }
         if (f < frames) Deinterleave.Avx2Kernel<S16>(8)(data[(f * 8 * bytes)..], 8, output[f..], stride, frames - f);
     }
@@ -636,12 +636,12 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 32; f += 32)
         {
-            var block = source.At(f, 32);
-            var into = target.At(f, 32);
-            var w0 = Packed512.Read(block, 0);
-            var w1 = Packed512.Read(block, 32);
-            into.Store(0, 0, Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))));
-            into.Store(0, 16, Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(w1, Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))));
+            ref var block = ref source.At(f, 32);
+            ref var into = ref target.At(f, 32);
+            var w0 = Packed512.Read(ref block, 0);
+            var w1 = Packed512.Read(ref block, 32);
+            into.Store(stride, 0, 0, Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))));
+            into.Store(stride, 0, 16, Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(w1, Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))));
         }
         if (f < frames) Deinterleave.Avx2Kernel<S24>(1)(data[(f * 1 * bytes)..], 1, output[f..], stride, frames - f);
     }
@@ -655,12 +655,12 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            var w0 = Packed512.Read(block, 0);
-            var w1 = Packed512.Read(block, 32);
-            into.Store(0, 0, Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 1, 2, 0, 6, 7, 8, 0, 12, 13, 14, 0, 18, 19, 20, 0, 24, 25, 26, 0, 30, 31, 32, 0, 36, 37, 38, 0, 42, 43, 44, 0, 48, 49, 50, 0, 54, 55, 56, 0, 60, 61, 62, 0, 98, 99, 100, 0, 104, 105, 106, 0, 110, 111, 112, 0, 116, 117, 118, 0, 122, 123, 124), w1)));
-            into.Store(1, 0, Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 3, 4, 5, 0, 9, 10, 11, 0, 15, 16, 17, 0, 21, 22, 23, 0, 27, 28, 29, 0, 33, 34, 35, 0, 39, 40, 41, 0, 45, 46, 47, 0, 51, 52, 53, 0, 57, 58, 59, 0, 63, 96, 97, 0, 101, 102, 103, 0, 107, 108, 109, 0, 113, 114, 115, 0, 119, 120, 121, 0, 125, 126, 127), w1)));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var w0 = Packed512.Read(ref block, 0);
+            var w1 = Packed512.Read(ref block, 32);
+            into.Store(stride, 0, 0, Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 1, 2, 0, 6, 7, 8, 0, 12, 13, 14, 0, 18, 19, 20, 0, 24, 25, 26, 0, 30, 31, 32, 0, 36, 37, 38, 0, 42, 43, 44, 0, 48, 49, 50, 0, 54, 55, 56, 0, 60, 61, 62, 0, 98, 99, 100, 0, 104, 105, 106, 0, 110, 111, 112, 0, 116, 117, 118, 0, 122, 123, 124), w1)));
+            into.Store(stride, 1, 0, Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 3, 4, 5, 0, 9, 10, 11, 0, 15, 16, 17, 0, 21, 22, 23, 0, 27, 28, 29, 0, 33, 34, 35, 0, 39, 40, 41, 0, 45, 46, 47, 0, 51, 52, 53, 0, 57, 58, 59, 0, 63, 96, 97, 0, 101, 102, 103, 0, 107, 108, 109, 0, 113, 114, 115, 0, 119, 120, 121, 0, 125, 126, 127), w1)));
         }
         if (f < frames) Deinterleave.Avx2Kernel<S24>(2)(data[(f * 2 * bytes)..], 2, output[f..], stride, frames - f);
     }
@@ -674,12 +674,12 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitBlend3(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 80), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitBlend3(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 80), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
         }
         if (f < frames) Deinterleave.Avx2Kernel<S24>(3)(data[(f * 3 * bytes)..], 3, output[f..], stride, frames - f);
     }
@@ -693,13 +693,13 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain4(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 128), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain4(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 128), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
         }
         if (f < frames) Deinterleave.Avx2Kernel<S24>(4)(data[(f * 4 * bytes)..], 4, output[f..], stride, frames - f);
     }
@@ -713,14 +713,14 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitBlend5(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 144), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 176), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3, out var c4);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitBlend5(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 144), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 176), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3, out var c4);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
         }
         if (f < frames) Deinterleave.Avx2Kernel<S24>(5)(data[(f * 5 * bytes)..], 5, output[f..], stride, frames - f);
     }
@@ -734,15 +734,15 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain6(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 144), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 192), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 224), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain6(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 144), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 192), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 224), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
         }
         if (f < frames) Deinterleave.Avx2Kernel<S24>(6)(data[(f * 6 * bytes)..], 6, output[f..], stride, frames - f);
     }
@@ -756,16 +756,16 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitBlend7(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 144), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 192), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 240), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 272), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
-            into.Store(6, 0, c6);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitBlend7(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 144), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 192), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 240), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 272), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
+            into.Store(stride, 6, 0, c6);
         }
         if (f < frames) Deinterleave.Avx2Kernel<S24>(7)(data[(f * 7 * bytes)..], 7, output[f..], stride, frames - f);
     }
@@ -779,17 +779,17 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain8(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 144), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 192), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 240), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 288), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(block, 320), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6, out var c7);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
-            into.Store(6, 0, c6);
-            into.Store(7, 0, c7);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain8(Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 0), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 48), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 96), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 144), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 192), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 240), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 288), Vector512.Create((byte)0, 0, 1, 2, 0, 3, 4, 5, 0, 6, 7, 8, 0, 9, 10, 11, 0, 12, 13, 14, 0, 15, 16, 17, 0, 18, 19, 20, 0, 21, 22, 23, 0, 24, 25, 26, 0, 27, 28, 29, 0, 30, 31, 32, 0, 33, 34, 35, 0, 36, 37, 38, 0, 39, 40, 41, 0, 42, 43, 44, 0, 45, 46, 47))), Avx512Deinterleave.WidenS24(Avx512Vbmi.PermuteVar64x8(Packed512.Read(ref block, 320), Vector512.Create((byte)0, 16, 17, 18, 0, 19, 20, 21, 0, 22, 23, 24, 0, 25, 26, 27, 0, 28, 29, 30, 0, 31, 32, 33, 0, 34, 35, 36, 0, 37, 38, 39, 0, 40, 41, 42, 0, 43, 44, 45, 0, 46, 47, 48, 0, 49, 50, 51, 0, 52, 53, 54, 0, 55, 56, 57, 0, 58, 59, 60, 0, 61, 62, 63))), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6, out var c7);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
+            into.Store(stride, 6, 0, c6);
+            into.Store(stride, 7, 0, c7);
         }
         if (f < frames) Deinterleave.Avx2Kernel<S24>(8)(data[(f * 8 * bytes)..], 8, output[f..], stride, frames - f);
     }
@@ -803,16 +803,16 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 32; f += 32)
         {
-            var block = source.At(f, 32);
-            var into = target.At(f, 32);
-            var w0 = Packed512.Read(block, 0);
-            var w1 = Packed512.Read(block, 32);
-            into.Store(0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 6, 0, 0, 0, 9, 0, 0, 0, 12, 0, 0, 0, 15, 0, 0, 0, 18, 0, 0, 0, 21, 0, 0, 0, 24, 0, 0, 0, 27, 0, 0, 0, 30, 0, 0, 0, 33, 0, 0, 0, 36, 0, 0, 0, 39, 0, 0, 0, 42, 0, 0, 0, 45))));
-            into.Store(0, 16, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w1, Vector512.Create((byte)0, 0, 0, 16, 0, 0, 0, 19, 0, 0, 0, 22, 0, 0, 0, 25, 0, 0, 0, 28, 0, 0, 0, 31, 0, 0, 0, 34, 0, 0, 0, 37, 0, 0, 0, 40, 0, 0, 0, 43, 0, 0, 0, 46, 0, 0, 0, 49, 0, 0, 0, 52, 0, 0, 0, 55, 0, 0, 0, 58, 0, 0, 0, 61))));
-            into.Store(1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0, 7, 0, 0, 0, 10, 0, 0, 0, 13, 0, 0, 0, 16, 0, 0, 0, 19, 0, 0, 0, 22, 0, 0, 0, 25, 0, 0, 0, 28, 0, 0, 0, 31, 0, 0, 0, 34, 0, 0, 0, 37, 0, 0, 0, 40, 0, 0, 0, 43, 0, 0, 0, 46))));
-            into.Store(1, 16, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w1, Vector512.Create((byte)0, 0, 0, 17, 0, 0, 0, 20, 0, 0, 0, 23, 0, 0, 0, 26, 0, 0, 0, 29, 0, 0, 0, 32, 0, 0, 0, 35, 0, 0, 0, 38, 0, 0, 0, 41, 0, 0, 0, 44, 0, 0, 0, 47, 0, 0, 0, 50, 0, 0, 0, 53, 0, 0, 0, 56, 0, 0, 0, 59, 0, 0, 0, 62))));
-            into.Store(2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0, 8, 0, 0, 0, 11, 0, 0, 0, 14, 0, 0, 0, 17, 0, 0, 0, 20, 0, 0, 0, 23, 0, 0, 0, 26, 0, 0, 0, 29, 0, 0, 0, 32, 0, 0, 0, 35, 0, 0, 0, 38, 0, 0, 0, 41, 0, 0, 0, 44, 0, 0, 0, 47))));
-            into.Store(2, 16, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w1, Vector512.Create((byte)0, 0, 0, 18, 0, 0, 0, 21, 0, 0, 0, 24, 0, 0, 0, 27, 0, 0, 0, 30, 0, 0, 0, 33, 0, 0, 0, 36, 0, 0, 0, 39, 0, 0, 0, 42, 0, 0, 0, 45, 0, 0, 0, 48, 0, 0, 0, 51, 0, 0, 0, 54, 0, 0, 0, 57, 0, 0, 0, 60, 0, 0, 0, 63))));
+            ref var block = ref source.At(f, 32);
+            ref var into = ref target.At(f, 32);
+            var w0 = Packed512.Read(ref block, 0);
+            var w1 = Packed512.Read(ref block, 32);
+            into.Store(stride, 0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 6, 0, 0, 0, 9, 0, 0, 0, 12, 0, 0, 0, 15, 0, 0, 0, 18, 0, 0, 0, 21, 0, 0, 0, 24, 0, 0, 0, 27, 0, 0, 0, 30, 0, 0, 0, 33, 0, 0, 0, 36, 0, 0, 0, 39, 0, 0, 0, 42, 0, 0, 0, 45))));
+            into.Store(stride, 0, 16, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w1, Vector512.Create((byte)0, 0, 0, 16, 0, 0, 0, 19, 0, 0, 0, 22, 0, 0, 0, 25, 0, 0, 0, 28, 0, 0, 0, 31, 0, 0, 0, 34, 0, 0, 0, 37, 0, 0, 0, 40, 0, 0, 0, 43, 0, 0, 0, 46, 0, 0, 0, 49, 0, 0, 0, 52, 0, 0, 0, 55, 0, 0, 0, 58, 0, 0, 0, 61))));
+            into.Store(stride, 1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0, 7, 0, 0, 0, 10, 0, 0, 0, 13, 0, 0, 0, 16, 0, 0, 0, 19, 0, 0, 0, 22, 0, 0, 0, 25, 0, 0, 0, 28, 0, 0, 0, 31, 0, 0, 0, 34, 0, 0, 0, 37, 0, 0, 0, 40, 0, 0, 0, 43, 0, 0, 0, 46))));
+            into.Store(stride, 1, 16, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w1, Vector512.Create((byte)0, 0, 0, 17, 0, 0, 0, 20, 0, 0, 0, 23, 0, 0, 0, 26, 0, 0, 0, 29, 0, 0, 0, 32, 0, 0, 0, 35, 0, 0, 0, 38, 0, 0, 0, 41, 0, 0, 0, 44, 0, 0, 0, 47, 0, 0, 0, 50, 0, 0, 0, 53, 0, 0, 0, 56, 0, 0, 0, 59, 0, 0, 0, 62))));
+            into.Store(stride, 2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0, 8, 0, 0, 0, 11, 0, 0, 0, 14, 0, 0, 0, 17, 0, 0, 0, 20, 0, 0, 0, 23, 0, 0, 0, 26, 0, 0, 0, 29, 0, 0, 0, 32, 0, 0, 0, 35, 0, 0, 0, 38, 0, 0, 0, 41, 0, 0, 0, 44, 0, 0, 0, 47))));
+            into.Store(stride, 2, 16, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w1, Vector512.Create((byte)0, 0, 0, 18, 0, 0, 0, 21, 0, 0, 0, 24, 0, 0, 0, 27, 0, 0, 0, 30, 0, 0, 0, 33, 0, 0, 0, 36, 0, 0, 0, 39, 0, 0, 0, 42, 0, 0, 0, 45, 0, 0, 0, 48, 0, 0, 0, 51, 0, 0, 0, 54, 0, 0, 0, 57, 0, 0, 0, 60, 0, 0, 0, 63))));
         }
         if (f < frames) Deinterleave.Avx2Kernel<U8>(3)(data[(f * 3 * bytes)..], 3, output[f..], stride, frames - f);
     }
@@ -826,13 +826,13 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            var w0 = Packed512.Read(block, 0);
-            into.Store(0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 8, 0, 0, 0, 12, 0, 0, 0, 16, 0, 0, 0, 20, 0, 0, 0, 24, 0, 0, 0, 28, 0, 0, 0, 32, 0, 0, 0, 36, 0, 0, 0, 40, 0, 0, 0, 44, 0, 0, 0, 48, 0, 0, 0, 52, 0, 0, 0, 56, 0, 0, 0, 60))));
-            into.Store(1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0, 9, 0, 0, 0, 13, 0, 0, 0, 17, 0, 0, 0, 21, 0, 0, 0, 25, 0, 0, 0, 29, 0, 0, 0, 33, 0, 0, 0, 37, 0, 0, 0, 41, 0, 0, 0, 45, 0, 0, 0, 49, 0, 0, 0, 53, 0, 0, 0, 57, 0, 0, 0, 61))));
-            into.Store(2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 6, 0, 0, 0, 10, 0, 0, 0, 14, 0, 0, 0, 18, 0, 0, 0, 22, 0, 0, 0, 26, 0, 0, 0, 30, 0, 0, 0, 34, 0, 0, 0, 38, 0, 0, 0, 42, 0, 0, 0, 46, 0, 0, 0, 50, 0, 0, 0, 54, 0, 0, 0, 58, 0, 0, 0, 62))));
-            into.Store(3, 0, Avx512Deinterleave.WidenU8(w0));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var w0 = Packed512.Read(ref block, 0);
+            into.Store(stride, 0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 8, 0, 0, 0, 12, 0, 0, 0, 16, 0, 0, 0, 20, 0, 0, 0, 24, 0, 0, 0, 28, 0, 0, 0, 32, 0, 0, 0, 36, 0, 0, 0, 40, 0, 0, 0, 44, 0, 0, 0, 48, 0, 0, 0, 52, 0, 0, 0, 56, 0, 0, 0, 60))));
+            into.Store(stride, 1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0, 9, 0, 0, 0, 13, 0, 0, 0, 17, 0, 0, 0, 21, 0, 0, 0, 25, 0, 0, 0, 29, 0, 0, 0, 33, 0, 0, 0, 37, 0, 0, 0, 41, 0, 0, 0, 45, 0, 0, 0, 49, 0, 0, 0, 53, 0, 0, 0, 57, 0, 0, 0, 61))));
+            into.Store(stride, 2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 6, 0, 0, 0, 10, 0, 0, 0, 14, 0, 0, 0, 18, 0, 0, 0, 22, 0, 0, 0, 26, 0, 0, 0, 30, 0, 0, 0, 34, 0, 0, 0, 38, 0, 0, 0, 42, 0, 0, 0, 46, 0, 0, 0, 50, 0, 0, 0, 54, 0, 0, 0, 58, 0, 0, 0, 62))));
+            into.Store(stride, 3, 0, Avx512Deinterleave.WidenU8(w0));
         }
         if (f < frames) Deinterleave.Avx2Kernel<U8>(4)(data[(f * 4 * bytes)..], 4, output[f..], stride, frames - f);
     }
@@ -846,15 +846,15 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            var w0 = Packed512.Read(block, 0);
-            var w1 = Packed512.Read(block, 16);
-            into.Store(0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0, 15, 0, 0, 0, 20, 0, 0, 0, 25, 0, 0, 0, 30, 0, 0, 0, 35, 0, 0, 0, 40, 0, 0, 0, 45, 0, 0, 0, 50, 0, 0, 0, 55, 0, 0, 0, 60, 0, 0, 0, 113, 0, 0, 0, 118, 0, 0, 0, 123), w1)));
-            into.Store(1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0, 11, 0, 0, 0, 16, 0, 0, 0, 21, 0, 0, 0, 26, 0, 0, 0, 31, 0, 0, 0, 36, 0, 0, 0, 41, 0, 0, 0, 46, 0, 0, 0, 51, 0, 0, 0, 56, 0, 0, 0, 61, 0, 0, 0, 114, 0, 0, 0, 119, 0, 0, 0, 124), w1)));
-            into.Store(2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 7, 0, 0, 0, 12, 0, 0, 0, 17, 0, 0, 0, 22, 0, 0, 0, 27, 0, 0, 0, 32, 0, 0, 0, 37, 0, 0, 0, 42, 0, 0, 0, 47, 0, 0, 0, 52, 0, 0, 0, 57, 0, 0, 0, 62, 0, 0, 0, 115, 0, 0, 0, 120, 0, 0, 0, 125), w1)));
-            into.Store(3, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 3, 0, 0, 0, 8, 0, 0, 0, 13, 0, 0, 0, 18, 0, 0, 0, 23, 0, 0, 0, 28, 0, 0, 0, 33, 0, 0, 0, 38, 0, 0, 0, 43, 0, 0, 0, 48, 0, 0, 0, 53, 0, 0, 0, 58, 0, 0, 0, 63, 0, 0, 0, 116, 0, 0, 0, 121, 0, 0, 0, 126), w1)));
-            into.Store(4, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 4, 0, 0, 0, 9, 0, 0, 0, 14, 0, 0, 0, 19, 0, 0, 0, 24, 0, 0, 0, 29, 0, 0, 0, 34, 0, 0, 0, 39, 0, 0, 0, 44, 0, 0, 0, 49, 0, 0, 0, 54, 0, 0, 0, 59, 0, 0, 0, 112, 0, 0, 0, 117, 0, 0, 0, 122, 0, 0, 0, 127), w1)));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var w0 = Packed512.Read(ref block, 0);
+            var w1 = Packed512.Read(ref block, 16);
+            into.Store(stride, 0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0, 15, 0, 0, 0, 20, 0, 0, 0, 25, 0, 0, 0, 30, 0, 0, 0, 35, 0, 0, 0, 40, 0, 0, 0, 45, 0, 0, 0, 50, 0, 0, 0, 55, 0, 0, 0, 60, 0, 0, 0, 113, 0, 0, 0, 118, 0, 0, 0, 123), w1)));
+            into.Store(stride, 1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0, 11, 0, 0, 0, 16, 0, 0, 0, 21, 0, 0, 0, 26, 0, 0, 0, 31, 0, 0, 0, 36, 0, 0, 0, 41, 0, 0, 0, 46, 0, 0, 0, 51, 0, 0, 0, 56, 0, 0, 0, 61, 0, 0, 0, 114, 0, 0, 0, 119, 0, 0, 0, 124), w1)));
+            into.Store(stride, 2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 7, 0, 0, 0, 12, 0, 0, 0, 17, 0, 0, 0, 22, 0, 0, 0, 27, 0, 0, 0, 32, 0, 0, 0, 37, 0, 0, 0, 42, 0, 0, 0, 47, 0, 0, 0, 52, 0, 0, 0, 57, 0, 0, 0, 62, 0, 0, 0, 115, 0, 0, 0, 120, 0, 0, 0, 125), w1)));
+            into.Store(stride, 3, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 3, 0, 0, 0, 8, 0, 0, 0, 13, 0, 0, 0, 18, 0, 0, 0, 23, 0, 0, 0, 28, 0, 0, 0, 33, 0, 0, 0, 38, 0, 0, 0, 43, 0, 0, 0, 48, 0, 0, 0, 53, 0, 0, 0, 58, 0, 0, 0, 63, 0, 0, 0, 116, 0, 0, 0, 121, 0, 0, 0, 126), w1)));
+            into.Store(stride, 4, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 4, 0, 0, 0, 9, 0, 0, 0, 14, 0, 0, 0, 19, 0, 0, 0, 24, 0, 0, 0, 29, 0, 0, 0, 34, 0, 0, 0, 39, 0, 0, 0, 44, 0, 0, 0, 49, 0, 0, 0, 54, 0, 0, 0, 59, 0, 0, 0, 112, 0, 0, 0, 117, 0, 0, 0, 122, 0, 0, 0, 127), w1)));
         }
         if (f < frames) Deinterleave.Avx2Kernel<U8>(5)(data[(f * 5 * bytes)..], 5, output[f..], stride, frames - f);
     }
@@ -868,16 +868,16 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            var w0 = Packed512.Read(block, 0);
-            var w1 = Packed512.Read(block, 32);
-            into.Store(0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 12, 0, 0, 0, 18, 0, 0, 0, 24, 0, 0, 0, 30, 0, 0, 0, 36, 0, 0, 0, 42, 0, 0, 0, 48, 0, 0, 0, 54, 0, 0, 0, 60, 0, 0, 0, 98, 0, 0, 0, 104, 0, 0, 0, 110, 0, 0, 0, 116, 0, 0, 0, 122), w1)));
-            into.Store(1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0, 13, 0, 0, 0, 19, 0, 0, 0, 25, 0, 0, 0, 31, 0, 0, 0, 37, 0, 0, 0, 43, 0, 0, 0, 49, 0, 0, 0, 55, 0, 0, 0, 61, 0, 0, 0, 99, 0, 0, 0, 105, 0, 0, 0, 111, 0, 0, 0, 117, 0, 0, 0, 123), w1)));
-            into.Store(2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 8, 0, 0, 0, 14, 0, 0, 0, 20, 0, 0, 0, 26, 0, 0, 0, 32, 0, 0, 0, 38, 0, 0, 0, 44, 0, 0, 0, 50, 0, 0, 0, 56, 0, 0, 0, 62, 0, 0, 0, 100, 0, 0, 0, 106, 0, 0, 0, 112, 0, 0, 0, 118, 0, 0, 0, 124), w1)));
-            into.Store(3, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 3, 0, 0, 0, 9, 0, 0, 0, 15, 0, 0, 0, 21, 0, 0, 0, 27, 0, 0, 0, 33, 0, 0, 0, 39, 0, 0, 0, 45, 0, 0, 0, 51, 0, 0, 0, 57, 0, 0, 0, 63, 0, 0, 0, 101, 0, 0, 0, 107, 0, 0, 0, 113, 0, 0, 0, 119, 0, 0, 0, 125), w1)));
-            into.Store(4, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 4, 0, 0, 0, 10, 0, 0, 0, 16, 0, 0, 0, 22, 0, 0, 0, 28, 0, 0, 0, 34, 0, 0, 0, 40, 0, 0, 0, 46, 0, 0, 0, 52, 0, 0, 0, 58, 0, 0, 0, 96, 0, 0, 0, 102, 0, 0, 0, 108, 0, 0, 0, 114, 0, 0, 0, 120, 0, 0, 0, 126), w1)));
-            into.Store(5, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 5, 0, 0, 0, 11, 0, 0, 0, 17, 0, 0, 0, 23, 0, 0, 0, 29, 0, 0, 0, 35, 0, 0, 0, 41, 0, 0, 0, 47, 0, 0, 0, 53, 0, 0, 0, 59, 0, 0, 0, 97, 0, 0, 0, 103, 0, 0, 0, 109, 0, 0, 0, 115, 0, 0, 0, 121, 0, 0, 0, 127), w1)));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var w0 = Packed512.Read(ref block, 0);
+            var w1 = Packed512.Read(ref block, 32);
+            into.Store(stride, 0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 12, 0, 0, 0, 18, 0, 0, 0, 24, 0, 0, 0, 30, 0, 0, 0, 36, 0, 0, 0, 42, 0, 0, 0, 48, 0, 0, 0, 54, 0, 0, 0, 60, 0, 0, 0, 98, 0, 0, 0, 104, 0, 0, 0, 110, 0, 0, 0, 116, 0, 0, 0, 122), w1)));
+            into.Store(stride, 1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0, 13, 0, 0, 0, 19, 0, 0, 0, 25, 0, 0, 0, 31, 0, 0, 0, 37, 0, 0, 0, 43, 0, 0, 0, 49, 0, 0, 0, 55, 0, 0, 0, 61, 0, 0, 0, 99, 0, 0, 0, 105, 0, 0, 0, 111, 0, 0, 0, 117, 0, 0, 0, 123), w1)));
+            into.Store(stride, 2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 8, 0, 0, 0, 14, 0, 0, 0, 20, 0, 0, 0, 26, 0, 0, 0, 32, 0, 0, 0, 38, 0, 0, 0, 44, 0, 0, 0, 50, 0, 0, 0, 56, 0, 0, 0, 62, 0, 0, 0, 100, 0, 0, 0, 106, 0, 0, 0, 112, 0, 0, 0, 118, 0, 0, 0, 124), w1)));
+            into.Store(stride, 3, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 3, 0, 0, 0, 9, 0, 0, 0, 15, 0, 0, 0, 21, 0, 0, 0, 27, 0, 0, 0, 33, 0, 0, 0, 39, 0, 0, 0, 45, 0, 0, 0, 51, 0, 0, 0, 57, 0, 0, 0, 63, 0, 0, 0, 101, 0, 0, 0, 107, 0, 0, 0, 113, 0, 0, 0, 119, 0, 0, 0, 125), w1)));
+            into.Store(stride, 4, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 4, 0, 0, 0, 10, 0, 0, 0, 16, 0, 0, 0, 22, 0, 0, 0, 28, 0, 0, 0, 34, 0, 0, 0, 40, 0, 0, 0, 46, 0, 0, 0, 52, 0, 0, 0, 58, 0, 0, 0, 96, 0, 0, 0, 102, 0, 0, 0, 108, 0, 0, 0, 114, 0, 0, 0, 120, 0, 0, 0, 126), w1)));
+            into.Store(stride, 5, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 5, 0, 0, 0, 11, 0, 0, 0, 17, 0, 0, 0, 23, 0, 0, 0, 29, 0, 0, 0, 35, 0, 0, 0, 41, 0, 0, 0, 47, 0, 0, 0, 53, 0, 0, 0, 59, 0, 0, 0, 97, 0, 0, 0, 103, 0, 0, 0, 109, 0, 0, 0, 115, 0, 0, 0, 121, 0, 0, 0, 127), w1)));
         }
         if (f < frames) Deinterleave.Avx2Kernel<U8>(6)(data[(f * 6 * bytes)..], 6, output[f..], stride, frames - f);
     }
@@ -891,17 +891,17 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            var w0 = Packed512.Read(block, 0);
-            var w1 = Packed512.Read(block, 48);
-            into.Store(0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 14, 0, 0, 0, 21, 0, 0, 0, 28, 0, 0, 0, 35, 0, 0, 0, 42, 0, 0, 0, 49, 0, 0, 0, 56, 0, 0, 0, 63, 0, 0, 0, 86, 0, 0, 0, 93, 0, 0, 0, 100, 0, 0, 0, 107, 0, 0, 0, 114, 0, 0, 0, 121), w1)));
-            into.Store(1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 0, 15, 0, 0, 0, 22, 0, 0, 0, 29, 0, 0, 0, 36, 0, 0, 0, 43, 0, 0, 0, 50, 0, 0, 0, 57, 0, 0, 0, 80, 0, 0, 0, 87, 0, 0, 0, 94, 0, 0, 0, 101, 0, 0, 0, 108, 0, 0, 0, 115, 0, 0, 0, 122), w1)));
-            into.Store(2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 9, 0, 0, 0, 16, 0, 0, 0, 23, 0, 0, 0, 30, 0, 0, 0, 37, 0, 0, 0, 44, 0, 0, 0, 51, 0, 0, 0, 58, 0, 0, 0, 81, 0, 0, 0, 88, 0, 0, 0, 95, 0, 0, 0, 102, 0, 0, 0, 109, 0, 0, 0, 116, 0, 0, 0, 123), w1)));
-            into.Store(3, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 3, 0, 0, 0, 10, 0, 0, 0, 17, 0, 0, 0, 24, 0, 0, 0, 31, 0, 0, 0, 38, 0, 0, 0, 45, 0, 0, 0, 52, 0, 0, 0, 59, 0, 0, 0, 82, 0, 0, 0, 89, 0, 0, 0, 96, 0, 0, 0, 103, 0, 0, 0, 110, 0, 0, 0, 117, 0, 0, 0, 124), w1)));
-            into.Store(4, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 4, 0, 0, 0, 11, 0, 0, 0, 18, 0, 0, 0, 25, 0, 0, 0, 32, 0, 0, 0, 39, 0, 0, 0, 46, 0, 0, 0, 53, 0, 0, 0, 60, 0, 0, 0, 83, 0, 0, 0, 90, 0, 0, 0, 97, 0, 0, 0, 104, 0, 0, 0, 111, 0, 0, 0, 118, 0, 0, 0, 125), w1)));
-            into.Store(5, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 5, 0, 0, 0, 12, 0, 0, 0, 19, 0, 0, 0, 26, 0, 0, 0, 33, 0, 0, 0, 40, 0, 0, 0, 47, 0, 0, 0, 54, 0, 0, 0, 61, 0, 0, 0, 84, 0, 0, 0, 91, 0, 0, 0, 98, 0, 0, 0, 105, 0, 0, 0, 112, 0, 0, 0, 119, 0, 0, 0, 126), w1)));
-            into.Store(6, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 6, 0, 0, 0, 13, 0, 0, 0, 20, 0, 0, 0, 27, 0, 0, 0, 34, 0, 0, 0, 41, 0, 0, 0, 48, 0, 0, 0, 55, 0, 0, 0, 62, 0, 0, 0, 85, 0, 0, 0, 92, 0, 0, 0, 99, 0, 0, 0, 106, 0, 0, 0, 113, 0, 0, 0, 120, 0, 0, 0, 127), w1)));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var w0 = Packed512.Read(ref block, 0);
+            var w1 = Packed512.Read(ref block, 48);
+            into.Store(stride, 0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 14, 0, 0, 0, 21, 0, 0, 0, 28, 0, 0, 0, 35, 0, 0, 0, 42, 0, 0, 0, 49, 0, 0, 0, 56, 0, 0, 0, 63, 0, 0, 0, 86, 0, 0, 0, 93, 0, 0, 0, 100, 0, 0, 0, 107, 0, 0, 0, 114, 0, 0, 0, 121), w1)));
+            into.Store(stride, 1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 0, 15, 0, 0, 0, 22, 0, 0, 0, 29, 0, 0, 0, 36, 0, 0, 0, 43, 0, 0, 0, 50, 0, 0, 0, 57, 0, 0, 0, 80, 0, 0, 0, 87, 0, 0, 0, 94, 0, 0, 0, 101, 0, 0, 0, 108, 0, 0, 0, 115, 0, 0, 0, 122), w1)));
+            into.Store(stride, 2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 9, 0, 0, 0, 16, 0, 0, 0, 23, 0, 0, 0, 30, 0, 0, 0, 37, 0, 0, 0, 44, 0, 0, 0, 51, 0, 0, 0, 58, 0, 0, 0, 81, 0, 0, 0, 88, 0, 0, 0, 95, 0, 0, 0, 102, 0, 0, 0, 109, 0, 0, 0, 116, 0, 0, 0, 123), w1)));
+            into.Store(stride, 3, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 3, 0, 0, 0, 10, 0, 0, 0, 17, 0, 0, 0, 24, 0, 0, 0, 31, 0, 0, 0, 38, 0, 0, 0, 45, 0, 0, 0, 52, 0, 0, 0, 59, 0, 0, 0, 82, 0, 0, 0, 89, 0, 0, 0, 96, 0, 0, 0, 103, 0, 0, 0, 110, 0, 0, 0, 117, 0, 0, 0, 124), w1)));
+            into.Store(stride, 4, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 4, 0, 0, 0, 11, 0, 0, 0, 18, 0, 0, 0, 25, 0, 0, 0, 32, 0, 0, 0, 39, 0, 0, 0, 46, 0, 0, 0, 53, 0, 0, 0, 60, 0, 0, 0, 83, 0, 0, 0, 90, 0, 0, 0, 97, 0, 0, 0, 104, 0, 0, 0, 111, 0, 0, 0, 118, 0, 0, 0, 125), w1)));
+            into.Store(stride, 5, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 5, 0, 0, 0, 12, 0, 0, 0, 19, 0, 0, 0, 26, 0, 0, 0, 33, 0, 0, 0, 40, 0, 0, 0, 47, 0, 0, 0, 54, 0, 0, 0, 61, 0, 0, 0, 84, 0, 0, 0, 91, 0, 0, 0, 98, 0, 0, 0, 105, 0, 0, 0, 112, 0, 0, 0, 119, 0, 0, 0, 126), w1)));
+            into.Store(stride, 6, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 6, 0, 0, 0, 13, 0, 0, 0, 20, 0, 0, 0, 27, 0, 0, 0, 34, 0, 0, 0, 41, 0, 0, 0, 48, 0, 0, 0, 55, 0, 0, 0, 62, 0, 0, 0, 85, 0, 0, 0, 92, 0, 0, 0, 99, 0, 0, 0, 106, 0, 0, 0, 113, 0, 0, 0, 120, 0, 0, 0, 127), w1)));
         }
         if (f < frames) Deinterleave.Avx2Kernel<U8>(7)(data[(f * 7 * bytes)..], 7, output[f..], stride, frames - f);
     }
@@ -915,18 +915,18 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            var w0 = Packed512.Read(block, 0);
-            var w1 = Packed512.Read(block, 64);
-            into.Store(0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 16, 0, 0, 0, 24, 0, 0, 0, 32, 0, 0, 0, 40, 0, 0, 0, 48, 0, 0, 0, 56, 0, 0, 0, 64, 0, 0, 0, 72, 0, 0, 0, 80, 0, 0, 0, 88, 0, 0, 0, 96, 0, 0, 0, 104, 0, 0, 0, 112, 0, 0, 0, 120), w1)));
-            into.Store(1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 9, 0, 0, 0, 17, 0, 0, 0, 25, 0, 0, 0, 33, 0, 0, 0, 41, 0, 0, 0, 49, 0, 0, 0, 57, 0, 0, 0, 65, 0, 0, 0, 73, 0, 0, 0, 81, 0, 0, 0, 89, 0, 0, 0, 97, 0, 0, 0, 105, 0, 0, 0, 113, 0, 0, 0, 121), w1)));
-            into.Store(2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 10, 0, 0, 0, 18, 0, 0, 0, 26, 0, 0, 0, 34, 0, 0, 0, 42, 0, 0, 0, 50, 0, 0, 0, 58, 0, 0, 0, 66, 0, 0, 0, 74, 0, 0, 0, 82, 0, 0, 0, 90, 0, 0, 0, 98, 0, 0, 0, 106, 0, 0, 0, 114, 0, 0, 0, 122), w1)));
-            into.Store(3, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 3, 0, 0, 0, 11, 0, 0, 0, 19, 0, 0, 0, 27, 0, 0, 0, 35, 0, 0, 0, 43, 0, 0, 0, 51, 0, 0, 0, 59, 0, 0, 0, 67, 0, 0, 0, 75, 0, 0, 0, 83, 0, 0, 0, 91, 0, 0, 0, 99, 0, 0, 0, 107, 0, 0, 0, 115, 0, 0, 0, 123), w1)));
-            into.Store(4, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 4, 0, 0, 0, 12, 0, 0, 0, 20, 0, 0, 0, 28, 0, 0, 0, 36, 0, 0, 0, 44, 0, 0, 0, 52, 0, 0, 0, 60, 0, 0, 0, 68, 0, 0, 0, 76, 0, 0, 0, 84, 0, 0, 0, 92, 0, 0, 0, 100, 0, 0, 0, 108, 0, 0, 0, 116, 0, 0, 0, 124), w1)));
-            into.Store(5, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 5, 0, 0, 0, 13, 0, 0, 0, 21, 0, 0, 0, 29, 0, 0, 0, 37, 0, 0, 0, 45, 0, 0, 0, 53, 0, 0, 0, 61, 0, 0, 0, 69, 0, 0, 0, 77, 0, 0, 0, 85, 0, 0, 0, 93, 0, 0, 0, 101, 0, 0, 0, 109, 0, 0, 0, 117, 0, 0, 0, 125), w1)));
-            into.Store(6, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 6, 0, 0, 0, 14, 0, 0, 0, 22, 0, 0, 0, 30, 0, 0, 0, 38, 0, 0, 0, 46, 0, 0, 0, 54, 0, 0, 0, 62, 0, 0, 0, 70, 0, 0, 0, 78, 0, 0, 0, 86, 0, 0, 0, 94, 0, 0, 0, 102, 0, 0, 0, 110, 0, 0, 0, 118, 0, 0, 0, 126), w1)));
-            into.Store(7, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 7, 0, 0, 0, 15, 0, 0, 0, 23, 0, 0, 0, 31, 0, 0, 0, 39, 0, 0, 0, 47, 0, 0, 0, 55, 0, 0, 0, 63, 0, 0, 0, 71, 0, 0, 0, 79, 0, 0, 0, 87, 0, 0, 0, 95, 0, 0, 0, 103, 0, 0, 0, 111, 0, 0, 0, 119, 0, 0, 0, 127), w1)));
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var w0 = Packed512.Read(ref block, 0);
+            var w1 = Packed512.Read(ref block, 64);
+            into.Store(stride, 0, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 16, 0, 0, 0, 24, 0, 0, 0, 32, 0, 0, 0, 40, 0, 0, 0, 48, 0, 0, 0, 56, 0, 0, 0, 64, 0, 0, 0, 72, 0, 0, 0, 80, 0, 0, 0, 88, 0, 0, 0, 96, 0, 0, 0, 104, 0, 0, 0, 112, 0, 0, 0, 120), w1)));
+            into.Store(stride, 1, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 1, 0, 0, 0, 9, 0, 0, 0, 17, 0, 0, 0, 25, 0, 0, 0, 33, 0, 0, 0, 41, 0, 0, 0, 49, 0, 0, 0, 57, 0, 0, 0, 65, 0, 0, 0, 73, 0, 0, 0, 81, 0, 0, 0, 89, 0, 0, 0, 97, 0, 0, 0, 105, 0, 0, 0, 113, 0, 0, 0, 121), w1)));
+            into.Store(stride, 2, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 2, 0, 0, 0, 10, 0, 0, 0, 18, 0, 0, 0, 26, 0, 0, 0, 34, 0, 0, 0, 42, 0, 0, 0, 50, 0, 0, 0, 58, 0, 0, 0, 66, 0, 0, 0, 74, 0, 0, 0, 82, 0, 0, 0, 90, 0, 0, 0, 98, 0, 0, 0, 106, 0, 0, 0, 114, 0, 0, 0, 122), w1)));
+            into.Store(stride, 3, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 3, 0, 0, 0, 11, 0, 0, 0, 19, 0, 0, 0, 27, 0, 0, 0, 35, 0, 0, 0, 43, 0, 0, 0, 51, 0, 0, 0, 59, 0, 0, 0, 67, 0, 0, 0, 75, 0, 0, 0, 83, 0, 0, 0, 91, 0, 0, 0, 99, 0, 0, 0, 107, 0, 0, 0, 115, 0, 0, 0, 123), w1)));
+            into.Store(stride, 4, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 4, 0, 0, 0, 12, 0, 0, 0, 20, 0, 0, 0, 28, 0, 0, 0, 36, 0, 0, 0, 44, 0, 0, 0, 52, 0, 0, 0, 60, 0, 0, 0, 68, 0, 0, 0, 76, 0, 0, 0, 84, 0, 0, 0, 92, 0, 0, 0, 100, 0, 0, 0, 108, 0, 0, 0, 116, 0, 0, 0, 124), w1)));
+            into.Store(stride, 5, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 5, 0, 0, 0, 13, 0, 0, 0, 21, 0, 0, 0, 29, 0, 0, 0, 37, 0, 0, 0, 45, 0, 0, 0, 53, 0, 0, 0, 61, 0, 0, 0, 69, 0, 0, 0, 77, 0, 0, 0, 85, 0, 0, 0, 93, 0, 0, 0, 101, 0, 0, 0, 109, 0, 0, 0, 117, 0, 0, 0, 125), w1)));
+            into.Store(stride, 6, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 6, 0, 0, 0, 14, 0, 0, 0, 22, 0, 0, 0, 30, 0, 0, 0, 38, 0, 0, 0, 46, 0, 0, 0, 54, 0, 0, 0, 62, 0, 0, 0, 70, 0, 0, 0, 78, 0, 0, 0, 86, 0, 0, 0, 94, 0, 0, 0, 102, 0, 0, 0, 110, 0, 0, 0, 118, 0, 0, 0, 126), w1)));
+            into.Store(stride, 7, 0, Avx512Deinterleave.WidenU8(Avx512Vbmi.PermuteVar64x8x2(w0, Vector512.Create((byte)0, 0, 0, 7, 0, 0, 0, 15, 0, 0, 0, 23, 0, 0, 0, 31, 0, 0, 0, 39, 0, 0, 0, 47, 0, 0, 0, 55, 0, 0, 0, 63, 0, 0, 0, 71, 0, 0, 0, 79, 0, 0, 0, 87, 0, 0, 0, 95, 0, 0, 0, 103, 0, 0, 0, 111, 0, 0, 0, 119, 0, 0, 0, 127), w1)));
         }
         if (f < frames) Deinterleave.Avx2Kernel<U8>(8)(data[(f * 8 * bytes)..], 8, output[f..], stride, frames - f);
     }
@@ -940,17 +940,17 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var block = source.At(f, 16);
-            var into = target.At(f, 16);
-            Avx512Transposes.SplitChain8(Avx512Deinterleave.Read<T>(block, 0 * bytes), Avx512Deinterleave.Read<T>(block, 16 * bytes), Avx512Deinterleave.Read<T>(block, 32 * bytes), Avx512Deinterleave.Read<T>(block, 48 * bytes), Avx512Deinterleave.Read<T>(block, 64 * bytes), Avx512Deinterleave.Read<T>(block, 80 * bytes), Avx512Deinterleave.Read<T>(block, 96 * bytes), Avx512Deinterleave.Read<T>(block, 112 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6, out var c7);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
-            into.Store(6, 0, c6);
-            into.Store(7, 0, c7);
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            Avx512Transposes.SplitChain8(Avx512Deinterleave.Read<T>(ref block, 0 * bytes), Avx512Deinterleave.Read<T>(ref block, 16 * bytes), Avx512Deinterleave.Read<T>(ref block, 32 * bytes), Avx512Deinterleave.Read<T>(ref block, 48 * bytes), Avx512Deinterleave.Read<T>(ref block, 64 * bytes), Avx512Deinterleave.Read<T>(ref block, 80 * bytes), Avx512Deinterleave.Read<T>(ref block, 96 * bytes), Avx512Deinterleave.Read<T>(ref block, 112 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6, out var c7);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
+            into.Store(stride, 6, 0, c6);
+            into.Store(stride, 7, 0, c7);
         }
         if (f < frames) Deinterleave.Avx2Kernel<T>(8)(data[(f * 8 * bytes)..], 8, output[f..], stride, frames - f);
     }
@@ -964,12 +964,12 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain3(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), out var i0, out var i1, out var i2);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
-            Avx512Interleave.Write<T>(block, 16 * bytes, i1);
-            Avx512Interleave.Write<T>(block, 32 * bytes, i2);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain3(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), out var i0, out var i1, out var i2);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+            Avx512Interleave.Write<T>(ref block, 16 * bytes, i1);
+            Avx512Interleave.Write<T>(ref block, 32 * bytes, i2);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(3)(input[f..], stride, 3, data[(f * 3 * bytes)..], frames - f);
     }
@@ -983,13 +983,13 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain4(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), out var i0, out var i1, out var i2, out var i3);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
-            Avx512Interleave.Write<T>(block, 16 * bytes, i1);
-            Avx512Interleave.Write<T>(block, 32 * bytes, i2);
-            Avx512Interleave.Write<T>(block, 48 * bytes, i3);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain4(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), out var i0, out var i1, out var i2, out var i3);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+            Avx512Interleave.Write<T>(ref block, 16 * bytes, i1);
+            Avx512Interleave.Write<T>(ref block, 32 * bytes, i2);
+            Avx512Interleave.Write<T>(ref block, 48 * bytes, i3);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(4)(input[f..], stride, 4, data[(f * 4 * bytes)..], frames - f);
     }
@@ -1003,14 +1003,14 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain5(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
-            Avx512Interleave.Write<T>(block, 16 * bytes, i1);
-            Avx512Interleave.Write<T>(block, 32 * bytes, i2);
-            Avx512Interleave.Write<T>(block, 48 * bytes, i3);
-            Avx512Interleave.Write<T>(block, 64 * bytes, i4);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain5(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+            Avx512Interleave.Write<T>(ref block, 16 * bytes, i1);
+            Avx512Interleave.Write<T>(ref block, 32 * bytes, i2);
+            Avx512Interleave.Write<T>(ref block, 48 * bytes, i3);
+            Avx512Interleave.Write<T>(ref block, 64 * bytes, i4);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(5)(input[f..], stride, 5, data[(f * 5 * bytes)..], frames - f);
     }
@@ -1024,15 +1024,15 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain6(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), from.Load16(5, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
-            Avx512Interleave.Write<T>(block, 16 * bytes, i1);
-            Avx512Interleave.Write<T>(block, 32 * bytes, i2);
-            Avx512Interleave.Write<T>(block, 48 * bytes, i3);
-            Avx512Interleave.Write<T>(block, 64 * bytes, i4);
-            Avx512Interleave.Write<T>(block, 80 * bytes, i5);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain6(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), from.Load16(stride, 5, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+            Avx512Interleave.Write<T>(ref block, 16 * bytes, i1);
+            Avx512Interleave.Write<T>(ref block, 32 * bytes, i2);
+            Avx512Interleave.Write<T>(ref block, 48 * bytes, i3);
+            Avx512Interleave.Write<T>(ref block, 64 * bytes, i4);
+            Avx512Interleave.Write<T>(ref block, 80 * bytes, i5);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(6)(input[f..], stride, 6, data[(f * 6 * bytes)..], frames - f);
     }
@@ -1046,17 +1046,17 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain8(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), from.Load16(5, 0), from.Load16(6, 0), from.Load16(7, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6, out var i7);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
-            Avx512Interleave.Write<T>(block, 16 * bytes, i1);
-            Avx512Interleave.Write<T>(block, 32 * bytes, i2);
-            Avx512Interleave.Write<T>(block, 48 * bytes, i3);
-            Avx512Interleave.Write<T>(block, 64 * bytes, i4);
-            Avx512Interleave.Write<T>(block, 80 * bytes, i5);
-            Avx512Interleave.Write<T>(block, 96 * bytes, i6);
-            Avx512Interleave.Write<T>(block, 112 * bytes, i7);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain8(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), from.Load16(stride, 5, 0), from.Load16(stride, 6, 0), from.Load16(stride, 7, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6, out var i7);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+            Avx512Interleave.Write<T>(ref block, 16 * bytes, i1);
+            Avx512Interleave.Write<T>(ref block, 32 * bytes, i2);
+            Avx512Interleave.Write<T>(ref block, 48 * bytes, i3);
+            Avx512Interleave.Write<T>(ref block, 64 * bytes, i4);
+            Avx512Interleave.Write<T>(ref block, 80 * bytes, i5);
+            Avx512Interleave.Write<T>(ref block, 96 * bytes, i6);
+            Avx512Interleave.Write<T>(ref block, 112 * bytes, i7);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(8)(input[f..], stride, 8, data[(f * 8 * bytes)..], frames - f);
     }
@@ -1070,10 +1070,10 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            var i0 = from.Load16(0, 0);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var i0 = from.Load16(stride, 0, 0);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(1)(input[f..], stride, 1, data[(f * 1 * bytes)..], frames - f);
     }
@@ -1087,9 +1087,9 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Packed512.Write(block, 0, Avx512Interleave.Pair(from.Load16(0, 0), from.Load16(1, 0)).AsByte());
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Packed512.Write(ref block, 0, Avx512Interleave.Pair(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0)).AsByte());
         }
         if (f < frames) Interleave.Avx2Kernel<S16>(2)(input[f..], stride, 2, data[(f * 2 * bytes)..], frames - f);
     }
@@ -1103,13 +1103,13 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            var q0_0 = Avx512Interleave.Quantize(from.Load16(0, 0), S16.Top, 32768).AsByte();
-            var q1_0 = Avx512Interleave.Quantize(from.Load16(1, 0), S16.Top, 32768).AsByte();
-            var q2_0 = Avx512Interleave.Quantize(from.Load16(2, 0), S16.Top, 32768).AsByte();
-            Packed512.Write(block, 0, Avx512Vbmi.PermuteVar64x8x2(Avx512Vbmi.PermuteVar64x8x2(q0_0, Vector512.Create((byte)0, 1, 64, 65, 0, 0, 4, 5, 68, 69, 0, 0, 8, 9, 72, 73, 0, 0, 12, 13, 76, 77, 0, 0, 16, 17, 80, 81, 0, 0, 20, 21, 84, 85, 0, 0, 24, 25, 88, 89, 0, 0, 28, 29, 92, 93, 0, 0, 32, 33, 96, 97, 0, 0, 36, 37, 100, 101, 0, 0, 40, 41, 104, 105), q1_0), Vector512.Create((byte)0, 1, 2, 3, 64, 65, 6, 7, 8, 9, 68, 69, 12, 13, 14, 15, 72, 73, 18, 19, 20, 21, 76, 77, 24, 25, 26, 27, 80, 81, 30, 31, 32, 33, 84, 85, 36, 37, 38, 39, 88, 89, 42, 43, 44, 45, 92, 93, 48, 49, 50, 51, 96, 97, 54, 55, 56, 57, 100, 101, 60, 61, 62, 63), q2_0));
-            Packed512.Write(block, 32, Avx512Vbmi.PermuteVar64x8x2(Avx512Vbmi.PermuteVar64x8x2(q0_0, Vector512.Create((byte)84, 85, 0, 0, 24, 25, 88, 89, 0, 0, 28, 29, 92, 93, 0, 0, 32, 33, 96, 97, 0, 0, 36, 37, 100, 101, 0, 0, 40, 41, 104, 105, 0, 0, 44, 45, 108, 109, 0, 0, 48, 49, 112, 113, 0, 0, 52, 53, 116, 117, 0, 0, 56, 57, 120, 121, 0, 0, 60, 61, 124, 125, 0, 0), q1_0), Vector512.Create((byte)0, 1, 84, 85, 4, 5, 6, 7, 88, 89, 10, 11, 12, 13, 92, 93, 16, 17, 18, 19, 96, 97, 22, 23, 24, 25, 100, 101, 28, 29, 30, 31, 104, 105, 34, 35, 36, 37, 108, 109, 40, 41, 42, 43, 112, 113, 46, 47, 48, 49, 116, 117, 52, 53, 54, 55, 120, 121, 58, 59, 60, 61, 124, 125), q2_0));
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var q0_0 = Avx512Interleave.Quantize(from.Load16(stride, 0, 0), S16.Top, 32768).AsByte();
+            var q1_0 = Avx512Interleave.Quantize(from.Load16(stride, 1, 0), S16.Top, 32768).AsByte();
+            var q2_0 = Avx512Interleave.Quantize(from.Load16(stride, 2, 0), S16.Top, 32768).AsByte();
+            Packed512.Write(ref block, 0, Avx512Vbmi.PermuteVar64x8x2(Avx512Vbmi.PermuteVar64x8x2(q0_0, Vector512.Create((byte)0, 1, 64, 65, 0, 0, 4, 5, 68, 69, 0, 0, 8, 9, 72, 73, 0, 0, 12, 13, 76, 77, 0, 0, 16, 17, 80, 81, 0, 0, 20, 21, 84, 85, 0, 0, 24, 25, 88, 89, 0, 0, 28, 29, 92, 93, 0, 0, 32, 33, 96, 97, 0, 0, 36, 37, 100, 101, 0, 0, 40, 41, 104, 105), q1_0), Vector512.Create((byte)0, 1, 2, 3, 64, 65, 6, 7, 8, 9, 68, 69, 12, 13, 14, 15, 72, 73, 18, 19, 20, 21, 76, 77, 24, 25, 26, 27, 80, 81, 30, 31, 32, 33, 84, 85, 36, 37, 38, 39, 88, 89, 42, 43, 44, 45, 92, 93, 48, 49, 50, 51, 96, 97, 54, 55, 56, 57, 100, 101, 60, 61, 62, 63), q2_0));
+            Packed512.Write(ref block, 32, Avx512Vbmi.PermuteVar64x8x2(Avx512Vbmi.PermuteVar64x8x2(q0_0, Vector512.Create((byte)84, 85, 0, 0, 24, 25, 88, 89, 0, 0, 28, 29, 92, 93, 0, 0, 32, 33, 96, 97, 0, 0, 36, 37, 100, 101, 0, 0, 40, 41, 104, 105, 0, 0, 44, 45, 108, 109, 0, 0, 48, 49, 112, 113, 0, 0, 52, 53, 116, 117, 0, 0, 56, 57, 120, 121, 0, 0, 60, 61, 124, 125, 0, 0), q1_0), Vector512.Create((byte)0, 1, 84, 85, 4, 5, 6, 7, 88, 89, 10, 11, 12, 13, 92, 93, 16, 17, 18, 19, 96, 97, 22, 23, 24, 25, 100, 101, 28, 29, 30, 31, 104, 105, 34, 35, 36, 37, 108, 109, 40, 41, 42, 43, 112, 113, 46, 47, 48, 49, 116, 117, 52, 53, 54, 55, 120, 121, 58, 59, 60, 61, 124, 125), q2_0));
         }
         if (f < frames) Interleave.Avx2Kernel<S16>(3)(input[f..], stride, 3, data[(f * 3 * bytes)..], frames - f);
     }
@@ -1123,11 +1123,11 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain2(Avx512Interleave.Pair(from.Load16(0, 0), from.Load16(1, 0)), Avx512Interleave.Pair(from.Load16(2, 0), from.Load16(3, 0)), out var i0, out var i1);
-            Packed512.Write(block, 0, i0.AsByte());
-            Packed512.Write(block, 64, i1.AsByte());
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain2(Avx512Interleave.Pair(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0)), Avx512Interleave.Pair(from.Load16(stride, 2, 0), from.Load16(stride, 3, 0)), out var i0, out var i1);
+            Packed512.Write(ref block, 0, i0.AsByte());
+            Packed512.Write(ref block, 64, i1.AsByte());
         }
         if (f < frames) Interleave.Avx2Kernel<S16>(4)(input[f..], stride, 4, data[(f * 4 * bytes)..], frames - f);
     }
@@ -1141,14 +1141,14 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeBlend5(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
-            Avx512Interleave.Write<T>(block, 16 * bytes, i1);
-            Avx512Interleave.Write<T>(block, 32 * bytes, i2);
-            Avx512Interleave.Write<T>(block, 48 * bytes, i3);
-            Avx512Interleave.Write<T>(block, 64 * bytes, i4);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeBlend5(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+            Avx512Interleave.Write<T>(ref block, 16 * bytes, i1);
+            Avx512Interleave.Write<T>(ref block, 32 * bytes, i2);
+            Avx512Interleave.Write<T>(ref block, 48 * bytes, i3);
+            Avx512Interleave.Write<T>(ref block, 64 * bytes, i4);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(5)(input[f..], stride, 5, data[(f * 5 * bytes)..], frames - f);
     }
@@ -1162,12 +1162,12 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain3(Avx512Interleave.Pair(from.Load16(0, 0), from.Load16(1, 0)), Avx512Interleave.Pair(from.Load16(2, 0), from.Load16(3, 0)), Avx512Interleave.Pair(from.Load16(4, 0), from.Load16(5, 0)), out var i0, out var i1, out var i2);
-            Packed512.Write(block, 0, i0.AsByte());
-            Packed512.Write(block, 64, i1.AsByte());
-            Packed512.Write(block, 128, i2.AsByte());
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain3(Avx512Interleave.Pair(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0)), Avx512Interleave.Pair(from.Load16(stride, 2, 0), from.Load16(stride, 3, 0)), Avx512Interleave.Pair(from.Load16(stride, 4, 0), from.Load16(stride, 5, 0)), out var i0, out var i1, out var i2);
+            Packed512.Write(ref block, 0, i0.AsByte());
+            Packed512.Write(ref block, 64, i1.AsByte());
+            Packed512.Write(ref block, 128, i2.AsByte());
         }
         if (f < frames) Interleave.Avx2Kernel<S16>(6)(input[f..], stride, 6, data[(f * 6 * bytes)..], frames - f);
     }
@@ -1181,16 +1181,16 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeBlend7(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), from.Load16(5, 0), from.Load16(6, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
-            Avx512Interleave.Write<T>(block, 16 * bytes, i1);
-            Avx512Interleave.Write<T>(block, 32 * bytes, i2);
-            Avx512Interleave.Write<T>(block, 48 * bytes, i3);
-            Avx512Interleave.Write<T>(block, 64 * bytes, i4);
-            Avx512Interleave.Write<T>(block, 80 * bytes, i5);
-            Avx512Interleave.Write<T>(block, 96 * bytes, i6);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeBlend7(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), from.Load16(stride, 5, 0), from.Load16(stride, 6, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+            Avx512Interleave.Write<T>(ref block, 16 * bytes, i1);
+            Avx512Interleave.Write<T>(ref block, 32 * bytes, i2);
+            Avx512Interleave.Write<T>(ref block, 48 * bytes, i3);
+            Avx512Interleave.Write<T>(ref block, 64 * bytes, i4);
+            Avx512Interleave.Write<T>(ref block, 80 * bytes, i5);
+            Avx512Interleave.Write<T>(ref block, 96 * bytes, i6);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(7)(input[f..], stride, 7, data[(f * 7 * bytes)..], frames - f);
     }
@@ -1204,13 +1204,13 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain4(Avx512Interleave.Pair(from.Load16(0, 0), from.Load16(1, 0)), Avx512Interleave.Pair(from.Load16(2, 0), from.Load16(3, 0)), Avx512Interleave.Pair(from.Load16(4, 0), from.Load16(5, 0)), Avx512Interleave.Pair(from.Load16(6, 0), from.Load16(7, 0)), out var i0, out var i1, out var i2, out var i3);
-            Packed512.Write(block, 0, i0.AsByte());
-            Packed512.Write(block, 64, i1.AsByte());
-            Packed512.Write(block, 128, i2.AsByte());
-            Packed512.Write(block, 192, i3.AsByte());
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain4(Avx512Interleave.Pair(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0)), Avx512Interleave.Pair(from.Load16(stride, 2, 0), from.Load16(stride, 3, 0)), Avx512Interleave.Pair(from.Load16(stride, 4, 0), from.Load16(stride, 5, 0)), Avx512Interleave.Pair(from.Load16(stride, 6, 0), from.Load16(stride, 7, 0)), out var i0, out var i1, out var i2, out var i3);
+            Packed512.Write(ref block, 0, i0.AsByte());
+            Packed512.Write(ref block, 64, i1.AsByte());
+            Packed512.Write(ref block, 128, i2.AsByte());
+            Packed512.Write(ref block, 192, i3.AsByte());
         }
         if (f < frames) Interleave.Avx2Kernel<S16>(8)(input[f..], stride, 8, data[(f * 8 * bytes)..], frames - f);
     }
@@ -1224,12 +1224,12 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            var i0 = from.Load16(0, 0);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var i0 = from.Load16(stride, 0, 0);
             var last = Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-            Packed.Write32(block, 0, last.GetLower());
-            Packed.Write16(block, 32, last.GetUpper().GetLower());
+            Packed.Write32(ref block, 0, last.GetLower());
+            Packed.Write16(ref block, 32, last.GetUpper().GetLower());
         }
         if (f < frames) Interleave.Avx2Kernel<S24>(1)(input[f..], stride, 1, data[(f * 1 * bytes)..], frames - f);
     }
@@ -1243,13 +1243,13 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain2(from.Load16(0, 0), from.Load16(1, 0), out var i0, out var i1);
-            Packed512.Write(block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain2(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), out var i0, out var i1);
+            Packed512.Write(ref block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
             var last = Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-            Packed.Write32(block, 48, last.GetLower());
-            Packed.Write16(block, 80, last.GetUpper().GetLower());
+            Packed.Write32(ref block, 48, last.GetLower());
+            Packed.Write16(ref block, 80, last.GetUpper().GetLower());
         }
         if (f < frames) Interleave.Avx2Kernel<S24>(2)(input[f..], stride, 2, data[(f * 2 * bytes)..], frames - f);
     }
@@ -1263,14 +1263,14 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain3(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), out var i0, out var i1, out var i2);
-            Packed512.Write(block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain3(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), out var i0, out var i1, out var i2);
+            Packed512.Write(ref block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
             var last = Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-            Packed.Write32(block, 96, last.GetLower());
-            Packed.Write16(block, 128, last.GetUpper().GetLower());
+            Packed.Write32(ref block, 96, last.GetLower());
+            Packed.Write16(ref block, 128, last.GetUpper().GetLower());
         }
         if (f < frames) Interleave.Avx2Kernel<S24>(3)(input[f..], stride, 3, data[(f * 3 * bytes)..], frames - f);
     }
@@ -1284,15 +1284,15 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain4(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), out var i0, out var i1, out var i2, out var i3);
-            Packed512.Write(block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain4(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), out var i0, out var i1, out var i2, out var i3);
+            Packed512.Write(ref block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
             var last = Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-            Packed.Write32(block, 144, last.GetLower());
-            Packed.Write16(block, 176, last.GetUpper().GetLower());
+            Packed.Write32(ref block, 144, last.GetLower());
+            Packed.Write16(ref block, 176, last.GetUpper().GetLower());
         }
         if (f < frames) Interleave.Avx2Kernel<S24>(4)(input[f..], stride, 4, data[(f * 4 * bytes)..], frames - f);
     }
@@ -1306,16 +1306,16 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeBlend5(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
-            Packed512.Write(block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 144, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeBlend5(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
+            Packed512.Write(ref block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 144, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
             var last = Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i4, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-            Packed.Write32(block, 192, last.GetLower());
-            Packed.Write16(block, 224, last.GetUpper().GetLower());
+            Packed.Write32(ref block, 192, last.GetLower());
+            Packed.Write16(ref block, 224, last.GetUpper().GetLower());
         }
         if (f < frames) Interleave.Avx2Kernel<S24>(5)(input[f..], stride, 5, data[(f * 5 * bytes)..], frames - f);
     }
@@ -1329,17 +1329,17 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain6(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), from.Load16(5, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5);
-            Packed512.Write(block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 144, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 192, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i4, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain6(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), from.Load16(stride, 5, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5);
+            Packed512.Write(ref block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 144, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 192, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i4, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
             var last = Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i5, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-            Packed.Write32(block, 240, last.GetLower());
-            Packed.Write16(block, 272, last.GetUpper().GetLower());
+            Packed.Write32(ref block, 240, last.GetLower());
+            Packed.Write16(ref block, 272, last.GetUpper().GetLower());
         }
         if (f < frames) Interleave.Avx2Kernel<S24>(6)(input[f..], stride, 6, data[(f * 6 * bytes)..], frames - f);
     }
@@ -1353,18 +1353,18 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeBlend7(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), from.Load16(5, 0), from.Load16(6, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6);
-            Packed512.Write(block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 144, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 192, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i4, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 240, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i5, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeBlend7(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), from.Load16(stride, 5, 0), from.Load16(stride, 6, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6);
+            Packed512.Write(ref block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 144, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 192, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i4, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 240, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i5, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
             var last = Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i6, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-            Packed.Write32(block, 288, last.GetLower());
-            Packed.Write16(block, 320, last.GetUpper().GetLower());
+            Packed.Write32(ref block, 288, last.GetLower());
+            Packed.Write16(ref block, 320, last.GetUpper().GetLower());
         }
         if (f < frames) Interleave.Avx2Kernel<S24>(7)(input[f..], stride, 7, data[(f * 7 * bytes)..], frames - f);
     }
@@ -1378,19 +1378,19 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain8(from.Load16(0, 0), from.Load16(1, 0), from.Load16(2, 0), from.Load16(3, 0), from.Load16(4, 0), from.Load16(5, 0), from.Load16(6, 0), from.Load16(7, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6, out var i7);
-            Packed512.Write(block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 144, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 192, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i4, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 240, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i5, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
-            Packed512.Write(block, 288, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i6, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain8(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), from.Load16(stride, 2, 0), from.Load16(stride, 3, 0), from.Load16(stride, 4, 0), from.Load16(stride, 5, 0), from.Load16(stride, 6, 0), from.Load16(stride, 7, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6, out var i7);
+            Packed512.Write(ref block, 0, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i0, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 48, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i1, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 96, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i2, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 144, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i3, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 192, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i4, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 240, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i5, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
+            Packed512.Write(ref block, 288, Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i6, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
             var last = Avx512Vbmi.PermuteVar64x8(Avx512Interleave.Quantize(i7, S24.Top, 8388608).AsByte(), Vector512.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-            Packed.Write32(block, 336, last.GetLower());
-            Packed.Write16(block, 368, last.GetUpper().GetLower());
+            Packed.Write32(ref block, 336, last.GetLower());
+            Packed.Write16(ref block, 368, last.GetUpper().GetLower());
         }
         if (f < frames) Interleave.Avx2Kernel<S24>(8)(input[f..], stride, 8, data[(f * 8 * bytes)..], frames - f);
     }
@@ -1404,11 +1404,11 @@ static unsafe class Avx512Transposes
         var f = 0;
         for (; f <= frames - 16; f += 16)
         {
-            var from = source.At(f, 16);
-            var block = target.At(f, 16);
-            Avx512Transposes.MergeChain2(from.Load16(0, 0), from.Load16(1, 0), out var i0, out var i1);
-            Avx512Interleave.Write<T>(block, 0 * bytes, i0);
-            Avx512Interleave.Write<T>(block, 16 * bytes, i1);
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            Avx512Transposes.MergeChain2(from.Load16(stride, 0, 0), from.Load16(stride, 1, 0), out var i0, out var i1);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+            Avx512Interleave.Write<T>(ref block, 16 * bytes, i1);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(2)(input[f..], stride, 2, data[(f * 2 * bytes)..], frames - f);
     }

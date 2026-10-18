@@ -35,12 +35,12 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            Split3(default(T).Read8(block, 0), default(T).Read8(block, 8 * bytes), default(T).Read8(block, 16 * bytes), out var c0, out var c1, out var c2);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            Split3(default(T).Read8(ref block, 0), default(T).Read8(ref block, 8 * bytes), default(T).Read8(ref block, 16 * bytes), out var c0, out var c1, out var c2);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
         }
         Deinterleave.Scalar<T>(data[(f * 3 * bytes)..], 3, output[f..], stride, frames - f);
     }
@@ -54,12 +54,12 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var from = source.At(f, 8);
-            var block = target.At(f, 8);
-            Merge3(from.Load8(0, 0), from.Load8(1, 0), from.Load8(2, 0), out var i0, out var i1, out var i2);
-            default(T).Write8(block, 0, i0);
-            default(T).Write8(block, 8 * bytes, i1);
-            default(T).Write8(block, 16 * bytes, i2);
+            ref var from = ref source.At(f, 8);
+            ref var block = ref target.At(f, 8);
+            Merge3(from.Load8(stride, 0, 0), from.Load8(stride, 1, 0), from.Load8(stride, 2, 0), out var i0, out var i1, out var i2);
+            default(T).Write8(ref block, 0, i0);
+            default(T).Write8(ref block, 8 * bytes, i1);
+            default(T).Write8(ref block, 16 * bytes, i2);
         }
         Interleave.Scalar<T>(input[f..], stride, 3, data[(f * 3 * bytes)..], frames - f);
     }
@@ -98,14 +98,14 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            Split5(default(T).Read8(block, 0), default(T).Read8(block, 8 * bytes), default(T).Read8(block, 16 * bytes), default(T).Read8(block, 24 * bytes), default(T).Read8(block, 32 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            Split5(default(T).Read8(ref block, 0), default(T).Read8(ref block, 8 * bytes), default(T).Read8(ref block, 16 * bytes), default(T).Read8(ref block, 24 * bytes), default(T).Read8(ref block, 32 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
         }
         Deinterleave.Scalar<T>(data[(f * 5 * bytes)..], 5, output[f..], stride, frames - f);
     }
@@ -119,14 +119,14 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var from = source.At(f, 8);
-            var block = target.At(f, 8);
-            Merge5(from.Load8(0, 0), from.Load8(1, 0), from.Load8(2, 0), from.Load8(3, 0), from.Load8(4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
-            default(T).Write8(block, 0, i0);
-            default(T).Write8(block, 8 * bytes, i1);
-            default(T).Write8(block, 16 * bytes, i2);
-            default(T).Write8(block, 24 * bytes, i3);
-            default(T).Write8(block, 32 * bytes, i4);
+            ref var from = ref source.At(f, 8);
+            ref var block = ref target.At(f, 8);
+            Merge5(from.Load8(stride, 0, 0), from.Load8(stride, 1, 0), from.Load8(stride, 2, 0), from.Load8(stride, 3, 0), from.Load8(stride, 4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
+            default(T).Write8(ref block, 0, i0);
+            default(T).Write8(ref block, 8 * bytes, i1);
+            default(T).Write8(ref block, 16 * bytes, i2);
+            default(T).Write8(ref block, 24 * bytes, i3);
+            default(T).Write8(ref block, 32 * bytes, i4);
         }
         Interleave.Scalar<T>(input[f..], stride, 5, data[(f * 5 * bytes)..], frames - f);
     }
@@ -174,15 +174,15 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            Split6(default(T).Read8(block, 0), default(T).Read8(block, 8 * bytes), default(T).Read8(block, 16 * bytes), default(T).Read8(block, 24 * bytes), default(T).Read8(block, 32 * bytes), default(T).Read8(block, 40 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            Split6(default(T).Read8(ref block, 0), default(T).Read8(ref block, 8 * bytes), default(T).Read8(ref block, 16 * bytes), default(T).Read8(ref block, 24 * bytes), default(T).Read8(ref block, 32 * bytes), default(T).Read8(ref block, 40 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
         }
         Deinterleave.Scalar<T>(data[(f * 6 * bytes)..], 6, output[f..], stride, frames - f);
     }
@@ -196,15 +196,15 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var from = source.At(f, 8);
-            var block = target.At(f, 8);
-            Merge6(from.Load8(0, 0), from.Load8(1, 0), from.Load8(2, 0), from.Load8(3, 0), from.Load8(4, 0), from.Load8(5, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5);
-            default(T).Write8(block, 0, i0);
-            default(T).Write8(block, 8 * bytes, i1);
-            default(T).Write8(block, 16 * bytes, i2);
-            default(T).Write8(block, 24 * bytes, i3);
-            default(T).Write8(block, 32 * bytes, i4);
-            default(T).Write8(block, 40 * bytes, i5);
+            ref var from = ref source.At(f, 8);
+            ref var block = ref target.At(f, 8);
+            Merge6(from.Load8(stride, 0, 0), from.Load8(stride, 1, 0), from.Load8(stride, 2, 0), from.Load8(stride, 3, 0), from.Load8(stride, 4, 0), from.Load8(stride, 5, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5);
+            default(T).Write8(ref block, 0, i0);
+            default(T).Write8(ref block, 8 * bytes, i1);
+            default(T).Write8(ref block, 16 * bytes, i2);
+            default(T).Write8(ref block, 24 * bytes, i3);
+            default(T).Write8(ref block, 32 * bytes, i4);
+            default(T).Write8(ref block, 40 * bytes, i5);
         }
         Interleave.Scalar<T>(input[f..], stride, 6, data[(f * 6 * bytes)..], frames - f);
     }
@@ -249,16 +249,16 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            Split7(default(T).Read8(block, 0), default(T).Read8(block, 8 * bytes), default(T).Read8(block, 16 * bytes), default(T).Read8(block, 24 * bytes), default(T).Read8(block, 32 * bytes), default(T).Read8(block, 40 * bytes), default(T).Read8(block, 48 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
-            into.Store(6, 0, c6);
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            Split7(default(T).Read8(ref block, 0), default(T).Read8(ref block, 8 * bytes), default(T).Read8(ref block, 16 * bytes), default(T).Read8(ref block, 24 * bytes), default(T).Read8(ref block, 32 * bytes), default(T).Read8(ref block, 40 * bytes), default(T).Read8(ref block, 48 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
+            into.Store(stride, 6, 0, c6);
         }
         Deinterleave.Scalar<T>(data[(f * 7 * bytes)..], 7, output[f..], stride, frames - f);
     }
@@ -272,16 +272,16 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var from = source.At(f, 8);
-            var block = target.At(f, 8);
-            Merge7(from.Load8(0, 0), from.Load8(1, 0), from.Load8(2, 0), from.Load8(3, 0), from.Load8(4, 0), from.Load8(5, 0), from.Load8(6, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6);
-            default(T).Write8(block, 0, i0);
-            default(T).Write8(block, 8 * bytes, i1);
-            default(T).Write8(block, 16 * bytes, i2);
-            default(T).Write8(block, 24 * bytes, i3);
-            default(T).Write8(block, 32 * bytes, i4);
-            default(T).Write8(block, 40 * bytes, i5);
-            default(T).Write8(block, 48 * bytes, i6);
+            ref var from = ref source.At(f, 8);
+            ref var block = ref target.At(f, 8);
+            Merge7(from.Load8(stride, 0, 0), from.Load8(stride, 1, 0), from.Load8(stride, 2, 0), from.Load8(stride, 3, 0), from.Load8(stride, 4, 0), from.Load8(stride, 5, 0), from.Load8(stride, 6, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6);
+            default(T).Write8(ref block, 0, i0);
+            default(T).Write8(ref block, 8 * bytes, i1);
+            default(T).Write8(ref block, 16 * bytes, i2);
+            default(T).Write8(ref block, 24 * bytes, i3);
+            default(T).Write8(ref block, 32 * bytes, i4);
+            default(T).Write8(ref block, 40 * bytes, i5);
+            default(T).Write8(ref block, 48 * bytes, i6);
         }
         Interleave.Scalar<T>(input[f..], stride, 7, data[(f * 7 * bytes)..], frames - f);
     }
@@ -314,12 +314,12 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseSplit3(default(T).Read4(block, 0), default(T).Read4(block, 4 * bytes), default(T).Read4(block, 8 * bytes), out var c0, out var c1, out var c2);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseSplit3(default(T).Read4(ref block, 0), default(T).Read4(ref block, 4 * bytes), default(T).Read4(ref block, 8 * bytes), out var c0, out var c1, out var c2);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
         }
         Deinterleave.Scalar<T>(data[(f * 3 * bytes)..], 3, output[f..], stride, frames - f);
     }
@@ -333,12 +333,12 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            SseMerge3(from.Load4(0, 0), from.Load4(1, 0), from.Load4(2, 0), out var i0, out var i1, out var i2);
-            default(T).Write4(block, 0, i0);
-            default(T).Write4(block, 4 * bytes, i1);
-            default(T).Write4(block, 8 * bytes, i2);
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            SseMerge3(from.Load4(stride, 0, 0), from.Load4(stride, 1, 0), from.Load4(stride, 2, 0), out var i0, out var i1, out var i2);
+            default(T).Write4(ref block, 0, i0);
+            default(T).Write4(ref block, 4 * bytes, i1);
+            default(T).Write4(ref block, 8 * bytes, i2);
         }
         Interleave.Scalar<T>(input[f..], stride, 3, data[(f * 3 * bytes)..], frames - f);
     }
@@ -377,14 +377,14 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseSplit5(default(T).Read4(block, 0), default(T).Read4(block, 4 * bytes), default(T).Read4(block, 8 * bytes), default(T).Read4(block, 12 * bytes), default(T).Read4(block, 16 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseSplit5(default(T).Read4(ref block, 0), default(T).Read4(ref block, 4 * bytes), default(T).Read4(ref block, 8 * bytes), default(T).Read4(ref block, 12 * bytes), default(T).Read4(ref block, 16 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
         }
         Deinterleave.Scalar<T>(data[(f * 5 * bytes)..], 5, output[f..], stride, frames - f);
     }
@@ -398,14 +398,14 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            SseMerge5(from.Load4(0, 0), from.Load4(1, 0), from.Load4(2, 0), from.Load4(3, 0), from.Load4(4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
-            default(T).Write4(block, 0, i0);
-            default(T).Write4(block, 4 * bytes, i1);
-            default(T).Write4(block, 8 * bytes, i2);
-            default(T).Write4(block, 12 * bytes, i3);
-            default(T).Write4(block, 16 * bytes, i4);
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            SseMerge5(from.Load4(stride, 0, 0), from.Load4(stride, 1, 0), from.Load4(stride, 2, 0), from.Load4(stride, 3, 0), from.Load4(stride, 4, 0), out var i0, out var i1, out var i2, out var i3, out var i4);
+            default(T).Write4(ref block, 0, i0);
+            default(T).Write4(ref block, 4 * bytes, i1);
+            default(T).Write4(ref block, 8 * bytes, i2);
+            default(T).Write4(ref block, 12 * bytes, i3);
+            default(T).Write4(ref block, 16 * bytes, i4);
         }
         Interleave.Scalar<T>(input[f..], stride, 5, data[(f * 5 * bytes)..], frames - f);
     }
@@ -453,15 +453,15 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseSplit6(default(T).Read4(block, 0), default(T).Read4(block, 4 * bytes), default(T).Read4(block, 8 * bytes), default(T).Read4(block, 12 * bytes), default(T).Read4(block, 16 * bytes), default(T).Read4(block, 20 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseSplit6(default(T).Read4(ref block, 0), default(T).Read4(ref block, 4 * bytes), default(T).Read4(ref block, 8 * bytes), default(T).Read4(ref block, 12 * bytes), default(T).Read4(ref block, 16 * bytes), default(T).Read4(ref block, 20 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
         }
         Deinterleave.Scalar<T>(data[(f * 6 * bytes)..], 6, output[f..], stride, frames - f);
     }
@@ -475,15 +475,15 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            SseMerge6(from.Load4(0, 0), from.Load4(1, 0), from.Load4(2, 0), from.Load4(3, 0), from.Load4(4, 0), from.Load4(5, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5);
-            default(T).Write4(block, 0, i0);
-            default(T).Write4(block, 4 * bytes, i1);
-            default(T).Write4(block, 8 * bytes, i2);
-            default(T).Write4(block, 12 * bytes, i3);
-            default(T).Write4(block, 16 * bytes, i4);
-            default(T).Write4(block, 20 * bytes, i5);
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            SseMerge6(from.Load4(stride, 0, 0), from.Load4(stride, 1, 0), from.Load4(stride, 2, 0), from.Load4(stride, 3, 0), from.Load4(stride, 4, 0), from.Load4(stride, 5, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5);
+            default(T).Write4(ref block, 0, i0);
+            default(T).Write4(ref block, 4 * bytes, i1);
+            default(T).Write4(ref block, 8 * bytes, i2);
+            default(T).Write4(ref block, 12 * bytes, i3);
+            default(T).Write4(ref block, 16 * bytes, i4);
+            default(T).Write4(ref block, 20 * bytes, i5);
         }
         Interleave.Scalar<T>(input[f..], stride, 6, data[(f * 6 * bytes)..], frames - f);
     }
@@ -528,16 +528,16 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var block = source.At(f, 4);
-            var into = target.At(f, 4);
-            SseSplit7(default(T).Read4(block, 0), default(T).Read4(block, 4 * bytes), default(T).Read4(block, 8 * bytes), default(T).Read4(block, 12 * bytes), default(T).Read4(block, 16 * bytes), default(T).Read4(block, 20 * bytes), default(T).Read4(block, 24 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
-            into.Store(6, 0, c6);
+            ref var block = ref source.At(f, 4);
+            ref var into = ref target.At(f, 4);
+            SseSplit7(default(T).Read4(ref block, 0), default(T).Read4(ref block, 4 * bytes), default(T).Read4(ref block, 8 * bytes), default(T).Read4(ref block, 12 * bytes), default(T).Read4(ref block, 16 * bytes), default(T).Read4(ref block, 20 * bytes), default(T).Read4(ref block, 24 * bytes), out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
+            into.Store(stride, 6, 0, c6);
         }
         Deinterleave.Scalar<T>(data[(f * 7 * bytes)..], 7, output[f..], stride, frames - f);
     }
@@ -551,16 +551,16 @@ static class Transposes
         var f = 0;
         for (; f <= frames - 4; f += 4)
         {
-            var from = source.At(f, 4);
-            var block = target.At(f, 4);
-            SseMerge7(from.Load4(0, 0), from.Load4(1, 0), from.Load4(2, 0), from.Load4(3, 0), from.Load4(4, 0), from.Load4(5, 0), from.Load4(6, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6);
-            default(T).Write4(block, 0, i0);
-            default(T).Write4(block, 4 * bytes, i1);
-            default(T).Write4(block, 8 * bytes, i2);
-            default(T).Write4(block, 12 * bytes, i3);
-            default(T).Write4(block, 16 * bytes, i4);
-            default(T).Write4(block, 20 * bytes, i5);
-            default(T).Write4(block, 24 * bytes, i6);
+            ref var from = ref source.At(f, 4);
+            ref var block = ref target.At(f, 4);
+            SseMerge7(from.Load4(stride, 0, 0), from.Load4(stride, 1, 0), from.Load4(stride, 2, 0), from.Load4(stride, 3, 0), from.Load4(stride, 4, 0), from.Load4(stride, 5, 0), from.Load4(stride, 6, 0), out var i0, out var i1, out var i2, out var i3, out var i4, out var i5, out var i6);
+            default(T).Write4(ref block, 0, i0);
+            default(T).Write4(ref block, 4 * bytes, i1);
+            default(T).Write4(ref block, 8 * bytes, i2);
+            default(T).Write4(ref block, 12 * bytes, i3);
+            default(T).Write4(ref block, 16 * bytes, i4);
+            default(T).Write4(ref block, 20 * bytes, i5);
+            default(T).Write4(ref block, 24 * bytes, i6);
         }
         Interleave.Scalar<T>(input[f..], stride, 7, data[(f * 7 * bytes)..], frames - f);
     }

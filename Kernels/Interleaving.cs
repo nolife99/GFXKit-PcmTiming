@@ -70,14 +70,14 @@ static unsafe class Deinterleave
         var f = 0;
         for (; f <= frames - 32; f += 32)
         {
-            var block = source.At(f, 32);
-            var into = target.At(f, 32);
-            into.Store(0, 0, default(T).Read8(block, 0));
-            into.Store(0, 8, default(T).Read8(block, 8 * bytes));
-            into.Store(0, 16, default(T).Read8(block, 16 * bytes));
-            into.Store(0, 24, default(T).Read8(block, 24 * bytes));
+            ref var block = ref source.At(f, 32);
+            ref var into = ref target.At(f, 32);
+            into.Store(stride, 0, 0, default(T).Read8(ref block, 0));
+            into.Store(stride, 0, 8, default(T).Read8(ref block, 8 * bytes));
+            into.Store(stride, 0, 16, default(T).Read8(ref block, 16 * bytes));
+            into.Store(stride, 0, 24, default(T).Read8(ref block, 24 * bytes));
         }
-        for (; f <= frames - 8; f += 8) target.At(f, 8).Store(0, 0, default(T).Read8(source.At(f, 8), 0));
+        for (; f <= frames - 8; f += 8) target.At(f, 8).Store(stride, 0, 0, default(T).Read8(ref source.At(f, 8), 0));
         Scalar<T>(data[(f * bytes)..], 1, output[f..], stride, frames - f);
     }
 
@@ -90,11 +90,11 @@ static unsafe class Deinterleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            Networks.Split2(default(T).Read8(block, 0), default(T).Read8(block, 8 * bytes), out var c0, out var c1);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            Networks.Split2(default(T).Read8(ref block, 0), default(T).Read8(ref block, 8 * bytes), out var c0, out var c1);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
         }
         Scalar<T>(data[(f * 2 * bytes)..], 2, output[f..], stride, frames - f);
     }
@@ -113,12 +113,12 @@ static unsafe class Deinterleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            var even = Avx2.Shuffle(Vector256.Create(Packed.Read16(block, 0), Packed.Read16(block, 24)), first).AsInt64();
-            var odd = Avx2.Shuffle(Vector256.Create(Packed.Read16(block, 12), Packed.Read16(block, 32)), second).AsInt64();
-            into.Store(0, 0, PcmScale.Times(Avx2.UnpackLow(even, odd).AsInt32(), 1f / 2147483648));
-            into.Store(1, 0, PcmScale.Times(Avx2.UnpackHigh(even, odd).AsInt32(), 1f / 2147483648));
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            var even = Avx2.Shuffle(Vector256.Create(Packed.Read16(ref block, 0), Packed.Read16(ref block, 24)), first).AsInt64();
+            var odd = Avx2.Shuffle(Vector256.Create(Packed.Read16(ref block, 12), Packed.Read16(ref block, 32)), second).AsInt64();
+            into.Store(stride, 0, 0, PcmScale.Times(Avx2.UnpackLow(even, odd).AsInt32(), 1f / 2147483648));
+            into.Store(stride, 1, 0, PcmScale.Times(Avx2.UnpackHigh(even, odd).AsInt32(), 1f / 2147483648));
         }
         Scalar<S24>(data[(f * 6)..], 2, output[f..], stride, frames - f);
     }
@@ -132,14 +132,14 @@ static unsafe class Deinterleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
-            Networks.Split4(default(T).Read8(block, 0), default(T).Read8(block, 8 * bytes), default(T).Read8(block, 16 * bytes), default(T).Read8(block, 24 * bytes),
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
+            Networks.Split4(default(T).Read8(ref block, 0), default(T).Read8(ref block, 8 * bytes), default(T).Read8(ref block, 16 * bytes), default(T).Read8(ref block, 24 * bytes),
                 out var c0, out var c1, out var c2, out var c3);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
         }
         Scalar<T>(data[(f * 4 * bytes)..], 4, output[f..], stride, frames - f);
     }
@@ -153,20 +153,20 @@ static unsafe class Deinterleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var block = source.At(f, 8);
-            var into = target.At(f, 8);
+            ref var block = ref source.At(f, 8);
+            ref var into = ref target.At(f, 8);
             Networks.Split8(
-                default(T).Read8(block, 0), default(T).Read8(block, 8 * bytes), default(T).Read8(block, 16 * bytes), default(T).Read8(block, 24 * bytes),
-                default(T).Read8(block, 32 * bytes), default(T).Read8(block, 40 * bytes), default(T).Read8(block, 48 * bytes), default(T).Read8(block, 56 * bytes),
+                default(T).Read8(ref block, 0), default(T).Read8(ref block, 8 * bytes), default(T).Read8(ref block, 16 * bytes), default(T).Read8(ref block, 24 * bytes),
+                default(T).Read8(ref block, 32 * bytes), default(T).Read8(ref block, 40 * bytes), default(T).Read8(ref block, 48 * bytes), default(T).Read8(ref block, 56 * bytes),
                 out var c0, out var c1, out var c2, out var c3, out var c4, out var c5, out var c6, out var c7);
-            into.Store(0, 0, c0);
-            into.Store(1, 0, c1);
-            into.Store(2, 0, c2);
-            into.Store(3, 0, c3);
-            into.Store(4, 0, c4);
-            into.Store(5, 0, c5);
-            into.Store(6, 0, c6);
-            into.Store(7, 0, c7);
+            into.Store(stride, 0, 0, c0);
+            into.Store(stride, 1, 0, c1);
+            into.Store(stride, 2, 0, c2);
+            into.Store(stride, 3, 0, c3);
+            into.Store(stride, 4, 0, c4);
+            into.Store(stride, 5, 0, c5);
+            into.Store(stride, 6, 0, c6);
+            into.Store(stride, 7, 0, c7);
         }
         Scalar<T>(data[(f * 8 * bytes)..], 8, output[f..], stride, frames - f);
     }
@@ -242,14 +242,14 @@ static unsafe class Interleave
         var f = 0;
         for (; f <= frames - 32; f += 32)
         {
-            var from = source.At(f, 32);
-            var block = target.At(f, 32);
-            default(T).Write8(block, 0, from.Load8(0, 0));
-            default(T).Write8(block, 8 * bytes, from.Load8(0, 8));
-            default(T).Write8(block, 16 * bytes, from.Load8(0, 16));
-            default(T).Write8(block, 24 * bytes, from.Load8(0, 24));
+            ref var from = ref source.At(f, 32);
+            ref var block = ref target.At(f, 32);
+            default(T).Write8(ref block, 0, from.Load8(stride, 0, 0));
+            default(T).Write8(ref block, 8 * bytes, from.Load8(stride, 0, 8));
+            default(T).Write8(ref block, 16 * bytes, from.Load8(stride, 0, 16));
+            default(T).Write8(ref block, 24 * bytes, from.Load8(stride, 0, 24));
         }
-        for (; f <= frames - 8; f += 8) default(T).Write8(target.At(f, 8), 0, source.At(f, 8).Load8(0, 0));
+        for (; f <= frames - 8; f += 8) default(T).Write8(ref target.At(f, 8), 0, source.At(f, 8).Load8(stride, 0, 0));
         Scalar<T>(input[f..], stride, 1, data[(f * bytes)..], frames - f);
     }
 
@@ -262,11 +262,11 @@ static unsafe class Interleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var from = source.At(f, 8);
-            var block = target.At(f, 8);
-            Networks.Merge2(from.Load8(0, 0), from.Load8(1, 0), out var i0, out var i1);
-            default(T).Write8(block, 0, i0);
-            default(T).Write8(block, 8 * bytes, i1);
+            ref var from = ref source.At(f, 8);
+            ref var block = ref target.At(f, 8);
+            Networks.Merge2(from.Load8(stride, 0, 0), from.Load8(stride, 1, 0), out var i0, out var i1);
+            default(T).Write8(ref block, 0, i0);
+            default(T).Write8(ref block, 8 * bytes, i1);
         }
         Scalar<T>(input[f..], stride, 2, data[(f * 2 * bytes)..], frames - f);
     }
@@ -280,13 +280,13 @@ static unsafe class Interleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var from = source.At(f, 8);
-            var block = target.At(f, 8);
-            Networks.Merge4(from.Load8(0, 0), from.Load8(1, 0), from.Load8(2, 0), from.Load8(3, 0), out var i0, out var i1, out var i2, out var i3);
-            default(T).Write8(block, 0, i0);
-            default(T).Write8(block, 8 * bytes, i1);
-            default(T).Write8(block, 16 * bytes, i2);
-            default(T).Write8(block, 24 * bytes, i3);
+            ref var from = ref source.At(f, 8);
+            ref var block = ref target.At(f, 8);
+            Networks.Merge4(from.Load8(stride, 0, 0), from.Load8(stride, 1, 0), from.Load8(stride, 2, 0), from.Load8(stride, 3, 0), out var i0, out var i1, out var i2, out var i3);
+            default(T).Write8(ref block, 0, i0);
+            default(T).Write8(ref block, 8 * bytes, i1);
+            default(T).Write8(ref block, 16 * bytes, i2);
+            default(T).Write8(ref block, 24 * bytes, i3);
         }
         Scalar<T>(input[f..], stride, 4, data[(f * 4 * bytes)..], frames - f);
     }
@@ -300,18 +300,18 @@ static unsafe class Interleave
         var f = 0;
         for (; f <= frames - 8; f += 8)
         {
-            var from = source.At(f, 8);
-            var block = target.At(f, 8);
-            Networks.Split8(from.Load8(0, 0), from.Load8(1, 0), from.Load8(2, 0), from.Load8(3, 0), from.Load8(4, 0), from.Load8(5, 0), from.Load8(6, 0), from.Load8(7, 0),
+            ref var from = ref source.At(f, 8);
+            ref var block = ref target.At(f, 8);
+            Networks.Split8(from.Load8(stride, 0, 0), from.Load8(stride, 1, 0), from.Load8(stride, 2, 0), from.Load8(stride, 3, 0), from.Load8(stride, 4, 0), from.Load8(stride, 5, 0), from.Load8(stride, 6, 0), from.Load8(stride, 7, 0),
                 out var f0, out var f1, out var f2, out var f3, out var f4, out var f5, out var f6, out var f7);
-            default(T).Write8(block, 0, f0);
-            default(T).Write8(block, 8 * bytes, f1);
-            default(T).Write8(block, 16 * bytes, f2);
-            default(T).Write8(block, 24 * bytes, f3);
-            default(T).Write8(block, 32 * bytes, f4);
-            default(T).Write8(block, 40 * bytes, f5);
-            default(T).Write8(block, 48 * bytes, f6);
-            default(T).Write8(block, 56 * bytes, f7);
+            default(T).Write8(ref block, 0, f0);
+            default(T).Write8(ref block, 8 * bytes, f1);
+            default(T).Write8(ref block, 16 * bytes, f2);
+            default(T).Write8(ref block, 24 * bytes, f3);
+            default(T).Write8(ref block, 32 * bytes, f4);
+            default(T).Write8(ref block, 40 * bytes, f5);
+            default(T).Write8(ref block, 48 * bytes, f6);
+            default(T).Write8(ref block, 56 * bytes, f7);
         }
         Scalar<T>(input[f..], stride, 8, data[(f * 8 * bytes)..], frames - f);
     }
