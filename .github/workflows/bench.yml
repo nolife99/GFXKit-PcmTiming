@@ -6,6 +6,12 @@ on:
       filter:
         description: BenchmarkDotNet filter
         default: "*"
+      runtimes:
+        description: .NET versions, as a JSON list
+        default: '["6.0", "7.0", "8.0", "9.0", "10.0"]'
+      runs:
+        description: Runs of each, as a JSON list of run numbers
+        default: "[1]"
 
 permissions:
   contents: write
@@ -16,7 +22,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04-arm, windows-11-arm, macos-15]
-        runtime: ["6.0", "7.0", "8.0", "9.0", "10.0"]
+        runtime: ${{ fromJSON(inputs.runtimes) }}
+        run: ${{ fromJSON(inputs.runs) }}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -33,7 +40,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ${{ matrix.os }}-net${{ matrix.runtime }}
+          name: ${{ matrix.os }}-net${{ matrix.runtime }}.${{ matrix.run }}
           path: |
             out/console.txt
             out/results
