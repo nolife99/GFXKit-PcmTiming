@@ -16,6 +16,8 @@ public unsafe class Decode
     float[] planes = [];
     delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> kernel;
 #if NET9_0_OR_GREATER
+    delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> registers;
+    delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> structures;
     delegate*<byte*, int, float*, nint, int, void> pointers;
 #endif
 
@@ -54,16 +56,46 @@ public unsafe class Decode
             "F32" => Ptr.Deinterleave.For<Ptr.F32>(Channels),
             _ => Ptr.Deinterleave.For<Ptr.F64>(Channels)
         };
+        registers = Variant("registers");
+        structures = Variant("structures");
         Library();
         var expected = planes.ToArray();
         Array.Clear(planes);
         Pointers();
         if (!planes.AsSpan().SequenceEqual(expected)) throw new InvalidOperationException($"{Format} {Channels}: the pointer kernel's output differs");
+        Check(registers, expected, "register");
+        Check(structures, expected, "structure");
 #endif
     }
 
+#if NET9_0_OR_GREATER
+    delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> Variant(string kind)
+    {
+        if (!System.Runtime.Intrinsics.Arm.AdvSimd.Arm64.IsSupported) return kernel;
+        var table = GFXKit.Benchmarks.NeonVariants.Kernels;
+        for (var i = 0; i < table.Length; i++)
+            if (table[i].Direction == "decode" && table[i].Format == Format && table[i].Channels == Channels && table[i].Kind == kind) return (delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)table[i].Kernel;
+        return kernel;
+    }
+
+    void Check(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> variant, float[] expected, string kind)
+    {
+        Array.Clear(planes);
+        Run(variant);
+        if (!planes.AsSpan().SequenceEqual(expected)) throw new InvalidOperationException($"{Format} {Channels}: the {kind} variant's output differs");
+    }
+
+    [Benchmark]
+    public void Registers() => Run(registers);
+
+    [Benchmark]
+    public void Structures() => Run(structures);
+#endif
+
     [Benchmark(Baseline = true)]
-    public void Library()
+    public void Library() => Run(kernel);
+
+    void Run(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> kernel)
     {
         var frameBytes = Channels * Bytes;
         for (var f = 0; f < Frames; f += Packet)

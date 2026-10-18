@@ -140,19 +140,19 @@ static unsafe class NeonTransposes
             {
                 var at = source.At(f, 16);
                 ref var into = ref target.At(f, 16);
-                var (a0, b0, c0) = AdvSimd.Arm64.Load3xVector128AndUnzip((byte*)at);
-                into.Store(stride, 0, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(a0.GetLower()).GetLower())), scale));
-                into.Store(stride, 0, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(a0.GetLower()))), scale));
-                into.Store(stride, 0, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(a0).GetLower())), scale));
-                into.Store(stride, 0, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(a0))), scale));
-                into.Store(stride, 1, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(b0.GetLower()).GetLower())), scale));
-                into.Store(stride, 1, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(b0.GetLower()))), scale));
-                into.Store(stride, 1, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(b0).GetLower())), scale));
-                into.Store(stride, 1, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(b0))), scale));
-                into.Store(stride, 2, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(c0.GetLower()).GetLower())), scale));
-                into.Store(stride, 2, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(c0.GetLower()))), scale));
-                into.Store(stride, 2, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(c0).GetLower())), scale));
-                into.Store(stride, 2, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(c0))), scale));
+                var (ch0_0, ch1_0, ch2_0) = AdvSimd.Arm64.Load3xVector128AndUnzip((byte*)at);
+                into.Store(stride, 0, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(ch0_0.GetLower()).GetLower())), scale));
+                into.Store(stride, 0, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(ch0_0.GetLower()))), scale));
+                into.Store(stride, 0, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(ch0_0).GetLower())), scale));
+                into.Store(stride, 0, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(ch0_0))), scale));
+                into.Store(stride, 1, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(ch1_0.GetLower()).GetLower())), scale));
+                into.Store(stride, 1, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(ch1_0.GetLower()))), scale));
+                into.Store(stride, 1, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(ch1_0).GetLower())), scale));
+                into.Store(stride, 1, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(ch1_0))), scale));
+                into.Store(stride, 2, 0, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningLower(ch2_0.GetLower()).GetLower())), scale));
+                into.Store(stride, 2, 4, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningLower(ch2_0.GetLower()))), scale));
+                into.Store(stride, 2, 8, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningLower(AdvSimd.ZeroExtendWideningUpper(ch2_0).GetLower())), scale));
+                into.Store(stride, 2, 12, AdvSimd.FusedMultiplyAdd(minus, AdvSimd.ConvertToSingle(AdvSimd.ZeroExtendWideningUpper(AdvSimd.ZeroExtendWideningUpper(ch2_0))), scale));
             }
         }
         Deinterleave.Scalar<U8>(data[(f * 3)..], 3, output[f..], stride, frames - f);
@@ -367,16 +367,16 @@ static unsafe class NeonTransposes
             {
                 var at = source.At(f, 16);
                 ref var into = ref target.At(f, 16);
-                var (a0, b0) = AdvSimd.Arm64.Load2xVector128AndUnzip((ushort*)at);
-                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(a0.AsInt16().GetLower())), scale));
-                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(a0.AsInt16())), scale));
-                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(b0.AsInt16().GetLower())), scale));
-                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(b0.AsInt16())), scale));
-                var (a1, b1) = AdvSimd.Arm64.Load2xVector128AndUnzip((ushort*)(at + 32));
-                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(a1.AsInt16().GetLower())), scale));
-                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(a1.AsInt16())), scale));
-                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(b1.AsInt16().GetLower())), scale));
-                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(b1.AsInt16())), scale));
+                var (ch0_0, ch1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((ushort*)at);
+                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch0_0.AsInt16().GetLower())), scale));
+                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch0_0.AsInt16())), scale));
+                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch1_0.AsInt16().GetLower())), scale));
+                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch1_0.AsInt16())), scale));
+                var (ch0_1, ch1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((ushort*)(at + 32));
+                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch0_1.AsInt16().GetLower())), scale));
+                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch0_1.AsInt16())), scale));
+                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch1_1.AsInt16().GetLower())), scale));
+                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch1_1.AsInt16())), scale));
             }
         }
         Deinterleave.Scalar<S16>(data[(f * 4)..], 2, output[f..], stride, frames - f);
@@ -395,20 +395,20 @@ static unsafe class NeonTransposes
             {
                 var at = source.At(f, 16);
                 ref var into = ref target.At(f, 16);
-                var (a0, b0, c0) = AdvSimd.Arm64.Load3xVector128AndUnzip((ushort*)at);
-                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(a0.AsInt16().GetLower())), scale));
-                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(a0.AsInt16())), scale));
-                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(b0.AsInt16().GetLower())), scale));
-                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(b0.AsInt16())), scale));
-                into.Store(stride, 2, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(c0.AsInt16().GetLower())), scale));
-                into.Store(stride, 2, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(c0.AsInt16())), scale));
-                var (a1, b1, c1) = AdvSimd.Arm64.Load3xVector128AndUnzip((ushort*)(at + 48));
-                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(a1.AsInt16().GetLower())), scale));
-                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(a1.AsInt16())), scale));
-                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(b1.AsInt16().GetLower())), scale));
-                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(b1.AsInt16())), scale));
-                into.Store(stride, 2, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(c1.AsInt16().GetLower())), scale));
-                into.Store(stride, 2, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(c1.AsInt16())), scale));
+                var (ch0_0, ch1_0, ch2_0) = AdvSimd.Arm64.Load3xVector128AndUnzip((ushort*)at);
+                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch0_0.AsInt16().GetLower())), scale));
+                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch0_0.AsInt16())), scale));
+                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch1_0.AsInt16().GetLower())), scale));
+                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch1_0.AsInt16())), scale));
+                into.Store(stride, 2, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch2_0.AsInt16().GetLower())), scale));
+                into.Store(stride, 2, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch2_0.AsInt16())), scale));
+                var (ch0_1, ch1_1, ch2_1) = AdvSimd.Arm64.Load3xVector128AndUnzip((ushort*)(at + 48));
+                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch0_1.AsInt16().GetLower())), scale));
+                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch0_1.AsInt16())), scale));
+                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch1_1.AsInt16().GetLower())), scale));
+                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch1_1.AsInt16())), scale));
+                into.Store(stride, 2, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningLower(ch2_1.AsInt16().GetLower())), scale));
+                into.Store(stride, 2, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(AdvSimd.SignExtendWideningUpper(ch2_1.AsInt16())), scale));
             }
         }
         Deinterleave.Scalar<S16>(data[(f * 6)..], 3, output[f..], stride, frames - f);
@@ -674,18 +674,18 @@ static unsafe class NeonTransposes
             {
                 var at = source.At(f, 16);
                 ref var into = ref target.At(f, 16);
-                var (a0, b0) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)at);
-                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(a0.AsInt32()), scale));
-                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(b0.AsInt32()), scale));
-                var (a1, b1) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 32));
-                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(a1.AsInt32()), scale));
-                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(b1.AsInt32()), scale));
-                var (a2, b2) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 64));
-                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(a2.AsInt32()), scale));
-                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(b2.AsInt32()), scale));
-                var (a3, b3) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 96));
-                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(a3.AsInt32()), scale));
-                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(b3.AsInt32()), scale));
+                var (ch0_0, ch1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)at);
+                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch0_0.AsInt32()), scale));
+                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch1_0.AsInt32()), scale));
+                var (ch0_1, ch1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 32));
+                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch0_1.AsInt32()), scale));
+                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch1_1.AsInt32()), scale));
+                var (ch0_2, ch1_2) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 64));
+                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch0_2.AsInt32()), scale));
+                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch1_2.AsInt32()), scale));
+                var (ch0_3, ch1_3) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 96));
+                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch0_3.AsInt32()), scale));
+                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch1_3.AsInt32()), scale));
             }
         }
         Deinterleave.Scalar<S32>(data[(f * 8)..], 2, output[f..], stride, frames - f);
@@ -704,22 +704,22 @@ static unsafe class NeonTransposes
             {
                 var at = source.At(f, 16);
                 ref var into = ref target.At(f, 16);
-                var (a0, b0, c0) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)at);
-                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(a0.AsInt32()), scale));
-                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(b0.AsInt32()), scale));
-                into.Store(stride, 2, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(c0.AsInt32()), scale));
-                var (a1, b1, c1) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 48));
-                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(a1.AsInt32()), scale));
-                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(b1.AsInt32()), scale));
-                into.Store(stride, 2, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(c1.AsInt32()), scale));
-                var (a2, b2, c2) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 96));
-                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(a2.AsInt32()), scale));
-                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(b2.AsInt32()), scale));
-                into.Store(stride, 2, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(c2.AsInt32()), scale));
-                var (a3, b3, c3) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 144));
-                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(a3.AsInt32()), scale));
-                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(b3.AsInt32()), scale));
-                into.Store(stride, 2, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(c3.AsInt32()), scale));
+                var (ch0_0, ch1_0, ch2_0) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)at);
+                into.Store(stride, 0, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch0_0.AsInt32()), scale));
+                into.Store(stride, 1, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch1_0.AsInt32()), scale));
+                into.Store(stride, 2, 0, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch2_0.AsInt32()), scale));
+                var (ch0_1, ch1_1, ch2_1) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 48));
+                into.Store(stride, 0, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch0_1.AsInt32()), scale));
+                into.Store(stride, 1, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch1_1.AsInt32()), scale));
+                into.Store(stride, 2, 4, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch2_1.AsInt32()), scale));
+                var (ch0_2, ch1_2, ch2_2) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 96));
+                into.Store(stride, 0, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch0_2.AsInt32()), scale));
+                into.Store(stride, 1, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch1_2.AsInt32()), scale));
+                into.Store(stride, 2, 8, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch2_2.AsInt32()), scale));
+                var (ch0_3, ch1_3, ch2_3) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 144));
+                into.Store(stride, 0, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch0_3.AsInt32()), scale));
+                into.Store(stride, 1, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch1_3.AsInt32()), scale));
+                into.Store(stride, 2, 12, AdvSimd.Multiply(AdvSimd.ConvertToSingle(ch2_3.AsInt32()), scale));
             }
         }
         Deinterleave.Scalar<S32>(data[(f * 12)..], 3, output[f..], stride, frames - f);
@@ -994,18 +994,18 @@ static unsafe class NeonTransposes
             {
                 var at = source.At(f, 16);
                 ref var into = ref target.At(f, 16);
-                var (a0, b0) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)at);
-                into.Store(stride, 0, 0, a0.AsSingle());
-                into.Store(stride, 1, 0, b0.AsSingle());
-                var (a1, b1) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 32));
-                into.Store(stride, 0, 4, a1.AsSingle());
-                into.Store(stride, 1, 4, b1.AsSingle());
-                var (a2, b2) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 64));
-                into.Store(stride, 0, 8, a2.AsSingle());
-                into.Store(stride, 1, 8, b2.AsSingle());
-                var (a3, b3) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 96));
-                into.Store(stride, 0, 12, a3.AsSingle());
-                into.Store(stride, 1, 12, b3.AsSingle());
+                var (ch0_0, ch1_0) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)at);
+                into.Store(stride, 0, 0, ch0_0.AsSingle());
+                into.Store(stride, 1, 0, ch1_0.AsSingle());
+                var (ch0_1, ch1_1) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 32));
+                into.Store(stride, 0, 4, ch0_1.AsSingle());
+                into.Store(stride, 1, 4, ch1_1.AsSingle());
+                var (ch0_2, ch1_2) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 64));
+                into.Store(stride, 0, 8, ch0_2.AsSingle());
+                into.Store(stride, 1, 8, ch1_2.AsSingle());
+                var (ch0_3, ch1_3) = AdvSimd.Arm64.Load2xVector128AndUnzip((uint*)(at + 96));
+                into.Store(stride, 0, 12, ch0_3.AsSingle());
+                into.Store(stride, 1, 12, ch1_3.AsSingle());
             }
         }
         Deinterleave.Scalar<F32>(data[(f * 8)..], 2, output[f..], stride, frames - f);
@@ -1024,22 +1024,22 @@ static unsafe class NeonTransposes
             {
                 var at = source.At(f, 16);
                 ref var into = ref target.At(f, 16);
-                var (a0, b0, c0) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)at);
-                into.Store(stride, 0, 0, a0.AsSingle());
-                into.Store(stride, 1, 0, b0.AsSingle());
-                into.Store(stride, 2, 0, c0.AsSingle());
-                var (a1, b1, c1) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 48));
-                into.Store(stride, 0, 4, a1.AsSingle());
-                into.Store(stride, 1, 4, b1.AsSingle());
-                into.Store(stride, 2, 4, c1.AsSingle());
-                var (a2, b2, c2) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 96));
-                into.Store(stride, 0, 8, a2.AsSingle());
-                into.Store(stride, 1, 8, b2.AsSingle());
-                into.Store(stride, 2, 8, c2.AsSingle());
-                var (a3, b3, c3) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 144));
-                into.Store(stride, 0, 12, a3.AsSingle());
-                into.Store(stride, 1, 12, b3.AsSingle());
-                into.Store(stride, 2, 12, c3.AsSingle());
+                var (ch0_0, ch1_0, ch2_0) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)at);
+                into.Store(stride, 0, 0, ch0_0.AsSingle());
+                into.Store(stride, 1, 0, ch1_0.AsSingle());
+                into.Store(stride, 2, 0, ch2_0.AsSingle());
+                var (ch0_1, ch1_1, ch2_1) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 48));
+                into.Store(stride, 0, 4, ch0_1.AsSingle());
+                into.Store(stride, 1, 4, ch1_1.AsSingle());
+                into.Store(stride, 2, 4, ch2_1.AsSingle());
+                var (ch0_2, ch1_2, ch2_2) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 96));
+                into.Store(stride, 0, 8, ch0_2.AsSingle());
+                into.Store(stride, 1, 8, ch1_2.AsSingle());
+                into.Store(stride, 2, 8, ch2_2.AsSingle());
+                var (ch0_3, ch1_3, ch2_3) = AdvSimd.Arm64.Load3xVector128AndUnzip((uint*)(at + 144));
+                into.Store(stride, 0, 12, ch0_3.AsSingle());
+                into.Store(stride, 1, 12, ch1_3.AsSingle());
+                into.Store(stride, 2, 12, ch2_3.AsSingle());
             }
         }
         Deinterleave.Scalar<F32>(data[(f * 12)..], 3, output[f..], stride, frames - f);
