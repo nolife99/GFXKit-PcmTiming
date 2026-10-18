@@ -11,7 +11,8 @@
     <Compile Remove="NeonTransposes.g.cs" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <Compile Include="Legacy/net7.0/*.cs;Legacy/net6.0/*.cs" />
+    <Compile Include="Legacy/net6.0/*.cs" />
+    <Compile Remove="Legacy/net8.0/NeonTransposes.g.cs" />
     <Compile Remove="Avx512Interleaving.cs;Avx512Transposes.g.cs" />
   </ItemGroup>
 </Project>
