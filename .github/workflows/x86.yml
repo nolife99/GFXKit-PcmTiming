@@ -6,6 +6,9 @@ on:
       filter:
         description: BenchmarkDotNet filter
         default: "Bench.X86*"
+      layout:
+        description: One layout of the X86 classes, as "F32 1", or empty for all
+        default: ""
       runs:
         description: Runs on each runner, as a JSON list of run numbers
         default: "[1, 2, 3, 4, 5, 6]"
@@ -28,6 +31,8 @@ jobs:
           dotnet-version: 10.0.x
       - name: Run
         shell: bash
+        env:
+          BENCH_LAYOUT: ${{ inputs.layout }}
         run: |
           mkdir -p out
           if [ "$RUNNER_OS" = Windows ]; then powershell -c "(Get-CimInstance Win32_Processor).Name" > out/cpu.txt; else grep -m1 "model name" /proc/cpuinfo | cut -d: -f2 > out/cpu.txt; fi

@@ -13,12 +13,17 @@ static class X86Cases
     {
         if (!Avx2.IsSupported) yield break;
         var avx512 = Avx512Deinterleave.Supported;
+        var only = Environment.GetEnvironmentVariable("BENCH_LAYOUT");
+        var previous = "";
         for (var i = 0; i < table.Length; i++)
         {
-            if (i == 0 || table[i].Format != table[i - 1].Format || table[i].Channels != table[i - 1].Channels)
+            var layout = $"{table[i].Format} {table[i].Channels}";
+            if (!string.IsNullOrEmpty(only) && layout != only) continue;
+            if (layout != previous)
             {
-                yield return $"{table[i].Format} {table[i].Channels} avx2";
-                yield return $"{table[i].Format} {table[i].Channels} sse";
+                yield return $"{layout} avx2";
+                yield return $"{layout} sse";
+                previous = layout;
             }
             if (avx512 && (!table[i].Vbmi || Avx512Vbmi.IsSupported)) yield return $"{table[i].Format} {table[i].Channels} {table[i].Kind}";
         }
