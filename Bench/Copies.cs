@@ -59,6 +59,7 @@ public unsafe class Copies
         else Vectors(from, to);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     static void Vectors(scoped ReadOnlySpan<byte> from, scoped Span<byte> to)
     {
         ref var source = ref MemoryMarshal.GetReference(from);
