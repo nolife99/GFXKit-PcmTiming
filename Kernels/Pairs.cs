@@ -19,7 +19,7 @@ static class Pairs
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static Vector256<byte> Join(ref float from, int stride, int channel) =>
-        Avx2.Blend(S16.Round(from.Load8(stride, channel, 0)).AsInt16(), Avx2.ShiftLeftLogical(S16.Round(from.Load8(stride, channel + 1, 0)), 16).AsInt16(), 0xAA).AsByte();
+        Avx2.Blend(S16.Round(from.Load8(stride, channel, 0)).AsInt16(), (S16.Round(from.Load8(stride, channel + 1, 0)) << 16).AsInt16(), 0xAA).AsByte();
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void Deinterleave2(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)

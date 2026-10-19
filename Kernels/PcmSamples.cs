@@ -29,24 +29,24 @@ interface IPcmTarget : IPcmSample
 static class PcmScale
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<float> Times(Vector256<int> values, float scale) => Avx.Multiply(Avx.ConvertToVector256Single(values), Vector256.Create(scale));
+    public static Vector256<float> Times(Vector256<int> values, float scale) => Vector256.ConvertToSingle(values) * Vector256.Create(scale);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float Clamp(float value, float top) => value >= -1f ? value <= top ? value : top : -1f;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector128<float> Scale(Vector128<int> values, float scale) => Sse.Multiply(Sse2.ConvertToVector128Single(values), Vector128.Create(scale));
+    public static Vector128<float> Scale(Vector128<int> values, float scale) => Vector128.ConvertToSingle(values) * Vector128.Create(scale);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<int> Quantize(Vector128<float> values, float top, float scale) =>
-        Sse2.ConvertToVector128Int32(Sse.Multiply(Sse.Min(Sse.Max(values, Vector128.Create(-1f)), Vector128.Create(top)), Vector128.Create(scale)));
+        Sse2.ConvertToVector128Int32(Vector128.MinNative(Vector128.MaxNative(values, Vector128.Create(-1f)), Vector128.Create(top)) * Vector128.Create(scale));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector128<float> Times(Vector128<int> values, float scale) => AdvSimd.Multiply(AdvSimd.ConvertToSingle(values), Vector128.Create(scale));
+    public static Vector128<float> Times(Vector128<int> values, float scale) => Vector128.ConvertToSingle(values) * Vector128.Create(scale);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector256<int> Round(Vector256<float> values, float top, float scale) =>
-        Avx.ConvertToVector256Int32(Avx.Multiply(Avx.Min(Avx.Max(values, Vector256.Create(-1f)), Vector256.Create(top)), Vector256.Create(scale)));
+        Avx.ConvertToVector256Int32(Vector256.MinNative(Vector256.MaxNative(values, Vector256.Create(-1f)), Vector256.Create(top)) * Vector256.Create(scale));
 }
 
 struct U8 : IPcmSample
@@ -59,15 +59,13 @@ struct U8 : IPcmSample
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Vector256<float> Read8(ref byte block, int offset)
     {
-        var values = Avx.ConvertToVector256Single(Avx2.ConvertToVector256Int32(Packed.Read8(ref block, offset)));
-        return Fma.IsSupported
-            ? Fma.MultiplySubtract(values, Vector256.Create(1f / 128), Vector256.Create(1f))
-            : Avx.Subtract(Avx.Multiply(values, Vector256.Create(1f / 128)), Vector256.Create(1f));
+        var values = Vector256.ConvertToSingle(Avx2.ConvertToVector256Int32(Packed.Read8(ref block, offset)));
+        return Vector256.MultiplyAddEstimate(values, Vector256.Create(1f / 128), Vector256.Create(-1f));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Vector128<float> Read4(ref byte block, int offset) =>
-        Sse.Subtract(PcmScale.Scale(Sse41.ConvertToVector128Int32(Vector128.CreateScalar(Packed.Read4(ref block, offset)).AsByte()), 1f / 128), Vector128.Create(1f));
+        PcmScale.Scale(Sse41.ConvertToVector128Int32(Vector128.CreateScalar(Packed.Read4(ref block, offset)).AsByte()), 1f / 128) - Vector128.Create(1f);
 }
 
 struct S16 : IPcmTarget
@@ -221,9 +219,9 @@ struct F64 : IPcmSample
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Vector256<float> Read8(ref byte block, int offset) =>
-        Vector256.Create(Avx.ConvertToVector128Single(Packed.Read32(ref block, offset).AsDouble()), Avx.ConvertToVector128Single(Packed.Read32(ref block, offset + 32).AsDouble()));
+        Vector256.Narrow(Packed.Read32(ref block, offset).AsDouble(), Packed.Read32(ref block, offset + 32).AsDouble());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Vector128<float> Read4(ref byte block, int offset) =>
-        Sse.MoveLowToHigh(Sse2.ConvertToVector128Single(Packed.Read16(ref block, offset).AsDouble()), Sse2.ConvertToVector128Single(Packed.Read16(ref block, offset + 16).AsDouble()));
+        Vector128.Narrow(Packed.Read16(ref block, offset).AsDouble(), Packed.Read16(ref block, offset + 16).AsDouble());
 }

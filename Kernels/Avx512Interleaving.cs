@@ -18,24 +18,24 @@ static unsafe class Avx512Deinterleave
         if (typeof(T) == typeof(S32)) return Times(Packed512.Read(ref block, offset).AsInt32(), 1f / 2147483648);
         if (typeof(T) == typeof(S16)) return Times(Avx512F.ConvertToVector512Int32(Packed.Read32(ref block, offset).AsInt16()), 1f / 32768);
         if (typeof(T) == typeof(U8))
-            return Avx512F.FusedMultiplyAdd(Avx512F.ConvertToVector512Single(Avx512F.ConvertToVector512Int32(Packed.Read16(ref block, offset))), Vector512.Create(1f / 128), Vector512.Create(-1f));
+            return Vector512.FusedMultiplyAdd(Vector512.ConvertToSingle(Avx512F.ConvertToVector512Int32(Packed.Read16(ref block, offset))), Vector512.Create(1f / 128), Vector512.Create(-1f));
         if (typeof(T) == typeof(F64))
-            return Avx512F.InsertVector256(Avx512F.ConvertToVector256Single(Packed512.Read(ref block, offset).AsDouble()).ToVector512Unsafe(), Avx512F.ConvertToVector256Single(Packed512.Read(ref block, offset + 64).AsDouble()), 1);
+            return Vector512.Narrow(Packed512.Read(ref block, offset).AsDouble(), Packed512.Read(ref block, offset + 64).AsDouble());
         throw new NotSupportedException();
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector512<float> Times(Vector512<int> values, float scale) => Avx512F.Multiply(Avx512F.ConvertToVector512Single(values), Vector512.Create(scale));
+    public static Vector512<float> Times(Vector512<int> values, float scale) => Vector512.ConvertToSingle(values) * Vector512.Create(scale);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector512<float> WidenS24(Vector512<byte> placed) => Times(Avx512F.ShiftRightArithmetic(placed.AsInt32(), 8), 1f / 8388608);
+    public static Vector512<float> WidenS24(Vector512<byte> placed) => Times(placed.AsInt32() >> 8, 1f / 8388608);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector512<float> WidenS16(Vector512<byte> placed) => Times(Avx512F.ShiftRightArithmetic(placed.AsInt32(), 16), 1f / 32768);
+    public static Vector512<float> WidenS16(Vector512<byte> placed) => Times(placed.AsInt32() >> 16, 1f / 32768);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector512<float> WidenU8(Vector512<byte> placed) =>
-        Avx512F.FusedMultiplyAdd(Avx512F.ConvertToVector512Single(Avx512F.ShiftRightLogical(placed.AsInt32(), 24)), Vector512.Create(1f / 128), Vector512.Create(-1f));
+        Vector512.FusedMultiplyAdd(Vector512.ConvertToSingle(placed.AsInt32() >>> 24), Vector512.Create(1f / 128), Vector512.Create(-1f));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector512<float> Even(Vector512<float> pairs) => Times(Avx512BW.MultiplyAddAdjacent(pairs.AsInt16(), Vector512.Create(1).AsInt16()), 1f / 32768);
@@ -51,7 +51,7 @@ static unsafe class Avx512Interleave
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector512<int> Quantize(Vector512<float> values, float top, float scale) =>
-        Avx512F.ConvertToVector512Int32(Avx512F.Multiply(Avx512F.Min(Avx512F.Max(values, Vector512.Create(-1f)), Vector512.Create(top)), Vector512.Create(scale)));
+        Avx512F.ConvertToVector512Int32(Vector512.MinNative(Vector512.MaxNative(values, Vector512.Create(-1f)), Vector512.Create(top)) * Vector512.Create(scale));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Write<T>(ref byte block, int offset, Vector512<float> values) where T : struct, IPcmTarget
@@ -64,7 +64,7 @@ static unsafe class Avx512Interleave
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector512<float> Pair(Vector512<float> even, Vector512<float> odd) =>
-        Avx512F.Or(Avx512F.ShiftLeftLogical(Quantize(odd, S16.Top, 32768), 16), Avx512F.And(Quantize(even, S16.Top, 32768), Vector512.Create(0xFFFF))).AsSingle();
+        ((Quantize(odd, S16.Top, 32768) << 16) | (Quantize(even, S16.Top, 32768) & Vector512.Create(0xFFFF))).AsSingle();
 }
 
 static class Packed512

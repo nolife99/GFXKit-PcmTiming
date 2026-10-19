@@ -315,7 +315,7 @@ static unsafe class SseInterleave
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static Vector128<byte> Join(ref float from, int stride, int channel) =>
         Sse41.Blend(PcmScale.Quantize(from.Load4(stride, channel, 0), 32767f / 32768, 32768).AsInt16(),
-            Sse2.ShiftLeftLogical(PcmScale.Quantize(from.Load4(stride, channel + 1, 0), 32767f / 32768, 32768), 16).AsInt16(), 0xAA).AsByte();
+            (PcmScale.Quantize(from.Load4(stride, channel + 1, 0), 32767f / 32768, 32768) << 16).AsInt16(), 0xAA).AsByte();
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     static void Pairs2(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)

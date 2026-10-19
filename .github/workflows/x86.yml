@@ -1,0 +1,57 @@
+name: X86
+
+on:
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: Runs on each runner, as a JSON list of run numbers
+        default: "[1, 2, 3, 4, 5, 6]"
+
+permissions:
+  contents: write
+
+jobs:
+  bench:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025]
+        run: ${{ fromJSON(inputs.runs) }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Run
+        shell: bash
+        run: |
+          mkdir -p out
+          if [ "$RUNNER_OS" = Windows ]; then powershell -c "(Get-CimInstance Win32_Processor).Name" > out/cpu.txt; else grep -m1 "model name" /proc/cpuinfo | cut -d: -f2 > out/cpu.txt; fi
+          cat out/cpu.txt
+          dotnet run -c Release -f net10.0 --project Bench -- --filter 'Bench.X86*' --affinity 4 --artifacts out > out/console.txt 2>&1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.os }}-x86.${{ matrix.run }}
+          path: |
+            out/cpu.txt
+            out/console.txt
+            out/results
+
+  collect:
+    needs: bench
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: results/${{ github.run_id }}
+      - name: Commit
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add results
+          git commit -m "Run ${{ github.run_id }}"
+          for attempt in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
