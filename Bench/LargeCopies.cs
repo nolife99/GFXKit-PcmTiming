@@ -35,6 +35,7 @@ public unsafe class LargeCopies
         yield return "Streaming";
         if (AdvSimd.Arm64.IsSupported) yield return "Pairs";
         if (!Vector512.IsHardwareAccelerated) yield break;
+        yield return "Narrow";
         yield return "Wide";
         yield return "WideStreaming";
     }
@@ -53,6 +54,7 @@ public unsafe class LargeCopies
             "BufferMemoryCopy" => &ViaBufferMemoryCopy,
             "MemoryCopy" => &ViaMemoryCopy,
             "Streaming" => &Streaming,
+            "Narrow" => &Narrow,
             "Wide" => &Wide,
             "WideStreaming" => &WideStreaming,
             _ => &Pairs
@@ -114,6 +116,22 @@ public unsafe class LargeCopies
             Vector128.StoreAlignedNonTemporal(d, to + i + 48);
         }
         if (Sse.IsSupported) Sse.StoreFence();
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    static void Narrow(byte* from, byte* to, nuint length)
+    {
+        for (nuint i = 0; i < length; i += 128)
+        {
+            var a = Vector256.Load(from + i);
+            var b = Vector256.Load(from + i + 32);
+            var c = Vector256.Load(from + i + 64);
+            var d = Vector256.Load(from + i + 96);
+            Vector256.Store(a, to + i);
+            Vector256.Store(b, to + i + 32);
+            Vector256.Store(c, to + i + 64);
+            Vector256.Store(d, to + i + 96);
+        }
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]

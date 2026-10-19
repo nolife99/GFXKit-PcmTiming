@@ -95,17 +95,31 @@ public static unsafe partial class MemoryCopy
         Four<Vector128<byte>>(ref Unsafe.AsRef<byte>(end), ref Unsafe.Add(ref from, length - 64), 64);
     }
 
-    static class Thresholds
+    static partial class Thresholds
     {
-        public static readonly nuint From;
-        public static readonly nuint Floor;
+        static readonly Caches sizes = Caches.Read();
 
-        static Thresholds()
+        public static readonly nuint From = sizes.Level2 == 0 ? nuint.MaxValue : sizes.Amd && sizes.Level3 > 0 ? sizes.Level3 / 2 : sizes.Level2;
+
+        public static readonly nuint Floor = sizes.Level1 > 0 ? Math.Min(sizes.Level1, From) : From;
+    }
+
+    readonly struct Caches
+    {
+        public readonly bool Amd;
+        public readonly nuint Level1, Level2, Level3;
+
+        Caches(bool amd, nuint level1, nuint level2, nuint level3) => (Amd, Level1, Level2, Level3) = (amd, level1, level2, level3);
+
+        public static bool Hygon(int b, int c, int d) => b == 0x6F677948 && d == 0x6E65476E && c == 0x656E6975;
+
+        public static bool AuthenticAmd(int b, int c, int d) => b == 0x68747541 && d == 0x69746E65 && c == 0x444D4163;
+
+        public static Caches Read()
         {
-            From = Floor = nuint.MaxValue;
-            if (!X86Base.IsSupported) return;
+            if (!X86Base.IsSupported) return default;
             var (highest, vendorB, vendorC, vendorD) = X86Base.CpuId(0, 0);
-            var amd = vendorB == 0x68747541 && vendorD == 0x69746E65 && vendorC == 0x444D4163 || vendorB == 0x6F677948 && vendorD == 0x6E65476E && vendorC == 0x656E6975;
+            var amd = AuthenticAmd(vendorB, vendorC, vendorD) || Hygon(vendorB, vendorC, vendorD);
             nuint l1 = 0, l2 = 0, l3 = 0;
             if (amd)
             {
@@ -120,9 +134,7 @@ public static unsafe partial class MemoryCopy
                 }
             }
             else if (highest >= 4) Levels(4, ref l1, ref l2, ref l3);
-            if (l2 == 0) return;
-            From = amd && l3 > 0 ? l3 / 2 : l2;
-            Floor = l1 > 0 ? Math.Min(l1, From) : From;
+            return new(amd, l1, l2, l3);
         }
 
         static void Levels(int leaf, ref nuint l1, ref nuint l2, ref nuint l3)
