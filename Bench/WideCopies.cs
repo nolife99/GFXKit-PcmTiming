@@ -33,7 +33,7 @@ public unsafe class WideCopies
         yield return "BufferMemoryCopy";
         yield return "MemoryCopy";
         if (!Vector256.IsHardwareAccelerated) yield break;
-        yield return "Narrow";
+        yield return "Control";
         yield return "AlignedStores";
         if (!Vector512.IsHardwareAccelerated) yield break;
         yield return "Wide";
@@ -64,7 +64,7 @@ public unsafe class WideCopies
         {
             "BufferMemoryCopy" => &ViaBufferMemoryCopy,
             "MemoryCopy" => &ViaMemoryCopy,
-            "Narrow" => &Shaped<NarrowShape>,
+            "Control" => &Shaped<ControlShape>,
             "AlignedStores" => &Shaped<AlignedShape>,
             "Wide" => &Shaped<WideShape>,
             _ => &Shaped<WideLateShape>
@@ -199,7 +199,7 @@ interface IWideShape
     static abstract bool Aligned { get; }
 }
 
-struct NarrowShape : IWideShape
+struct ControlShape : IWideShape
 {
     public static bool Wide => false;
     public static bool Late => false;
