@@ -15,7 +15,7 @@ static unsafe class NeonDeinterleave
     }
 
     static void Copy(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames) =>
-        data[..(frames * 4)].CopyTo(MemoryMarshal.AsBytes(output[..frames]));
+        MemoryCopy.Copy(data[..(frames * 4)], MemoryMarshal.AsBytes(output[..frames]));
 }
 
 static unsafe class NeonInterleave
@@ -28,7 +28,7 @@ static unsafe class NeonInterleave
     }
 
     static void Copy(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames) =>
-        MemoryMarshal.AsBytes(input[..frames]).CopyTo(data);
+        MemoryCopy.Copy(MemoryMarshal.AsBytes(input[..frames]), data);
 }
 
 static class Neon

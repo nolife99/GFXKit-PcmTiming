@@ -36,7 +36,7 @@ static unsafe class SseDeinterleave
     {
         if (typeof(T) == typeof(F32))
         {
-            data[..(frames * 4)].CopyTo(MemoryMarshal.AsBytes(output[..frames]));
+            MemoryCopy.Copy(data[..(frames * 4)], MemoryMarshal.AsBytes(output[..frames]));
             return;
         }
         var bytes = default(T).Bytes;
@@ -232,7 +232,7 @@ static unsafe class SseInterleave
     {
         if (typeof(T) == typeof(F32))
         {
-            MemoryMarshal.AsBytes(input[..frames]).CopyTo(data);
+            MemoryCopy.Copy(MemoryMarshal.AsBytes(input[..frames]), data);
             return;
         }
         var bytes = default(T).Bytes;

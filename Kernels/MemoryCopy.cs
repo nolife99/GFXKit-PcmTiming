@@ -149,8 +149,10 @@ public static unsafe partial class MemoryCopy
         fixed (byte* target = &to, source = &from) Buffer.MemoryCopy(source, target, length, length);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static nuint Skip(ref byte to, nuint width) => width - ((nuint)Unsafe.AsPointer(ref to) & (width - 1));
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static void Loop128(ref byte to, ref byte from, nuint length)
     {
         Vector128.LoadUnsafe(ref from).StoreUnsafe(ref to);
@@ -176,6 +178,7 @@ public static unsafe partial class MemoryCopy
         h.StoreUnsafe(ref to, length - 16);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static void Loop256(ref byte to, ref byte from, nuint length)
     {
         Vector256.LoadUnsafe(ref from).StoreUnsafe(ref to);

@@ -28,6 +28,7 @@ public static unsafe partial class MemoryCopy
         f.StoreUnsafe(ref to, length - 64);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static void Loop512(ref byte to, ref byte from, nuint length)
     {
         Vector512.LoadUnsafe(ref from).StoreUnsafe(ref to);
