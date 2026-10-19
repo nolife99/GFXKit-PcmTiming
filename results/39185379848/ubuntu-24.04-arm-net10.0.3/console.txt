@@ -1,0 +1,721 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 560 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+Unable to find .sln or .csproj file. Will use current directory /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming to search for project file. If you don't use .sln file on purpose it should not be a problem.
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/" /p:OutDir="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0/" /p:OutputPath="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0/" /p:PublishDir="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/publish/" in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1
+// command took 1.73 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/" /p:OutDir="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0/" /p:OutputPath="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0/" /p:PublishDir="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/publish/" --output "/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0/" in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1
+// command took 25.68 sec and exited with 0
+// ***** Done, took 00:00:27 (27.63 sec)   *****
+// Found 336 benchmarks:
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=2]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=2]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=2]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=2]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=2]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=2]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=2]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=3]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=3]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=3]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=3]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=3]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=3]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=3]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=4]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=4]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=4]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=4]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=4]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=4]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=4]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=5]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=5]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=5]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=5]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=5]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=5]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=5]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=6]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=6]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=6]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=6]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=6]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=6]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=6]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=7]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=7]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=7]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=7]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=7]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=7]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=7]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=8]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=8]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=8]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=8]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=8]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=8]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=8]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=1]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=1]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=1]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=1]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=1]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=1]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=1]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=2]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=2]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=2]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=2]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=2]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=2]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=2]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=3]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=3]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=3]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=3]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=3]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=3]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=3]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=4]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=4]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=4]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=4]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=4]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=4]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=4]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=5]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=5]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=5]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=5]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=5]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=5]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=5]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=6]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=6]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=6]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=6]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=6]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=6]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=6]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=7]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=7]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=7]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=7]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=7]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=7]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=7]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=8]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=8]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=8]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=8]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=8]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=8]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F64, Channels=8]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=1]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=1]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=1]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=1]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=1]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=1]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=1]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=2]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=2]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=2]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=2]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=2]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=2]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=2]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=3]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=3]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=3]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=3]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=3]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=3]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=3]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=4]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=4]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=4]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=4]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=4]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=4]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=4]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=5]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=5]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=5]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=5]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=5]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=5]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=5]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=6]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=6]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=6]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=6]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=6]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=6]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=6]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=7]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=7]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=7]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=7]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=7]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=7]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=7]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=8]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=8]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=8]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=8]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=8]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=8]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S16, Channels=8]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=1]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=1]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=1]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=1]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=1]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=1]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=1]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=2]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=2]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=2]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=2]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=2]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=2]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=2]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=3]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=3]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=3]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=3]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=3]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=3]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=3]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=4]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=4]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=4]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=4]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=4]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=4]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=4]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=5]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=5]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=5]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=5]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=5]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=5]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=5]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=6]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=6]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=6]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=6]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=6]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=6]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=6]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=7]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=7]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=7]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=7]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=7]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=7]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=7]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=8]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=8]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=8]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=8]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=8]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=8]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S24, Channels=8]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=1]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=1]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=1]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=1]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=1]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=1]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=1]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=2]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=2]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=2]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=2]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=2]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=2]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=2]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=3]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=3]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=3]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=3]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=3]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=3]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=3]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=4]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=4]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=4]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=4]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=4]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=4]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=4]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=5]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=5]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=5]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=5]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=5]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=5]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=5]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=6]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=6]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=6]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=6]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=6]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=6]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=6]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=7]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=7]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=7]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=7]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=7]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=7]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=7]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=8]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=8]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=8]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=8]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=8]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=8]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=S32, Channels=8]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=1]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=1]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=1]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=1]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=1]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=1]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=1]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=2]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=2]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=2]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=2]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=2]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=2]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=2]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=3]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=3]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=3]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=3]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=3]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=3]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=3]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=4]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=4]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=4]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=4]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=4]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=4]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=4]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=5]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=5]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=5]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=5]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=5]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=5]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=5]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=6]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=6]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=6]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=6]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=6]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=6]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=6]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=7]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=7]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=7]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=7]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=7]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=7]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=7]
+//   Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=8]
+//   Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=8]
+//   Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=8]
+//   Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=8]
+//   Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=8]
+//   Decode.Library: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=8]
+//   Decode.Pointers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=U8, Channels=8]
+
+// **************************
+// Benchmark: Decode.Registers: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 118 120 --benchmarkName "Bench.Decode.Registers(Format: \"F32\", Channels: 1)" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 0 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 229289.00 ns, 229.2890 us/op
+WorkloadJitting  1: 1 op, 241336.00 ns, 241.3360 us/op
+
+OverheadJitting  2: 16 op, 210243.00 ns, 13.1402 us/op
+WorkloadJitting  2: 16 op, 372073.00 ns, 23.2546 us/op
+
+WorkloadPilot    1: 16 op, 128912.00 ns, 8.0570 us/op
+WorkloadPilot    2: 12416 op, 75291103.00 ns, 6.0640 us/op
+WorkloadPilot    3: 16496 op, 99702956.00 ns, 6.0441 us/op
+WorkloadPilot    4: 16560 op, 59845862.00 ns, 3.6139 us/op
+WorkloadPilot    5: 27680 op, 88445033.00 ns, 3.1953 us/op
+WorkloadPilot    6: 31296 op, 100026440.00 ns, 3.1961 us/op
+
+WorkloadWarmup   1: 31296 op, 100154248.00 ns, 3.2002 us/op
+WorkloadWarmup   2: 31296 op, 100050629.00 ns, 3.1969 us/op
+WorkloadWarmup   3: 31296 op, 100077772.00 ns, 3.1978 us/op
+WorkloadWarmup   4: 31296 op, 99920990.00 ns, 3.1928 us/op
+WorkloadWarmup   5: 31296 op, 99961884.00 ns, 3.1941 us/op
+WorkloadWarmup   6: 31296 op, 100011025.00 ns, 3.1956 us/op
+WorkloadWarmup   7: 31296 op, 100067949.00 ns, 3.1975 us/op
+WorkloadWarmup   8: 31296 op, 100029943.00 ns, 3.1963 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 31296 op, 100023496.00 ns, 3.1960 us/op
+WorkloadActual   2: 31296 op, 99983683.00 ns, 3.1948 us/op
+WorkloadActual   3: 31296 op, 99993129.00 ns, 3.1951 us/op
+WorkloadActual   4: 31296 op, 99976513.00 ns, 3.1945 us/op
+WorkloadActual   5: 31296 op, 100025786.00 ns, 3.1961 us/op
+WorkloadActual   6: 31296 op, 100032290.00 ns, 3.1963 us/op
+WorkloadActual   7: 31296 op, 100236013.00 ns, 3.2028 us/op
+WorkloadActual   8: 31296 op, 100028979.00 ns, 3.1962 us/op
+WorkloadActual   9: 31296 op, 99964551.00 ns, 3.1942 us/op
+WorkloadActual  10: 31296 op, 100048329.00 ns, 3.1968 us/op
+WorkloadActual  11: 31296 op, 100166986.00 ns, 3.2006 us/op
+WorkloadActual  12: 31296 op, 99990925.00 ns, 3.1950 us/op
+WorkloadActual  13: 31296 op, 100009531.00 ns, 3.1956 us/op
+WorkloadActual  14: 31296 op, 100022939.00 ns, 3.1960 us/op
+WorkloadActual  15: 31296 op, 100153258.00 ns, 3.2002 us/op
+
+// AfterActualRun
+WorkloadResult   1: 31296 op, 100023496.00 ns, 3.1960 us/op
+WorkloadResult   2: 31296 op, 99983683.00 ns, 3.1948 us/op
+WorkloadResult   3: 31296 op, 99993129.00 ns, 3.1951 us/op
+WorkloadResult   4: 31296 op, 99976513.00 ns, 3.1945 us/op
+WorkloadResult   5: 31296 op, 100025786.00 ns, 3.1961 us/op
+WorkloadResult   6: 31296 op, 100032290.00 ns, 3.1963 us/op
+WorkloadResult   7: 31296 op, 100028979.00 ns, 3.1962 us/op
+WorkloadResult   8: 31296 op, 99964551.00 ns, 3.1942 us/op
+WorkloadResult   9: 31296 op, 100048329.00 ns, 3.1968 us/op
+WorkloadResult  10: 31296 op, 99990925.00 ns, 3.1950 us/op
+WorkloadResult  11: 31296 op, 100009531.00 ns, 3.1956 us/op
+WorkloadResult  12: 31296 op, 100022939.00 ns, 3.1960 us/op
+
+// AfterAll
+// Benchmark Process 3590 has exited with code 0.
+
+Mean = 3.196 us, StdErr = 0.000 us (0.01%), N = 12, StdDev = 0.001 us
+Min = 3.194 us, Q1 = 3.195 us, Median = 3.196 us, Q3 = 3.196 us, Max = 3.197 us
+IQR = 0.001 us, LowerFence = 3.193 us, UpperFence = 3.198 us
+ConfidenceInterval = [3.195 us; 3.197 us] (CI 99.9%), Margin = 0.001 us (0.03% of Mean)
+Skewness = -0.2, Kurtosis = 1.55, MValue = 2
+
+// ** Remained 559 (99.8 %) benchmark(s) to run. Estimated finish 2026-10-19 1:55 (0h 27m from now) **
+// **************************
+// Benchmark: Decode.Structures: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 118 120 --benchmarkName "Bench.Decode.Structures(Format: \"F32\", Channels: 1)" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 1 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 201930.00 ns, 201.9300 us/op
+WorkloadJitting  1: 1 op, 190068.00 ns, 190.0680 us/op
+
+OverheadJitting  2: 16 op, 195108.00 ns, 12.1943 us/op
+WorkloadJitting  2: 16 op, 318276.00 ns, 19.8923 us/op
+
+WorkloadPilot    1: 16 op, 106305.00 ns, 6.6441 us/op
+WorkloadPilot    2: 15056 op, 95506651.00 ns, 6.3434 us/op
+WorkloadPilot    3: 15776 op, 101170943.00 ns, 6.4130 us/op
+WorkloadPilot    4: 15600 op, 49906356.00 ns, 3.1991 us/op
+WorkloadPilot    5: 31264 op, 99978342.00 ns, 3.1979 us/op
+WorkloadPilot    6: 31280 op, 100021371.00 ns, 3.1976 us/op
+
+WorkloadWarmup   1: 31280 op, 99963087.00 ns, 3.1958 us/op
+WorkloadWarmup   2: 31280 op, 99955136.00 ns, 3.1955 us/op
+WorkloadWarmup   3: 31280 op, 99987013.00 ns, 3.1965 us/op
+WorkloadWarmup   4: 31280 op, 100062129.00 ns, 3.1989 us/op
+WorkloadWarmup   5: 31280 op, 100130060.00 ns, 3.2011 us/op
+WorkloadWarmup   6: 31280 op, 99957255.00 ns, 3.1956 us/op
+WorkloadWarmup   7: 31280 op, 99940216.00 ns, 3.1950 us/op
+WorkloadWarmup   8: 31280 op, 99964079.00 ns, 3.1958 us/op
+WorkloadWarmup   9: 31280 op, 100017723.00 ns, 3.1975 us/op
+WorkloadWarmup  10: 31280 op, 100016843.00 ns, 3.1975 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 31280 op, 99982286.00 ns, 3.1964 us/op
+WorkloadActual   2: 31280 op, 99919402.00 ns, 3.1944 us/op
+WorkloadActual   3: 31280 op, 99976710.00 ns, 3.1962 us/op
+WorkloadActual   4: 31280 op, 100094126.00 ns, 3.1999 us/op
+WorkloadActual   5: 31280 op, 100082592.00 ns, 3.1996 us/op
+WorkloadActual   6: 31280 op, 100076384.00 ns, 3.1994 us/op
+WorkloadActual   7: 31280 op, 99981486.00 ns, 3.1963 us/op
+WorkloadActual   8: 31280 op, 99909835.00 ns, 3.1940 us/op
+WorkloadActual   9: 31280 op, 100041786.00 ns, 3.1983 us/op
+WorkloadActual  10: 31280 op, 100105494.00 ns, 3.2003 us/op
+WorkloadActual  11: 31280 op, 100350078.00 ns, 3.2081 us/op
+WorkloadActual  12: 31280 op, 100019147.00 ns, 3.1975 us/op
+WorkloadActual  13: 31280 op, 100018971.00 ns, 3.1975 us/op
+WorkloadActual  14: 31280 op, 100031091.00 ns, 3.1979 us/op
+WorkloadActual  15: 31280 op, 100065336.00 ns, 3.1990 us/op
+
+// AfterActualRun
+WorkloadResult   1: 31280 op, 99982286.00 ns, 3.1964 us/op
+WorkloadResult   2: 31280 op, 99919402.00 ns, 3.1944 us/op
+WorkloadResult   3: 31280 op, 99976710.00 ns, 3.1962 us/op
+WorkloadResult   4: 31280 op, 100094126.00 ns, 3.1999 us/op
+WorkloadResult   5: 31280 op, 100082592.00 ns, 3.1996 us/op
+WorkloadResult   6: 31280 op, 100076384.00 ns, 3.1994 us/op
+WorkloadResult   7: 31280 op, 99981486.00 ns, 3.1963 us/op
+WorkloadResult   8: 31280 op, 99909835.00 ns, 3.1940 us/op
+WorkloadResult   9: 31280 op, 100041786.00 ns, 3.1983 us/op
+WorkloadResult  10: 31280 op, 100105494.00 ns, 3.2003 us/op
+WorkloadResult  11: 31280 op, 100019147.00 ns, 3.1975 us/op
+WorkloadResult  12: 31280 op, 100018971.00 ns, 3.1975 us/op
+WorkloadResult  13: 31280 op, 100031091.00 ns, 3.1979 us/op
+WorkloadResult  14: 31280 op, 100065336.00 ns, 3.1990 us/op
+
+// AfterAll
+// Benchmark Process 3600 has exited with code 0.
+
+Mean = 3.198 us, StdErr = 0.001 us (0.02%), N = 14, StdDev = 0.002 us
+Min = 3.194 us, Q1 = 3.196 us, Median = 3.198 us, Q3 = 3.199 us, Max = 3.200 us
+IQR = 0.003 us, LowerFence = 3.192 us, UpperFence = 3.204 us
+ConfidenceInterval = [3.195 us; 3.200 us] (CI 99.9%), Margin = 0.002 us (0.07% of Mean)
+Skewness = -0.38, Kurtosis = 1.86, MValue = 2
+
+// ** Remained 558 (99.6 %) benchmark(s) to run. Estimated finish 2026-10-19 1:56 (0h 28m from now) **
+// **************************
+// Benchmark: Decode.Pairs: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 118 120 --benchmarkName "Bench.Decode.Pairs(Format: \"F32\", Channels: 1)" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 2 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 156446.00 ns, 156.4460 us/op
+WorkloadJitting  1: 1 op, 197819.00 ns, 197.8190 us/op
+
+OverheadJitting  2: 16 op, 183668.00 ns, 11.4793 us/op
+WorkloadJitting  2: 16 op, 302852.00 ns, 18.9283 us/op
+
+WorkloadPilot    1: 16 op, 105793.00 ns, 6.6121 us/op
+WorkloadPilot    2: 15136 op, 96295400.00 ns, 6.3620 us/op
+WorkloadPilot    3: 15728 op, 102055022.00 ns, 6.4887 us/op
+WorkloadPilot    4: 15424 op, 49315195.00 ns, 3.1973 us/op
+WorkloadPilot    5: 31280 op, 100019044.00 ns, 3.1975 us/op
+
+WorkloadWarmup   1: 31280 op, 100229541.00 ns, 3.2043 us/op
+WorkloadWarmup   2: 31280 op, 100007012.00 ns, 3.1972 us/op
+WorkloadWarmup   3: 31280 op, 100044825.00 ns, 3.1984 us/op
+WorkloadWarmup   4: 31280 op, 100022499.00 ns, 3.1977 us/op
+WorkloadWarmup   5: 31280 op, 100077816.00 ns, 3.1994 us/op
+WorkloadWarmup   6: 31280 op, 100046649.00 ns, 3.1984 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 31280 op, 100035699.00 ns, 3.1981 us/op
+WorkloadActual   2: 31280 op, 100014187.00 ns, 3.1974 us/op
+WorkloadActual   3: 31280 op, 99980934.00 ns, 3.1963 us/op
+WorkloadActual   4: 31280 op, 100036914.00 ns, 3.1981 us/op
+WorkloadActual   5: 31280 op, 100051545.00 ns, 3.1986 us/op
+WorkloadActual   6: 31280 op, 100018052.00 ns, 3.1975 us/op
+WorkloadActual   7: 31280 op, 100046881.00 ns, 3.1984 us/op
+WorkloadActual   8: 31280 op, 100009523.00 ns, 3.1972 us/op
+WorkloadActual   9: 31280 op, 100022475.00 ns, 3.1976 us/op
+WorkloadActual  10: 31280 op, 100042889.00 ns, 3.1983 us/op
+WorkloadActual  11: 31280 op, 100014955.00 ns, 3.1974 us/op
+WorkloadActual  12: 31280 op, 99994884.00 ns, 3.1968 us/op
+WorkloadActual  13: 31280 op, 99972454.00 ns, 3.1961 us/op
+WorkloadActual  14: 31280 op, 99994068.00 ns, 3.1967 us/op
+WorkloadActual  15: 31280 op, 99989476.00 ns, 3.1966 us/op
+
+// AfterActualRun
+WorkloadResult   1: 31280 op, 100035699.00 ns, 3.1981 us/op
+WorkloadResult   2: 31280 op, 100014187.00 ns, 3.1974 us/op
+WorkloadResult   3: 31280 op, 99980934.00 ns, 3.1963 us/op
+WorkloadResult   4: 31280 op, 100036914.00 ns, 3.1981 us/op
+WorkloadResult   5: 31280 op, 100051545.00 ns, 3.1986 us/op
+WorkloadResult   6: 31280 op, 100018052.00 ns, 3.1975 us/op
+WorkloadResult   7: 31280 op, 100046881.00 ns, 3.1984 us/op
+WorkloadResult   8: 31280 op, 100009523.00 ns, 3.1972 us/op
+WorkloadResult   9: 31280 op, 100022475.00 ns, 3.1976 us/op
+WorkloadResult  10: 31280 op, 100042889.00 ns, 3.1983 us/op
+WorkloadResult  11: 31280 op, 100014955.00 ns, 3.1974 us/op
+WorkloadResult  12: 31280 op, 99994884.00 ns, 3.1968 us/op
+WorkloadResult  13: 31280 op, 99972454.00 ns, 3.1961 us/op
+WorkloadResult  14: 31280 op, 99994068.00 ns, 3.1967 us/op
+WorkloadResult  15: 31280 op, 99989476.00 ns, 3.1966 us/op
+
+// AfterAll
+// Benchmark Process 3608 has exited with code 0.
+
+Mean = 3.197 us, StdErr = 0.000 us (0.01%), N = 15, StdDev = 0.001 us
+Min = 3.196 us, Q1 = 3.197 us, Median = 3.197 us, Q3 = 3.198 us, Max = 3.199 us
+IQR = 0.001 us, LowerFence = 3.195 us, UpperFence = 3.200 us
+ConfidenceInterval = [3.197 us; 3.198 us] (CI 99.9%), Margin = 0.001 us (0.03% of Mean)
+Skewness = -0.12, Kurtosis = 1.63, MValue = 2
+
+// ** Remained 557 (99.5 %) benchmark(s) to run. Estimated finish 2026-10-19 1:55 (0h 26m from now) **
+// **************************
+// Benchmark: Decode.Subsets: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 118 120 --benchmarkName "Bench.Decode.Subsets(Format: \"F32\", Channels: 1)" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 3 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 223217.00 ns, 223.2170 us/op
+WorkloadJitting  1: 1 op, 296334.00 ns, 296.3340 us/op
+
+OverheadJitting  2: 16 op, 243657.00 ns, 15.2286 us/op
+WorkloadJitting  2: 16 op, 402950.00 ns, 25.1844 us/op
+
+WorkloadPilot    1: 16 op, 105881.00 ns, 6.6176 us/op
+WorkloadPilot    2: 15120 op, 95532568.00 ns, 6.3183 us/op
+WorkloadPilot    3: 15840 op, 100867277.00 ns, 6.3679 us/op
+WorkloadPilot    4: 15712 op, 50223492.00 ns, 3.1965 us/op
+WorkloadPilot    5: 31296 op, 100029874.00 ns, 3.1963 us/op
+
+WorkloadWarmup   1: 31296 op, 100003900.00 ns, 3.1954 us/op
+WorkloadWarmup   2: 31296 op, 99921433.00 ns, 3.1928 us/op
+WorkloadWarmup   3: 31296 op, 99899898.00 ns, 3.1921 us/op
+WorkloadWarmup   4: 31296 op, 100078967.00 ns, 3.1978 us/op
+WorkloadWarmup   5: 31296 op, 100174121.00 ns, 3.2009 us/op
+WorkloadWarmup   6: 31296 op, 99953510.00 ns, 3.1938 us/op
+WorkloadWarmup   7: 31296 op, 99952693.00 ns, 3.1938 us/op
+WorkloadWarmup   8: 31296 op, 99922126.00 ns, 3.1928 us/op
+WorkloadWarmup   9: 31296 op, 99965068.00 ns, 3.1942 us/op
+WorkloadWarmup  10: 31296 op, 99915527.00 ns, 3.1926 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 31296 op, 100025760.00 ns, 3.1961 us/op
+WorkloadActual   2: 31296 op, 99960780.00 ns, 3.1940 us/op
+WorkloadActual   3: 31296 op, 99945358.00 ns, 3.1936 us/op
+WorkloadActual   4: 31296 op, 99930927.00 ns, 3.1931 us/op
+WorkloadActual   5: 31296 op, 99968763.00 ns, 3.1943 us/op
+WorkloadActual   6: 31296 op, 99956349.00 ns, 3.1939 us/op
+WorkloadActual   7: 31296 op, 100044887.00 ns, 3.1967 us/op
+WorkloadActual   8: 31296 op, 99955708.00 ns, 3.1939 us/op
+WorkloadActual   9: 31296 op, 100023592.00 ns, 3.1961 us/op
+WorkloadActual  10: 31296 op, 99924655.00 ns, 3.1929 us/op
+WorkloadActual  11: 31296 op, 99989178.00 ns, 3.1950 us/op
+WorkloadActual  12: 31296 op, 99982699.00 ns, 3.1947 us/op
+WorkloadActual  13: 31296 op, 99964820.00 ns, 3.1942 us/op
+WorkloadActual  14: 31296 op, 99937166.00 ns, 3.1933 us/op
+WorkloadActual  15: 31296 op, 99939181.00 ns, 3.1934 us/op
+
+// AfterActualRun
+WorkloadResult   1: 31296 op, 100025760.00 ns, 3.1961 us/op
+WorkloadResult   2: 31296 op, 99960780.00 ns, 3.1940 us/op
+WorkloadResult   3: 31296 op, 99945358.00 ns, 3.1936 us/op
+WorkloadResult   4: 31296 op, 99930927.00 ns, 3.1931 us/op
+WorkloadResult   5: 31296 op, 99968763.00 ns, 3.1943 us/op
+WorkloadResult   6: 31296 op, 99956349.00 ns, 3.1939 us/op
+WorkloadResult   7: 31296 op, 100044887.00 ns, 3.1967 us/op
+WorkloadResult   8: 31296 op, 99955708.00 ns, 3.1939 us/op
+WorkloadResult   9: 31296 op, 100023592.00 ns, 3.1961 us/op
+WorkloadResult  10: 31296 op, 99924655.00 ns, 3.1929 us/op
+WorkloadResult  11: 31296 op, 99989178.00 ns, 3.1950 us/op
+WorkloadResult  12: 31296 op, 99982699.00 ns, 3.1947 us/op
+WorkloadResult  13: 31296 op, 99964820.00 ns, 3.1942 us/op
+WorkloadResult  14: 31296 op, 99937166.00 ns, 3.1933 us/op
+WorkloadResult  15: 31296 op, 99939181.00 ns, 3.1934 us/op
+
+// AfterAll
+// Benchmark Process 3617 has exited with code 0.
+
+Mean = 3.194 us, StdErr = 0.000 us (0.01%), N = 15, StdDev = 0.001 us
+Min = 3.193 us, Q1 = 3.193 us, Median = 3.194 us, Q3 = 3.195 us, Max = 3.197 us
+IQR = 0.001 us, LowerFence = 3.191 us, UpperFence = 3.197 us
+ConfidenceInterval = [3.193 us; 3.196 us] (CI 99.9%), Margin = 0.001 us (0.04% of Mean)
+Skewness = 0.7, Kurtosis = 2.16, MValue = 2
+
+// ** Remained 556 (99.3 %) benchmark(s) to run. Estimated finish 2026-10-19 1:55 (0h 27m from now) **
+// **************************
+// Benchmark: Decode.Scalar: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Format=F32, Channels=1]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 118 120 --benchmarkName "Bench.Decode.Scalar(Format: \"F32\", Channels: 1)" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 4 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-MGUGJU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 196475.00 ns, 196.4750 us/op
+WorkloadJitting  1: 1 op, 727857.00 ns, 727.8570 us/op
+
+OverheadJitting  2: 16 op, 215515.00 ns, 13.4697 us/op
+WorkloadJitting  2: 16 op, 523110.00 ns, 32.6944 us/op
+
+WorkloadPilot    1: 16 op, 312516.00 ns, 19.5323 us/op
+WorkloadPilot    2: 5120 op, 98442212.00 ns, 19.2270 us/op
+WorkloadPilot    3: 5216 op, 100481043.00 ns, 19.2640 us/op
+WorkloadPilot    4: 5200 op, 97370433.00 ns, 18.7251 us/op
+WorkloadPilot    5: 5344 op, 99707581.00 ns, 18.6579 us/op
+WorkloadPilot    6: 5360 op, 101630827.00 ns, 18.9610 us/op
+WorkloadPilot    7: 5280 op, 99768600.00 ns, 18.8956 us/op
+WorkloadPilot    8: 5296 op, 98364745.00 ns, 18.5734 us/op
+WorkloadPilot    9: 5392 op, 100585596.00 ns, 18.6546 us/op
+
+WorkloadWarmup   1: 5392 op, 101001266.00 ns, 18.7317 us/op
+WorkloadWarmup   2: 5392 op, 100478051.00 ns, 18.6347 us/op
+WorkloadWarmup   3: 5392 op, 100670583.00 ns, 18.6704 us/op
+WorkloadWarmup   4: 5392 op, 101704477.00 ns, 18.8621 us/op
+WorkloadWarmup   5: 5392 op, 100720260.00 ns, 18.6796 us/op
+WorkloadWarmup   6: 5392 op, 101734812.00 ns, 18.8677 us/op
+WorkloadWarmup   7: 5392 op, 101417864.00 ns, 18.8090 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 5392 op, 100798838.00 ns, 18.6941 us/op
+WorkloadActual   2: 5392 op, 100594292.00 ns, 18.6562 us/op
+WorkloadActual   3: 5392 op, 101014698.00 ns, 18.7342 us/op
+WorkloadActual   4: 5392 op, 100644457.00 ns, 18.6655 us/op
+WorkloadActual   5: 5392 op, 100992931.00 ns, 18.7301 us/op
+WorkloadActual   6: 5392 op, 100498643.00 ns, 18.6385 us/op
+WorkloadActual   7: 5392 op, 100208948.00 ns, 18.5847 us/op
+WorkloadActual   8: 5392 op, 101161488.00 ns, 18.7614 us/op
+WorkloadActual   9: 5392 op, 100111195.00 ns, 18.5666 us/op
+WorkloadActual  10: 5392 op, 101022745.00 ns, 18.7357 us/op
+WorkloadActual  11: 5392 op, 100837645.00 ns, 18.7013 us/op
+WorkloadActual  12: 5392 op, 100557199.00 ns, 18.6493 us/op
+WorkloadActual  13: 5392 op, 100086493.00 ns, 18.5620 us/op

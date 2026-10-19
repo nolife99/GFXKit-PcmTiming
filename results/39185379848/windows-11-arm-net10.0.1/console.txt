@@ -1,0 +1,4 @@
+Attempting to cancel the build...
+C:\Program Files\dotnet\sdk\10.0.402\NuGet.targets(198,5): error : Restore canceled! [C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\Bench.csproj]
+
+The build failed. Fix the build errors and run again.
