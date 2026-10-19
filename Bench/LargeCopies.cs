@@ -34,6 +34,9 @@ public unsafe class LargeCopies
         yield return "MemoryCopy";
         yield return "Streaming";
         if (AdvSimd.Arm64.IsSupported) yield return "Pairs";
+        if (!Vector512.IsHardwareAccelerated) yield break;
+        yield return "Wide";
+        yield return "WideStreaming";
     }
 
     [GlobalSetup]
@@ -50,6 +53,8 @@ public unsafe class LargeCopies
             "BufferMemoryCopy" => &ViaBufferMemoryCopy,
             "MemoryCopy" => &ViaMemoryCopy,
             "Streaming" => &Streaming,
+            "Wide" => &Wide,
+            "WideStreaming" => &WideStreaming,
             _ => &Pairs
         };
         copy(source, target, size);
@@ -109,6 +114,39 @@ public unsafe class LargeCopies
             Vector128.StoreAlignedNonTemporal(d, to + i + 48);
         }
         if (Sse.IsSupported) Sse.StoreFence();
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    static void Wide(byte* from, byte* to, nuint length)
+    {
+        for (nuint i = 0; i < length; i += 256)
+        {
+            var a = Vector512.Load(from + i);
+            var b = Vector512.Load(from + i + 64);
+            var c = Vector512.Load(from + i + 128);
+            var d = Vector512.Load(from + i + 192);
+            Vector512.Store(a, to + i);
+            Vector512.Store(b, to + i + 64);
+            Vector512.Store(c, to + i + 128);
+            Vector512.Store(d, to + i + 192);
+        }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    static void WideStreaming(byte* from, byte* to, nuint length)
+    {
+        for (nuint i = 0; i < length; i += 256)
+        {
+            var a = Vector512.Load(from + i);
+            var b = Vector512.Load(from + i + 64);
+            var c = Vector512.Load(from + i + 128);
+            var d = Vector512.Load(from + i + 192);
+            Vector512.StoreAlignedNonTemporal(a, to + i);
+            Vector512.StoreAlignedNonTemporal(b, to + i + 64);
+            Vector512.StoreAlignedNonTemporal(c, to + i + 128);
+            Vector512.StoreAlignedNonTemporal(d, to + i + 192);
+        }
+        Sse.StoreFence();
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]

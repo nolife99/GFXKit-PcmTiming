@@ -15,7 +15,8 @@ public enum CopyHint
 {
     /// <summary>Non-temporal from the size past which the destination can't stay in the cache the processor reads fastest from: the L2 on
     /// Intel and other vendors, half the L3 a core's complex shares on AMD and Hygon, as their L3s keep lines nearly as fast and the source takes
-    /// the other half.</summary>
+    /// the other half. A destination read right after the copy comes back faster from the L3 up to its size, so a copy read at once is
+    /// faster with <see cref="Cached"/>.</summary>
     Auto,
 
     /// <summary>Through the cache at every size.</summary>

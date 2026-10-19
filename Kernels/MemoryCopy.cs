@@ -60,17 +60,17 @@ public static unsafe partial class MemoryCopy
             if (length <= 64) Pair<Vector256<byte>>(ref to, ref from, length);
             else if (length <= 96) Three<Vector256<byte>>(ref to, ref from, length);
             else if (length <= 128) Four<Vector256<byte>>(ref to, ref from, length);
-            else if (Overlap(ref to, ref from, length)) Memmove(ref to, ref from, length);
-            else if (Streams(length, hint)) Stream(ref to, ref from, length);
-            else Loop<Vector256<byte>>(ref to, ref from, length);
+            else if (Behind(ref to, ref from, length)) Backward<Vector256<byte>>(ref to, ref from, length);
+            else if (Streams(length, hint) && !Behind(ref from, ref to, length)) Stream(ref to, ref from, length);
+            else Forward<Vector256<byte>>(ref to, ref from, length);
         }
         else if (length <= 48) Three<Vector128<byte>>(ref to, ref from, length);
         else if (length <= 64) Four<Vector128<byte>>(ref to, ref from, length);
         else if (length <= 96) Six<Vector128<byte>>(ref to, ref from, length);
         else if (length <= 128) Eight<Vector128<byte>>(ref to, ref from, length);
-        else if (Overlap(ref to, ref from, length)) Memmove(ref to, ref from, length);
-        else if (Streams(length, hint)) Stream(ref to, ref from, length);
-        else Loop<Vector128<byte>>(ref to, ref from, length);
+        else if (Behind(ref to, ref from, length)) Backward<Vector128<byte>>(ref to, ref from, length);
+        else if (Streams(length, hint) && !Behind(ref from, ref to, length)) Stream(ref to, ref from, length);
+        else Forward<Vector128<byte>>(ref to, ref from, length);
     }
 
     [MethodImpl(Inline)]
@@ -164,21 +164,18 @@ public static unsafe partial class MemoryCopy
     }
 
     [MethodImpl(Inline)]
-    static bool Overlap(ref byte to, ref byte from, nuint length) =>
-        (nuint)(nint)Unsafe.ByteOffset(ref from, ref to) < length || (nuint)(nint)Unsafe.ByteOffset(ref to, ref from) < length;
-
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    static void Memmove(ref byte to, ref byte from, nuint length)
-    {
-        fixed (byte* target = &to, source = &from) Buffer.MemoryCopy(source, target, length, length);
-    }
+    static bool Behind(ref byte to, ref byte from, nuint length) => (nuint)(nint)Unsafe.ByteOffset(ref from, ref to) < length;
 
     [MethodImpl(Inline)]
-    static void Loop<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
+    static void Forward<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
         ref var last = ref Unsafe.Add(ref from, length - 4 * (nuint)sizeof(T));
         ref var end = ref Unsafe.Add(ref to, length - 4 * (nuint)sizeof(T));
-        Unsafe.WriteUnaligned(ref to, Unsafe.ReadUnaligned<T>(ref from));
+        var head = Unsafe.ReadUnaligned<T>(ref from);
+        var e = Unsafe.ReadUnaligned<T>(ref last);
+        var f = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, sizeof(T)));
+        var g = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, 2 * sizeof(T)));
+        var h = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, 3 * sizeof(T)));
         var skip = (nuint)sizeof(T) - ((nuint)Unsafe.AsPointer(ref to) & (nuint)(sizeof(T) - 1));
         ref var source = ref Unsafe.Add(ref from, skip);
         ref var target = ref Unsafe.Add(ref to, skip);
@@ -193,13 +190,42 @@ public static unsafe partial class MemoryCopy
             Unsafe.WriteUnaligned(ref Unsafe.Add(ref target, 2 * sizeof(T)), c);
             Unsafe.WriteUnaligned(ref Unsafe.Add(ref target, 3 * sizeof(T)), d);
         }
-        var e = Unsafe.ReadUnaligned<T>(ref last);
-        var f = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, sizeof(T)));
-        var g = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, 2 * sizeof(T)));
-        var h = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, 3 * sizeof(T)));
+        Unsafe.WriteUnaligned(ref to, head);
         Unsafe.WriteUnaligned(ref end, e);
         Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, sizeof(T)), f);
         Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, 2 * sizeof(T)), g);
         Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, 3 * sizeof(T)), h);
+    }
+
+    [MethodImpl(Inline)]
+    static void Backward<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
+    {
+        var a = Unsafe.ReadUnaligned<T>(ref from);
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, sizeof(T)));
+        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 2 * sizeof(T)));
+        var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 3 * sizeof(T)));
+        var tail = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - (nuint)sizeof(T)));
+        var cut = length - ((nuint)Unsafe.AsPointer(ref Unsafe.Add(ref to, length)) & (nuint)(sizeof(T) - 1));
+        ref var source = ref Unsafe.Add(ref from, cut);
+        ref var target = ref Unsafe.Add(ref to, cut);
+        ref var begin = ref Unsafe.Add(ref to, 4 * sizeof(T));
+        while (!Unsafe.IsAddressLessThan(ref target, ref begin))
+        {
+            source = ref Unsafe.Subtract(ref source, 4 * sizeof(T));
+            target = ref Unsafe.Subtract(ref target, 4 * sizeof(T));
+            var e = Unsafe.ReadUnaligned<T>(ref source);
+            var f = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref source, sizeof(T)));
+            var g = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref source, 2 * sizeof(T)));
+            var h = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref source, 3 * sizeof(T)));
+            Unsafe.WriteUnaligned(ref target, e);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref target, sizeof(T)), f);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref target, 2 * sizeof(T)), g);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref target, 3 * sizeof(T)), h);
+        }
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - (nuint)sizeof(T)), tail);
+        Unsafe.WriteUnaligned(ref to, a);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, sizeof(T)), b);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 2 * sizeof(T)), c);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 3 * sizeof(T)), d);
     }
 }
