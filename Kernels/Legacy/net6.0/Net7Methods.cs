@@ -89,6 +89,8 @@ static unsafe class Net7Methods
     {
         public static Vector128<T> LoadUnsafe<T>(ref T source, nuint elementOffset) where T : struct =>
             Unsafe.ReadUnaligned<Vector128<T>>(ref Unsafe.As<T, byte>(ref Unsafe.Add(ref source, (nint)elementOffset)));
+
+        public static void StoreAlignedNonTemporal<T>(Vector128<T> source, T* destination) where T : unmanaged => Sse2.StoreAlignedNonTemporal((byte*)destination, source.AsByte());
     }
 
     public static Vector128<byte> Equals(Vector128<byte> left, Vector128<byte> right)
@@ -136,6 +138,8 @@ static unsafe class Net7Methods
         public static Vector256<T> Load<T>(T* source) where T : unmanaged => Unsafe.ReadUnaligned<Vector256<T>>(source);
 
         public static void Store<T>(Vector256<T> source, T* destination) where T : unmanaged => Unsafe.WriteUnaligned(destination, source);
+
+        public static void StoreAlignedNonTemporal<T>(Vector256<T> source, T* destination) where T : unmanaged => Avx.StoreAlignedNonTemporal((byte*)destination, source.AsByte());
     }
 
     extension(Vector128)

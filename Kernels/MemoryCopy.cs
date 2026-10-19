@@ -8,33 +8,36 @@ namespace GFXKit;
 /// over 2 KiB on x64 to the C runtime's <c>memmove</c>, whose <c>rep movsb</c> is slow on AMD's Zen 3 and Zen 4, most of all where the
 /// destination lies just past the source modulo 4096; these copies never call out.</summary>
 /// <remarks>Each copy is correct when the source and destination overlap, as <see cref="Buffer.MemoryCopy(void*, void*, long, long)"/>
-/// is. A copy of elements holding references goes through <see cref="Span{T}.CopyTo"/>, which tells the garbage collector about each.</remarks>
-public static unsafe class MemoryCopy
+/// is. A copy of elements holding references goes through <see cref="Span{T}.CopyTo"/>, which tells the garbage collector about each. On x86,
+/// a copy can write with non-temporal stores, which go to memory without first reading each line into the cache (<see cref="CopyHint"/>).</remarks>
+public static unsafe partial class MemoryCopy
 {
     const MethodImplOptions Inline = MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization;
 
     /// <summary>Copies a span's elements to the start of another span.</summary>
     /// <param name="source">The elements to copy.</param>
     /// <param name="destination">The span to copy them to, at least as long as <paramref name="source"/>.</param>
+    /// <param name="hint">Whether the copy may write past the cache.</param>
     /// <typeparam name="T">The type of the elements.</typeparam>
     /// <exception cref="ArgumentException"><paramref name="destination"/> is shorter than <paramref name="source"/>.</exception>
-    public static void Copy<T>(scoped ReadOnlySpan<T> source, scoped Span<T> destination)
+    public static void Copy<T>(scoped ReadOnlySpan<T> source, scoped Span<T> destination, CopyHint hint = CopyHint.Auto)
     {
-        if (!TryCopy(source, destination)) throw new ArgumentException("The destination is shorter than the source.", nameof(destination));
+        if (!TryCopy(source, destination, hint)) throw new ArgumentException("The destination is shorter than the source.", nameof(destination));
     }
 
     /// <summary>Copies a span's elements to the start of another span if they fit.</summary>
     /// <param name="source">The elements to copy.</param>
     /// <param name="destination">The span to copy them to.</param>
+    /// <param name="hint">Whether the copy may write past the cache.</param>
     /// <typeparam name="T">The type of the elements.</typeparam>
     /// <returns><see langword="true"/> if the elements were copied; <see langword="false"/>, copying nothing, if <paramref name="destination"/>
     /// is shorter than <paramref name="source"/>.</returns>
-    public static bool TryCopy<T>(scoped ReadOnlySpan<T> source, scoped Span<T> destination)
+    public static bool TryCopy<T>(scoped ReadOnlySpan<T> source, scoped Span<T> destination, CopyHint hint = CopyHint.Auto)
     {
         if ((uint)source.Length > (uint)destination.Length) return false;
         if (RuntimeHelpers.IsReferenceOrContainsReferences<T>()) source.CopyTo(destination);
         else Move(ref Unsafe.As<T, byte>(ref MemoryMarshal.GetReference(destination)), ref Unsafe.As<T, byte>(ref MemoryMarshal.GetReference(source)),
-            (nuint)source.Length * (nuint)Unsafe.SizeOf<T>());
+            (nuint)source.Length * (nuint)Unsafe.SizeOf<T>(), hint);
         return true;
     }
 
@@ -42,12 +45,13 @@ public static unsafe class MemoryCopy
     /// <param name="source">The address of the bytes to copy.</param>
     /// <param name="destination">The address to copy them to.</param>
     /// <param name="byteCount">The number of bytes to copy.</param>
+    /// <param name="hint">Whether the copy may write past the cache.</param>
     /// <remarks>Both ranges must be memory the caller may read and write for as long as the copy runs, which pinned or native memory is.</remarks>
-    public static void CopyUnsafe(nint source, nint destination, nuint byteCount) =>
-        Move(ref Unsafe.AsRef<byte>((void*)destination), ref Unsafe.AsRef<byte>((void*)source), byteCount);
+    public static void CopyUnsafe(nint source, nint destination, nuint byteCount, CopyHint hint = CopyHint.Auto) =>
+        Move(ref Unsafe.AsRef<byte>((void*)destination), ref Unsafe.AsRef<byte>((void*)source), byteCount, hint);
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
-    internal static void Move(ref byte to, ref byte from, nuint length)
+    internal static void Move(ref byte to, ref byte from, nuint length, CopyHint hint)
     {
         if (length <= 16) Short(ref to, ref from, length);
         else if (length <= 32) Pair<Vector128<byte>>(ref to, ref from, length);
@@ -57,6 +61,7 @@ public static unsafe class MemoryCopy
             else if (length <= 96) Three<Vector256<byte>>(ref to, ref from, length);
             else if (length <= 128) Four<Vector256<byte>>(ref to, ref from, length);
             else if (Overlap(ref to, ref from, length)) Memmove(ref to, ref from, length);
+            else if (Streams(length, hint)) Stream(ref to, ref from, length);
             else Loop<Vector256<byte>>(ref to, ref from, length);
         }
         else if (length <= 48) Three<Vector128<byte>>(ref to, ref from, length);
@@ -64,6 +69,7 @@ public static unsafe class MemoryCopy
         else if (length <= 96) Six<Vector128<byte>>(ref to, ref from, length);
         else if (length <= 128) Eight<Vector128<byte>>(ref to, ref from, length);
         else if (Overlap(ref to, ref from, length)) Memmove(ref to, ref from, length);
+        else if (Streams(length, hint)) Stream(ref to, ref from, length);
         else Loop<Vector128<byte>>(ref to, ref from, length);
     }
 
