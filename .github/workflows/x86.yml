@@ -3,6 +3,9 @@ name: X86
 on:
   workflow_dispatch:
     inputs:
+      filter:
+        description: BenchmarkDotNet filter
+        default: "Bench.X86*"
       runs:
         description: Runs on each runner, as a JSON list of run numbers
         default: "[1, 2, 3, 4, 5, 6]"
@@ -29,7 +32,7 @@ jobs:
           mkdir -p out
           if [ "$RUNNER_OS" = Windows ]; then powershell -c "(Get-CimInstance Win32_Processor).Name" > out/cpu.txt; else grep -m1 "model name" /proc/cpuinfo | cut -d: -f2 > out/cpu.txt; fi
           cat out/cpu.txt
-          dotnet run -c Release -f net10.0 --project Bench -- --filter 'Bench.X86*' --affinity 4 --artifacts out > out/console.txt 2>&1
+          dotnet run -c Release -f net10.0 --project Bench -- --filter '${{ inputs.filter }}' --affinity 4 --artifacts out > out/console.txt 2>&1
       - uses: actions/upload-artifact@v4
         if: always()
         with:

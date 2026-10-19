@@ -57,6 +57,18 @@ static unsafe class Net7Methods
         public static int LeadingZeroCount(int value) => BitOperations.LeadingZeroCount((uint)value);
     }
 
+    extension(Enum)
+    {
+        public static Array GetValuesAsUnderlyingType(Type enumType)
+        {
+            var values = Enum.GetValues(enumType);
+            var underlying = Enum.GetUnderlyingType(enumType);
+            var result = Array.CreateInstance(underlying, values.Length);
+            for (var i = 0; i < values.Length; i++) result.SetValue(Convert.ChangeType(values.GetValue(i), underlying, System.Globalization.CultureInfo.InvariantCulture), i);
+            return result;
+        }
+    }
+
     extension(Vector)
     {
         public static Vector<int> ShiftLeft(Vector<int> value, int shiftCount) => value * new Vector<int>(1 << shiftCount);
