@@ -56,13 +56,13 @@ public static unsafe class MemoryCopy
             if (length <= 64) Pair<Vector256<byte>>(ref to, ref from, length);
             else if (length <= 96) Three<Vector256<byte>>(ref to, ref from, length);
             else if (length <= 128) Four<Vector256<byte>>(ref to, ref from, length);
-            else if (Overlap(ref to, ref from, length)) Overlapping(ref to, ref from, length);
+            else if (Overlap(ref to, ref from, length)) Memmove(ref to, ref from, length);
             else Loop<Vector256<byte>>(ref to, ref from, length);
         }
         else if (length <= 48) Three<Vector128<byte>>(ref to, ref from, length);
         else if (length <= 64) Four<Vector128<byte>>(ref to, ref from, length);
         else if (length <= 128) Eight<Vector128<byte>>(ref to, ref from, length);
-        else if (Overlap(ref to, ref from, length)) Overlapping(ref to, ref from, length);
+        else if (length < 256 || Overlap(ref to, ref from, length)) Memmove(ref to, ref from, length);
         else Loop<Vector128<byte>>(ref to, ref from, length);
     }
 
@@ -137,7 +137,8 @@ public static unsafe class MemoryCopy
     static bool Overlap(ref byte to, ref byte from, nuint length) =>
         (nuint)(nint)Unsafe.ByteOffset(ref from, ref to) < length || (nuint)(nint)Unsafe.ByteOffset(ref to, ref from) < length;
 
-    static void Overlapping(ref byte to, ref byte from, nuint length)
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    static void Memmove(ref byte to, ref byte from, nuint length)
     {
         fixed (byte* target = &to, source = &from) Buffer.MemoryCopy(source, target, length, length);
     }
