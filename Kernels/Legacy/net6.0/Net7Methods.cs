@@ -131,6 +131,8 @@ static unsafe class Net7Methods
 
     extension(Vector256)
     {
+        public static bool IsHardwareAccelerated => Avx2.IsSupported;
+
         public static Vector256<T> Load<T>(T* source) where T : unmanaged => Unsafe.ReadUnaligned<Vector256<T>>(source);
 
         public static void Store<T>(Vector256<T> source, T* destination) where T : unmanaged => Unsafe.WriteUnaligned(destination, source);
@@ -152,13 +154,5 @@ static unsafe class Net7Methods
 
         public static Vector256<float> Narrow(Vector256<double> lower, Vector256<double> upper) =>
             Vector256.Create(Avx.ConvertToVector128Single(lower), Avx.ConvertToVector128Single(upper));
-    }
-}
-
-static class Net7Vector256
-{
-    extension(Vector256)
-    {
-        public static bool IsHardwareAccelerated => Avx2.IsSupported;
     }
 }
