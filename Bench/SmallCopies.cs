@@ -21,7 +21,7 @@ public unsafe class SmallCopies
     int cursor;
     delegate*<byte*, byte*, nuint, void> copy;
 
-    [Params("1", "2", "3", "4", "7", "8", "12", "16", "17", "24", "32", "33", "48", "49", "64", "65", "80", "96", "97", "128", "129", "160", "192", "255", "256", "257", "320", "384", "512", "768", "1024", "2048", "2049", "4096", "1-16", "1-64", "1-256", "65-512", "1-2048")]
+    [Params("1", "2", "3", "4", "7", "8", "12", "16", "17", "24", "32", "33", "48", "49", "64", "65", "80", "96", "97", "128", "129", "160", "192", "255", "256", "257", "320", "384", "512", "768", "1024", "2048", "2049", "4096", "1-16", "1-32", "1-64", "1-128", "17-128", "1-256", "65-512", "1-2048")]
     public string Size { get; set; } = "1";
 
     [ParamsSource(nameof(Methods))]
@@ -31,6 +31,9 @@ public unsafe class SmallCopies
     {
         yield return "MemoryCopy";
         yield return "Vectors";
+        if (!System.Runtime.Intrinsics.Vector256.IsHardwareAccelerated) yield break;
+        yield return "Chain";
+        yield return "Table";
     }
 
     [GlobalSetup]
@@ -55,6 +58,8 @@ public unsafe class SmallCopies
         copy = Method switch
         {
             "MemoryCopy" => &ViaMemoryCopy,
+            "Chain" => &Dispatch.Chain,
+            "Table" => &Dispatch.Table,
             _ => &ViaVectors
         };
         var expected = new byte[Spread + Largest];
