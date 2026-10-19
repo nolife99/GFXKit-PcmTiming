@@ -1,7 +1,6 @@
 #if NET9_0_OR_GREATER
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Runtime.Intrinsics;
 using BenchmarkDotNet.Attributes;
 using GFXKit;
 
@@ -32,7 +31,6 @@ public unsafe class SmallCopies
     {
         yield return "MemoryCopy";
         yield return "Vectors";
-        if (!Vector256.IsHardwareAccelerated) yield return "Loop";
     }
 
     [GlobalSetup]
@@ -57,8 +55,7 @@ public unsafe class SmallCopies
         copy = Method switch
         {
             "MemoryCopy" => &ViaMemoryCopy,
-            "Vectors" => &ViaVectors,
-            _ => &ViaLoop
+            _ => &ViaVectors
         };
         var expected = new byte[Spread + Largest];
         for (var i = 0; i < 4096; i++)
@@ -91,13 +88,6 @@ public unsafe class SmallCopies
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     static void ViaCopyTo(byte* from, byte* to, nuint length) => new ReadOnlySpan<byte>(from, (int)length).CopyTo(new Span<byte>(to, (int)length));
-
-    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
-    static void ViaLoop(byte* from, byte* to, nuint length)
-    {
-        if (length is > 128 and < 256) MemoryCopy.Loop<Vector128<byte>>(ref *to, ref *from, length);
-        else MemoryCopy.CopyUnsafe((nint)from, (nint)to, length);
-    }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     static void ViaVectors(byte* from, byte* to, nuint length) => MemoryCopy.CopyUnsafe((nint)from, (nint)to, length);

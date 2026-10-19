@@ -61,8 +61,9 @@ public static unsafe class MemoryCopy
         }
         else if (length <= 48) Three<Vector128<byte>>(ref to, ref from, length);
         else if (length <= 64) Four<Vector128<byte>>(ref to, ref from, length);
+        else if (length <= 96) Six<Vector128<byte>>(ref to, ref from, length);
         else if (length <= 128) Eight<Vector128<byte>>(ref to, ref from, length);
-        else if (length < 256 || Overlap(ref to, ref from, length)) Memmove(ref to, ref from, length);
+        else if (Overlap(ref to, ref from, length)) Memmove(ref to, ref from, length);
         else Loop<Vector128<byte>>(ref to, ref from, length);
     }
 
@@ -115,6 +116,25 @@ public static unsafe class MemoryCopy
     }
 
     [MethodImpl(Inline)]
+    static void Six<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
+    {
+        ref var last = ref Unsafe.Add(ref from, length - 2 * (nuint)sizeof(T));
+        ref var end = ref Unsafe.Add(ref to, length - 2 * (nuint)sizeof(T));
+        var a = Unsafe.ReadUnaligned<T>(ref from);
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, sizeof(T)));
+        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 2 * sizeof(T)));
+        var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 3 * sizeof(T)));
+        var e = Unsafe.ReadUnaligned<T>(ref last);
+        var f = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, sizeof(T)));
+        Unsafe.WriteUnaligned(ref to, a);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, sizeof(T)), b);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 2 * sizeof(T)), c);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 3 * sizeof(T)), d);
+        Unsafe.WriteUnaligned(ref end, e);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, sizeof(T)), f);
+    }
+
+    [MethodImpl(Inline)]
     static void Eight<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
         ref var last = ref Unsafe.Add(ref from, length - 4 * (nuint)sizeof(T));
@@ -148,7 +168,7 @@ public static unsafe class MemoryCopy
     }
 
     [MethodImpl(Inline)]
-    internal static void Loop<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
+    static void Loop<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
         ref var last = ref Unsafe.Add(ref from, length - 4 * (nuint)sizeof(T));
         ref var end = ref Unsafe.Add(ref to, length - 4 * (nuint)sizeof(T));
