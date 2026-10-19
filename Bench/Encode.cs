@@ -24,13 +24,15 @@ public unsafe class Encode
     delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> registers;
     delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> structures;
     delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> pairs;
+    delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> subsets;
+    delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void> scalar;
     delegate*<float*, nint, int, byte*, int, void> pointers;
 #endif
 
     [Params("S16", "S24", "S32", "F32")]
     public string Format { get; set; } = "S16";
 
-    [Params(1, 2, 3, 4, 6, 8)]
+    [Params(1, 2, 3, 4, 5, 6, 7, 8)]
     public int Channels { get; set; }
 
     Span<byte> Data => new(bytes, length);
@@ -69,6 +71,14 @@ public unsafe class Encode
         registers = Variant("registers");
         structures = Variant("structures");
         pairs = Variant("pairs");
+        subsets = Variant("subsets");
+        scalar = Format switch
+        {
+            "S16" => &Interleave.Scalar<S16>,
+            "S24" => &Interleave.Scalar<S24>,
+            "S32" => &Interleave.Scalar<S32>,
+            _ => &Interleave.Scalar<F32>
+        };
         Library();
         var expected = Data.ToArray();
         Data.Clear();
@@ -77,6 +87,7 @@ public unsafe class Encode
         Check(registers, expected, "register");
         Check(structures, expected, "structure");
         Check(pairs, expected, "paired");
+        Check(subsets, expected, "subset");
 #endif
     }
 
@@ -105,6 +116,12 @@ public unsafe class Encode
 
     [Benchmark]
     public void Pairs() => Run(pairs);
+
+    [Benchmark]
+    public void Subsets() => Run(subsets);
+
+    [Benchmark]
+    public void Scalar() => Run(scalar);
 #endif
 
     [GlobalCleanup]

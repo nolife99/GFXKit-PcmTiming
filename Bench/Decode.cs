@@ -24,13 +24,15 @@ public unsafe class Decode
     delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> registers;
     delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> structures;
     delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> pairs;
+    delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> subsets;
+    delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void> scalar;
     delegate*<byte*, int, float*, nint, int, void> pointers;
 #endif
 
     [Params("U8", "S16", "S24", "S32", "F32", "F64")]
     public string Format { get; set; } = "S16";
 
-    [Params(1, 2, 3, 4, 6, 8)]
+    [Params(1, 2, 3, 4, 5, 6, 7, 8)]
     public int Channels { get; set; }
 
     Span<byte> Data => new(bytes, length);
@@ -75,6 +77,16 @@ public unsafe class Decode
         registers = Variant("registers");
         structures = Variant("structures");
         pairs = Variant("pairs");
+        subsets = Variant("subsets");
+        scalar = Format switch
+        {
+            "U8" => &Deinterleave.Scalar<U8>,
+            "S16" => &Deinterleave.Scalar<S16>,
+            "S24" => &Deinterleave.Scalar<S24>,
+            "S32" => &Deinterleave.Scalar<S32>,
+            "F32" => &Deinterleave.Scalar<F32>,
+            _ => &Deinterleave.Scalar<F64>
+        };
         Library();
         var expected = Planes.ToArray();
         Planes.Clear();
@@ -83,6 +95,7 @@ public unsafe class Decode
         Check(registers, expected, "register");
         Check(structures, expected, "structure");
         Check(pairs, expected, "paired");
+        Check(subsets, expected, "subset");
 #endif
     }
 
@@ -111,6 +124,12 @@ public unsafe class Decode
 
     [Benchmark]
     public void Pairs() => Run(pairs);
+
+    [Benchmark]
+    public void Subsets() => Run(subsets);
+
+    [Benchmark]
+    public void Scalar() => Run(scalar);
 #endif
 
     [GlobalCleanup]

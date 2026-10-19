@@ -12,43 +12,63 @@ static unsafe class NeonVariants
     [
         ("decode", "S24", 1, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS24x1Registers),
         ("decode", "S24", 2, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS24x2Registers),
+        ("decode", "S24", 5, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS24x5Registers),
+        ("decode", "S24", 7, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS24x7Registers),
         ("decode", "U8", 2, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x2Registers),
         ("decode", "U8", 3, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x3Registers),
         ("decode", "U8", 4, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x4Registers),
+        ("decode", "U8", 5, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x5Registers),
         ("decode", "U8", 6, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x6Registers),
+        ("decode", "U8", 7, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x7Registers),
         ("decode", "U8", 8, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x8Registers),
         ("decode", "S16", 2, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x2Registers),
         ("decode", "S16", 3, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x3Registers),
         ("decode", "S16", 4, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x4Registers),
+        ("decode", "S16", 5, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x5Registers),
         ("decode", "S16", 6, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x6Registers),
+        ("decode", "S16", 7, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x7Registers),
         ("decode", "S16", 8, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x8Registers),
         ("decode", "S32", 2, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x2Registers),
         ("decode", "S32", 3, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x3Registers),
         ("decode", "S32", 4, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x4Registers),
+        ("decode", "S32", 5, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x5Registers),
         ("decode", "S32", 6, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x6Registers),
+        ("decode", "S32", 7, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x7Registers),
         ("decode", "S32", 8, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x8Registers),
         ("decode", "F32", 2, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x2Registers),
         ("decode", "F32", 3, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x3Registers),
         ("decode", "F32", 4, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x4Registers),
+        ("decode", "F32", 5, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x5Registers),
         ("decode", "F32", 6, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x6Registers),
+        ("decode", "F32", 7, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x7Registers),
         ("decode", "F32", 8, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x8Registers),
         ("decode", "F64", 2, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF64x2Registers),
         ("decode", "F64", 3, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF64x3Registers),
         ("decode", "F64", 4, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF64x4Registers),
+        ("decode", "F64", 5, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF64x5Registers),
+        ("decode", "F64", 7, "registers", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF64x7Registers),
         ("encode", "S16", 2, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x2Registers),
         ("encode", "S16", 3, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x3Registers),
         ("encode", "S16", 4, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x4Registers),
+        ("encode", "S16", 5, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x5Registers),
         ("encode", "S16", 6, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x6Registers),
+        ("encode", "S16", 7, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x7Registers),
         ("encode", "S16", 8, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x8Registers),
+        ("encode", "S24", 5, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS24x5Registers),
+        ("encode", "S24", 7, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS24x7Registers),
         ("encode", "S32", 2, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x2Registers),
         ("encode", "S32", 3, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x3Registers),
         ("encode", "S32", 4, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x4Registers),
+        ("encode", "S32", 5, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x5Registers),
         ("encode", "S32", 6, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x6Registers),
+        ("encode", "S32", 7, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x7Registers),
         ("encode", "S32", 8, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x8Registers),
         ("encode", "F32", 2, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x2Registers),
         ("encode", "F32", 3, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x3Registers),
         ("encode", "F32", 4, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x4Registers),
+        ("encode", "F32", 5, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x5Registers),
         ("encode", "F32", 6, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x6Registers),
+        ("encode", "F32", 7, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x7Registers),
         ("encode", "F32", 8, "registers", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x8Registers),
         ("decode", "S24", 1, "structures", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS24x1Structures),
         ("decode", "S24", 2, "structures", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS24x2Structures),
@@ -97,6 +117,26 @@ static unsafe class NeonVariants
         ("encode", "S16", 4, "pairs", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x4Pairs),
         ("encode", "S32", 4, "pairs", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x4Pairs),
         ("encode", "F32", 4, "pairs", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x4Pairs),
+        ("decode", "S24", 5, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS24x5Subsets),
+        ("decode", "S24", 7, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS24x7Subsets),
+        ("decode", "U8", 5, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x5Subsets),
+        ("decode", "U8", 7, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveU8x7Subsets),
+        ("decode", "S16", 5, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x5Subsets),
+        ("decode", "S16", 7, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS16x7Subsets),
+        ("decode", "S32", 5, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x5Subsets),
+        ("decode", "S32", 7, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveS32x7Subsets),
+        ("decode", "F32", 5, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x5Subsets),
+        ("decode", "F32", 7, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF32x7Subsets),
+        ("decode", "F64", 5, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF64x5Subsets),
+        ("decode", "F64", 7, "subsets", (nint)(delegate*<ReadOnlySpan<byte>, int, Span<float>, int, int, void>)&DeinterleaveF64x7Subsets),
+        ("encode", "S16", 5, "subsets", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x5Subsets),
+        ("encode", "S16", 7, "subsets", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS16x7Subsets),
+        ("encode", "S24", 5, "subsets", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS24x5Subsets),
+        ("encode", "S24", 7, "subsets", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS24x7Subsets),
+        ("encode", "S32", 5, "subsets", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x5Subsets),
+        ("encode", "S32", 7, "subsets", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveS32x7Subsets),
+        ("encode", "F32", 5, "subsets", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x5Subsets),
+        ("encode", "F32", 7, "subsets", (nint)(delegate*<ReadOnlySpan<float>, int, int, Span<byte>, int, void>)&InterleaveF32x7Subsets),
     ];
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -155,6 +195,208 @@ static unsafe class NeonVariants
             into.Store(stride, 1, 4, Neon.Convert24(AdvSimd.Arm64.ZipHigh(start, r2)));
         }
         Deinterleave.Scalar<S24>(data[(f * 6)..], 2, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS24x5Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 15, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var k0 = Vector128.Create((byte)255, 0, 1, 2, 255, 3, 4, 5, 255, 6, 7, 8, 255, 9, 10, 11);
+        var k1 = Vector128.Create((byte)255, 4, 5, 6, 255, 7, 8, 9, 255, 10, 11, 12, 255, 13, 14, 15);
+        var k2 = Vector128.Create((byte)0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43, 60, 61, 62, 63);
+        var k3 = Vector128.Create((byte)4, 5, 6, 7, 24, 25, 26, 27, 44, 45, 46, 47, 255, 255, 255, 255);
+        var k4 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3);
+        var k5 = Vector128.Create((byte)8, 9, 10, 11, 28, 29, 30, 31, 48, 49, 50, 51, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k7 = Vector128.Create((byte)12, 13, 14, 15, 32, 33, 34, 35, 52, 53, 54, 55, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k9 = Vector128.Create((byte)16, 17, 18, 19, 36, 37, 38, 39, 56, 57, 58, 59, 255, 255, 255, 255);
+        var k10 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var x0 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 0), k0);
+            var r0_0 = x0;
+            var x1 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 8), k1);
+            var r1_0 = x1;
+            var x2 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 20), k1);
+            var r2_0 = x2;
+            var x3 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 32), k1);
+            var r3_0 = x3;
+            var x4 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 44), k1);
+            var r4_0 = x4;
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k3), r4_0, k4).AsInt32()) * scale);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k5), r4_0, k6).AsInt32()) * scale);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k7), r4_0, k8).AsInt32()) * scale);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k9), r4_0, k10).AsInt32()) * scale);
+            var x5 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 56), k1);
+            var r0_1 = x5;
+            var x6 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 68), k1);
+            var r1_1 = x6;
+            var x7 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 80), k1);
+            var r2_1 = x7;
+            var x8 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 92), k1);
+            var r3_1 = x8;
+            var x9 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 104), k1);
+            var r4_1 = x9;
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k3), r4_1, k4).AsInt32()) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k5), r4_1, k6).AsInt32()) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k7), r4_1, k8).AsInt32()) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k9), r4_1, k10).AsInt32()) * scale);
+            var x10 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 116), k1);
+            var r0_2 = x10;
+            var x11 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 128), k1);
+            var r1_2 = x11;
+            var x12 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 140), k1);
+            var r2_2 = x12;
+            var x13 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 152), k1);
+            var r3_2 = x13;
+            var x14 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 164), k1);
+            var r4_2 = x14;
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k3), r4_2, k4).AsInt32()) * scale);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k5), r4_2, k6).AsInt32()) * scale);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k7), r4_2, k8).AsInt32()) * scale);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k9), r4_2, k10).AsInt32()) * scale);
+            var x15 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 176), k1);
+            var r0_3 = x15;
+            var x16 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 188), k1);
+            var r1_3 = x16;
+            var x17 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 200), k1);
+            var r2_3 = x17;
+            var x18 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 212), k1);
+            var r3_3 = x18;
+            var x19 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 224), k1);
+            var r4_3 = x19;
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k3), r4_3, k4).AsInt32()) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k5), r4_3, k6).AsInt32()) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k7), r4_3, k8).AsInt32()) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k9), r4_3, k10).AsInt32()) * scale);
+        }
+        Deinterleave.Scalar<S24>(data[(f * 15)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS24x7Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 21, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var k0 = Vector128.Create((byte)255, 0, 1, 2, 255, 3, 4, 5, 255, 6, 7, 8, 255, 9, 10, 11);
+        var k1 = Vector128.Create((byte)255, 4, 5, 6, 255, 7, 8, 9, 255, 10, 11, 12, 255, 13, 14, 15);
+        var k2 = Vector128.Create((byte)0, 1, 2, 3, 28, 29, 30, 31, 56, 57, 58, 59, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k4 = Vector128.Create((byte)4, 5, 6, 7, 32, 33, 34, 35, 60, 61, 62, 63, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k6 = Vector128.Create((byte)8, 9, 10, 11, 36, 37, 38, 39, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var k9 = Vector128.Create((byte)12, 13, 14, 15, 40, 41, 42, 43, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k10 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3);
+        var k12 = Vector128.Create((byte)16, 17, 18, 19, 44, 45, 46, 47, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k13 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k14 = Vector128.Create((byte)20, 21, 22, 23, 48, 49, 50, 51, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k15 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255);
+        var k16 = Vector128.Create((byte)24, 25, 26, 27, 52, 53, 54, 55, 255, 255, 255, 255, 255, 255, 255, 255);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var x0 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 0), k0);
+            var r0_0 = x0;
+            var x1 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 8), k1);
+            var r1_0 = x1;
+            var x2 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 20), k1);
+            var r2_0 = x2;
+            var x3 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 32), k1);
+            var r3_0 = x3;
+            var x4 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 44), k1);
+            var r4_0 = x4;
+            var x5 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 56), k1);
+            var r5_0 = x5;
+            var x6 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 68), k1);
+            var r6_0 = x6;
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), r5_0, k3).AsInt32()) * scale);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r5_0, k5).AsInt32()) * scale);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k6), r4_0, k7), r5_0, k8).AsInt32()) * scale);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k9), r4_0, k10), r6_0, k11).AsInt32()) * scale);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k12), r4_0, k13), r6_0, k3).AsInt32()) * scale);
+            into.Store(stride, 5, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k14), r4_0, k15), r6_0, k5).AsInt32()) * scale);
+            into.Store(stride, 6, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k16), r5_0, k7), r6_0, k8).AsInt32()) * scale);
+            var x7 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 80), k1);
+            var r0_1 = x7;
+            var x8 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 92), k1);
+            var r1_1 = x8;
+            var x9 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 104), k1);
+            var r2_1 = x9;
+            var x10 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 116), k1);
+            var r3_1 = x10;
+            var x11 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 128), k1);
+            var r4_1 = x11;
+            var x12 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 140), k1);
+            var r5_1 = x12;
+            var x13 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 152), k1);
+            var r6_1 = x13;
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2), r5_1, k3).AsInt32()) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k4), r5_1, k5).AsInt32()) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k6), r4_1, k7), r5_1, k8).AsInt32()) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k9), r4_1, k10), r6_1, k11).AsInt32()) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k12), r4_1, k13), r6_1, k3).AsInt32()) * scale);
+            into.Store(stride, 5, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k14), r4_1, k15), r6_1, k5).AsInt32()) * scale);
+            into.Store(stride, 6, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k16), r5_1, k7), r6_1, k8).AsInt32()) * scale);
+            var x14 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 164), k1);
+            var r0_2 = x14;
+            var x15 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 176), k1);
+            var r1_2 = x15;
+            var x16 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 188), k1);
+            var r2_2 = x16;
+            var x17 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 200), k1);
+            var r3_2 = x17;
+            var x18 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 212), k1);
+            var r4_2 = x18;
+            var x19 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 224), k1);
+            var r5_2 = x19;
+            var x20 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 236), k1);
+            var r6_2 = x20;
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k2), r5_2, k3).AsInt32()) * scale);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k4), r5_2, k5).AsInt32()) * scale);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k6), r4_2, k7), r5_2, k8).AsInt32()) * scale);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k9), r4_2, k10), r6_2, k11).AsInt32()) * scale);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k12), r4_2, k13), r6_2, k3).AsInt32()) * scale);
+            into.Store(stride, 5, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k14), r4_2, k15), r6_2, k5).AsInt32()) * scale);
+            into.Store(stride, 6, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k16), r5_2, k7), r6_2, k8).AsInt32()) * scale);
+            var x21 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 248), k1);
+            var r0_3 = x21;
+            var x22 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 260), k1);
+            var r1_3 = x22;
+            var x23 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 272), k1);
+            var r2_3 = x23;
+            var x24 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 284), k1);
+            var r3_3 = x24;
+            var x25 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 296), k1);
+            var r4_3 = x25;
+            var x26 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 308), k1);
+            var r5_3 = x26;
+            var x27 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 320), k1);
+            var r6_3 = x27;
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k2), r5_3, k3).AsInt32()) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k4), r5_3, k5).AsInt32()) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k6), r4_3, k7), r5_3, k8).AsInt32()) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k9), r4_3, k10), r6_3, k11).AsInt32()) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k12), r4_3, k13), r6_3, k3).AsInt32()) * scale);
+            into.Store(stride, 5, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k14), r4_3, k15), r6_3, k5).AsInt32()) * scale);
+            into.Store(stride, 6, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k16), r5_3, k7), r6_3, k8).AsInt32()) * scale);
+        }
+        Deinterleave.Scalar<S24>(data[(f * 21)..], 7, output[f..], stride, frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -265,6 +507,62 @@ static unsafe class NeonVariants
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveU8x5Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 5, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var scale = Vector128.Create(1f / 128);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 1, 6, 11);
+        var k2 = Vector128.Create((byte)1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 7, 12);
+        var k4 = Vector128.Create((byte)2, 7, 12, 17, 22, 27, 32, 37, 42, 47, 52, 57, 62, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 3, 8, 13);
+        var k6 = Vector128.Create((byte)3, 8, 13, 18, 23, 28, 33, 38, 43, 48, 53, 58, 63, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 9, 14);
+        var k8 = Vector128.Create((byte)4, 9, 14, 19, 24, 29, 34, 39, 44, 49, 54, 59, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 5, 10, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var w0_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r4_0, k1);
+            into.Store(stride, 0, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_0))), scale, minus));
+            into.Store(stride, 0, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_0))), scale, minus));
+            into.Store(stride, 0, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_0))), scale, minus));
+            into.Store(stride, 0, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_0))), scale, minus));
+            var w0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), r4_0, k3);
+            into.Store(stride, 1, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_1))), scale, minus));
+            into.Store(stride, 1, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_1))), scale, minus));
+            into.Store(stride, 1, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_1))), scale, minus));
+            into.Store(stride, 1, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_1))), scale, minus));
+            var w0_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r4_0, k5);
+            into.Store(stride, 2, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_2))), scale, minus));
+            into.Store(stride, 2, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_2))), scale, minus));
+            into.Store(stride, 2, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_2))), scale, minus));
+            into.Store(stride, 2, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_2))), scale, minus));
+            var w0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k6), r4_0, k7);
+            into.Store(stride, 3, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_3))), scale, minus));
+            into.Store(stride, 3, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_3))), scale, minus));
+            into.Store(stride, 3, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_3))), scale, minus));
+            into.Store(stride, 3, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_3))), scale, minus));
+            var w0_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k8), r4_0, k9);
+            into.Store(stride, 4, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_4))), scale, minus));
+            into.Store(stride, 4, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_4))), scale, minus));
+            into.Store(stride, 4, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_4))), scale, minus));
+            into.Store(stride, 4, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_4))), scale, minus));
+        }
+        Deinterleave.Scalar<U8>(data[(f * 5)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void DeinterleaveU8x6Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
     {
         var source = new Interleaved(data, 6, frames);
@@ -319,6 +617,92 @@ static unsafe class NeonVariants
             into.Store(stride, 5, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_5))), scale, minus));
         }
         Deinterleave.Scalar<U8>(data[(f * 6)..], 6, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveU8x7Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 7, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var scale = Vector128.Create(1f / 128);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 255, 255, 255, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 13, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 11, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 9);
+        var k4 = Vector128.Create((byte)1, 8, 15, 22, 29, 36, 43, 50, 57, 255, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 7, 14, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 5, 12, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 3, 10);
+        var k8 = Vector128.Create((byte)2, 9, 16, 23, 30, 37, 44, 51, 58, 255, 255, 255, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 1, 8, 15, 255, 255, 255, 255);
+        var k10 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 13, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 11);
+        var k12 = Vector128.Create((byte)3, 10, 17, 24, 31, 38, 45, 52, 59, 255, 255, 255, 255, 255, 255, 255);
+        var k13 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 9, 255, 255, 255, 255, 255);
+        var k14 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 7, 14, 255, 255);
+        var k15 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 5, 12);
+        var k16 = Vector128.Create((byte)4, 11, 18, 25, 32, 39, 46, 53, 60, 255, 255, 255, 255, 255, 255, 255);
+        var k17 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 3, 10, 255, 255, 255, 255, 255);
+        var k18 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 1, 8, 15, 255, 255);
+        var k19 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 13);
+        var k20 = Vector128.Create((byte)5, 12, 19, 26, 33, 40, 47, 54, 61, 255, 255, 255, 255, 255, 255, 255);
+        var k21 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 11, 255, 255, 255, 255, 255);
+        var k22 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 9, 255, 255, 255);
+        var k23 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 7, 14);
+        var k24 = Vector128.Create((byte)6, 13, 20, 27, 34, 41, 48, 55, 62, 255, 255, 255, 255, 255, 255, 255);
+        var k25 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 5, 12, 255, 255, 255, 255, 255);
+        var k26 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 3, 10, 255, 255, 255);
+        var k27 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 1, 8, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            var w0_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r4_0, k1), r5_0, k2), r6_0, k3);
+            into.Store(stride, 0, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_0))), scale, minus));
+            into.Store(stride, 0, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_0))), scale, minus));
+            into.Store(stride, 0, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_0))), scale, minus));
+            into.Store(stride, 0, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_0))), scale, minus));
+            var w0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r4_0, k5), r5_0, k6), r6_0, k7);
+            into.Store(stride, 1, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_1))), scale, minus));
+            into.Store(stride, 1, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_1))), scale, minus));
+            into.Store(stride, 1, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_1))), scale, minus));
+            into.Store(stride, 1, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_1))), scale, minus));
+            var w0_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k8), r4_0, k9), r5_0, k10), r6_0, k11);
+            into.Store(stride, 2, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_2))), scale, minus));
+            into.Store(stride, 2, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_2))), scale, minus));
+            into.Store(stride, 2, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_2))), scale, minus));
+            into.Store(stride, 2, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_2))), scale, minus));
+            var w0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k12), r4_0, k13), r5_0, k14), r6_0, k15);
+            into.Store(stride, 3, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_3))), scale, minus));
+            into.Store(stride, 3, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_3))), scale, minus));
+            into.Store(stride, 3, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_3))), scale, minus));
+            into.Store(stride, 3, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_3))), scale, minus));
+            var w0_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k16), r4_0, k17), r5_0, k18), r6_0, k19);
+            into.Store(stride, 4, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_4))), scale, minus));
+            into.Store(stride, 4, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_4))), scale, minus));
+            into.Store(stride, 4, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_4))), scale, minus));
+            into.Store(stride, 4, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_4))), scale, minus));
+            var w0_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k20), r4_0, k21), r5_0, k22), r6_0, k23);
+            into.Store(stride, 5, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_5))), scale, minus));
+            into.Store(stride, 5, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_5))), scale, minus));
+            into.Store(stride, 5, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_5))), scale, minus));
+            into.Store(stride, 5, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_5))), scale, minus));
+            var w0_6 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k24), r4_0, k25), r5_0, k26), r6_0, k27);
+            into.Store(stride, 6, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_6))), scale, minus));
+            into.Store(stride, 6, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_6))), scale, minus));
+            into.Store(stride, 6, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_6))), scale, minus));
+            into.Store(stride, 6, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_6))), scale, minus));
+        }
+        Deinterleave.Scalar<U8>(data[(f * 7)..], 7, output[f..], stride, frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -526,6 +910,71 @@ static unsafe class NeonVariants
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS16x5Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 10, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var scale = Vector128.Create(1f / 32768);
+        var k0 = Vector128.Create((byte)0, 1, 10, 11, 20, 21, 30, 31, 40, 41, 50, 51, 60, 61, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 7);
+        var k2 = Vector128.Create((byte)2, 3, 12, 13, 22, 23, 32, 33, 42, 43, 52, 53, 62, 63, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9);
+        var k4 = Vector128.Create((byte)4, 5, 14, 15, 24, 25, 34, 35, 44, 45, 54, 55, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 10, 11);
+        var k6 = Vector128.Create((byte)6, 7, 16, 17, 26, 27, 36, 37, 46, 47, 56, 57, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 3, 12, 13);
+        var k8 = Vector128.Create((byte)8, 9, 18, 19, 28, 29, 38, 39, 48, 49, 58, 59, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var w0_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r4_0, k1);
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_0.AsInt16())) * scale);
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_0.AsInt16())) * scale);
+            var w0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), r4_0, k3);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_1.AsInt16())) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_1.AsInt16())) * scale);
+            var w0_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r4_0, k5);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_2.AsInt16())) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_2.AsInt16())) * scale);
+            var w0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k6), r4_0, k7);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_3.AsInt16())) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_3.AsInt16())) * scale);
+            var w0_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k8), r4_0, k9);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_4.AsInt16())) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_4.AsInt16())) * scale);
+            var r0_1 = Packed.Read16(ref block, 80);
+            var r1_1 = Packed.Read16(ref block, 96);
+            var r2_1 = Packed.Read16(ref block, 112);
+            var r3_1 = Packed.Read16(ref block, 128);
+            var r4_1 = Packed.Read16(ref block, 144);
+            var w1_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0), r4_1, k1);
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_0.AsInt16())) * scale);
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_0.AsInt16())) * scale);
+            var w1_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2), r4_1, k3);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_1.AsInt16())) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_1.AsInt16())) * scale);
+            var w1_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k4), r4_1, k5);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_2.AsInt16())) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_2.AsInt16())) * scale);
+            var w1_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k6), r4_1, k7);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_3.AsInt16())) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_3.AsInt16())) * scale);
+            var w1_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k8), r4_1, k9);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_4.AsInt16())) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_4.AsInt16())) * scale);
+        }
+        Deinterleave.Scalar<S16>(data[(f * 10)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void DeinterleaveS16x6Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
     {
         var source = new Interleaved(data, 12, frames);
@@ -593,6 +1042,105 @@ static unsafe class NeonVariants
             into.Store(stride, 5, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_5.AsInt16())) * scale);
         }
         Deinterleave.Scalar<S16>(data[(f * 12)..], 6, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS16x7Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 14, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var scale = Vector128.Create(1f / 32768);
+        var k0 = Vector128.Create((byte)0, 1, 14, 15, 28, 29, 42, 43, 56, 57, 255, 255, 255, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 7, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 3);
+        var k4 = Vector128.Create((byte)2, 3, 16, 17, 30, 31, 44, 45, 58, 59, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 7, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5);
+        var k8 = Vector128.Create((byte)4, 5, 18, 19, 32, 33, 46, 47, 60, 61, 255, 255, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 10, 11, 255, 255, 255, 255);
+        var k10 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 7);
+        var k12 = Vector128.Create((byte)6, 7, 20, 21, 34, 35, 48, 49, 62, 63, 255, 255, 255, 255, 255, 255);
+        var k13 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 255, 255, 255, 255);
+        var k14 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 10, 11, 255, 255);
+        var k15 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9);
+        var k16 = Vector128.Create((byte)8, 9, 22, 23, 36, 37, 50, 51, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k17 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 14, 15, 255, 255, 255, 255);
+        var k18 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 255, 255);
+        var k19 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 10, 11);
+        var k20 = Vector128.Create((byte)10, 11, 24, 25, 38, 39, 52, 53, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k21 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 2, 3, 255, 255, 255, 255, 255, 255);
+        var k22 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 14, 15, 255, 255);
+        var k23 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13);
+        var k24 = Vector128.Create((byte)12, 13, 26, 27, 40, 41, 54, 55, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k25 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 255, 255, 255, 255, 255, 255);
+        var k26 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 3, 255, 255, 255, 255);
+        var k27 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            var w0_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r4_0, k1), r5_0, k2), r6_0, k3);
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_0.AsInt16())) * scale);
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_0.AsInt16())) * scale);
+            var w0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r4_0, k5), r5_0, k6), r6_0, k7);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_1.AsInt16())) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_1.AsInt16())) * scale);
+            var w0_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k8), r4_0, k9), r5_0, k10), r6_0, k11);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_2.AsInt16())) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_2.AsInt16())) * scale);
+            var w0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k12), r4_0, k13), r5_0, k14), r6_0, k15);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_3.AsInt16())) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_3.AsInt16())) * scale);
+            var w0_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k16), r4_0, k17), r5_0, k18), r6_0, k19);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_4.AsInt16())) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_4.AsInt16())) * scale);
+            var w0_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k20), r4_0, k21), r5_0, k22), r6_0, k23);
+            into.Store(stride, 5, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_5.AsInt16())) * scale);
+            into.Store(stride, 5, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_5.AsInt16())) * scale);
+            var w0_6 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k24), r4_0, k25), r5_0, k26), r6_0, k27);
+            into.Store(stride, 6, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_6.AsInt16())) * scale);
+            into.Store(stride, 6, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_6.AsInt16())) * scale);
+            var r0_1 = Packed.Read16(ref block, 112);
+            var r1_1 = Packed.Read16(ref block, 128);
+            var r2_1 = Packed.Read16(ref block, 144);
+            var r3_1 = Packed.Read16(ref block, 160);
+            var r4_1 = Packed.Read16(ref block, 176);
+            var r5_1 = Packed.Read16(ref block, 192);
+            var r6_1 = Packed.Read16(ref block, 208);
+            var w1_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0), r4_1, k1), r5_1, k2), r6_1, k3);
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_0.AsInt16())) * scale);
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_0.AsInt16())) * scale);
+            var w1_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k4), r4_1, k5), r5_1, k6), r6_1, k7);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_1.AsInt16())) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_1.AsInt16())) * scale);
+            var w1_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k8), r4_1, k9), r5_1, k10), r6_1, k11);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_2.AsInt16())) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_2.AsInt16())) * scale);
+            var w1_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k12), r4_1, k13), r5_1, k14), r6_1, k15);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_3.AsInt16())) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_3.AsInt16())) * scale);
+            var w1_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k16), r4_1, k17), r5_1, k18), r6_1, k19);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_4.AsInt16())) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_4.AsInt16())) * scale);
+            var w1_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k20), r4_1, k21), r5_1, k22), r6_1, k23);
+            into.Store(stride, 5, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_5.AsInt16())) * scale);
+            into.Store(stride, 5, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_5.AsInt16())) * scale);
+            var w1_6 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k24), r4_1, k25), r5_1, k26), r6_1, k27);
+            into.Store(stride, 6, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_6.AsInt16())) * scale);
+            into.Store(stride, 6, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_6.AsInt16())) * scale);
+        }
+        Deinterleave.Scalar<S16>(data[(f * 14)..], 7, output[f..], stride, frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -835,6 +1383,70 @@ static unsafe class NeonVariants
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS32x5Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 20, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43, 60, 61, 62, 63);
+        var k1 = Vector128.Create((byte)4, 5, 6, 7, 24, 25, 26, 27, 44, 45, 46, 47, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3);
+        var k3 = Vector128.Create((byte)8, 9, 10, 11, 28, 29, 30, 31, 48, 49, 50, 51, 255, 255, 255, 255);
+        var k4 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k5 = Vector128.Create((byte)12, 13, 14, 15, 32, 33, 34, 35, 52, 53, 54, 55, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k7 = Vector128.Create((byte)16, 17, 18, 19, 36, 37, 38, 39, 56, 57, 58, 59, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k1), r4_0, k2).AsInt32()) * scale);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k3), r4_0, k4).AsInt32()) * scale);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k5), r4_0, k6).AsInt32()) * scale);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k7), r4_0, k8).AsInt32()) * scale);
+            var r0_1 = Packed.Read16(ref block, 80);
+            var r1_1 = Packed.Read16(ref block, 96);
+            var r2_1 = Packed.Read16(ref block, 112);
+            var r3_1 = Packed.Read16(ref block, 128);
+            var r4_1 = Packed.Read16(ref block, 144);
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k1), r4_1, k2).AsInt32()) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k3), r4_1, k4).AsInt32()) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k5), r4_1, k6).AsInt32()) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k7), r4_1, k8).AsInt32()) * scale);
+            var r0_2 = Packed.Read16(ref block, 160);
+            var r1_2 = Packed.Read16(ref block, 176);
+            var r2_2 = Packed.Read16(ref block, 192);
+            var r3_2 = Packed.Read16(ref block, 208);
+            var r4_2 = Packed.Read16(ref block, 224);
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k1), r4_2, k2).AsInt32()) * scale);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k3), r4_2, k4).AsInt32()) * scale);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k5), r4_2, k6).AsInt32()) * scale);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k7), r4_2, k8).AsInt32()) * scale);
+            var r0_3 = Packed.Read16(ref block, 240);
+            var r1_3 = Packed.Read16(ref block, 256);
+            var r2_3 = Packed.Read16(ref block, 272);
+            var r3_3 = Packed.Read16(ref block, 288);
+            var r4_3 = Packed.Read16(ref block, 304);
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k1), r4_3, k2).AsInt32()) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k3), r4_3, k4).AsInt32()) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k5), r4_3, k6).AsInt32()) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k7), r4_3, k8).AsInt32()) * scale);
+        }
+        Deinterleave.Scalar<S32>(data[(f * 20)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void DeinterleaveS32x6Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
     {
         var source = new Interleaved(data, 24, frames);
@@ -906,6 +1518,92 @@ static unsafe class NeonVariants
             into.Store(stride, 5, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.UnzipOdd(a2_3.AsUInt32(), b2_3.AsUInt32()).AsByte().AsInt32()) * scale);
         }
         Deinterleave.Scalar<S32>(data[(f * 24)..], 6, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS32x7Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 28, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 28, 29, 30, 31, 56, 57, 58, 59, 255, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k2 = Vector128.Create((byte)4, 5, 6, 7, 32, 33, 34, 35, 60, 61, 62, 63, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k4 = Vector128.Create((byte)8, 9, 10, 11, 36, 37, 38, 39, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var k7 = Vector128.Create((byte)12, 13, 14, 15, 40, 41, 42, 43, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3);
+        var k10 = Vector128.Create((byte)16, 17, 18, 19, 44, 45, 46, 47, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k12 = Vector128.Create((byte)20, 21, 22, 23, 48, 49, 50, 51, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k13 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255);
+        var k14 = Vector128.Create((byte)24, 25, 26, 27, 52, 53, 54, 55, 255, 255, 255, 255, 255, 255, 255, 255);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r5_0, k1).AsInt32()) * scale);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), r5_0, k3).AsInt32()) * scale);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r4_0, k5), r5_0, k6).AsInt32()) * scale);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k7), r4_0, k8), r6_0, k9).AsInt32()) * scale);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k10), r4_0, k11), r6_0, k1).AsInt32()) * scale);
+            into.Store(stride, 5, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k12), r4_0, k13), r6_0, k3).AsInt32()) * scale);
+            into.Store(stride, 6, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k14), r5_0, k5), r6_0, k6).AsInt32()) * scale);
+            var r0_1 = Packed.Read16(ref block, 112);
+            var r1_1 = Packed.Read16(ref block, 128);
+            var r2_1 = Packed.Read16(ref block, 144);
+            var r3_1 = Packed.Read16(ref block, 160);
+            var r4_1 = Packed.Read16(ref block, 176);
+            var r5_1 = Packed.Read16(ref block, 192);
+            var r6_1 = Packed.Read16(ref block, 208);
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0), r5_1, k1).AsInt32()) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2), r5_1, k3).AsInt32()) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k4), r4_1, k5), r5_1, k6).AsInt32()) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k7), r4_1, k8), r6_1, k9).AsInt32()) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k10), r4_1, k11), r6_1, k1).AsInt32()) * scale);
+            into.Store(stride, 5, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k12), r4_1, k13), r6_1, k3).AsInt32()) * scale);
+            into.Store(stride, 6, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k14), r5_1, k5), r6_1, k6).AsInt32()) * scale);
+            var r0_2 = Packed.Read16(ref block, 224);
+            var r1_2 = Packed.Read16(ref block, 240);
+            var r2_2 = Packed.Read16(ref block, 256);
+            var r3_2 = Packed.Read16(ref block, 272);
+            var r4_2 = Packed.Read16(ref block, 288);
+            var r5_2 = Packed.Read16(ref block, 304);
+            var r6_2 = Packed.Read16(ref block, 320);
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k0), r5_2, k1).AsInt32()) * scale);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k2), r5_2, k3).AsInt32()) * scale);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k4), r4_2, k5), r5_2, k6).AsInt32()) * scale);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k7), r4_2, k8), r6_2, k9).AsInt32()) * scale);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k10), r4_2, k11), r6_2, k1).AsInt32()) * scale);
+            into.Store(stride, 5, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k12), r4_2, k13), r6_2, k3).AsInt32()) * scale);
+            into.Store(stride, 6, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k14), r5_2, k5), r6_2, k6).AsInt32()) * scale);
+            var r0_3 = Packed.Read16(ref block, 336);
+            var r1_3 = Packed.Read16(ref block, 352);
+            var r2_3 = Packed.Read16(ref block, 368);
+            var r3_3 = Packed.Read16(ref block, 384);
+            var r4_3 = Packed.Read16(ref block, 400);
+            var r5_3 = Packed.Read16(ref block, 416);
+            var r6_3 = Packed.Read16(ref block, 432);
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k0), r5_3, k1).AsInt32()) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k2), r5_3, k3).AsInt32()) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k4), r4_3, k5), r5_3, k6).AsInt32()) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k7), r4_3, k8), r6_3, k9).AsInt32()) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k10), r4_3, k11), r6_3, k1).AsInt32()) * scale);
+            into.Store(stride, 5, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k12), r4_3, k13), r6_3, k3).AsInt32()) * scale);
+            into.Store(stride, 6, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k14), r5_3, k5), r6_3, k6).AsInt32()) * scale);
+        }
+        Deinterleave.Scalar<S32>(data[(f * 28)..], 7, output[f..], stride, frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -1179,6 +1877,69 @@ static unsafe class NeonVariants
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF32x5Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 20, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43, 60, 61, 62, 63);
+        var k1 = Vector128.Create((byte)4, 5, 6, 7, 24, 25, 26, 27, 44, 45, 46, 47, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3);
+        var k3 = Vector128.Create((byte)8, 9, 10, 11, 28, 29, 30, 31, 48, 49, 50, 51, 255, 255, 255, 255);
+        var k4 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k5 = Vector128.Create((byte)12, 13, 14, 15, 32, 33, 34, 35, 52, 53, 54, 55, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k7 = Vector128.Create((byte)16, 17, 18, 19, 36, 37, 38, 39, 56, 57, 58, 59, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            into.Store(stride, 0, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0).AsSingle());
+            into.Store(stride, 1, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k1), r4_0, k2).AsSingle());
+            into.Store(stride, 2, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k3), r4_0, k4).AsSingle());
+            into.Store(stride, 3, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k5), r4_0, k6).AsSingle());
+            into.Store(stride, 4, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k7), r4_0, k8).AsSingle());
+            var r0_1 = Packed.Read16(ref block, 80);
+            var r1_1 = Packed.Read16(ref block, 96);
+            var r2_1 = Packed.Read16(ref block, 112);
+            var r3_1 = Packed.Read16(ref block, 128);
+            var r4_1 = Packed.Read16(ref block, 144);
+            into.Store(stride, 0, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0).AsSingle());
+            into.Store(stride, 1, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k1), r4_1, k2).AsSingle());
+            into.Store(stride, 2, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k3), r4_1, k4).AsSingle());
+            into.Store(stride, 3, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k5), r4_1, k6).AsSingle());
+            into.Store(stride, 4, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k7), r4_1, k8).AsSingle());
+            var r0_2 = Packed.Read16(ref block, 160);
+            var r1_2 = Packed.Read16(ref block, 176);
+            var r2_2 = Packed.Read16(ref block, 192);
+            var r3_2 = Packed.Read16(ref block, 208);
+            var r4_2 = Packed.Read16(ref block, 224);
+            into.Store(stride, 0, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k0).AsSingle());
+            into.Store(stride, 1, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k1), r4_2, k2).AsSingle());
+            into.Store(stride, 2, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k3), r4_2, k4).AsSingle());
+            into.Store(stride, 3, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k5), r4_2, k6).AsSingle());
+            into.Store(stride, 4, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k7), r4_2, k8).AsSingle());
+            var r0_3 = Packed.Read16(ref block, 240);
+            var r1_3 = Packed.Read16(ref block, 256);
+            var r2_3 = Packed.Read16(ref block, 272);
+            var r3_3 = Packed.Read16(ref block, 288);
+            var r4_3 = Packed.Read16(ref block, 304);
+            into.Store(stride, 0, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k0).AsSingle());
+            into.Store(stride, 1, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k1), r4_3, k2).AsSingle());
+            into.Store(stride, 2, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k3), r4_3, k4).AsSingle());
+            into.Store(stride, 3, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k5), r4_3, k6).AsSingle());
+            into.Store(stride, 4, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k7), r4_3, k8).AsSingle());
+        }
+        Deinterleave.Scalar<F32>(data[(f * 20)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void DeinterleaveF32x6Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
     {
         var source = new Interleaved(data, 24, frames);
@@ -1249,6 +2010,91 @@ static unsafe class NeonVariants
             into.Store(stride, 5, 12, AdvSimd.Arm64.UnzipOdd(a2_3.AsUInt32(), b2_3.AsUInt32()).AsByte().AsSingle());
         }
         Deinterleave.Scalar<F32>(data[(f * 24)..], 6, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF32x7Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 28, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 28, 29, 30, 31, 56, 57, 58, 59, 255, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k2 = Vector128.Create((byte)4, 5, 6, 7, 32, 33, 34, 35, 60, 61, 62, 63, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k4 = Vector128.Create((byte)8, 9, 10, 11, 36, 37, 38, 39, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var k7 = Vector128.Create((byte)12, 13, 14, 15, 40, 41, 42, 43, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3);
+        var k10 = Vector128.Create((byte)16, 17, 18, 19, 44, 45, 46, 47, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k12 = Vector128.Create((byte)20, 21, 22, 23, 48, 49, 50, 51, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k13 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255);
+        var k14 = Vector128.Create((byte)24, 25, 26, 27, 52, 53, 54, 55, 255, 255, 255, 255, 255, 255, 255, 255);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            into.Store(stride, 0, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r5_0, k1).AsSingle());
+            into.Store(stride, 1, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), r5_0, k3).AsSingle());
+            into.Store(stride, 2, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r4_0, k5), r5_0, k6).AsSingle());
+            into.Store(stride, 3, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k7), r4_0, k8), r6_0, k9).AsSingle());
+            into.Store(stride, 4, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k10), r4_0, k11), r6_0, k1).AsSingle());
+            into.Store(stride, 5, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k12), r4_0, k13), r6_0, k3).AsSingle());
+            into.Store(stride, 6, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k14), r5_0, k5), r6_0, k6).AsSingle());
+            var r0_1 = Packed.Read16(ref block, 112);
+            var r1_1 = Packed.Read16(ref block, 128);
+            var r2_1 = Packed.Read16(ref block, 144);
+            var r3_1 = Packed.Read16(ref block, 160);
+            var r4_1 = Packed.Read16(ref block, 176);
+            var r5_1 = Packed.Read16(ref block, 192);
+            var r6_1 = Packed.Read16(ref block, 208);
+            into.Store(stride, 0, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0), r5_1, k1).AsSingle());
+            into.Store(stride, 1, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2), r5_1, k3).AsSingle());
+            into.Store(stride, 2, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k4), r4_1, k5), r5_1, k6).AsSingle());
+            into.Store(stride, 3, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k7), r4_1, k8), r6_1, k9).AsSingle());
+            into.Store(stride, 4, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k10), r4_1, k11), r6_1, k1).AsSingle());
+            into.Store(stride, 5, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k12), r4_1, k13), r6_1, k3).AsSingle());
+            into.Store(stride, 6, 4, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k14), r5_1, k5), r6_1, k6).AsSingle());
+            var r0_2 = Packed.Read16(ref block, 224);
+            var r1_2 = Packed.Read16(ref block, 240);
+            var r2_2 = Packed.Read16(ref block, 256);
+            var r3_2 = Packed.Read16(ref block, 272);
+            var r4_2 = Packed.Read16(ref block, 288);
+            var r5_2 = Packed.Read16(ref block, 304);
+            var r6_2 = Packed.Read16(ref block, 320);
+            into.Store(stride, 0, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k0), r5_2, k1).AsSingle());
+            into.Store(stride, 1, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k2), r5_2, k3).AsSingle());
+            into.Store(stride, 2, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k4), r4_2, k5), r5_2, k6).AsSingle());
+            into.Store(stride, 3, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k7), r4_2, k8), r6_2, k9).AsSingle());
+            into.Store(stride, 4, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k10), r4_2, k11), r6_2, k1).AsSingle());
+            into.Store(stride, 5, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k12), r4_2, k13), r6_2, k3).AsSingle());
+            into.Store(stride, 6, 8, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k14), r5_2, k5), r6_2, k6).AsSingle());
+            var r0_3 = Packed.Read16(ref block, 336);
+            var r1_3 = Packed.Read16(ref block, 352);
+            var r2_3 = Packed.Read16(ref block, 368);
+            var r3_3 = Packed.Read16(ref block, 384);
+            var r4_3 = Packed.Read16(ref block, 400);
+            var r5_3 = Packed.Read16(ref block, 416);
+            var r6_3 = Packed.Read16(ref block, 432);
+            into.Store(stride, 0, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k0), r5_3, k1).AsSingle());
+            into.Store(stride, 1, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k2), r5_3, k3).AsSingle());
+            into.Store(stride, 2, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k4), r4_3, k5), r5_3, k6).AsSingle());
+            into.Store(stride, 3, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k7), r4_3, k8), r6_3, k9).AsSingle());
+            into.Store(stride, 4, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k10), r4_3, k11), r6_3, k1).AsSingle());
+            into.Store(stride, 5, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k12), r4_3, k13), r6_3, k3).AsSingle());
+            into.Store(stride, 6, 12, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k14), r5_3, k5), r6_3, k6).AsSingle());
+        }
+        Deinterleave.Scalar<F32>(data[(f * 28)..], 7, output[f..], stride, frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -1602,6 +2448,233 @@ static unsafe class NeonVariants
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF64x5Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 40, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var k0 = Vector128.Create((byte)8, 9, 10, 11, 12, 13, 14, 15, 48, 49, 50, 51, 52, 53, 54, 55);
+        var k1 = Vector128.Create((byte)24, 25, 26, 27, 28, 29, 30, 31, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3, 4, 5, 6, 7);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var low0_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_0.AsUInt64(), 1, r2_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_1 = AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0).AsDouble();
+            var low0_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_0.AsUInt64(), 1, r3_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k1), r4_0, k2).AsDouble();
+            var low0_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_0.AsUInt64(), 1, r4_0.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_1 = Packed.Read16(ref block, 80);
+            var r1_1 = Packed.Read16(ref block, 96);
+            var r2_1 = Packed.Read16(ref block, 112);
+            var r3_1 = Packed.Read16(ref block, 128);
+            var r4_1 = Packed.Read16(ref block, 144);
+            into.Store(stride, 0, 0, Vector128.Narrow(low0_0, AdvSimd.Arm64.InsertSelectedScalar(r0_1.AsUInt64(), 1, r2_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 0, Vector128.Narrow(low0_1, AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0).AsDouble()));
+            into.Store(stride, 2, 0, Vector128.Narrow(low0_2, AdvSimd.Arm64.InsertSelectedScalar(r1_1.AsUInt64(), 1, r3_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 0, Vector128.Narrow(low0_3, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k1), r4_1, k2).AsDouble()));
+            into.Store(stride, 4, 0, Vector128.Narrow(low0_4, AdvSimd.Arm64.InsertSelectedScalar(r2_1.AsUInt64(), 1, r4_1.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_2 = Packed.Read16(ref block, 160);
+            var r1_2 = Packed.Read16(ref block, 176);
+            var r2_2 = Packed.Read16(ref block, 192);
+            var r3_2 = Packed.Read16(ref block, 208);
+            var r4_2 = Packed.Read16(ref block, 224);
+            var low2_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_2.AsUInt64(), 1, r2_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_1 = AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k0).AsDouble();
+            var low2_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_2.AsUInt64(), 1, r3_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k1), r4_2, k2).AsDouble();
+            var low2_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_2.AsUInt64(), 1, r4_2.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_3 = Packed.Read16(ref block, 240);
+            var r1_3 = Packed.Read16(ref block, 256);
+            var r2_3 = Packed.Read16(ref block, 272);
+            var r3_3 = Packed.Read16(ref block, 288);
+            var r4_3 = Packed.Read16(ref block, 304);
+            into.Store(stride, 0, 4, Vector128.Narrow(low2_0, AdvSimd.Arm64.InsertSelectedScalar(r0_3.AsUInt64(), 1, r2_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 4, Vector128.Narrow(low2_1, AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k0).AsDouble()));
+            into.Store(stride, 2, 4, Vector128.Narrow(low2_2, AdvSimd.Arm64.InsertSelectedScalar(r1_3.AsUInt64(), 1, r3_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 4, Vector128.Narrow(low2_3, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k1), r4_3, k2).AsDouble()));
+            into.Store(stride, 4, 4, Vector128.Narrow(low2_4, AdvSimd.Arm64.InsertSelectedScalar(r2_3.AsUInt64(), 1, r4_3.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_4 = Packed.Read16(ref block, 320);
+            var r1_4 = Packed.Read16(ref block, 336);
+            var r2_4 = Packed.Read16(ref block, 352);
+            var r3_4 = Packed.Read16(ref block, 368);
+            var r4_4 = Packed.Read16(ref block, 384);
+            var low4_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_4.AsUInt64(), 1, r2_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_1 = AdvSimd.Arm64.VectorTableLookup((r0_4, r1_4, r2_4, r3_4), k0).AsDouble();
+            var low4_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_4.AsUInt64(), 1, r3_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_4, r1_4, r2_4, r3_4), k1), r4_4, k2).AsDouble();
+            var low4_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_4.AsUInt64(), 1, r4_4.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_5 = Packed.Read16(ref block, 400);
+            var r1_5 = Packed.Read16(ref block, 416);
+            var r2_5 = Packed.Read16(ref block, 432);
+            var r3_5 = Packed.Read16(ref block, 448);
+            var r4_5 = Packed.Read16(ref block, 464);
+            into.Store(stride, 0, 8, Vector128.Narrow(low4_0, AdvSimd.Arm64.InsertSelectedScalar(r0_5.AsUInt64(), 1, r2_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 8, Vector128.Narrow(low4_1, AdvSimd.Arm64.VectorTableLookup((r0_5, r1_5, r2_5, r3_5), k0).AsDouble()));
+            into.Store(stride, 2, 8, Vector128.Narrow(low4_2, AdvSimd.Arm64.InsertSelectedScalar(r1_5.AsUInt64(), 1, r3_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 8, Vector128.Narrow(low4_3, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_5, r1_5, r2_5, r3_5), k1), r4_5, k2).AsDouble()));
+            into.Store(stride, 4, 8, Vector128.Narrow(low4_4, AdvSimd.Arm64.InsertSelectedScalar(r2_5.AsUInt64(), 1, r4_5.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_6 = Packed.Read16(ref block, 480);
+            var r1_6 = Packed.Read16(ref block, 496);
+            var r2_6 = Packed.Read16(ref block, 512);
+            var r3_6 = Packed.Read16(ref block, 528);
+            var r4_6 = Packed.Read16(ref block, 544);
+            var low6_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_6.AsUInt64(), 1, r2_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_1 = AdvSimd.Arm64.VectorTableLookup((r0_6, r1_6, r2_6, r3_6), k0).AsDouble();
+            var low6_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_6.AsUInt64(), 1, r3_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_6, r1_6, r2_6, r3_6), k1), r4_6, k2).AsDouble();
+            var low6_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_6.AsUInt64(), 1, r4_6.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_7 = Packed.Read16(ref block, 560);
+            var r1_7 = Packed.Read16(ref block, 576);
+            var r2_7 = Packed.Read16(ref block, 592);
+            var r3_7 = Packed.Read16(ref block, 608);
+            var r4_7 = Packed.Read16(ref block, 624);
+            into.Store(stride, 0, 12, Vector128.Narrow(low6_0, AdvSimd.Arm64.InsertSelectedScalar(r0_7.AsUInt64(), 1, r2_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 12, Vector128.Narrow(low6_1, AdvSimd.Arm64.VectorTableLookup((r0_7, r1_7, r2_7, r3_7), k0).AsDouble()));
+            into.Store(stride, 2, 12, Vector128.Narrow(low6_2, AdvSimd.Arm64.InsertSelectedScalar(r1_7.AsUInt64(), 1, r3_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 12, Vector128.Narrow(low6_3, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_7, r1_7, r2_7, r3_7), k1), r4_7, k2).AsDouble()));
+            into.Store(stride, 4, 12, Vector128.Narrow(low6_4, AdvSimd.Arm64.InsertSelectedScalar(r2_7.AsUInt64(), 1, r4_7.AsUInt64(), 1).AsByte().AsDouble()));
+        }
+        Deinterleave.Scalar<F64>(data[(f * 40)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF64x7Registers(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 56, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var k0 = Vector128.Create((byte)8, 9, 10, 11, 12, 13, 14, 15, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3, 4, 5, 6, 7);
+        var k2 = Vector128.Create((byte)24, 25, 26, 27, 28, 29, 30, 31, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)40, 41, 42, 43, 44, 45, 46, 47, 255, 255, 255, 255, 255, 255, 255, 255);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            var low0_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_0.AsUInt64(), 1, r3_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r4_0, k1).AsDouble();
+            var low0_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_0.AsUInt64(), 1, r4_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), r5_0, k1).AsDouble();
+            var low0_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_0.AsUInt64(), 1, r5_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k3), r6_0, k1).AsDouble();
+            var low0_6 = AdvSimd.Arm64.InsertSelectedScalar(r3_0.AsUInt64(), 1, r6_0.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_1 = Packed.Read16(ref block, 112);
+            var r1_1 = Packed.Read16(ref block, 128);
+            var r2_1 = Packed.Read16(ref block, 144);
+            var r3_1 = Packed.Read16(ref block, 160);
+            var r4_1 = Packed.Read16(ref block, 176);
+            var r5_1 = Packed.Read16(ref block, 192);
+            var r6_1 = Packed.Read16(ref block, 208);
+            into.Store(stride, 0, 0, Vector128.Narrow(low0_0, AdvSimd.Arm64.InsertSelectedScalar(r0_1.AsUInt64(), 1, r3_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 0, Vector128.Narrow(low0_1, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0), r4_1, k1).AsDouble()));
+            into.Store(stride, 2, 0, Vector128.Narrow(low0_2, AdvSimd.Arm64.InsertSelectedScalar(r1_1.AsUInt64(), 1, r4_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 0, Vector128.Narrow(low0_3, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2), r5_1, k1).AsDouble()));
+            into.Store(stride, 4, 0, Vector128.Narrow(low0_4, AdvSimd.Arm64.InsertSelectedScalar(r2_1.AsUInt64(), 1, r5_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 5, 0, Vector128.Narrow(low0_5, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k3), r6_1, k1).AsDouble()));
+            into.Store(stride, 6, 0, Vector128.Narrow(low0_6, AdvSimd.Arm64.InsertSelectedScalar(r3_1.AsUInt64(), 1, r6_1.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_2 = Packed.Read16(ref block, 224);
+            var r1_2 = Packed.Read16(ref block, 240);
+            var r2_2 = Packed.Read16(ref block, 256);
+            var r3_2 = Packed.Read16(ref block, 272);
+            var r4_2 = Packed.Read16(ref block, 288);
+            var r5_2 = Packed.Read16(ref block, 304);
+            var r6_2 = Packed.Read16(ref block, 320);
+            var low2_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_2.AsUInt64(), 1, r3_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k0), r4_2, k1).AsDouble();
+            var low2_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_2.AsUInt64(), 1, r4_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k2), r5_2, k1).AsDouble();
+            var low2_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_2.AsUInt64(), 1, r5_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k3), r6_2, k1).AsDouble();
+            var low2_6 = AdvSimd.Arm64.InsertSelectedScalar(r3_2.AsUInt64(), 1, r6_2.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_3 = Packed.Read16(ref block, 336);
+            var r1_3 = Packed.Read16(ref block, 352);
+            var r2_3 = Packed.Read16(ref block, 368);
+            var r3_3 = Packed.Read16(ref block, 384);
+            var r4_3 = Packed.Read16(ref block, 400);
+            var r5_3 = Packed.Read16(ref block, 416);
+            var r6_3 = Packed.Read16(ref block, 432);
+            into.Store(stride, 0, 4, Vector128.Narrow(low2_0, AdvSimd.Arm64.InsertSelectedScalar(r0_3.AsUInt64(), 1, r3_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 4, Vector128.Narrow(low2_1, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k0), r4_3, k1).AsDouble()));
+            into.Store(stride, 2, 4, Vector128.Narrow(low2_2, AdvSimd.Arm64.InsertSelectedScalar(r1_3.AsUInt64(), 1, r4_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 4, Vector128.Narrow(low2_3, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k2), r5_3, k1).AsDouble()));
+            into.Store(stride, 4, 4, Vector128.Narrow(low2_4, AdvSimd.Arm64.InsertSelectedScalar(r2_3.AsUInt64(), 1, r5_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 5, 4, Vector128.Narrow(low2_5, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k3), r6_3, k1).AsDouble()));
+            into.Store(stride, 6, 4, Vector128.Narrow(low2_6, AdvSimd.Arm64.InsertSelectedScalar(r3_3.AsUInt64(), 1, r6_3.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_4 = Packed.Read16(ref block, 448);
+            var r1_4 = Packed.Read16(ref block, 464);
+            var r2_4 = Packed.Read16(ref block, 480);
+            var r3_4 = Packed.Read16(ref block, 496);
+            var r4_4 = Packed.Read16(ref block, 512);
+            var r5_4 = Packed.Read16(ref block, 528);
+            var r6_4 = Packed.Read16(ref block, 544);
+            var low4_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_4.AsUInt64(), 1, r3_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_4, r1_4, r2_4, r3_4), k0), r4_4, k1).AsDouble();
+            var low4_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_4.AsUInt64(), 1, r4_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_4, r1_4, r2_4, r3_4), k2), r5_4, k1).AsDouble();
+            var low4_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_4.AsUInt64(), 1, r5_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_4, r1_4, r2_4, r3_4), k3), r6_4, k1).AsDouble();
+            var low4_6 = AdvSimd.Arm64.InsertSelectedScalar(r3_4.AsUInt64(), 1, r6_4.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_5 = Packed.Read16(ref block, 560);
+            var r1_5 = Packed.Read16(ref block, 576);
+            var r2_5 = Packed.Read16(ref block, 592);
+            var r3_5 = Packed.Read16(ref block, 608);
+            var r4_5 = Packed.Read16(ref block, 624);
+            var r5_5 = Packed.Read16(ref block, 640);
+            var r6_5 = Packed.Read16(ref block, 656);
+            into.Store(stride, 0, 8, Vector128.Narrow(low4_0, AdvSimd.Arm64.InsertSelectedScalar(r0_5.AsUInt64(), 1, r3_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 8, Vector128.Narrow(low4_1, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_5, r1_5, r2_5, r3_5), k0), r4_5, k1).AsDouble()));
+            into.Store(stride, 2, 8, Vector128.Narrow(low4_2, AdvSimd.Arm64.InsertSelectedScalar(r1_5.AsUInt64(), 1, r4_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 8, Vector128.Narrow(low4_3, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_5, r1_5, r2_5, r3_5), k2), r5_5, k1).AsDouble()));
+            into.Store(stride, 4, 8, Vector128.Narrow(low4_4, AdvSimd.Arm64.InsertSelectedScalar(r2_5.AsUInt64(), 1, r5_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 5, 8, Vector128.Narrow(low4_5, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_5, r1_5, r2_5, r3_5), k3), r6_5, k1).AsDouble()));
+            into.Store(stride, 6, 8, Vector128.Narrow(low4_6, AdvSimd.Arm64.InsertSelectedScalar(r3_5.AsUInt64(), 1, r6_5.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_6 = Packed.Read16(ref block, 672);
+            var r1_6 = Packed.Read16(ref block, 688);
+            var r2_6 = Packed.Read16(ref block, 704);
+            var r3_6 = Packed.Read16(ref block, 720);
+            var r4_6 = Packed.Read16(ref block, 736);
+            var r5_6 = Packed.Read16(ref block, 752);
+            var r6_6 = Packed.Read16(ref block, 768);
+            var low6_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_6.AsUInt64(), 1, r3_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_6, r1_6, r2_6, r3_6), k0), r4_6, k1).AsDouble();
+            var low6_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_6.AsUInt64(), 1, r4_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_6, r1_6, r2_6, r3_6), k2), r5_6, k1).AsDouble();
+            var low6_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_6.AsUInt64(), 1, r5_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_6, r1_6, r2_6, r3_6), k3), r6_6, k1).AsDouble();
+            var low6_6 = AdvSimd.Arm64.InsertSelectedScalar(r3_6.AsUInt64(), 1, r6_6.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_7 = Packed.Read16(ref block, 784);
+            var r1_7 = Packed.Read16(ref block, 800);
+            var r2_7 = Packed.Read16(ref block, 816);
+            var r3_7 = Packed.Read16(ref block, 832);
+            var r4_7 = Packed.Read16(ref block, 848);
+            var r5_7 = Packed.Read16(ref block, 864);
+            var r6_7 = Packed.Read16(ref block, 880);
+            into.Store(stride, 0, 12, Vector128.Narrow(low6_0, AdvSimd.Arm64.InsertSelectedScalar(r0_7.AsUInt64(), 1, r3_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 12, Vector128.Narrow(low6_1, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_7, r1_7, r2_7, r3_7), k0), r4_7, k1).AsDouble()));
+            into.Store(stride, 2, 12, Vector128.Narrow(low6_2, AdvSimd.Arm64.InsertSelectedScalar(r1_7.AsUInt64(), 1, r4_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 12, Vector128.Narrow(low6_3, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_7, r1_7, r2_7, r3_7), k2), r5_7, k1).AsDouble()));
+            into.Store(stride, 4, 12, Vector128.Narrow(low6_4, AdvSimd.Arm64.InsertSelectedScalar(r2_7.AsUInt64(), 1, r5_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 5, 12, Vector128.Narrow(low6_5, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_7, r1_7, r2_7, r3_7), k3), r6_7, k1).AsDouble()));
+            into.Store(stride, 6, 12, Vector128.Narrow(low6_6, AdvSimd.Arm64.InsertSelectedScalar(r3_7.AsUInt64(), 1, r6_7.AsUInt64(), 1).AsByte().AsDouble()));
+        }
+        Deinterleave.Scalar<F64>(data[(f * 56)..], 7, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void InterleaveS16x2Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
     {
         var source = new Planes(input, stride, 2, frames);
@@ -1702,6 +2775,53 @@ static unsafe class NeonVariants
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS16x5Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 5, frames);
+        var target = new InterleavedTarget(data, 10, frames);
+        var top = Vector128.Create(S16.Top);
+        var scale = Vector128.Create(32768f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 16, 17, 32, 33, 48, 49, 255, 255, 2, 3, 18, 19, 34, 35);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 255, 255, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)50, 51, 255, 255, 4, 5, 20, 21, 36, 37, 52, 53, 255, 255, 6, 7);
+        var k3 = Vector128.Create((byte)255, 255, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 255, 255);
+        var k4 = Vector128.Create((byte)22, 23, 38, 39, 54, 55, 255, 255, 8, 9, 24, 25, 40, 41, 56, 57);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 10, 11, 26, 27, 42, 43, 58, 59, 255, 255, 12, 13, 28, 29);
+        var k7 = Vector128.Create((byte)8, 9, 255, 255, 255, 255, 255, 255, 255, 255, 10, 11, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)44, 45, 60, 61, 255, 255, 14, 15, 30, 31, 46, 47, 62, 63, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 255, 255, 255, 255, 255, 255, 255, 255, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale)).AsByte();
+            var n0_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale)).AsByte();
+            var n0_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale)).AsByte();
+            var n0_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale)).AsByte();
+            var n0_4 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale)).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0), n0_4, k1));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k2), n0_4, k3));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k4), n0_4, k5));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k6), n0_4, k7));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k8), n0_4, k9));
+            var n1_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale)).AsByte();
+            var n1_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale)).AsByte();
+            var n1_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale)).AsByte();
+            var n1_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale)).AsByte();
+            var n1_4 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale)).AsByte();
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0), n1_4, k1));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k2), n1_4, k3));
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k4), n1_4, k5));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k6), n1_4, k7));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k8), n1_4, k9));
+        }
+        Interleave.Scalar<S16>(input[f..], stride, 5, data[(f * 10)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void InterleaveS16x6Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
     {
         var source = new Planes(input, stride, 6, frames);
@@ -1747,6 +2867,79 @@ static unsafe class NeonVariants
             Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookup(u1, scatter4_2));
         }
         Interleave.Scalar<S16>(input[f..], stride, 6, data[(f * 12)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS16x7Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 7, frames);
+        var target = new InterleavedTarget(data, 14, frames);
+        var top = Vector128.Create(S16.Top);
+        var scale = Vector128.Create(32768f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 16, 17, 32, 33, 48, 49, 255, 255, 255, 255, 255, 255, 2, 3);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 255, 255, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 255, 255);
+        var k4 = Vector128.Create((byte)18, 19, 34, 35, 50, 51, 255, 255, 255, 255, 255, 255, 4, 5, 20, 21);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 2, 3, 255, 255, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 3, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)36, 37, 52, 53, 255, 255, 255, 255, 255, 255, 6, 7, 22, 23, 38, 39);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k10 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 4, 5, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 255, 255, 255, 255, 255, 255);
+        var k12 = Vector128.Create((byte)54, 55, 255, 255, 255, 255, 255, 255, 8, 9, 24, 25, 40, 41, 56, 57);
+        var k13 = Vector128.Create((byte)255, 255, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k14 = Vector128.Create((byte)255, 255, 255, 255, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k15 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k16 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 10, 11, 26, 27, 42, 43, 58, 59, 255, 255);
+        var k17 = Vector128.Create((byte)8, 9, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 10, 11);
+        var k18 = Vector128.Create((byte)255, 255, 8, 9, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k19 = Vector128.Create((byte)255, 255, 255, 255, 8, 9, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k20 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 28, 29, 44, 45, 60, 61, 255, 255, 255, 255);
+        var k21 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 255, 255);
+        var k22 = Vector128.Create((byte)10, 11, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13);
+        var k23 = Vector128.Create((byte)255, 255, 10, 11, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k24 = Vector128.Create((byte)255, 255, 14, 15, 30, 31, 46, 47, 62, 63, 255, 255, 255, 255, 255, 255);
+        var k25 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 14, 15, 255, 255, 255, 255);
+        var k26 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 14, 15, 255, 255);
+        var k27 = Vector128.Create((byte)12, 13, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale)).AsByte();
+            var n0_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale)).AsByte();
+            var n0_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale)).AsByte();
+            var n0_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale)).AsByte();
+            var n0_4 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale)).AsByte();
+            var n0_5 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 4), minus), top) * scale)).AsByte();
+            var n0_6 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 4), minus), top) * scale)).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0), n0_4, k1), n0_5, k2), n0_6, k3));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k4), n0_4, k5), n0_5, k6), n0_6, k7));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k8), n0_4, k9), n0_5, k10), n0_6, k11));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k12), n0_4, k13), n0_5, k14), n0_6, k15));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k16), n0_4, k17), n0_5, k18), n0_6, k19));
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k20), n0_4, k21), n0_5, k22), n0_6, k23));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k24), n0_4, k25), n0_5, k26), n0_6, k27));
+            var n1_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale)).AsByte();
+            var n1_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale)).AsByte();
+            var n1_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale)).AsByte();
+            var n1_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale)).AsByte();
+            var n1_4 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale)).AsByte();
+            var n1_5 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 12), minus), top) * scale)).AsByte();
+            var n1_6 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 12), minus), top) * scale)).AsByte();
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0), n1_4, k1), n1_5, k2), n1_6, k3));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k4), n1_4, k5), n1_5, k6), n1_6, k7));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k8), n1_4, k9), n1_5, k10), n1_6, k11));
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k12), n1_4, k13), n1_5, k14), n1_6, k15));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k16), n1_4, k17), n1_5, k18), n1_6, k19));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k20), n1_4, k21), n1_5, k22), n1_6, k23));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k24), n1_4, k25), n1_5, k26), n1_6, k27));
+        }
+        Interleave.Scalar<S16>(input[f..], stride, 7, data[(f * 14)..], frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -1828,6 +3021,215 @@ static unsafe class NeonVariants
             Packed.Write16(ref block, 240, AdvSimd.Arm64.ZipHigh(bh0_1.AsUInt32(), bh1_1.AsUInt32()).AsByte());
         }
         Interleave.Scalar<S16>(input[f..], stride, 8, data[(f * 16)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS24x5Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 5, frames);
+        var target = new InterleavedTarget(data, 15, frames);
+        var top = Vector128.Create(S24.Top);
+        var scale = Vector128.Create(8388608f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39);
+        var k3 = Vector128.Create((byte)0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k4 = Vector128.Create((byte)52, 53, 54, 55, 255, 255, 255, 255, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)40, 41, 42, 43, 56, 57, 58, 59, 255, 255, 255, 255, 12, 13, 14, 15);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale).AsByte();
+            var n0_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale).AsByte();
+            var n0_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale).AsByte();
+            var n0_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale).AsByte();
+            var n0_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale).AsByte();
+            var y0 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0), k1);
+            Packed.Write16(ref block, 0, y0);
+            var y1 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k2), n0_4, k3), k1);
+            Packed.Write16(ref block, 12, y1);
+            var y2 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k4), n0_4, k5), k1);
+            Packed.Write16(ref block, 24, y2);
+            var y3 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k6), n0_4, k7), k1);
+            Packed.Write16(ref block, 36, y3);
+            var y4 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k8), n0_4, k9), k1);
+            Packed.Write16(ref block, 48, y4);
+            var n1_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale).AsByte();
+            var n1_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale).AsByte();
+            var n1_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale).AsByte();
+            var n1_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale).AsByte();
+            var n1_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale).AsByte();
+            var y5 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0), k1);
+            Packed.Write16(ref block, 60, y5);
+            var y6 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k2), n1_4, k3), k1);
+            Packed.Write16(ref block, 72, y6);
+            var y7 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k4), n1_4, k5), k1);
+            Packed.Write16(ref block, 84, y7);
+            var y8 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k6), n1_4, k7), k1);
+            Packed.Write16(ref block, 96, y8);
+            var y9 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k8), n1_4, k9), k1);
+            Packed.Write16(ref block, 108, y9);
+            var n2_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale).AsByte();
+            var n2_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale).AsByte();
+            var n2_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale).AsByte();
+            var n2_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale).AsByte();
+            var n2_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale).AsByte();
+            var y10 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0), k1);
+            Packed.Write16(ref block, 120, y10);
+            var y11 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k2), n2_4, k3), k1);
+            Packed.Write16(ref block, 132, y11);
+            var y12 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k4), n2_4, k5), k1);
+            Packed.Write16(ref block, 144, y12);
+            var y13 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k6), n2_4, k7), k1);
+            Packed.Write16(ref block, 156, y13);
+            var y14 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k8), n2_4, k9), k1);
+            Packed.Write16(ref block, 168, y14);
+            var n3_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale).AsByte();
+            var n3_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale).AsByte();
+            var n3_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale).AsByte();
+            var n3_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale).AsByte();
+            var n3_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale).AsByte();
+            var y15 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0), k1);
+            Packed.Write16(ref block, 180, y15);
+            var y16 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k2), n3_4, k3), k1);
+            Packed.Write16(ref block, 192, y16);
+            var y17 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k4), n3_4, k5), k1);
+            Packed.Write16(ref block, 204, y17);
+            var y18 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k6), n3_4, k7), k1);
+            Packed.Write16(ref block, 216, y18);
+            var y19 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k8), n3_4, k9), k1);
+            Packed.Write8(ref block, 228, y19);
+            Packed.Write4(ref block, 236, y19.AsInt32().GetElement(2));
+        }
+        Interleave.Scalar<S24>(input[f..], stride, 5, data[(f * 15)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS24x7Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 7, frames);
+        var target = new InterleavedTarget(data, 21, frames);
+        var top = Vector128.Create(S24.Top);
+        var scale = Vector128.Create(8388608f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k3 = Vector128.Create((byte)0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k4 = Vector128.Create((byte)255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)20, 21, 22, 23, 36, 37, 38, 39, 52, 53, 54, 55, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k8 = Vector128.Create((byte)4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k10 = Vector128.Create((byte)40, 41, 42, 43, 56, 57, 58, 59, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k12 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k13 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47);
+        var k14 = Vector128.Create((byte)8, 9, 10, 11, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k15 = Vector128.Create((byte)60, 61, 62, 63, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k16 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k17 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255);
+        var k18 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale).AsByte();
+            var n0_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale).AsByte();
+            var n0_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale).AsByte();
+            var n0_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale).AsByte();
+            var n0_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale).AsByte();
+            var n0_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 0), minus), top) * scale).AsByte();
+            var n0_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 0), minus), top) * scale).AsByte();
+            var y0 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0), k1);
+            Packed.Write16(ref block, 0, y0);
+            var y1 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k2), n0_4, k3), n0_5, k4), n0_6, k5), k1);
+            Packed.Write16(ref block, 12, y1);
+            var y2 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k6), n0_4, k2), k1);
+            Packed.Write16(ref block, 24, y2);
+            var y3 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k7), n0_5, k8), n0_6, k9), k1);
+            Packed.Write16(ref block, 36, y3);
+            var y4 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k10), n0_4, k11), n0_5, k12), k1);
+            Packed.Write16(ref block, 48, y4);
+            var y5 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k13), n0_6, k14), k1);
+            Packed.Write16(ref block, 60, y5);
+            var y6 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k15), n0_4, k16), n0_5, k17), n0_6, k18), k1);
+            Packed.Write16(ref block, 72, y6);
+            var n1_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale).AsByte();
+            var n1_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale).AsByte();
+            var n1_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale).AsByte();
+            var n1_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale).AsByte();
+            var n1_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale).AsByte();
+            var n1_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 4), minus), top) * scale).AsByte();
+            var n1_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 4), minus), top) * scale).AsByte();
+            var y7 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0), k1);
+            Packed.Write16(ref block, 84, y7);
+            var y8 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k2), n1_4, k3), n1_5, k4), n1_6, k5), k1);
+            Packed.Write16(ref block, 96, y8);
+            var y9 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k6), n1_4, k2), k1);
+            Packed.Write16(ref block, 108, y9);
+            var y10 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k7), n1_5, k8), n1_6, k9), k1);
+            Packed.Write16(ref block, 120, y10);
+            var y11 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k10), n1_4, k11), n1_5, k12), k1);
+            Packed.Write16(ref block, 132, y11);
+            var y12 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k13), n1_6, k14), k1);
+            Packed.Write16(ref block, 144, y12);
+            var y13 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k15), n1_4, k16), n1_5, k17), n1_6, k18), k1);
+            Packed.Write16(ref block, 156, y13);
+            var n2_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale).AsByte();
+            var n2_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale).AsByte();
+            var n2_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale).AsByte();
+            var n2_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale).AsByte();
+            var n2_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale).AsByte();
+            var n2_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 8), minus), top) * scale).AsByte();
+            var n2_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 8), minus), top) * scale).AsByte();
+            var y14 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0), k1);
+            Packed.Write16(ref block, 168, y14);
+            var y15 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k2), n2_4, k3), n2_5, k4), n2_6, k5), k1);
+            Packed.Write16(ref block, 180, y15);
+            var y16 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k6), n2_4, k2), k1);
+            Packed.Write16(ref block, 192, y16);
+            var y17 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k7), n2_5, k8), n2_6, k9), k1);
+            Packed.Write16(ref block, 204, y17);
+            var y18 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k10), n2_4, k11), n2_5, k12), k1);
+            Packed.Write16(ref block, 216, y18);
+            var y19 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k13), n2_6, k14), k1);
+            Packed.Write16(ref block, 228, y19);
+            var y20 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k15), n2_4, k16), n2_5, k17), n2_6, k18), k1);
+            Packed.Write16(ref block, 240, y20);
+            var n3_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale).AsByte();
+            var n3_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale).AsByte();
+            var n3_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale).AsByte();
+            var n3_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale).AsByte();
+            var n3_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale).AsByte();
+            var n3_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 12), minus), top) * scale).AsByte();
+            var n3_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 12), minus), top) * scale).AsByte();
+            var y21 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0), k1);
+            Packed.Write16(ref block, 252, y21);
+            var y22 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k2), n3_4, k3), n3_5, k4), n3_6, k5), k1);
+            Packed.Write16(ref block, 264, y22);
+            var y23 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k6), n3_4, k2), k1);
+            Packed.Write16(ref block, 276, y23);
+            var y24 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k7), n3_5, k8), n3_6, k9), k1);
+            Packed.Write16(ref block, 288, y24);
+            var y25 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k10), n3_4, k11), n3_5, k12), k1);
+            Packed.Write16(ref block, 300, y25);
+            var y26 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k13), n3_6, k14), k1);
+            Packed.Write16(ref block, 312, y26);
+            var y27 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k15), n3_4, k16), n3_5, k17), n3_6, k18), k1);
+            Packed.Write8(ref block, 324, y27);
+            Packed.Write4(ref block, 332, y27.AsInt32().GetElement(2));
+        }
+        Interleave.Scalar<S24>(input[f..], stride, 7, data[(f * 21)..], frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -1977,6 +3379,72 @@ static unsafe class NeonVariants
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS32x5Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 5, frames);
+        var target = new InterleavedTarget(data, 20, frames);
+        var top = Vector128.Create(S32.Top);
+        var scale = Vector128.Create(2147483648f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39);
+        var k2 = Vector128.Create((byte)0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)52, 53, 54, 55, 255, 255, 255, 255, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k4 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)40, 41, 42, 43, 56, 57, 58, 59, 255, 255, 255, 255, 12, 13, 14, 15);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale).AsByte();
+            var n0_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale).AsByte();
+            var n0_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale).AsByte();
+            var n0_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale).AsByte();
+            var n0_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k1), n0_4, k2));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k3), n0_4, k4));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k5), n0_4, k6));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k7), n0_4, k8));
+            var n1_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale).AsByte();
+            var n1_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale).AsByte();
+            var n1_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale).AsByte();
+            var n1_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale).AsByte();
+            var n1_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k1), n1_4, k2));
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k3), n1_4, k4));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k5), n1_4, k6));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k7), n1_4, k8));
+            var n2_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale).AsByte();
+            var n2_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale).AsByte();
+            var n2_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale).AsByte();
+            var n2_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale).AsByte();
+            var n2_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k1), n2_4, k2));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k3), n2_4, k4));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k5), n2_4, k6));
+            Packed.Write16(ref block, 224, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k7), n2_4, k8));
+            var n3_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale).AsByte();
+            var n3_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale).AsByte();
+            var n3_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale).AsByte();
+            var n3_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale).AsByte();
+            var n3_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 240, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0));
+            Packed.Write16(ref block, 256, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k1), n3_4, k2));
+            Packed.Write16(ref block, 272, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k3), n3_4, k4));
+            Packed.Write16(ref block, 288, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k5), n3_4, k6));
+            Packed.Write16(ref block, 304, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k7), n3_4, k8));
+        }
+        Interleave.Scalar<S32>(input[f..], stride, 5, data[(f * 20)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void InterleaveS32x6Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
     {
         var source = new Planes(input, stride, 6, frames);
@@ -2050,6 +3518,97 @@ static unsafe class NeonVariants
             Packed.Write16(ref block, 368, AdvSimd.Arm64.VectorTableLookup(u3, scatter8_2));
         }
         Interleave.Scalar<S32>(input[f..], stride, 6, data[(f * 24)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS32x7Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 7, frames);
+        var target = new InterleavedTarget(data, 28, frames);
+        var top = Vector128.Create(S32.Top);
+        var scale = Vector128.Create(2147483648f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k2 = Vector128.Create((byte)0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k4 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)20, 21, 22, 23, 36, 37, 38, 39, 52, 53, 54, 55, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k7 = Vector128.Create((byte)4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)40, 41, 42, 43, 56, 57, 58, 59, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k10 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k12 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47);
+        var k13 = Vector128.Create((byte)8, 9, 10, 11, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k14 = Vector128.Create((byte)60, 61, 62, 63, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k15 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k16 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255);
+        var k17 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale).AsByte();
+            var n0_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale).AsByte();
+            var n0_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale).AsByte();
+            var n0_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale).AsByte();
+            var n0_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale).AsByte();
+            var n0_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 0), minus), top) * scale).AsByte();
+            var n0_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 0), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k1), n0_4, k2), n0_5, k3), n0_6, k4));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k5), n0_4, k1));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k6), n0_5, k7), n0_6, k8));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k9), n0_4, k10), n0_5, k11));
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k12), n0_6, k13));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k14), n0_4, k15), n0_5, k16), n0_6, k17));
+            var n1_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale).AsByte();
+            var n1_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale).AsByte();
+            var n1_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale).AsByte();
+            var n1_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale).AsByte();
+            var n1_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale).AsByte();
+            var n1_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 4), minus), top) * scale).AsByte();
+            var n1_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 4), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k1), n1_4, k2), n1_5, k3), n1_6, k4));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k5), n1_4, k1));
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k6), n1_5, k7), n1_6, k8));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k9), n1_4, k10), n1_5, k11));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k12), n1_6, k13));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k14), n1_4, k15), n1_5, k16), n1_6, k17));
+            var n2_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale).AsByte();
+            var n2_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale).AsByte();
+            var n2_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale).AsByte();
+            var n2_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale).AsByte();
+            var n2_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale).AsByte();
+            var n2_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 8), minus), top) * scale).AsByte();
+            var n2_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 8), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 224, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0));
+            Packed.Write16(ref block, 240, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k1), n2_4, k2), n2_5, k3), n2_6, k4));
+            Packed.Write16(ref block, 256, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k5), n2_4, k1));
+            Packed.Write16(ref block, 272, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k6), n2_5, k7), n2_6, k8));
+            Packed.Write16(ref block, 288, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k9), n2_4, k10), n2_5, k11));
+            Packed.Write16(ref block, 304, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k12), n2_6, k13));
+            Packed.Write16(ref block, 320, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k14), n2_4, k15), n2_5, k16), n2_6, k17));
+            var n3_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale).AsByte();
+            var n3_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale).AsByte();
+            var n3_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale).AsByte();
+            var n3_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale).AsByte();
+            var n3_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale).AsByte();
+            var n3_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 12), minus), top) * scale).AsByte();
+            var n3_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 12), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 336, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0));
+            Packed.Write16(ref block, 352, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k1), n3_4, k2), n3_5, k3), n3_6, k4));
+            Packed.Write16(ref block, 368, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k5), n3_4, k1));
+            Packed.Write16(ref block, 384, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k6), n3_5, k7), n3_6, k8));
+            Packed.Write16(ref block, 400, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k9), n3_4, k10), n3_5, k11));
+            Packed.Write16(ref block, 416, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k12), n3_6, k13));
+            Packed.Write16(ref block, 432, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k14), n3_4, k15), n3_5, k16), n3_6, k17));
+        }
+        Interleave.Scalar<S32>(input[f..], stride, 7, data[(f * 28)..], frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -2337,6 +3896,69 @@ static unsafe class NeonVariants
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveF32x5Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 5, frames);
+        var target = new InterleavedTarget(data, 20, frames);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39);
+        var k2 = Vector128.Create((byte)0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)52, 53, 54, 55, 255, 255, 255, 255, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k4 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)40, 41, 42, 43, 56, 57, 58, 59, 255, 255, 255, 255, 12, 13, 14, 15);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = from.Load4(stride, 0, 0).AsByte();
+            var n0_1 = from.Load4(stride, 1, 0).AsByte();
+            var n0_2 = from.Load4(stride, 2, 0).AsByte();
+            var n0_3 = from.Load4(stride, 3, 0).AsByte();
+            var n0_4 = from.Load4(stride, 4, 0).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k1), n0_4, k2));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k3), n0_4, k4));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k5), n0_4, k6));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k7), n0_4, k8));
+            var n1_0 = from.Load4(stride, 0, 4).AsByte();
+            var n1_1 = from.Load4(stride, 1, 4).AsByte();
+            var n1_2 = from.Load4(stride, 2, 4).AsByte();
+            var n1_3 = from.Load4(stride, 3, 4).AsByte();
+            var n1_4 = from.Load4(stride, 4, 4).AsByte();
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k1), n1_4, k2));
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k3), n1_4, k4));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k5), n1_4, k6));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k7), n1_4, k8));
+            var n2_0 = from.Load4(stride, 0, 8).AsByte();
+            var n2_1 = from.Load4(stride, 1, 8).AsByte();
+            var n2_2 = from.Load4(stride, 2, 8).AsByte();
+            var n2_3 = from.Load4(stride, 3, 8).AsByte();
+            var n2_4 = from.Load4(stride, 4, 8).AsByte();
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k1), n2_4, k2));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k3), n2_4, k4));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k5), n2_4, k6));
+            Packed.Write16(ref block, 224, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k7), n2_4, k8));
+            var n3_0 = from.Load4(stride, 0, 12).AsByte();
+            var n3_1 = from.Load4(stride, 1, 12).AsByte();
+            var n3_2 = from.Load4(stride, 2, 12).AsByte();
+            var n3_3 = from.Load4(stride, 3, 12).AsByte();
+            var n3_4 = from.Load4(stride, 4, 12).AsByte();
+            Packed.Write16(ref block, 240, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0));
+            Packed.Write16(ref block, 256, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k1), n3_4, k2));
+            Packed.Write16(ref block, 272, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k3), n3_4, k4));
+            Packed.Write16(ref block, 288, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k5), n3_4, k6));
+            Packed.Write16(ref block, 304, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k7), n3_4, k8));
+        }
+        Interleave.Scalar<F32>(input[f..], stride, 5, data[(f * 20)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void InterleaveF32x6Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
     {
         var source = new Planes(input, stride, 6, frames);
@@ -2407,6 +4029,94 @@ static unsafe class NeonVariants
             Packed.Write16(ref block, 368, AdvSimd.Arm64.VectorTableLookup(u3, scatter8_2));
         }
         Interleave.Scalar<F32>(input[f..], stride, 6, data[(f * 24)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveF32x7Registers(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 7, frames);
+        var target = new InterleavedTarget(data, 28, frames);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 6, 7);
+        var k2 = Vector128.Create((byte)0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k4 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 2, 3, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)20, 21, 22, 23, 36, 37, 38, 39, 52, 53, 54, 55, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k7 = Vector128.Create((byte)4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)40, 41, 42, 43, 56, 57, 58, 59, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k10 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 10, 11);
+        var k12 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47);
+        var k13 = Vector128.Create((byte)8, 9, 10, 11, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k14 = Vector128.Create((byte)60, 61, 62, 63, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k15 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k16 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15, 255, 255, 255, 255);
+        var k17 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = from.Load4(stride, 0, 0).AsByte();
+            var n0_1 = from.Load4(stride, 1, 0).AsByte();
+            var n0_2 = from.Load4(stride, 2, 0).AsByte();
+            var n0_3 = from.Load4(stride, 3, 0).AsByte();
+            var n0_4 = from.Load4(stride, 4, 0).AsByte();
+            var n0_5 = from.Load4(stride, 5, 0).AsByte();
+            var n0_6 = from.Load4(stride, 6, 0).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k1), n0_4, k2), n0_5, k3), n0_6, k4));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k5), n0_4, k1));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k6), n0_5, k7), n0_6, k8));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k9), n0_4, k10), n0_5, k11));
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k12), n0_6, k13));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k14), n0_4, k15), n0_5, k16), n0_6, k17));
+            var n1_0 = from.Load4(stride, 0, 4).AsByte();
+            var n1_1 = from.Load4(stride, 1, 4).AsByte();
+            var n1_2 = from.Load4(stride, 2, 4).AsByte();
+            var n1_3 = from.Load4(stride, 3, 4).AsByte();
+            var n1_4 = from.Load4(stride, 4, 4).AsByte();
+            var n1_5 = from.Load4(stride, 5, 4).AsByte();
+            var n1_6 = from.Load4(stride, 6, 4).AsByte();
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k1), n1_4, k2), n1_5, k3), n1_6, k4));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k5), n1_4, k1));
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k6), n1_5, k7), n1_6, k8));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k9), n1_4, k10), n1_5, k11));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k12), n1_6, k13));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k14), n1_4, k15), n1_5, k16), n1_6, k17));
+            var n2_0 = from.Load4(stride, 0, 8).AsByte();
+            var n2_1 = from.Load4(stride, 1, 8).AsByte();
+            var n2_2 = from.Load4(stride, 2, 8).AsByte();
+            var n2_3 = from.Load4(stride, 3, 8).AsByte();
+            var n2_4 = from.Load4(stride, 4, 8).AsByte();
+            var n2_5 = from.Load4(stride, 5, 8).AsByte();
+            var n2_6 = from.Load4(stride, 6, 8).AsByte();
+            Packed.Write16(ref block, 224, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0));
+            Packed.Write16(ref block, 240, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k1), n2_4, k2), n2_5, k3), n2_6, k4));
+            Packed.Write16(ref block, 256, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k5), n2_4, k1));
+            Packed.Write16(ref block, 272, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k6), n2_5, k7), n2_6, k8));
+            Packed.Write16(ref block, 288, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k9), n2_4, k10), n2_5, k11));
+            Packed.Write16(ref block, 304, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k12), n2_6, k13));
+            Packed.Write16(ref block, 320, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k14), n2_4, k15), n2_5, k16), n2_6, k17));
+            var n3_0 = from.Load4(stride, 0, 12).AsByte();
+            var n3_1 = from.Load4(stride, 1, 12).AsByte();
+            var n3_2 = from.Load4(stride, 2, 12).AsByte();
+            var n3_3 = from.Load4(stride, 3, 12).AsByte();
+            var n3_4 = from.Load4(stride, 4, 12).AsByte();
+            var n3_5 = from.Load4(stride, 5, 12).AsByte();
+            var n3_6 = from.Load4(stride, 6, 12).AsByte();
+            Packed.Write16(ref block, 336, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0));
+            Packed.Write16(ref block, 352, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k1), n3_4, k2), n3_5, k3), n3_6, k4));
+            Packed.Write16(ref block, 368, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k5), n3_4, k1));
+            Packed.Write16(ref block, 384, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k6), n3_5, k7), n3_6, k8));
+            Packed.Write16(ref block, 400, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k9), n3_4, k10), n3_5, k11));
+            Packed.Write16(ref block, 416, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k12), n3_6, k13));
+            Packed.Write16(ref block, 432, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k14), n3_4, k15), n3_5, k16), n3_6, k17));
+        }
+        Interleave.Scalar<F32>(input[f..], stride, 7, data[(f * 28)..], frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
@@ -4482,5 +6192,1535 @@ static unsafe class NeonVariants
             }
         }
         Interleave.Scalar<F32>(input[f..], stride, 4, data[(f * 16)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS24x5Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 15, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var k0 = Vector128.Create((byte)255, 0, 1, 2, 255, 3, 4, 5, 255, 6, 7, 8, 255, 9, 10, 11);
+        var k1 = Vector128.Create((byte)255, 4, 5, 6, 255, 7, 8, 9, 255, 10, 11, 12, 255, 13, 14, 15);
+        var k2 = Vector128.Create((byte)0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43, 60, 61, 62, 63);
+        var k3 = Vector128.Create((byte)4, 5, 6, 7, 24, 25, 26, 27, 44, 45, 46, 47, 48, 49, 50, 51);
+        var k4 = Vector128.Create((byte)8, 9, 10, 11, 28, 29, 30, 31, 32, 33, 34, 35, 52, 53, 54, 55);
+        var k5 = Vector128.Create((byte)12, 13, 14, 15, 16, 17, 18, 19, 36, 37, 38, 39, 56, 57, 58, 59);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var x0 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 0), k0);
+            var r0_0 = x0;
+            var x1 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 8), k1);
+            var r1_0 = x1;
+            var x2 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 20), k1);
+            var r2_0 = x2;
+            var x3 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 32), k1);
+            var r3_0 = x3;
+            var x4 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 44), k1);
+            var r4_0 = x4;
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r4_0), k3).AsInt32()) * scale);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r3_0, r4_0), k4).AsInt32()) * scale);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r3_0, r4_0), k5).AsInt32()) * scale);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_0, r2_0, r3_0, r4_0), k2).AsInt32()) * scale);
+            var x5 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 56), k1);
+            var r0_1 = x5;
+            var x6 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 68), k1);
+            var r1_1 = x6;
+            var x7 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 80), k1);
+            var r2_1 = x7;
+            var x8 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 92), k1);
+            var r3_1 = x8;
+            var x9 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 104), k1);
+            var r4_1 = x9;
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r4_1), k3).AsInt32()) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r3_1, r4_1), k4).AsInt32()) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r3_1, r4_1), k5).AsInt32()) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_1, r2_1, r3_1, r4_1), k2).AsInt32()) * scale);
+            var x10 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 116), k1);
+            var r0_2 = x10;
+            var x11 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 128), k1);
+            var r1_2 = x11;
+            var x12 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 140), k1);
+            var r2_2 = x12;
+            var x13 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 152), k1);
+            var r3_2 = x13;
+            var x14 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 164), k1);
+            var r4_2 = x14;
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r4_2), k3).AsInt32()) * scale);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r3_2, r4_2), k4).AsInt32()) * scale);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r3_2, r4_2), k5).AsInt32()) * scale);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_2, r2_2, r3_2, r4_2), k2).AsInt32()) * scale);
+            var x15 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 176), k1);
+            var r0_3 = x15;
+            var x16 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 188), k1);
+            var r1_3 = x16;
+            var x17 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 200), k1);
+            var r2_3 = x17;
+            var x18 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 212), k1);
+            var r3_3 = x18;
+            var x19 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 224), k1);
+            var r4_3 = x19;
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r4_3), k3).AsInt32()) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r3_3, r4_3), k4).AsInt32()) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r3_3, r4_3), k5).AsInt32()) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_3, r2_3, r3_3, r4_3), k2).AsInt32()) * scale);
+        }
+        Deinterleave.Scalar<S24>(data[(f * 15)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS24x7Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 21, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var k0 = Vector128.Create((byte)255, 0, 1, 2, 255, 3, 4, 5, 255, 6, 7, 8, 255, 9, 10, 11);
+        var k1 = Vector128.Create((byte)255, 4, 5, 6, 255, 7, 8, 9, 255, 10, 11, 12, 255, 13, 14, 15);
+        var k2 = Vector128.Create((byte)0, 1, 2, 3, 28, 29, 30, 31, 40, 41, 42, 43, 52, 53, 54, 55);
+        var k3 = Vector128.Create((byte)4, 5, 6, 7, 16, 17, 18, 19, 44, 45, 46, 47, 56, 57, 58, 59);
+        var k4 = Vector128.Create((byte)8, 9, 10, 11, 20, 21, 22, 23, 32, 33, 34, 35, 60, 61, 62, 63);
+        var k5 = Vector128.Create((byte)12, 13, 14, 15, 24, 25, 26, 27, 36, 37, 38, 39, 48, 49, 50, 51);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var x0 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 0), k0);
+            var r0_0 = x0;
+            var x1 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 8), k1);
+            var r1_0 = x1;
+            var x2 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 20), k1);
+            var r2_0 = x2;
+            var x3 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 32), k1);
+            var r3_0 = x3;
+            var x4 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 44), k1);
+            var r4_0 = x4;
+            var x5 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 56), k1);
+            var r5_0 = x5;
+            var x6 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 68), k1);
+            var r6_0 = x6;
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r3_0, r5_0), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r3_0, r5_0), k3).AsInt32()) * scale);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r4_0, r5_0), k4).AsInt32()) * scale);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r4_0, r6_0), k5).AsInt32()) * scale);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_0, r2_0, r4_0, r6_0), k2).AsInt32()) * scale);
+            into.Store(stride, 5, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_0, r3_0, r4_0, r6_0), k3).AsInt32()) * scale);
+            into.Store(stride, 6, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_0, r3_0, r5_0, r6_0), k4).AsInt32()) * scale);
+            var x7 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 80), k1);
+            var r0_1 = x7;
+            var x8 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 92), k1);
+            var r1_1 = x8;
+            var x9 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 104), k1);
+            var r2_1 = x9;
+            var x10 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 116), k1);
+            var r3_1 = x10;
+            var x11 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 128), k1);
+            var r4_1 = x11;
+            var x12 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 140), k1);
+            var r5_1 = x12;
+            var x13 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 152), k1);
+            var r6_1 = x13;
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r3_1, r5_1), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r3_1, r5_1), k3).AsInt32()) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r4_1, r5_1), k4).AsInt32()) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r4_1, r6_1), k5).AsInt32()) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_1, r2_1, r4_1, r6_1), k2).AsInt32()) * scale);
+            into.Store(stride, 5, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_1, r3_1, r4_1, r6_1), k3).AsInt32()) * scale);
+            into.Store(stride, 6, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_1, r3_1, r5_1, r6_1), k4).AsInt32()) * scale);
+            var x14 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 164), k1);
+            var r0_2 = x14;
+            var x15 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 176), k1);
+            var r1_2 = x15;
+            var x16 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 188), k1);
+            var r2_2 = x16;
+            var x17 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 200), k1);
+            var r3_2 = x17;
+            var x18 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 212), k1);
+            var r4_2 = x18;
+            var x19 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 224), k1);
+            var r5_2 = x19;
+            var x20 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 236), k1);
+            var r6_2 = x20;
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r3_2, r5_2), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r3_2, r5_2), k3).AsInt32()) * scale);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r4_2, r5_2), k4).AsInt32()) * scale);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r4_2, r6_2), k5).AsInt32()) * scale);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_2, r2_2, r4_2, r6_2), k2).AsInt32()) * scale);
+            into.Store(stride, 5, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_2, r3_2, r4_2, r6_2), k3).AsInt32()) * scale);
+            into.Store(stride, 6, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_2, r3_2, r5_2, r6_2), k4).AsInt32()) * scale);
+            var x21 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 248), k1);
+            var r0_3 = x21;
+            var x22 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 260), k1);
+            var r1_3 = x22;
+            var x23 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 272), k1);
+            var r2_3 = x23;
+            var x24 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 284), k1);
+            var r3_3 = x24;
+            var x25 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 296), k1);
+            var r4_3 = x25;
+            var x26 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 308), k1);
+            var r5_3 = x26;
+            var x27 = AdvSimd.Arm64.VectorTableLookup(Packed.Read16(ref block, 320), k1);
+            var r6_3 = x27;
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r3_3, r5_3), k2).AsInt32()) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r3_3, r5_3), k3).AsInt32()) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r4_3, r5_3), k4).AsInt32()) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r4_3, r6_3), k5).AsInt32()) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_3, r2_3, r4_3, r6_3), k2).AsInt32()) * scale);
+            into.Store(stride, 5, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_3, r3_3, r4_3, r6_3), k3).AsInt32()) * scale);
+            into.Store(stride, 6, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_3, r3_3, r5_3, r6_3), k4).AsInt32()) * scale);
+        }
+        Deinterleave.Scalar<S24>(data[(f * 21)..], 7, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveU8x5Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 5, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var scale = Vector128.Create(1f / 128);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 1, 6, 11);
+        var k2 = Vector128.Create((byte)1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 7, 12);
+        var k4 = Vector128.Create((byte)2, 7, 12, 17, 22, 27, 32, 37, 42, 47, 52, 57, 62, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 3, 8, 13);
+        var k6 = Vector128.Create((byte)3, 8, 13, 18, 23, 28, 33, 38, 43, 48, 53, 58, 63, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 9, 14);
+        var k8 = Vector128.Create((byte)4, 9, 14, 19, 24, 29, 34, 39, 44, 49, 54, 59, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 5, 10, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var w0_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r4_0, k1);
+            into.Store(stride, 0, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_0))), scale, minus));
+            into.Store(stride, 0, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_0))), scale, minus));
+            into.Store(stride, 0, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_0))), scale, minus));
+            into.Store(stride, 0, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_0))), scale, minus));
+            var w0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), r4_0, k3);
+            into.Store(stride, 1, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_1))), scale, minus));
+            into.Store(stride, 1, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_1))), scale, minus));
+            into.Store(stride, 1, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_1))), scale, minus));
+            into.Store(stride, 1, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_1))), scale, minus));
+            var w0_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r4_0, k5);
+            into.Store(stride, 2, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_2))), scale, minus));
+            into.Store(stride, 2, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_2))), scale, minus));
+            into.Store(stride, 2, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_2))), scale, minus));
+            into.Store(stride, 2, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_2))), scale, minus));
+            var w0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k6), r4_0, k7);
+            into.Store(stride, 3, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_3))), scale, minus));
+            into.Store(stride, 3, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_3))), scale, minus));
+            into.Store(stride, 3, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_3))), scale, minus));
+            into.Store(stride, 3, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_3))), scale, minus));
+            var w0_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k8), r4_0, k9);
+            into.Store(stride, 4, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_4))), scale, minus));
+            into.Store(stride, 4, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_4))), scale, minus));
+            into.Store(stride, 4, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_4))), scale, minus));
+            into.Store(stride, 4, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_4))), scale, minus));
+        }
+        Deinterleave.Scalar<U8>(data[(f * 5)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveU8x7Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 7, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var scale = Vector128.Create(1f / 128);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 255, 255, 255, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 13, 20, 27, 34, 41);
+        var k2 = Vector128.Create((byte)1, 8, 15, 22, 29, 36, 43, 50, 57, 255, 255, 255, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 7, 14, 21, 28, 35, 42);
+        var k4 = Vector128.Create((byte)2, 9, 16, 23, 30, 37, 44, 51, 58, 255, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 1, 8, 15, 22, 29, 36, 43);
+        var k6 = Vector128.Create((byte)3, 10, 17, 24, 31, 38, 45, 52, 59, 255, 255, 255, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 9, 16, 23, 30, 37, 44);
+        var k8 = Vector128.Create((byte)4, 11, 18, 25, 32, 39, 46, 53, 60, 255, 255, 255, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 3, 10, 17, 24, 31, 38, 45);
+        var k10 = Vector128.Create((byte)5, 12, 19, 26, 33, 40, 47, 54, 61, 255, 255, 255, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 11, 18, 25, 32, 39, 46);
+        var k12 = Vector128.Create((byte)6, 13, 20, 27, 34, 41, 48, 55, 62, 255, 255, 255, 255, 255, 255, 255);
+        var k13 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 5, 12, 19, 26, 33, 40, 47);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            var w0_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), (r4_0, r5_0, r6_0), k1);
+            into.Store(stride, 0, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_0))), scale, minus));
+            into.Store(stride, 0, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_0))), scale, minus));
+            into.Store(stride, 0, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_0))), scale, minus));
+            into.Store(stride, 0, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_0))), scale, minus));
+            var w0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), (r4_0, r5_0, r6_0), k3);
+            into.Store(stride, 1, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_1))), scale, minus));
+            into.Store(stride, 1, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_1))), scale, minus));
+            into.Store(stride, 1, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_1))), scale, minus));
+            into.Store(stride, 1, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_1))), scale, minus));
+            var w0_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), (r4_0, r5_0, r6_0), k5);
+            into.Store(stride, 2, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_2))), scale, minus));
+            into.Store(stride, 2, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_2))), scale, minus));
+            into.Store(stride, 2, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_2))), scale, minus));
+            into.Store(stride, 2, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_2))), scale, minus));
+            var w0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k6), (r4_0, r5_0, r6_0), k7);
+            into.Store(stride, 3, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_3))), scale, minus));
+            into.Store(stride, 3, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_3))), scale, minus));
+            into.Store(stride, 3, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_3))), scale, minus));
+            into.Store(stride, 3, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_3))), scale, minus));
+            var w0_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k8), (r4_0, r5_0, r6_0), k9);
+            into.Store(stride, 4, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_4))), scale, minus));
+            into.Store(stride, 4, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_4))), scale, minus));
+            into.Store(stride, 4, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_4))), scale, minus));
+            into.Store(stride, 4, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_4))), scale, minus));
+            var w0_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k10), (r4_0, r5_0, r6_0), k11);
+            into.Store(stride, 5, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_5))), scale, minus));
+            into.Store(stride, 5, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_5))), scale, minus));
+            into.Store(stride, 5, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_5))), scale, minus));
+            into.Store(stride, 5, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_5))), scale, minus));
+            var w0_6 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k12), (r4_0, r5_0, r6_0), k13);
+            into.Store(stride, 6, 0, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenLower(w0_6))), scale, minus));
+            into.Store(stride, 6, 4, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenLower(w0_6))), scale, minus));
+            into.Store(stride, 6, 8, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenLower(Vector128.WidenUpper(w0_6))), scale, minus));
+            into.Store(stride, 6, 12, Vector128.FusedMultiplyAdd(Vector128.ConvertToSingle(Vector128.WidenUpper(Vector128.WidenUpper(w0_6))), scale, minus));
+        }
+        Deinterleave.Scalar<U8>(data[(f * 7)..], 7, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS16x5Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 10, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var scale = Vector128.Create(1f / 32768);
+        var k0 = Vector128.Create((byte)0, 1, 10, 11, 20, 21, 30, 31, 40, 41, 50, 51, 60, 61, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 7);
+        var k2 = Vector128.Create((byte)2, 3, 12, 13, 22, 23, 32, 33, 42, 43, 52, 53, 62, 63, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9);
+        var k4 = Vector128.Create((byte)4, 5, 14, 15, 24, 25, 34, 35, 44, 45, 54, 55, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 10, 11);
+        var k6 = Vector128.Create((byte)6, 7, 16, 17, 26, 27, 36, 37, 46, 47, 56, 57, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 3, 12, 13);
+        var k8 = Vector128.Create((byte)8, 9, 18, 19, 28, 29, 38, 39, 48, 49, 58, 59, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var w0_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), r4_0, k1);
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_0.AsInt16())) * scale);
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_0.AsInt16())) * scale);
+            var w0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), r4_0, k3);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_1.AsInt16())) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_1.AsInt16())) * scale);
+            var w0_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), r4_0, k5);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_2.AsInt16())) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_2.AsInt16())) * scale);
+            var w0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k6), r4_0, k7);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_3.AsInt16())) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_3.AsInt16())) * scale);
+            var w0_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k8), r4_0, k9);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_4.AsInt16())) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_4.AsInt16())) * scale);
+            var r0_1 = Packed.Read16(ref block, 80);
+            var r1_1 = Packed.Read16(ref block, 96);
+            var r2_1 = Packed.Read16(ref block, 112);
+            var r3_1 = Packed.Read16(ref block, 128);
+            var r4_1 = Packed.Read16(ref block, 144);
+            var w1_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0), r4_1, k1);
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_0.AsInt16())) * scale);
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_0.AsInt16())) * scale);
+            var w1_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2), r4_1, k3);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_1.AsInt16())) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_1.AsInt16())) * scale);
+            var w1_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k4), r4_1, k5);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_2.AsInt16())) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_2.AsInt16())) * scale);
+            var w1_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k6), r4_1, k7);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_3.AsInt16())) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_3.AsInt16())) * scale);
+            var w1_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k8), r4_1, k9);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_4.AsInt16())) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_4.AsInt16())) * scale);
+        }
+        Deinterleave.Scalar<S16>(data[(f * 10)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS16x7Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 14, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var scale = Vector128.Create(1f / 32768);
+        var k0 = Vector128.Create((byte)0, 1, 14, 15, 28, 29, 42, 43, 56, 57, 255, 255, 255, 255, 255, 255);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 6, 7, 20, 21, 34, 35);
+        var k2 = Vector128.Create((byte)2, 3, 16, 17, 30, 31, 44, 45, 58, 59, 255, 255, 255, 255, 255, 255);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 8, 9, 22, 23, 36, 37);
+        var k4 = Vector128.Create((byte)4, 5, 18, 19, 32, 33, 46, 47, 60, 61, 255, 255, 255, 255, 255, 255);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 10, 11, 24, 25, 38, 39);
+        var k6 = Vector128.Create((byte)6, 7, 20, 21, 34, 35, 48, 49, 62, 63, 255, 255, 255, 255, 255, 255);
+        var k7 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 26, 27, 40, 41);
+        var k8 = Vector128.Create((byte)8, 9, 22, 23, 36, 37, 50, 51, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 14, 15, 28, 29, 42, 43);
+        var k10 = Vector128.Create((byte)10, 11, 24, 25, 38, 39, 52, 53, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 2, 3, 16, 17, 30, 31, 44, 45);
+        var k12 = Vector128.Create((byte)12, 13, 26, 27, 40, 41, 54, 55, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k13 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 18, 19, 32, 33, 46, 47);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            var w0_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0), (r4_0, r5_0, r6_0), k1);
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_0.AsInt16())) * scale);
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_0.AsInt16())) * scale);
+            var w0_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k2), (r4_0, r5_0, r6_0), k3);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_1.AsInt16())) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_1.AsInt16())) * scale);
+            var w0_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k4), (r4_0, r5_0, r6_0), k5);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_2.AsInt16())) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_2.AsInt16())) * scale);
+            var w0_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k6), (r4_0, r5_0, r6_0), k7);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_3.AsInt16())) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_3.AsInt16())) * scale);
+            var w0_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k8), (r4_0, r5_0, r6_0), k9);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_4.AsInt16())) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_4.AsInt16())) * scale);
+            var w0_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k10), (r4_0, r5_0, r6_0), k11);
+            into.Store(stride, 5, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_5.AsInt16())) * scale);
+            into.Store(stride, 5, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_5.AsInt16())) * scale);
+            var w0_6 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k12), (r4_0, r5_0, r6_0), k13);
+            into.Store(stride, 6, 0, Vector128.ConvertToSingle(Vector128.WidenLower(w0_6.AsInt16())) * scale);
+            into.Store(stride, 6, 4, Vector128.ConvertToSingle(Vector128.WidenUpper(w0_6.AsInt16())) * scale);
+            var r0_1 = Packed.Read16(ref block, 112);
+            var r1_1 = Packed.Read16(ref block, 128);
+            var r2_1 = Packed.Read16(ref block, 144);
+            var r3_1 = Packed.Read16(ref block, 160);
+            var r4_1 = Packed.Read16(ref block, 176);
+            var r5_1 = Packed.Read16(ref block, 192);
+            var r6_1 = Packed.Read16(ref block, 208);
+            var w1_0 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0), (r4_1, r5_1, r6_1), k1);
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_0.AsInt16())) * scale);
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_0.AsInt16())) * scale);
+            var w1_1 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k2), (r4_1, r5_1, r6_1), k3);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_1.AsInt16())) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_1.AsInt16())) * scale);
+            var w1_2 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k4), (r4_1, r5_1, r6_1), k5);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_2.AsInt16())) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_2.AsInt16())) * scale);
+            var w1_3 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k6), (r4_1, r5_1, r6_1), k7);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_3.AsInt16())) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_3.AsInt16())) * scale);
+            var w1_4 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k8), (r4_1, r5_1, r6_1), k9);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_4.AsInt16())) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_4.AsInt16())) * scale);
+            var w1_5 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k10), (r4_1, r5_1, r6_1), k11);
+            into.Store(stride, 5, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_5.AsInt16())) * scale);
+            into.Store(stride, 5, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_5.AsInt16())) * scale);
+            var w1_6 = AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k12), (r4_1, r5_1, r6_1), k13);
+            into.Store(stride, 6, 8, Vector128.ConvertToSingle(Vector128.WidenLower(w1_6.AsInt16())) * scale);
+            into.Store(stride, 6, 12, Vector128.ConvertToSingle(Vector128.WidenUpper(w1_6.AsInt16())) * scale);
+        }
+        Deinterleave.Scalar<S16>(data[(f * 14)..], 7, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS32x5Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 20, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43, 60, 61, 62, 63);
+        var k1 = Vector128.Create((byte)4, 5, 6, 7, 24, 25, 26, 27, 44, 45, 46, 47, 48, 49, 50, 51);
+        var k2 = Vector128.Create((byte)8, 9, 10, 11, 28, 29, 30, 31, 32, 33, 34, 35, 52, 53, 54, 55);
+        var k3 = Vector128.Create((byte)12, 13, 14, 15, 16, 17, 18, 19, 36, 37, 38, 39, 56, 57, 58, 59);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r4_0), k1).AsInt32()) * scale);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r3_0, r4_0), k2).AsInt32()) * scale);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r3_0, r4_0), k3).AsInt32()) * scale);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_0, r2_0, r3_0, r4_0), k0).AsInt32()) * scale);
+            var r0_1 = Packed.Read16(ref block, 80);
+            var r1_1 = Packed.Read16(ref block, 96);
+            var r2_1 = Packed.Read16(ref block, 112);
+            var r3_1 = Packed.Read16(ref block, 128);
+            var r4_1 = Packed.Read16(ref block, 144);
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r4_1), k1).AsInt32()) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r3_1, r4_1), k2).AsInt32()) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r3_1, r4_1), k3).AsInt32()) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_1, r2_1, r3_1, r4_1), k0).AsInt32()) * scale);
+            var r0_2 = Packed.Read16(ref block, 160);
+            var r1_2 = Packed.Read16(ref block, 176);
+            var r2_2 = Packed.Read16(ref block, 192);
+            var r3_2 = Packed.Read16(ref block, 208);
+            var r4_2 = Packed.Read16(ref block, 224);
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r4_2), k1).AsInt32()) * scale);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r3_2, r4_2), k2).AsInt32()) * scale);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r3_2, r4_2), k3).AsInt32()) * scale);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_2, r2_2, r3_2, r4_2), k0).AsInt32()) * scale);
+            var r0_3 = Packed.Read16(ref block, 240);
+            var r1_3 = Packed.Read16(ref block, 256);
+            var r2_3 = Packed.Read16(ref block, 272);
+            var r3_3 = Packed.Read16(ref block, 288);
+            var r4_3 = Packed.Read16(ref block, 304);
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r4_3), k1).AsInt32()) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r3_3, r4_3), k2).AsInt32()) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r3_3, r4_3), k3).AsInt32()) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_3, r2_3, r3_3, r4_3), k0).AsInt32()) * scale);
+        }
+        Deinterleave.Scalar<S32>(data[(f * 20)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveS32x7Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 28, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var scale = Vector128.Create(1f / 2147483648);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 28, 29, 30, 31, 40, 41, 42, 43, 52, 53, 54, 55);
+        var k1 = Vector128.Create((byte)4, 5, 6, 7, 16, 17, 18, 19, 44, 45, 46, 47, 56, 57, 58, 59);
+        var k2 = Vector128.Create((byte)8, 9, 10, 11, 20, 21, 22, 23, 32, 33, 34, 35, 60, 61, 62, 63);
+        var k3 = Vector128.Create((byte)12, 13, 14, 15, 24, 25, 26, 27, 36, 37, 38, 39, 48, 49, 50, 51);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            into.Store(stride, 0, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r3_0, r5_0), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r3_0, r5_0), k1).AsInt32()) * scale);
+            into.Store(stride, 2, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r4_0, r5_0), k2).AsInt32()) * scale);
+            into.Store(stride, 3, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r4_0, r6_0), k3).AsInt32()) * scale);
+            into.Store(stride, 4, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_0, r2_0, r4_0, r6_0), k0).AsInt32()) * scale);
+            into.Store(stride, 5, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_0, r3_0, r4_0, r6_0), k1).AsInt32()) * scale);
+            into.Store(stride, 6, 0, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_0, r3_0, r5_0, r6_0), k2).AsInt32()) * scale);
+            var r0_1 = Packed.Read16(ref block, 112);
+            var r1_1 = Packed.Read16(ref block, 128);
+            var r2_1 = Packed.Read16(ref block, 144);
+            var r3_1 = Packed.Read16(ref block, 160);
+            var r4_1 = Packed.Read16(ref block, 176);
+            var r5_1 = Packed.Read16(ref block, 192);
+            var r6_1 = Packed.Read16(ref block, 208);
+            into.Store(stride, 0, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r3_1, r5_1), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r3_1, r5_1), k1).AsInt32()) * scale);
+            into.Store(stride, 2, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r4_1, r5_1), k2).AsInt32()) * scale);
+            into.Store(stride, 3, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r4_1, r6_1), k3).AsInt32()) * scale);
+            into.Store(stride, 4, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_1, r2_1, r4_1, r6_1), k0).AsInt32()) * scale);
+            into.Store(stride, 5, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_1, r3_1, r4_1, r6_1), k1).AsInt32()) * scale);
+            into.Store(stride, 6, 4, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_1, r3_1, r5_1, r6_1), k2).AsInt32()) * scale);
+            var r0_2 = Packed.Read16(ref block, 224);
+            var r1_2 = Packed.Read16(ref block, 240);
+            var r2_2 = Packed.Read16(ref block, 256);
+            var r3_2 = Packed.Read16(ref block, 272);
+            var r4_2 = Packed.Read16(ref block, 288);
+            var r5_2 = Packed.Read16(ref block, 304);
+            var r6_2 = Packed.Read16(ref block, 320);
+            into.Store(stride, 0, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r3_2, r5_2), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r3_2, r5_2), k1).AsInt32()) * scale);
+            into.Store(stride, 2, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r4_2, r5_2), k2).AsInt32()) * scale);
+            into.Store(stride, 3, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r4_2, r6_2), k3).AsInt32()) * scale);
+            into.Store(stride, 4, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_2, r2_2, r4_2, r6_2), k0).AsInt32()) * scale);
+            into.Store(stride, 5, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_2, r3_2, r4_2, r6_2), k1).AsInt32()) * scale);
+            into.Store(stride, 6, 8, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_2, r3_2, r5_2, r6_2), k2).AsInt32()) * scale);
+            var r0_3 = Packed.Read16(ref block, 336);
+            var r1_3 = Packed.Read16(ref block, 352);
+            var r2_3 = Packed.Read16(ref block, 368);
+            var r3_3 = Packed.Read16(ref block, 384);
+            var r4_3 = Packed.Read16(ref block, 400);
+            var r5_3 = Packed.Read16(ref block, 416);
+            var r6_3 = Packed.Read16(ref block, 432);
+            into.Store(stride, 0, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r3_3, r5_3), k0).AsInt32()) * scale);
+            into.Store(stride, 1, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r3_3, r5_3), k1).AsInt32()) * scale);
+            into.Store(stride, 2, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r4_3, r5_3), k2).AsInt32()) * scale);
+            into.Store(stride, 3, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r4_3, r6_3), k3).AsInt32()) * scale);
+            into.Store(stride, 4, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_3, r2_3, r4_3, r6_3), k0).AsInt32()) * scale);
+            into.Store(stride, 5, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_3, r3_3, r4_3, r6_3), k1).AsInt32()) * scale);
+            into.Store(stride, 6, 12, Vector128.ConvertToSingle(AdvSimd.Arm64.VectorTableLookup((r1_3, r3_3, r5_3, r6_3), k2).AsInt32()) * scale);
+        }
+        Deinterleave.Scalar<S32>(data[(f * 28)..], 7, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF32x5Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 20, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43, 60, 61, 62, 63);
+        var k1 = Vector128.Create((byte)4, 5, 6, 7, 24, 25, 26, 27, 44, 45, 46, 47, 48, 49, 50, 51);
+        var k2 = Vector128.Create((byte)8, 9, 10, 11, 28, 29, 30, 31, 32, 33, 34, 35, 52, 53, 54, 55);
+        var k3 = Vector128.Create((byte)12, 13, 14, 15, 16, 17, 18, 19, 36, 37, 38, 39, 56, 57, 58, 59);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            into.Store(stride, 0, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r3_0), k0).AsSingle());
+            into.Store(stride, 1, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r2_0, r4_0), k1).AsSingle());
+            into.Store(stride, 2, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r3_0, r4_0), k2).AsSingle());
+            into.Store(stride, 3, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r3_0, r4_0), k3).AsSingle());
+            into.Store(stride, 4, 0, AdvSimd.Arm64.VectorTableLookup((r1_0, r2_0, r3_0, r4_0), k0).AsSingle());
+            var r0_1 = Packed.Read16(ref block, 80);
+            var r1_1 = Packed.Read16(ref block, 96);
+            var r2_1 = Packed.Read16(ref block, 112);
+            var r3_1 = Packed.Read16(ref block, 128);
+            var r4_1 = Packed.Read16(ref block, 144);
+            into.Store(stride, 0, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r3_1), k0).AsSingle());
+            into.Store(stride, 1, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r2_1, r4_1), k1).AsSingle());
+            into.Store(stride, 2, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r3_1, r4_1), k2).AsSingle());
+            into.Store(stride, 3, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r3_1, r4_1), k3).AsSingle());
+            into.Store(stride, 4, 4, AdvSimd.Arm64.VectorTableLookup((r1_1, r2_1, r3_1, r4_1), k0).AsSingle());
+            var r0_2 = Packed.Read16(ref block, 160);
+            var r1_2 = Packed.Read16(ref block, 176);
+            var r2_2 = Packed.Read16(ref block, 192);
+            var r3_2 = Packed.Read16(ref block, 208);
+            var r4_2 = Packed.Read16(ref block, 224);
+            into.Store(stride, 0, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r3_2), k0).AsSingle());
+            into.Store(stride, 1, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r2_2, r4_2), k1).AsSingle());
+            into.Store(stride, 2, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r3_2, r4_2), k2).AsSingle());
+            into.Store(stride, 3, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r3_2, r4_2), k3).AsSingle());
+            into.Store(stride, 4, 8, AdvSimd.Arm64.VectorTableLookup((r1_2, r2_2, r3_2, r4_2), k0).AsSingle());
+            var r0_3 = Packed.Read16(ref block, 240);
+            var r1_3 = Packed.Read16(ref block, 256);
+            var r2_3 = Packed.Read16(ref block, 272);
+            var r3_3 = Packed.Read16(ref block, 288);
+            var r4_3 = Packed.Read16(ref block, 304);
+            into.Store(stride, 0, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r3_3), k0).AsSingle());
+            into.Store(stride, 1, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r2_3, r4_3), k1).AsSingle());
+            into.Store(stride, 2, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r3_3, r4_3), k2).AsSingle());
+            into.Store(stride, 3, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r3_3, r4_3), k3).AsSingle());
+            into.Store(stride, 4, 12, AdvSimd.Arm64.VectorTableLookup((r1_3, r2_3, r3_3, r4_3), k0).AsSingle());
+        }
+        Deinterleave.Scalar<F32>(data[(f * 20)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF32x7Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 28, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 28, 29, 30, 31, 40, 41, 42, 43, 52, 53, 54, 55);
+        var k1 = Vector128.Create((byte)4, 5, 6, 7, 16, 17, 18, 19, 44, 45, 46, 47, 56, 57, 58, 59);
+        var k2 = Vector128.Create((byte)8, 9, 10, 11, 20, 21, 22, 23, 32, 33, 34, 35, 60, 61, 62, 63);
+        var k3 = Vector128.Create((byte)12, 13, 14, 15, 24, 25, 26, 27, 36, 37, 38, 39, 48, 49, 50, 51);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            into.Store(stride, 0, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r1_0, r3_0, r5_0), k0).AsSingle());
+            into.Store(stride, 1, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r3_0, r5_0), k1).AsSingle());
+            into.Store(stride, 2, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r4_0, r5_0), k2).AsSingle());
+            into.Store(stride, 3, 0, AdvSimd.Arm64.VectorTableLookup((r0_0, r2_0, r4_0, r6_0), k3).AsSingle());
+            into.Store(stride, 4, 0, AdvSimd.Arm64.VectorTableLookup((r1_0, r2_0, r4_0, r6_0), k0).AsSingle());
+            into.Store(stride, 5, 0, AdvSimd.Arm64.VectorTableLookup((r1_0, r3_0, r4_0, r6_0), k1).AsSingle());
+            into.Store(stride, 6, 0, AdvSimd.Arm64.VectorTableLookup((r1_0, r3_0, r5_0, r6_0), k2).AsSingle());
+            var r0_1 = Packed.Read16(ref block, 112);
+            var r1_1 = Packed.Read16(ref block, 128);
+            var r2_1 = Packed.Read16(ref block, 144);
+            var r3_1 = Packed.Read16(ref block, 160);
+            var r4_1 = Packed.Read16(ref block, 176);
+            var r5_1 = Packed.Read16(ref block, 192);
+            var r6_1 = Packed.Read16(ref block, 208);
+            into.Store(stride, 0, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r1_1, r3_1, r5_1), k0).AsSingle());
+            into.Store(stride, 1, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r3_1, r5_1), k1).AsSingle());
+            into.Store(stride, 2, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r4_1, r5_1), k2).AsSingle());
+            into.Store(stride, 3, 4, AdvSimd.Arm64.VectorTableLookup((r0_1, r2_1, r4_1, r6_1), k3).AsSingle());
+            into.Store(stride, 4, 4, AdvSimd.Arm64.VectorTableLookup((r1_1, r2_1, r4_1, r6_1), k0).AsSingle());
+            into.Store(stride, 5, 4, AdvSimd.Arm64.VectorTableLookup((r1_1, r3_1, r4_1, r6_1), k1).AsSingle());
+            into.Store(stride, 6, 4, AdvSimd.Arm64.VectorTableLookup((r1_1, r3_1, r5_1, r6_1), k2).AsSingle());
+            var r0_2 = Packed.Read16(ref block, 224);
+            var r1_2 = Packed.Read16(ref block, 240);
+            var r2_2 = Packed.Read16(ref block, 256);
+            var r3_2 = Packed.Read16(ref block, 272);
+            var r4_2 = Packed.Read16(ref block, 288);
+            var r5_2 = Packed.Read16(ref block, 304);
+            var r6_2 = Packed.Read16(ref block, 320);
+            into.Store(stride, 0, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r1_2, r3_2, r5_2), k0).AsSingle());
+            into.Store(stride, 1, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r3_2, r5_2), k1).AsSingle());
+            into.Store(stride, 2, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r4_2, r5_2), k2).AsSingle());
+            into.Store(stride, 3, 8, AdvSimd.Arm64.VectorTableLookup((r0_2, r2_2, r4_2, r6_2), k3).AsSingle());
+            into.Store(stride, 4, 8, AdvSimd.Arm64.VectorTableLookup((r1_2, r2_2, r4_2, r6_2), k0).AsSingle());
+            into.Store(stride, 5, 8, AdvSimd.Arm64.VectorTableLookup((r1_2, r3_2, r4_2, r6_2), k1).AsSingle());
+            into.Store(stride, 6, 8, AdvSimd.Arm64.VectorTableLookup((r1_2, r3_2, r5_2, r6_2), k2).AsSingle());
+            var r0_3 = Packed.Read16(ref block, 336);
+            var r1_3 = Packed.Read16(ref block, 352);
+            var r2_3 = Packed.Read16(ref block, 368);
+            var r3_3 = Packed.Read16(ref block, 384);
+            var r4_3 = Packed.Read16(ref block, 400);
+            var r5_3 = Packed.Read16(ref block, 416);
+            var r6_3 = Packed.Read16(ref block, 432);
+            into.Store(stride, 0, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r1_3, r3_3, r5_3), k0).AsSingle());
+            into.Store(stride, 1, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r3_3, r5_3), k1).AsSingle());
+            into.Store(stride, 2, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r4_3, r5_3), k2).AsSingle());
+            into.Store(stride, 3, 12, AdvSimd.Arm64.VectorTableLookup((r0_3, r2_3, r4_3, r6_3), k3).AsSingle());
+            into.Store(stride, 4, 12, AdvSimd.Arm64.VectorTableLookup((r1_3, r2_3, r4_3, r6_3), k0).AsSingle());
+            into.Store(stride, 5, 12, AdvSimd.Arm64.VectorTableLookup((r1_3, r3_3, r4_3, r6_3), k1).AsSingle());
+            into.Store(stride, 6, 12, AdvSimd.Arm64.VectorTableLookup((r1_3, r3_3, r5_3, r6_3), k2).AsSingle());
+        }
+        Deinterleave.Scalar<F32>(data[(f * 28)..], 7, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF64x5Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 40, frames);
+        var target = new Planes(output, stride, 5, frames);
+        var k0 = Vector128.Create((byte)8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var low0_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_0.AsUInt64(), 1, r2_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_1 = AdvSimd.Arm64.VectorTableLookup((r0_0, r3_0), k0).AsDouble();
+            var low0_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_0.AsUInt64(), 1, r3_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_3 = AdvSimd.Arm64.VectorTableLookup((r1_0, r4_0), k0).AsDouble();
+            var low0_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_0.AsUInt64(), 1, r4_0.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_1 = Packed.Read16(ref block, 80);
+            var r1_1 = Packed.Read16(ref block, 96);
+            var r2_1 = Packed.Read16(ref block, 112);
+            var r3_1 = Packed.Read16(ref block, 128);
+            var r4_1 = Packed.Read16(ref block, 144);
+            into.Store(stride, 0, 0, Vector128.Narrow(low0_0, AdvSimd.Arm64.InsertSelectedScalar(r0_1.AsUInt64(), 1, r2_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 0, Vector128.Narrow(low0_1, AdvSimd.Arm64.VectorTableLookup((r0_1, r3_1), k0).AsDouble()));
+            into.Store(stride, 2, 0, Vector128.Narrow(low0_2, AdvSimd.Arm64.InsertSelectedScalar(r1_1.AsUInt64(), 1, r3_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 0, Vector128.Narrow(low0_3, AdvSimd.Arm64.VectorTableLookup((r1_1, r4_1), k0).AsDouble()));
+            into.Store(stride, 4, 0, Vector128.Narrow(low0_4, AdvSimd.Arm64.InsertSelectedScalar(r2_1.AsUInt64(), 1, r4_1.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_2 = Packed.Read16(ref block, 160);
+            var r1_2 = Packed.Read16(ref block, 176);
+            var r2_2 = Packed.Read16(ref block, 192);
+            var r3_2 = Packed.Read16(ref block, 208);
+            var r4_2 = Packed.Read16(ref block, 224);
+            var low2_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_2.AsUInt64(), 1, r2_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_1 = AdvSimd.Arm64.VectorTableLookup((r0_2, r3_2), k0).AsDouble();
+            var low2_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_2.AsUInt64(), 1, r3_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_3 = AdvSimd.Arm64.VectorTableLookup((r1_2, r4_2), k0).AsDouble();
+            var low2_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_2.AsUInt64(), 1, r4_2.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_3 = Packed.Read16(ref block, 240);
+            var r1_3 = Packed.Read16(ref block, 256);
+            var r2_3 = Packed.Read16(ref block, 272);
+            var r3_3 = Packed.Read16(ref block, 288);
+            var r4_3 = Packed.Read16(ref block, 304);
+            into.Store(stride, 0, 4, Vector128.Narrow(low2_0, AdvSimd.Arm64.InsertSelectedScalar(r0_3.AsUInt64(), 1, r2_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 4, Vector128.Narrow(low2_1, AdvSimd.Arm64.VectorTableLookup((r0_3, r3_3), k0).AsDouble()));
+            into.Store(stride, 2, 4, Vector128.Narrow(low2_2, AdvSimd.Arm64.InsertSelectedScalar(r1_3.AsUInt64(), 1, r3_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 4, Vector128.Narrow(low2_3, AdvSimd.Arm64.VectorTableLookup((r1_3, r4_3), k0).AsDouble()));
+            into.Store(stride, 4, 4, Vector128.Narrow(low2_4, AdvSimd.Arm64.InsertSelectedScalar(r2_3.AsUInt64(), 1, r4_3.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_4 = Packed.Read16(ref block, 320);
+            var r1_4 = Packed.Read16(ref block, 336);
+            var r2_4 = Packed.Read16(ref block, 352);
+            var r3_4 = Packed.Read16(ref block, 368);
+            var r4_4 = Packed.Read16(ref block, 384);
+            var low4_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_4.AsUInt64(), 1, r2_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_1 = AdvSimd.Arm64.VectorTableLookup((r0_4, r3_4), k0).AsDouble();
+            var low4_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_4.AsUInt64(), 1, r3_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_3 = AdvSimd.Arm64.VectorTableLookup((r1_4, r4_4), k0).AsDouble();
+            var low4_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_4.AsUInt64(), 1, r4_4.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_5 = Packed.Read16(ref block, 400);
+            var r1_5 = Packed.Read16(ref block, 416);
+            var r2_5 = Packed.Read16(ref block, 432);
+            var r3_5 = Packed.Read16(ref block, 448);
+            var r4_5 = Packed.Read16(ref block, 464);
+            into.Store(stride, 0, 8, Vector128.Narrow(low4_0, AdvSimd.Arm64.InsertSelectedScalar(r0_5.AsUInt64(), 1, r2_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 8, Vector128.Narrow(low4_1, AdvSimd.Arm64.VectorTableLookup((r0_5, r3_5), k0).AsDouble()));
+            into.Store(stride, 2, 8, Vector128.Narrow(low4_2, AdvSimd.Arm64.InsertSelectedScalar(r1_5.AsUInt64(), 1, r3_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 8, Vector128.Narrow(low4_3, AdvSimd.Arm64.VectorTableLookup((r1_5, r4_5), k0).AsDouble()));
+            into.Store(stride, 4, 8, Vector128.Narrow(low4_4, AdvSimd.Arm64.InsertSelectedScalar(r2_5.AsUInt64(), 1, r4_5.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_6 = Packed.Read16(ref block, 480);
+            var r1_6 = Packed.Read16(ref block, 496);
+            var r2_6 = Packed.Read16(ref block, 512);
+            var r3_6 = Packed.Read16(ref block, 528);
+            var r4_6 = Packed.Read16(ref block, 544);
+            var low6_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_6.AsUInt64(), 1, r2_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_1 = AdvSimd.Arm64.VectorTableLookup((r0_6, r3_6), k0).AsDouble();
+            var low6_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_6.AsUInt64(), 1, r3_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_3 = AdvSimd.Arm64.VectorTableLookup((r1_6, r4_6), k0).AsDouble();
+            var low6_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_6.AsUInt64(), 1, r4_6.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_7 = Packed.Read16(ref block, 560);
+            var r1_7 = Packed.Read16(ref block, 576);
+            var r2_7 = Packed.Read16(ref block, 592);
+            var r3_7 = Packed.Read16(ref block, 608);
+            var r4_7 = Packed.Read16(ref block, 624);
+            into.Store(stride, 0, 12, Vector128.Narrow(low6_0, AdvSimd.Arm64.InsertSelectedScalar(r0_7.AsUInt64(), 1, r2_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 12, Vector128.Narrow(low6_1, AdvSimd.Arm64.VectorTableLookup((r0_7, r3_7), k0).AsDouble()));
+            into.Store(stride, 2, 12, Vector128.Narrow(low6_2, AdvSimd.Arm64.InsertSelectedScalar(r1_7.AsUInt64(), 1, r3_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 12, Vector128.Narrow(low6_3, AdvSimd.Arm64.VectorTableLookup((r1_7, r4_7), k0).AsDouble()));
+            into.Store(stride, 4, 12, Vector128.Narrow(low6_4, AdvSimd.Arm64.InsertSelectedScalar(r2_7.AsUInt64(), 1, r4_7.AsUInt64(), 1).AsByte().AsDouble()));
+        }
+        Deinterleave.Scalar<F64>(data[(f * 40)..], 5, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void DeinterleaveF64x7Subsets(scoped ReadOnlySpan<byte> data, int channels, scoped Span<float> output, int stride, int frames)
+    {
+        var source = new Interleaved(data, 56, frames);
+        var target = new Planes(output, stride, 7, frames);
+        var k0 = Vector128.Create((byte)8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var block = ref source.At(f, 16);
+            ref var into = ref target.At(f, 16);
+            var r0_0 = Packed.Read16(ref block, 0);
+            var r1_0 = Packed.Read16(ref block, 16);
+            var r2_0 = Packed.Read16(ref block, 32);
+            var r3_0 = Packed.Read16(ref block, 48);
+            var r4_0 = Packed.Read16(ref block, 64);
+            var r5_0 = Packed.Read16(ref block, 80);
+            var r6_0 = Packed.Read16(ref block, 96);
+            var low0_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_0.AsUInt64(), 1, r3_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_1 = AdvSimd.Arm64.VectorTableLookup((r0_0, r4_0), k0).AsDouble();
+            var low0_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_0.AsUInt64(), 1, r4_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_3 = AdvSimd.Arm64.VectorTableLookup((r1_0, r5_0), k0).AsDouble();
+            var low0_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_0.AsUInt64(), 1, r5_0.AsUInt64(), 1).AsByte().AsDouble();
+            var low0_5 = AdvSimd.Arm64.VectorTableLookup((r2_0, r6_0), k0).AsDouble();
+            var low0_6 = AdvSimd.Arm64.InsertSelectedScalar(r3_0.AsUInt64(), 1, r6_0.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_1 = Packed.Read16(ref block, 112);
+            var r1_1 = Packed.Read16(ref block, 128);
+            var r2_1 = Packed.Read16(ref block, 144);
+            var r3_1 = Packed.Read16(ref block, 160);
+            var r4_1 = Packed.Read16(ref block, 176);
+            var r5_1 = Packed.Read16(ref block, 192);
+            var r6_1 = Packed.Read16(ref block, 208);
+            into.Store(stride, 0, 0, Vector128.Narrow(low0_0, AdvSimd.Arm64.InsertSelectedScalar(r0_1.AsUInt64(), 1, r3_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 0, Vector128.Narrow(low0_1, AdvSimd.Arm64.VectorTableLookup((r0_1, r4_1), k0).AsDouble()));
+            into.Store(stride, 2, 0, Vector128.Narrow(low0_2, AdvSimd.Arm64.InsertSelectedScalar(r1_1.AsUInt64(), 1, r4_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 0, Vector128.Narrow(low0_3, AdvSimd.Arm64.VectorTableLookup((r1_1, r5_1), k0).AsDouble()));
+            into.Store(stride, 4, 0, Vector128.Narrow(low0_4, AdvSimd.Arm64.InsertSelectedScalar(r2_1.AsUInt64(), 1, r5_1.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 5, 0, Vector128.Narrow(low0_5, AdvSimd.Arm64.VectorTableLookup((r2_1, r6_1), k0).AsDouble()));
+            into.Store(stride, 6, 0, Vector128.Narrow(low0_6, AdvSimd.Arm64.InsertSelectedScalar(r3_1.AsUInt64(), 1, r6_1.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_2 = Packed.Read16(ref block, 224);
+            var r1_2 = Packed.Read16(ref block, 240);
+            var r2_2 = Packed.Read16(ref block, 256);
+            var r3_2 = Packed.Read16(ref block, 272);
+            var r4_2 = Packed.Read16(ref block, 288);
+            var r5_2 = Packed.Read16(ref block, 304);
+            var r6_2 = Packed.Read16(ref block, 320);
+            var low2_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_2.AsUInt64(), 1, r3_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_1 = AdvSimd.Arm64.VectorTableLookup((r0_2, r4_2), k0).AsDouble();
+            var low2_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_2.AsUInt64(), 1, r4_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_3 = AdvSimd.Arm64.VectorTableLookup((r1_2, r5_2), k0).AsDouble();
+            var low2_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_2.AsUInt64(), 1, r5_2.AsUInt64(), 1).AsByte().AsDouble();
+            var low2_5 = AdvSimd.Arm64.VectorTableLookup((r2_2, r6_2), k0).AsDouble();
+            var low2_6 = AdvSimd.Arm64.InsertSelectedScalar(r3_2.AsUInt64(), 1, r6_2.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_3 = Packed.Read16(ref block, 336);
+            var r1_3 = Packed.Read16(ref block, 352);
+            var r2_3 = Packed.Read16(ref block, 368);
+            var r3_3 = Packed.Read16(ref block, 384);
+            var r4_3 = Packed.Read16(ref block, 400);
+            var r5_3 = Packed.Read16(ref block, 416);
+            var r6_3 = Packed.Read16(ref block, 432);
+            into.Store(stride, 0, 4, Vector128.Narrow(low2_0, AdvSimd.Arm64.InsertSelectedScalar(r0_3.AsUInt64(), 1, r3_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 4, Vector128.Narrow(low2_1, AdvSimd.Arm64.VectorTableLookup((r0_3, r4_3), k0).AsDouble()));
+            into.Store(stride, 2, 4, Vector128.Narrow(low2_2, AdvSimd.Arm64.InsertSelectedScalar(r1_3.AsUInt64(), 1, r4_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 4, Vector128.Narrow(low2_3, AdvSimd.Arm64.VectorTableLookup((r1_3, r5_3), k0).AsDouble()));
+            into.Store(stride, 4, 4, Vector128.Narrow(low2_4, AdvSimd.Arm64.InsertSelectedScalar(r2_3.AsUInt64(), 1, r5_3.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 5, 4, Vector128.Narrow(low2_5, AdvSimd.Arm64.VectorTableLookup((r2_3, r6_3), k0).AsDouble()));
+            into.Store(stride, 6, 4, Vector128.Narrow(low2_6, AdvSimd.Arm64.InsertSelectedScalar(r3_3.AsUInt64(), 1, r6_3.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_4 = Packed.Read16(ref block, 448);
+            var r1_4 = Packed.Read16(ref block, 464);
+            var r2_4 = Packed.Read16(ref block, 480);
+            var r3_4 = Packed.Read16(ref block, 496);
+            var r4_4 = Packed.Read16(ref block, 512);
+            var r5_4 = Packed.Read16(ref block, 528);
+            var r6_4 = Packed.Read16(ref block, 544);
+            var low4_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_4.AsUInt64(), 1, r3_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_1 = AdvSimd.Arm64.VectorTableLookup((r0_4, r4_4), k0).AsDouble();
+            var low4_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_4.AsUInt64(), 1, r4_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_3 = AdvSimd.Arm64.VectorTableLookup((r1_4, r5_4), k0).AsDouble();
+            var low4_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_4.AsUInt64(), 1, r5_4.AsUInt64(), 1).AsByte().AsDouble();
+            var low4_5 = AdvSimd.Arm64.VectorTableLookup((r2_4, r6_4), k0).AsDouble();
+            var low4_6 = AdvSimd.Arm64.InsertSelectedScalar(r3_4.AsUInt64(), 1, r6_4.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_5 = Packed.Read16(ref block, 560);
+            var r1_5 = Packed.Read16(ref block, 576);
+            var r2_5 = Packed.Read16(ref block, 592);
+            var r3_5 = Packed.Read16(ref block, 608);
+            var r4_5 = Packed.Read16(ref block, 624);
+            var r5_5 = Packed.Read16(ref block, 640);
+            var r6_5 = Packed.Read16(ref block, 656);
+            into.Store(stride, 0, 8, Vector128.Narrow(low4_0, AdvSimd.Arm64.InsertSelectedScalar(r0_5.AsUInt64(), 1, r3_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 8, Vector128.Narrow(low4_1, AdvSimd.Arm64.VectorTableLookup((r0_5, r4_5), k0).AsDouble()));
+            into.Store(stride, 2, 8, Vector128.Narrow(low4_2, AdvSimd.Arm64.InsertSelectedScalar(r1_5.AsUInt64(), 1, r4_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 8, Vector128.Narrow(low4_3, AdvSimd.Arm64.VectorTableLookup((r1_5, r5_5), k0).AsDouble()));
+            into.Store(stride, 4, 8, Vector128.Narrow(low4_4, AdvSimd.Arm64.InsertSelectedScalar(r2_5.AsUInt64(), 1, r5_5.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 5, 8, Vector128.Narrow(low4_5, AdvSimd.Arm64.VectorTableLookup((r2_5, r6_5), k0).AsDouble()));
+            into.Store(stride, 6, 8, Vector128.Narrow(low4_6, AdvSimd.Arm64.InsertSelectedScalar(r3_5.AsUInt64(), 1, r6_5.AsUInt64(), 1).AsByte().AsDouble()));
+            var r0_6 = Packed.Read16(ref block, 672);
+            var r1_6 = Packed.Read16(ref block, 688);
+            var r2_6 = Packed.Read16(ref block, 704);
+            var r3_6 = Packed.Read16(ref block, 720);
+            var r4_6 = Packed.Read16(ref block, 736);
+            var r5_6 = Packed.Read16(ref block, 752);
+            var r6_6 = Packed.Read16(ref block, 768);
+            var low6_0 = AdvSimd.Arm64.InsertSelectedScalar(r0_6.AsUInt64(), 1, r3_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_1 = AdvSimd.Arm64.VectorTableLookup((r0_6, r4_6), k0).AsDouble();
+            var low6_2 = AdvSimd.Arm64.InsertSelectedScalar(r1_6.AsUInt64(), 1, r4_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_3 = AdvSimd.Arm64.VectorTableLookup((r1_6, r5_6), k0).AsDouble();
+            var low6_4 = AdvSimd.Arm64.InsertSelectedScalar(r2_6.AsUInt64(), 1, r5_6.AsUInt64(), 1).AsByte().AsDouble();
+            var low6_5 = AdvSimd.Arm64.VectorTableLookup((r2_6, r6_6), k0).AsDouble();
+            var low6_6 = AdvSimd.Arm64.InsertSelectedScalar(r3_6.AsUInt64(), 1, r6_6.AsUInt64(), 1).AsByte().AsDouble();
+            var r0_7 = Packed.Read16(ref block, 784);
+            var r1_7 = Packed.Read16(ref block, 800);
+            var r2_7 = Packed.Read16(ref block, 816);
+            var r3_7 = Packed.Read16(ref block, 832);
+            var r4_7 = Packed.Read16(ref block, 848);
+            var r5_7 = Packed.Read16(ref block, 864);
+            var r6_7 = Packed.Read16(ref block, 880);
+            into.Store(stride, 0, 12, Vector128.Narrow(low6_0, AdvSimd.Arm64.InsertSelectedScalar(r0_7.AsUInt64(), 1, r3_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 1, 12, Vector128.Narrow(low6_1, AdvSimd.Arm64.VectorTableLookup((r0_7, r4_7), k0).AsDouble()));
+            into.Store(stride, 2, 12, Vector128.Narrow(low6_2, AdvSimd.Arm64.InsertSelectedScalar(r1_7.AsUInt64(), 1, r4_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 3, 12, Vector128.Narrow(low6_3, AdvSimd.Arm64.VectorTableLookup((r1_7, r5_7), k0).AsDouble()));
+            into.Store(stride, 4, 12, Vector128.Narrow(low6_4, AdvSimd.Arm64.InsertSelectedScalar(r2_7.AsUInt64(), 1, r5_7.AsUInt64(), 1).AsByte().AsDouble()));
+            into.Store(stride, 5, 12, Vector128.Narrow(low6_5, AdvSimd.Arm64.VectorTableLookup((r2_7, r6_7), k0).AsDouble()));
+            into.Store(stride, 6, 12, Vector128.Narrow(low6_6, AdvSimd.Arm64.InsertSelectedScalar(r3_7.AsUInt64(), 1, r6_7.AsUInt64(), 1).AsByte().AsDouble()));
+        }
+        Deinterleave.Scalar<F64>(data[(f * 56)..], 7, output[f..], stride, frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS16x5Subsets(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 5, frames);
+        var target = new InterleavedTarget(data, 10, frames);
+        var top = Vector128.Create(S16.Top);
+        var scale = Vector128.Create(32768f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 16, 17, 32, 33, 48, 49, 255, 255, 2, 3, 18, 19, 34, 35);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 255, 255, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)50, 51, 255, 255, 4, 5, 20, 21, 36, 37, 52, 53, 255, 255, 6, 7);
+        var k3 = Vector128.Create((byte)255, 255, 2, 3, 255, 255, 255, 255, 255, 255, 255, 255, 4, 5, 255, 255);
+        var k4 = Vector128.Create((byte)22, 23, 38, 39, 54, 55, 255, 255, 8, 9, 24, 25, 40, 41, 56, 57);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 6, 7, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)255, 255, 10, 11, 26, 27, 42, 43, 58, 59, 255, 255, 12, 13, 28, 29);
+        var k7 = Vector128.Create((byte)8, 9, 255, 255, 255, 255, 255, 255, 255, 255, 10, 11, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)44, 45, 60, 61, 255, 255, 14, 15, 30, 31, 46, 47, 62, 63, 255, 255);
+        var k9 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 255, 255, 255, 255, 255, 255, 255, 255, 14, 15);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale)).AsByte();
+            var n0_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale)).AsByte();
+            var n0_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale)).AsByte();
+            var n0_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale)).AsByte();
+            var n0_4 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale)).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0), n0_4, k1));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k2), n0_4, k3));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k4), n0_4, k5));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k6), n0_4, k7));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k8), n0_4, k9));
+            var n1_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale)).AsByte();
+            var n1_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale)).AsByte();
+            var n1_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale)).AsByte();
+            var n1_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale)).AsByte();
+            var n1_4 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale)).AsByte();
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0), n1_4, k1));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k2), n1_4, k3));
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k4), n1_4, k5));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k6), n1_4, k7));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k8), n1_4, k9));
+        }
+        Interleave.Scalar<S16>(input[f..], stride, 5, data[(f * 10)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS16x7Subsets(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 7, frames);
+        var target = new InterleavedTarget(data, 14, frames);
+        var top = Vector128.Create(S16.Top);
+        var scale = Vector128.Create(32768f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 16, 17, 32, 33, 48, 49, 255, 255, 255, 255, 255, 255, 2, 3);
+        var k1 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 255, 255, 0, 1, 16, 17, 32, 33, 255, 255);
+        var k2 = Vector128.Create((byte)18, 19, 34, 35, 50, 51, 255, 255, 255, 255, 255, 255, 4, 5, 20, 21);
+        var k3 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 2, 3, 18, 19, 34, 35, 255, 255, 255, 255);
+        var k4 = Vector128.Create((byte)36, 37, 52, 53, 255, 255, 255, 255, 255, 255, 6, 7, 22, 23, 38, 39);
+        var k5 = Vector128.Create((byte)255, 255, 255, 255, 4, 5, 20, 21, 36, 37, 255, 255, 255, 255, 255, 255);
+        var k6 = Vector128.Create((byte)54, 55, 255, 255, 255, 255, 255, 255, 8, 9, 24, 25, 40, 41, 56, 57);
+        var k7 = Vector128.Create((byte)255, 255, 6, 7, 22, 23, 38, 39, 255, 255, 255, 255, 255, 255, 255, 255);
+        var k8 = Vector128.Create((byte)255, 255, 255, 255, 255, 255, 10, 11, 26, 27, 42, 43, 58, 59, 255, 255);
+        var k9 = Vector128.Create((byte)8, 9, 24, 25, 40, 41, 255, 255, 255, 255, 255, 255, 255, 255, 10, 11);
+        var k10 = Vector128.Create((byte)255, 255, 255, 255, 12, 13, 28, 29, 44, 45, 60, 61, 255, 255, 255, 255);
+        var k11 = Vector128.Create((byte)26, 27, 42, 43, 255, 255, 255, 255, 255, 255, 255, 255, 12, 13, 28, 29);
+        var k12 = Vector128.Create((byte)255, 255, 14, 15, 30, 31, 46, 47, 62, 63, 255, 255, 255, 255, 255, 255);
+        var k13 = Vector128.Create((byte)44, 45, 255, 255, 255, 255, 255, 255, 255, 255, 14, 15, 30, 31, 46, 47);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale)).AsByte();
+            var n0_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale)).AsByte();
+            var n0_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale)).AsByte();
+            var n0_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale)).AsByte();
+            var n0_4 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale)).AsByte();
+            var n0_5 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 4), minus), top) * scale)).AsByte();
+            var n0_6 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 0), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 4), minus), top) * scale)).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0), (n0_4, n0_5, n0_6), k1));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k2), (n0_4, n0_5, n0_6), k3));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k4), (n0_4, n0_5, n0_6), k5));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k6), (n0_4, n0_5, n0_6), k7));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k8), (n0_4, n0_5, n0_6), k9));
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k10), (n0_4, n0_5, n0_6), k11));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k12), (n0_4, n0_5, n0_6), k13));
+            var n1_0 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale)).AsByte();
+            var n1_1 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale)).AsByte();
+            var n1_2 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale)).AsByte();
+            var n1_3 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale)).AsByte();
+            var n1_4 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale)).AsByte();
+            var n1_5 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 12), minus), top) * scale)).AsByte();
+            var n1_6 = AdvSimd.ExtractNarrowingSaturateUpper(AdvSimd.ExtractNarrowingSaturateLower(AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 8), minus), top) * scale)), AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 12), minus), top) * scale)).AsByte();
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0), (n1_4, n1_5, n1_6), k1));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k2), (n1_4, n1_5, n1_6), k3));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k4), (n1_4, n1_5, n1_6), k5));
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k6), (n1_4, n1_5, n1_6), k7));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k8), (n1_4, n1_5, n1_6), k9));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k10), (n1_4, n1_5, n1_6), k11));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookupExtension(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k12), (n1_4, n1_5, n1_6), k13));
+        }
+        Interleave.Scalar<S16>(input[f..], stride, 7, data[(f * 14)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS24x5Subsets(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 5, frames);
+        var target = new InterleavedTarget(data, 15, frames);
+        var top = Vector128.Create(S24.Top);
+        var scale = Vector128.Create(8388608f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)48, 49, 50, 51, 4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39);
+        var k3 = Vector128.Create((byte)36, 37, 38, 39, 52, 53, 54, 55, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k4 = Vector128.Create((byte)24, 25, 26, 27, 40, 41, 42, 43, 56, 57, 58, 59, 12, 13, 14, 15);
+        var k5 = Vector128.Create((byte)12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale).AsByte();
+            var n0_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale).AsByte();
+            var n0_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale).AsByte();
+            var n0_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale).AsByte();
+            var n0_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale).AsByte();
+            var y0 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0), k1);
+            Packed.Write16(ref block, 0, y0);
+            var y1 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_4), k2), k1);
+            Packed.Write16(ref block, 12, y1);
+            var y2 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_3, n0_4), k3), k1);
+            Packed.Write16(ref block, 24, y2);
+            var y3 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_2, n0_3, n0_4), k4), k1);
+            Packed.Write16(ref block, 36, y3);
+            var y4 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_1, n0_2, n0_3, n0_4), k5), k1);
+            Packed.Write16(ref block, 48, y4);
+            var n1_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale).AsByte();
+            var n1_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale).AsByte();
+            var n1_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale).AsByte();
+            var n1_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale).AsByte();
+            var n1_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale).AsByte();
+            var y5 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0), k1);
+            Packed.Write16(ref block, 60, y5);
+            var y6 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_4), k2), k1);
+            Packed.Write16(ref block, 72, y6);
+            var y7 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_3, n1_4), k3), k1);
+            Packed.Write16(ref block, 84, y7);
+            var y8 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_2, n1_3, n1_4), k4), k1);
+            Packed.Write16(ref block, 96, y8);
+            var y9 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_1, n1_2, n1_3, n1_4), k5), k1);
+            Packed.Write16(ref block, 108, y9);
+            var n2_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale).AsByte();
+            var n2_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale).AsByte();
+            var n2_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale).AsByte();
+            var n2_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale).AsByte();
+            var n2_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale).AsByte();
+            var y10 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0), k1);
+            Packed.Write16(ref block, 120, y10);
+            var y11 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_4), k2), k1);
+            Packed.Write16(ref block, 132, y11);
+            var y12 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_3, n2_4), k3), k1);
+            Packed.Write16(ref block, 144, y12);
+            var y13 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_2, n2_3, n2_4), k4), k1);
+            Packed.Write16(ref block, 156, y13);
+            var y14 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_1, n2_2, n2_3, n2_4), k5), k1);
+            Packed.Write16(ref block, 168, y14);
+            var n3_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale).AsByte();
+            var n3_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale).AsByte();
+            var n3_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale).AsByte();
+            var n3_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale).AsByte();
+            var n3_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale).AsByte();
+            var y15 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0), k1);
+            Packed.Write16(ref block, 180, y15);
+            var y16 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_4), k2), k1);
+            Packed.Write16(ref block, 192, y16);
+            var y17 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_3, n3_4), k3), k1);
+            Packed.Write16(ref block, 204, y17);
+            var y18 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_2, n3_3, n3_4), k4), k1);
+            Packed.Write16(ref block, 216, y18);
+            var y19 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_1, n3_2, n3_3, n3_4), k5), k1);
+            Packed.Write8(ref block, 228, y19);
+            Packed.Write4(ref block, 236, y19.AsInt32().GetElement(2));
+        }
+        Interleave.Scalar<S24>(input[f..], stride, 5, data[(f * 15)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS24x7Subsets(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 7, frames);
+        var target = new InterleavedTarget(data, 21, frames);
+        var top = Vector128.Create(S24.Top);
+        var scale = Vector128.Create(8388608f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 255, 255, 255, 255);
+        var k2 = Vector128.Create((byte)16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51, 4, 5, 6, 7);
+        var k3 = Vector128.Create((byte)4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39, 52, 53, 54, 55);
+        var k4 = Vector128.Create((byte)36, 37, 38, 39, 52, 53, 54, 55, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k5 = Vector128.Create((byte)8, 9, 10, 11, 24, 25, 26, 27, 40, 41, 42, 43, 56, 57, 58, 59);
+        var k6 = Vector128.Create((byte)56, 57, 58, 59, 12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47);
+        var k7 = Vector128.Create((byte)12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale).AsByte();
+            var n0_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale).AsByte();
+            var n0_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale).AsByte();
+            var n0_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale).AsByte();
+            var n0_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale).AsByte();
+            var n0_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 0), minus), top) * scale).AsByte();
+            var n0_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 0), minus), top) * scale).AsByte();
+            var y0 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0), k1);
+            Packed.Write16(ref block, 0, y0);
+            var y1 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_4, n0_5, n0_6), k2), k1);
+            Packed.Write16(ref block, 12, y1);
+            var y2 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_1, n0_2, n0_3, n0_4), k3), k1);
+            Packed.Write16(ref block, 24, y2);
+            var y3 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_5, n0_6), k4), k1);
+            Packed.Write16(ref block, 36, y3);
+            var y4 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_2, n0_3, n0_4, n0_5), k5), k1);
+            Packed.Write16(ref block, 48, y4);
+            var y5 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_6), k6), k1);
+            Packed.Write16(ref block, 60, y5);
+            var y6 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n0_3, n0_4, n0_5, n0_6), k7), k1);
+            Packed.Write16(ref block, 72, y6);
+            var n1_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale).AsByte();
+            var n1_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale).AsByte();
+            var n1_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale).AsByte();
+            var n1_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale).AsByte();
+            var n1_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale).AsByte();
+            var n1_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 4), minus), top) * scale).AsByte();
+            var n1_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 4), minus), top) * scale).AsByte();
+            var y7 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0), k1);
+            Packed.Write16(ref block, 84, y7);
+            var y8 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_4, n1_5, n1_6), k2), k1);
+            Packed.Write16(ref block, 96, y8);
+            var y9 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_1, n1_2, n1_3, n1_4), k3), k1);
+            Packed.Write16(ref block, 108, y9);
+            var y10 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_5, n1_6), k4), k1);
+            Packed.Write16(ref block, 120, y10);
+            var y11 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_2, n1_3, n1_4, n1_5), k5), k1);
+            Packed.Write16(ref block, 132, y11);
+            var y12 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_6), k6), k1);
+            Packed.Write16(ref block, 144, y12);
+            var y13 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n1_3, n1_4, n1_5, n1_6), k7), k1);
+            Packed.Write16(ref block, 156, y13);
+            var n2_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale).AsByte();
+            var n2_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale).AsByte();
+            var n2_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale).AsByte();
+            var n2_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale).AsByte();
+            var n2_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale).AsByte();
+            var n2_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 8), minus), top) * scale).AsByte();
+            var n2_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 8), minus), top) * scale).AsByte();
+            var y14 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0), k1);
+            Packed.Write16(ref block, 168, y14);
+            var y15 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_4, n2_5, n2_6), k2), k1);
+            Packed.Write16(ref block, 180, y15);
+            var y16 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_1, n2_2, n2_3, n2_4), k3), k1);
+            Packed.Write16(ref block, 192, y16);
+            var y17 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_5, n2_6), k4), k1);
+            Packed.Write16(ref block, 204, y17);
+            var y18 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_2, n2_3, n2_4, n2_5), k5), k1);
+            Packed.Write16(ref block, 216, y18);
+            var y19 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_6), k6), k1);
+            Packed.Write16(ref block, 228, y19);
+            var y20 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n2_3, n2_4, n2_5, n2_6), k7), k1);
+            Packed.Write16(ref block, 240, y20);
+            var n3_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale).AsByte();
+            var n3_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale).AsByte();
+            var n3_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale).AsByte();
+            var n3_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale).AsByte();
+            var n3_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale).AsByte();
+            var n3_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 12), minus), top) * scale).AsByte();
+            var n3_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 12), minus), top) * scale).AsByte();
+            var y21 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0), k1);
+            Packed.Write16(ref block, 252, y21);
+            var y22 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_4, n3_5, n3_6), k2), k1);
+            Packed.Write16(ref block, 264, y22);
+            var y23 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_1, n3_2, n3_3, n3_4), k3), k1);
+            Packed.Write16(ref block, 276, y23);
+            var y24 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_5, n3_6), k4), k1);
+            Packed.Write16(ref block, 288, y24);
+            var y25 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_2, n3_3, n3_4, n3_5), k5), k1);
+            Packed.Write16(ref block, 300, y25);
+            var y26 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_6), k6), k1);
+            Packed.Write16(ref block, 312, y26);
+            var y27 = AdvSimd.Arm64.VectorTableLookup(AdvSimd.Arm64.VectorTableLookup((n3_3, n3_4, n3_5, n3_6), k7), k1);
+            Packed.Write8(ref block, 324, y27);
+            Packed.Write4(ref block, 332, y27.AsInt32().GetElement(2));
+        }
+        Interleave.Scalar<S24>(input[f..], stride, 7, data[(f * 21)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS32x5Subsets(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 5, frames);
+        var target = new InterleavedTarget(data, 20, frames);
+        var top = Vector128.Create(S32.Top);
+        var scale = Vector128.Create(2147483648f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)48, 49, 50, 51, 4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39);
+        var k2 = Vector128.Create((byte)36, 37, 38, 39, 52, 53, 54, 55, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k3 = Vector128.Create((byte)24, 25, 26, 27, 40, 41, 42, 43, 56, 57, 58, 59, 12, 13, 14, 15);
+        var k4 = Vector128.Create((byte)12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale).AsByte();
+            var n0_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale).AsByte();
+            var n0_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale).AsByte();
+            var n0_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale).AsByte();
+            var n0_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_4), k1));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_3, n0_4), k2));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_2, n0_3, n0_4), k3));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookup((n0_1, n0_2, n0_3, n0_4), k4));
+            var n1_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale).AsByte();
+            var n1_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale).AsByte();
+            var n1_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale).AsByte();
+            var n1_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale).AsByte();
+            var n1_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_4), k1));
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_3, n1_4), k2));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_2, n1_3, n1_4), k3));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookup((n1_1, n1_2, n1_3, n1_4), k4));
+            var n2_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale).AsByte();
+            var n2_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale).AsByte();
+            var n2_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale).AsByte();
+            var n2_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale).AsByte();
+            var n2_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_4), k1));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_3, n2_4), k2));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_2, n2_3, n2_4), k3));
+            Packed.Write16(ref block, 224, AdvSimd.Arm64.VectorTableLookup((n2_1, n2_2, n2_3, n2_4), k4));
+            var n3_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale).AsByte();
+            var n3_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale).AsByte();
+            var n3_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale).AsByte();
+            var n3_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale).AsByte();
+            var n3_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 240, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0));
+            Packed.Write16(ref block, 256, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_4), k1));
+            Packed.Write16(ref block, 272, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_3, n3_4), k2));
+            Packed.Write16(ref block, 288, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_2, n3_3, n3_4), k3));
+            Packed.Write16(ref block, 304, AdvSimd.Arm64.VectorTableLookup((n3_1, n3_2, n3_3, n3_4), k4));
+        }
+        Interleave.Scalar<S32>(input[f..], stride, 5, data[(f * 20)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveS32x7Subsets(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 7, frames);
+        var target = new InterleavedTarget(data, 28, frames);
+        var top = Vector128.Create(S32.Top);
+        var scale = Vector128.Create(2147483648f);
+        var minus = Vector128.Create(-1f);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51, 4, 5, 6, 7);
+        var k2 = Vector128.Create((byte)4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39, 52, 53, 54, 55);
+        var k3 = Vector128.Create((byte)36, 37, 38, 39, 52, 53, 54, 55, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k4 = Vector128.Create((byte)8, 9, 10, 11, 24, 25, 26, 27, 40, 41, 42, 43, 56, 57, 58, 59);
+        var k5 = Vector128.Create((byte)56, 57, 58, 59, 12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47);
+        var k6 = Vector128.Create((byte)12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 0), minus), top) * scale).AsByte();
+            var n0_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 0), minus), top) * scale).AsByte();
+            var n0_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 0), minus), top) * scale).AsByte();
+            var n0_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 0), minus), top) * scale).AsByte();
+            var n0_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 0), minus), top) * scale).AsByte();
+            var n0_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 0), minus), top) * scale).AsByte();
+            var n0_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 0), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_4, n0_5, n0_6), k1));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookup((n0_1, n0_2, n0_3, n0_4), k2));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_5, n0_6), k3));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookup((n0_2, n0_3, n0_4, n0_5), k4));
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_6), k5));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookup((n0_3, n0_4, n0_5, n0_6), k6));
+            var n1_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 4), minus), top) * scale).AsByte();
+            var n1_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 4), minus), top) * scale).AsByte();
+            var n1_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 4), minus), top) * scale).AsByte();
+            var n1_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 4), minus), top) * scale).AsByte();
+            var n1_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 4), minus), top) * scale).AsByte();
+            var n1_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 4), minus), top) * scale).AsByte();
+            var n1_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 4), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_4, n1_5, n1_6), k1));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookup((n1_1, n1_2, n1_3, n1_4), k2));
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_5, n1_6), k3));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookup((n1_2, n1_3, n1_4, n1_5), k4));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_6), k5));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookup((n1_3, n1_4, n1_5, n1_6), k6));
+            var n2_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 8), minus), top) * scale).AsByte();
+            var n2_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 8), minus), top) * scale).AsByte();
+            var n2_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 8), minus), top) * scale).AsByte();
+            var n2_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 8), minus), top) * scale).AsByte();
+            var n2_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 8), minus), top) * scale).AsByte();
+            var n2_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 8), minus), top) * scale).AsByte();
+            var n2_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 8), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 224, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0));
+            Packed.Write16(ref block, 240, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_4, n2_5, n2_6), k1));
+            Packed.Write16(ref block, 256, AdvSimd.Arm64.VectorTableLookup((n2_1, n2_2, n2_3, n2_4), k2));
+            Packed.Write16(ref block, 272, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_5, n2_6), k3));
+            Packed.Write16(ref block, 288, AdvSimd.Arm64.VectorTableLookup((n2_2, n2_3, n2_4, n2_5), k4));
+            Packed.Write16(ref block, 304, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_6), k5));
+            Packed.Write16(ref block, 320, AdvSimd.Arm64.VectorTableLookup((n2_3, n2_4, n2_5, n2_6), k6));
+            var n3_0 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 0, 12), minus), top) * scale).AsByte();
+            var n3_1 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 1, 12), minus), top) * scale).AsByte();
+            var n3_2 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 2, 12), minus), top) * scale).AsByte();
+            var n3_3 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 3, 12), minus), top) * scale).AsByte();
+            var n3_4 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 4, 12), minus), top) * scale).AsByte();
+            var n3_5 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 5, 12), minus), top) * scale).AsByte();
+            var n3_6 = AdvSimd.ConvertToInt32RoundToEven(Vector128.MinNative(AdvSimd.MaxNumber(from.Load4(stride, 6, 12), minus), top) * scale).AsByte();
+            Packed.Write16(ref block, 336, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0));
+            Packed.Write16(ref block, 352, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_4, n3_5, n3_6), k1));
+            Packed.Write16(ref block, 368, AdvSimd.Arm64.VectorTableLookup((n3_1, n3_2, n3_3, n3_4), k2));
+            Packed.Write16(ref block, 384, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_5, n3_6), k3));
+            Packed.Write16(ref block, 400, AdvSimd.Arm64.VectorTableLookup((n3_2, n3_3, n3_4, n3_5), k4));
+            Packed.Write16(ref block, 416, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_6), k5));
+            Packed.Write16(ref block, 432, AdvSimd.Arm64.VectorTableLookup((n3_3, n3_4, n3_5, n3_6), k6));
+        }
+        Interleave.Scalar<S32>(input[f..], stride, 7, data[(f * 28)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveF32x5Subsets(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 5, frames);
+        var target = new InterleavedTarget(data, 20, frames);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)48, 49, 50, 51, 4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39);
+        var k2 = Vector128.Create((byte)36, 37, 38, 39, 52, 53, 54, 55, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k3 = Vector128.Create((byte)24, 25, 26, 27, 40, 41, 42, 43, 56, 57, 58, 59, 12, 13, 14, 15);
+        var k4 = Vector128.Create((byte)12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = from.Load4(stride, 0, 0).AsByte();
+            var n0_1 = from.Load4(stride, 1, 0).AsByte();
+            var n0_2 = from.Load4(stride, 2, 0).AsByte();
+            var n0_3 = from.Load4(stride, 3, 0).AsByte();
+            var n0_4 = from.Load4(stride, 4, 0).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_4), k1));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_3, n0_4), k2));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_2, n0_3, n0_4), k3));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookup((n0_1, n0_2, n0_3, n0_4), k4));
+            var n1_0 = from.Load4(stride, 0, 4).AsByte();
+            var n1_1 = from.Load4(stride, 1, 4).AsByte();
+            var n1_2 = from.Load4(stride, 2, 4).AsByte();
+            var n1_3 = from.Load4(stride, 3, 4).AsByte();
+            var n1_4 = from.Load4(stride, 4, 4).AsByte();
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_4), k1));
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_3, n1_4), k2));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_2, n1_3, n1_4), k3));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookup((n1_1, n1_2, n1_3, n1_4), k4));
+            var n2_0 = from.Load4(stride, 0, 8).AsByte();
+            var n2_1 = from.Load4(stride, 1, 8).AsByte();
+            var n2_2 = from.Load4(stride, 2, 8).AsByte();
+            var n2_3 = from.Load4(stride, 3, 8).AsByte();
+            var n2_4 = from.Load4(stride, 4, 8).AsByte();
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_4), k1));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_3, n2_4), k2));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_2, n2_3, n2_4), k3));
+            Packed.Write16(ref block, 224, AdvSimd.Arm64.VectorTableLookup((n2_1, n2_2, n2_3, n2_4), k4));
+            var n3_0 = from.Load4(stride, 0, 12).AsByte();
+            var n3_1 = from.Load4(stride, 1, 12).AsByte();
+            var n3_2 = from.Load4(stride, 2, 12).AsByte();
+            var n3_3 = from.Load4(stride, 3, 12).AsByte();
+            var n3_4 = from.Load4(stride, 4, 12).AsByte();
+            Packed.Write16(ref block, 240, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0));
+            Packed.Write16(ref block, 256, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_4), k1));
+            Packed.Write16(ref block, 272, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_3, n3_4), k2));
+            Packed.Write16(ref block, 288, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_2, n3_3, n3_4), k3));
+            Packed.Write16(ref block, 304, AdvSimd.Arm64.VectorTableLookup((n3_1, n3_2, n3_3, n3_4), k4));
+        }
+        Interleave.Scalar<F32>(input[f..], stride, 5, data[(f * 20)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveF32x7Subsets(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames)
+    {
+        var source = new Planes(input, stride, 7, frames);
+        var target = new InterleavedTarget(data, 28, frames);
+        var k0 = Vector128.Create((byte)0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51);
+        var k1 = Vector128.Create((byte)16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51, 4, 5, 6, 7);
+        var k2 = Vector128.Create((byte)4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39, 52, 53, 54, 55);
+        var k3 = Vector128.Create((byte)36, 37, 38, 39, 52, 53, 54, 55, 8, 9, 10, 11, 24, 25, 26, 27);
+        var k4 = Vector128.Create((byte)8, 9, 10, 11, 24, 25, 26, 27, 40, 41, 42, 43, 56, 57, 58, 59);
+        var k5 = Vector128.Create((byte)56, 57, 58, 59, 12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47);
+        var k6 = Vector128.Create((byte)12, 13, 14, 15, 28, 29, 30, 31, 44, 45, 46, 47, 60, 61, 62, 63);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var n0_0 = from.Load4(stride, 0, 0).AsByte();
+            var n0_1 = from.Load4(stride, 1, 0).AsByte();
+            var n0_2 = from.Load4(stride, 2, 0).AsByte();
+            var n0_3 = from.Load4(stride, 3, 0).AsByte();
+            var n0_4 = from.Load4(stride, 4, 0).AsByte();
+            var n0_5 = from.Load4(stride, 5, 0).AsByte();
+            var n0_6 = from.Load4(stride, 6, 0).AsByte();
+            Packed.Write16(ref block, 0, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_3), k0));
+            Packed.Write16(ref block, 16, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_4, n0_5, n0_6), k1));
+            Packed.Write16(ref block, 32, AdvSimd.Arm64.VectorTableLookup((n0_1, n0_2, n0_3, n0_4), k2));
+            Packed.Write16(ref block, 48, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_5, n0_6), k3));
+            Packed.Write16(ref block, 64, AdvSimd.Arm64.VectorTableLookup((n0_2, n0_3, n0_4, n0_5), k4));
+            Packed.Write16(ref block, 80, AdvSimd.Arm64.VectorTableLookup((n0_0, n0_1, n0_2, n0_6), k5));
+            Packed.Write16(ref block, 96, AdvSimd.Arm64.VectorTableLookup((n0_3, n0_4, n0_5, n0_6), k6));
+            var n1_0 = from.Load4(stride, 0, 4).AsByte();
+            var n1_1 = from.Load4(stride, 1, 4).AsByte();
+            var n1_2 = from.Load4(stride, 2, 4).AsByte();
+            var n1_3 = from.Load4(stride, 3, 4).AsByte();
+            var n1_4 = from.Load4(stride, 4, 4).AsByte();
+            var n1_5 = from.Load4(stride, 5, 4).AsByte();
+            var n1_6 = from.Load4(stride, 6, 4).AsByte();
+            Packed.Write16(ref block, 112, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_3), k0));
+            Packed.Write16(ref block, 128, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_4, n1_5, n1_6), k1));
+            Packed.Write16(ref block, 144, AdvSimd.Arm64.VectorTableLookup((n1_1, n1_2, n1_3, n1_4), k2));
+            Packed.Write16(ref block, 160, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_5, n1_6), k3));
+            Packed.Write16(ref block, 176, AdvSimd.Arm64.VectorTableLookup((n1_2, n1_3, n1_4, n1_5), k4));
+            Packed.Write16(ref block, 192, AdvSimd.Arm64.VectorTableLookup((n1_0, n1_1, n1_2, n1_6), k5));
+            Packed.Write16(ref block, 208, AdvSimd.Arm64.VectorTableLookup((n1_3, n1_4, n1_5, n1_6), k6));
+            var n2_0 = from.Load4(stride, 0, 8).AsByte();
+            var n2_1 = from.Load4(stride, 1, 8).AsByte();
+            var n2_2 = from.Load4(stride, 2, 8).AsByte();
+            var n2_3 = from.Load4(stride, 3, 8).AsByte();
+            var n2_4 = from.Load4(stride, 4, 8).AsByte();
+            var n2_5 = from.Load4(stride, 5, 8).AsByte();
+            var n2_6 = from.Load4(stride, 6, 8).AsByte();
+            Packed.Write16(ref block, 224, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_3), k0));
+            Packed.Write16(ref block, 240, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_4, n2_5, n2_6), k1));
+            Packed.Write16(ref block, 256, AdvSimd.Arm64.VectorTableLookup((n2_1, n2_2, n2_3, n2_4), k2));
+            Packed.Write16(ref block, 272, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_5, n2_6), k3));
+            Packed.Write16(ref block, 288, AdvSimd.Arm64.VectorTableLookup((n2_2, n2_3, n2_4, n2_5), k4));
+            Packed.Write16(ref block, 304, AdvSimd.Arm64.VectorTableLookup((n2_0, n2_1, n2_2, n2_6), k5));
+            Packed.Write16(ref block, 320, AdvSimd.Arm64.VectorTableLookup((n2_3, n2_4, n2_5, n2_6), k6));
+            var n3_0 = from.Load4(stride, 0, 12).AsByte();
+            var n3_1 = from.Load4(stride, 1, 12).AsByte();
+            var n3_2 = from.Load4(stride, 2, 12).AsByte();
+            var n3_3 = from.Load4(stride, 3, 12).AsByte();
+            var n3_4 = from.Load4(stride, 4, 12).AsByte();
+            var n3_5 = from.Load4(stride, 5, 12).AsByte();
+            var n3_6 = from.Load4(stride, 6, 12).AsByte();
+            Packed.Write16(ref block, 336, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_3), k0));
+            Packed.Write16(ref block, 352, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_4, n3_5, n3_6), k1));
+            Packed.Write16(ref block, 368, AdvSimd.Arm64.VectorTableLookup((n3_1, n3_2, n3_3, n3_4), k2));
+            Packed.Write16(ref block, 384, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_5, n3_6), k3));
+            Packed.Write16(ref block, 400, AdvSimd.Arm64.VectorTableLookup((n3_2, n3_3, n3_4, n3_5), k4));
+            Packed.Write16(ref block, 416, AdvSimd.Arm64.VectorTableLookup((n3_0, n3_1, n3_2, n3_6), k5));
+            Packed.Write16(ref block, 432, AdvSimd.Arm64.VectorTableLookup((n3_3, n3_4, n3_5, n3_6), k6));
+        }
+        Interleave.Scalar<F32>(input[f..], stride, 7, data[(f * 28)..], frames - f);
     }
 }
