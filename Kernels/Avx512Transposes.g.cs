@@ -128,6 +128,7 @@ static unsafe class Avx512Transposes
         if (typeof(T) == typeof(F32))
             return channels switch
             {
+                1 => &InterleaveDwordChain1<T>,
                 3 => &InterleaveDwordChain3<T>,
                 4 => &InterleaveDwordChain4<T>,
                 5 => &InterleaveDwordBlend5<T>,
@@ -1066,6 +1067,23 @@ static unsafe class Avx512Transposes
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void InterleaveDwordChain1<T>(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames) where T : struct, IPcmTarget
+    {
+        var bytes = default(T).Bytes;
+        var source = new Planes(input, stride, 1, frames);
+        var target = new InterleavedTarget(data, 1 * bytes, frames);
+        var f = 0;
+        for (; f <= frames - 16; f += 16)
+        {
+            ref var from = ref source.At(f, 16);
+            ref var block = ref target.At(f, 16);
+            var i0 = from.Load16(stride, 0, 0);
+            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
+        }
+        if (f < frames) Interleave.Avx2Kernel<T>(1)(input[f..], stride, 1, data[(f * 1 * bytes)..], frames - f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public static void InterleaveDwordChain3<T>(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames) where T : struct, IPcmTarget
     {
         var bytes = default(T).Bytes;
@@ -1192,23 +1210,6 @@ static unsafe class Avx512Transposes
             Avx512Interleave.Write<T>(ref block, 112 * bytes, i7);
         }
         if (f < frames) Interleave.Avx2Kernel<T>(8)(input[f..], stride, 8, data[(f * 8 * bytes)..], frames - f);
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
-    public static void InterleaveDwordChain1<T>(scoped ReadOnlySpan<float> input, int stride, int channels, scoped Span<byte> data, int frames) where T : struct, IPcmTarget
-    {
-        var bytes = default(T).Bytes;
-        var source = new Planes(input, stride, 1, frames);
-        var target = new InterleavedTarget(data, 1 * bytes, frames);
-        var f = 0;
-        for (; f <= frames - 16; f += 16)
-        {
-            ref var from = ref source.At(f, 16);
-            ref var block = ref target.At(f, 16);
-            var i0 = from.Load16(stride, 0, 0);
-            Avx512Interleave.Write<T>(ref block, 0 * bytes, i0);
-        }
-        if (f < frames) Interleave.Avx2Kernel<T>(1)(input[f..], stride, 1, data[(f * 1 * bytes)..], frames - f);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
