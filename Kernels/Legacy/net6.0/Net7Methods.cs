@@ -87,20 +87,9 @@ static unsafe class Net7Methods
 
     extension(Vector128)
     {
-        public static Vector128<T> LoadUnsafe<T>(ref T source) where T : struct => Unsafe.ReadUnaligned<Vector128<T>>(ref Unsafe.As<T, byte>(ref source));
-
         public static Vector128<T> LoadUnsafe<T>(ref T source, nuint elementOffset) where T : struct =>
             Unsafe.ReadUnaligned<Vector128<T>>(ref Unsafe.As<T, byte>(ref Unsafe.Add(ref source, (nint)elementOffset)));
     }
-
-    extension<T>(Vector128<T> vector) where T : struct
-    {
-        public void StoreUnsafe(ref T destination) => Unsafe.WriteUnaligned(ref Unsafe.As<T, byte>(ref destination), vector);
-
-        public void StoreUnsafe(ref T destination, nuint elementOffset) =>
-            Unsafe.WriteUnaligned(ref Unsafe.As<T, byte>(ref Unsafe.Add(ref destination, (nint)elementOffset)), vector);
-    }
-
 
     public static Vector128<byte> Equals(Vector128<byte> left, Vector128<byte> right)
     {
@@ -171,18 +160,5 @@ static class Net7Vector256
     extension(Vector256)
     {
         public static bool IsHardwareAccelerated => Avx2.IsSupported;
-
-        public static Vector256<T> LoadUnsafe<T>(ref T source) where T : struct => Unsafe.ReadUnaligned<Vector256<T>>(ref Unsafe.As<T, byte>(ref source));
-
-        public static Vector256<T> LoadUnsafe<T>(ref T source, nuint elementOffset) where T : struct =>
-            Unsafe.ReadUnaligned<Vector256<T>>(ref Unsafe.As<T, byte>(ref Unsafe.Add(ref source, (nint)elementOffset)));
-    }
-
-    extension<T>(Vector256<T> vector) where T : struct
-    {
-        public void StoreUnsafe(ref T destination) => Unsafe.WriteUnaligned(ref Unsafe.As<T, byte>(ref destination), vector);
-
-        public void StoreUnsafe(ref T destination, nuint elementOffset) =>
-            Unsafe.WriteUnaligned(ref Unsafe.As<T, byte>(ref Unsafe.Add(ref destination, (nint)elementOffset)), vector);
     }
 }

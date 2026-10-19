@@ -9,8 +9,10 @@ namespace GFXKit;
 /// destination lies just past the source modulo 4096; these copies never call out.</summary>
 /// <remarks>Each copy is correct when the source and destination overlap, as <see cref="Buffer.MemoryCopy(void*, void*, long, long)"/>
 /// is. A copy of elements holding references goes through <see cref="Span{T}.CopyTo"/>, which tells the garbage collector about each.</remarks>
-public static unsafe partial class MemoryCopy
+public static unsafe class MemoryCopy
 {
+    const MethodImplOptions Inline = MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization;
+
     /// <summary>Copies a span's elements to the start of another span.</summary>
     /// <param name="source">The elements to copy.</param>
     /// <param name="destination">The span to copy them to, at least as long as <paramref name="source"/>.</param>
@@ -47,160 +49,115 @@ public static unsafe partial class MemoryCopy
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     internal static void Move(ref byte to, ref byte from, nuint length)
     {
-        if (length <= 16)
+        if (length <= 16) Short(ref to, ref from, length);
+        else if (length <= 32) Pair<Vector128<byte>>(ref to, ref from, length);
+        else if (Vector256.IsHardwareAccelerated)
         {
-            Short(ref to, ref from, length);
-            return;
+            if (length <= 64) Pair<Vector256<byte>>(ref to, ref from, length);
+            else if (length <= 96) Three<Vector256<byte>>(ref to, ref from, length);
+            else if (length <= 128) Four<Vector256<byte>>(ref to, ref from, length);
+            else if (Overlap(ref to, ref from, length)) Overlapping(ref to, ref from, length);
+            else Loop<Vector256<byte>>(ref to, ref from, length);
         }
-        if (length <= 32)
-        {
-            var a = Vector128.LoadUnsafe(ref from);
-            var b = Vector128.LoadUnsafe(ref from, length - 16);
-            a.StoreUnsafe(ref to);
-            b.StoreUnsafe(ref to, length - 16);
-            return;
-        }
-        if (length <= 64)
-        {
-            if (Vector256.IsHardwareAccelerated)
-            {
-                var a = Vector256.LoadUnsafe(ref from);
-                var b = Vector256.LoadUnsafe(ref from, length - 32);
-                a.StoreUnsafe(ref to);
-                b.StoreUnsafe(ref to, length - 32);
-            }
-            else Quad128(ref to, ref from, length);
-            return;
-        }
-        if (Wide)
-        {
-            if (length <= 256)
-            {
-                Short512(ref to, ref from, length);
-                return;
-            }
-        }
-        else if (Vector256.IsHardwareAccelerated && length <= 128)
-        {
-            Quad256(ref to, ref from, length);
-            return;
-        }
-        if ((nuint)(nint)Unsafe.ByteOffset(ref from, ref to) < length || (nuint)(nint)Unsafe.ByteOffset(ref to, ref from) < length) Overlapping(ref to, ref from, length);
-        else if (Wide) Loop512(ref to, ref from, length);
-        else if (Vector256.IsHardwareAccelerated) Loop256(ref to, ref from, length);
-        else Loop128(ref to, ref from, length);
+        else if (length <= 48) Three<Vector128<byte>>(ref to, ref from, length);
+        else if (length <= 64) Four<Vector128<byte>>(ref to, ref from, length);
+        else if (length <= 128) Eight<Vector128<byte>>(ref to, ref from, length);
+        else if (Overlap(ref to, ref from, length)) Overlapping(ref to, ref from, length);
+        else Loop<Vector128<byte>>(ref to, ref from, length);
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(Inline)]
     static void Short(ref byte to, ref byte from, nuint length)
     {
-        if (length >= 8)
-        {
-            var a = Unsafe.ReadUnaligned<ulong>(ref from);
-            var b = Unsafe.ReadUnaligned<ulong>(ref Unsafe.Add(ref from, length - 8));
-            Unsafe.WriteUnaligned(ref to, a);
-            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 8), b);
-        }
-        else if (length >= 4)
-        {
-            var a = Unsafe.ReadUnaligned<uint>(ref from);
-            var b = Unsafe.ReadUnaligned<uint>(ref Unsafe.Add(ref from, length - 4));
-            Unsafe.WriteUnaligned(ref to, a);
-            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 4), b);
-        }
-        else if (length >= 2)
-        {
-            var a = Unsafe.ReadUnaligned<ushort>(ref from);
-            var b = Unsafe.ReadUnaligned<ushort>(ref Unsafe.Add(ref from, length - 2));
-            Unsafe.WriteUnaligned(ref to, a);
-            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 2), b);
-        }
+        if (length >= 8) Pair<ulong>(ref to, ref from, length);
+        else if (length >= 4) Pair<uint>(ref to, ref from, length);
+        else if (length >= 2) Pair<ushort>(ref to, ref from, length);
         else if (length != 0) to = from;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static void Quad128(ref byte to, ref byte from, nuint length)
+    [MethodImpl(Inline)]
+    static void Pair<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
-        var a = Vector128.LoadUnsafe(ref from);
-        var b = Vector128.LoadUnsafe(ref from, 16);
-        var c = Vector128.LoadUnsafe(ref from, length - 32);
-        var d = Vector128.LoadUnsafe(ref from, length - 16);
-        a.StoreUnsafe(ref to);
-        b.StoreUnsafe(ref to, 16);
-        c.StoreUnsafe(ref to, length - 32);
-        d.StoreUnsafe(ref to, length - 16);
+        var width = (nuint)sizeof(T);
+        var a = Unsafe.ReadUnaligned<T>(ref from);
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - width));
+        Unsafe.WriteUnaligned(ref to, a);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - width), b);
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static void Quad256(ref byte to, ref byte from, nuint length)
+    [MethodImpl(Inline)]
+    static void Three<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
-        var a = Vector256.LoadUnsafe(ref from);
-        var b = Vector256.LoadUnsafe(ref from, 32);
-        var c = Vector256.LoadUnsafe(ref from, length - 64);
-        var d = Vector256.LoadUnsafe(ref from, length - 32);
-        a.StoreUnsafe(ref to);
-        b.StoreUnsafe(ref to, 32);
-        c.StoreUnsafe(ref to, length - 64);
-        d.StoreUnsafe(ref to, length - 32);
+        var width = (nuint)sizeof(T);
+        var a = Unsafe.ReadUnaligned<T>(ref from);
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, width));
+        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - width));
+        Unsafe.WriteUnaligned(ref to, a);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, width), b);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - width), c);
     }
+
+    [MethodImpl(Inline)]
+    static void Four<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
+    {
+        var width = (nuint)sizeof(T);
+        var a = Unsafe.ReadUnaligned<T>(ref from);
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, width));
+        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - 2 * width));
+        var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - width));
+        Unsafe.WriteUnaligned(ref to, a);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, width), b);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 2 * width), c);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - width), d);
+    }
+
+    [MethodImpl(Inline)]
+    static void Eight<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
+    {
+        var width = (nuint)sizeof(T);
+        var a = Unsafe.ReadUnaligned<T>(ref from);
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, width));
+        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 2 * width));
+        var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 3 * width));
+        var e = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - 4 * width));
+        var f = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - 3 * width));
+        var g = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - 2 * width));
+        var h = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - width));
+        Unsafe.WriteUnaligned(ref to, a);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, width), b);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 2 * width), c);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 3 * width), d);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 4 * width), e);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 3 * width), f);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 2 * width), g);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - width), h);
+    }
+
+    [MethodImpl(Inline)]
+    static bool Overlap(ref byte to, ref byte from, nuint length) =>
+        (nuint)(nint)Unsafe.ByteOffset(ref from, ref to) < length || (nuint)(nint)Unsafe.ByteOffset(ref to, ref from) < length;
 
     static void Overlapping(ref byte to, ref byte from, nuint length)
     {
         fixed (byte* target = &to, source = &from) Buffer.MemoryCopy(source, target, length, length);
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static nuint Skip(ref byte to, nuint width) => width - ((nuint)Unsafe.AsPointer(ref to) & (width - 1));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static void Loop128(ref byte to, ref byte from, nuint length)
+    [MethodImpl(Inline)]
+    static void Loop<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
-        Vector128.LoadUnsafe(ref from).StoreUnsafe(ref to);
-        var at = Skip(ref to, 16);
-        for (; at + 64 <= length; at += 64)
+        var width = (nuint)sizeof(T);
+        Unsafe.WriteUnaligned(ref to, Unsafe.ReadUnaligned<T>(ref from));
+        for (var at = width - ((nuint)Unsafe.AsPointer(ref to) & (width - 1)); at + 4 * width <= length; at += 4 * width)
         {
-            var a = Vector128.LoadUnsafe(ref from, at);
-            var b = Vector128.LoadUnsafe(ref from, at + 16);
-            var c = Vector128.LoadUnsafe(ref from, at + 32);
-            var d = Vector128.LoadUnsafe(ref from, at + 48);
-            a.StoreUnsafe(ref to, at);
-            b.StoreUnsafe(ref to, at + 16);
-            c.StoreUnsafe(ref to, at + 32);
-            d.StoreUnsafe(ref to, at + 48);
+            var a = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, at));
+            var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, at + width));
+            var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, at + 2 * width));
+            var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, at + 3 * width));
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, at), a);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, at + width), b);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, at + 2 * width), c);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, at + 3 * width), d);
         }
-        var e = Vector128.LoadUnsafe(ref from, length - 64);
-        var f = Vector128.LoadUnsafe(ref from, length - 48);
-        var g = Vector128.LoadUnsafe(ref from, length - 32);
-        var h = Vector128.LoadUnsafe(ref from, length - 16);
-        e.StoreUnsafe(ref to, length - 64);
-        f.StoreUnsafe(ref to, length - 48);
-        g.StoreUnsafe(ref to, length - 32);
-        h.StoreUnsafe(ref to, length - 16);
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    static void Loop256(ref byte to, ref byte from, nuint length)
-    {
-        Vector256.LoadUnsafe(ref from).StoreUnsafe(ref to);
-        var at = Skip(ref to, 32);
-        for (; at + 128 <= length; at += 128)
-        {
-            var a = Vector256.LoadUnsafe(ref from, at);
-            var b = Vector256.LoadUnsafe(ref from, at + 32);
-            var c = Vector256.LoadUnsafe(ref from, at + 64);
-            var d = Vector256.LoadUnsafe(ref from, at + 96);
-            a.StoreUnsafe(ref to, at);
-            b.StoreUnsafe(ref to, at + 32);
-            c.StoreUnsafe(ref to, at + 64);
-            d.StoreUnsafe(ref to, at + 96);
-        }
-        var e = Vector256.LoadUnsafe(ref from, length - 128);
-        var f = Vector256.LoadUnsafe(ref from, length - 96);
-        var g = Vector256.LoadUnsafe(ref from, length - 64);
-        var h = Vector256.LoadUnsafe(ref from, length - 32);
-        e.StoreUnsafe(ref to, length - 128);
-        f.StoreUnsafe(ref to, length - 96);
-        g.StoreUnsafe(ref to, length - 64);
-        h.StoreUnsafe(ref to, length - 32);
+        Four<T>(ref Unsafe.Add(ref to, length - 4 * width), ref Unsafe.Add(ref from, length - 4 * width), 4 * width);
     }
 }

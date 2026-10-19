@@ -1,6 +1,7 @@
 #if NET9_0_OR_GREATER
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics;
 using BenchmarkDotNet.Attributes;
 using GFXKit;
 
@@ -21,11 +22,18 @@ public unsafe class SmallCopies
     int cursor;
     delegate*<byte*, byte*, nuint, void> copy;
 
-    [Params("1", "2", "3", "4", "7", "8", "12", "16", "17", "24", "32", "33", "48", "64", "65", "96", "128", "129", "192", "256", "257", "384", "512", "1024", "2048", "2049", "4096", "1-16", "1-64", "1-256", "1-2048")]
+    [Params("1", "2", "3", "4", "7", "8", "12", "16", "17", "24", "32", "33", "48", "49", "64", "65", "80", "96", "97", "128", "129", "160", "192", "255", "256", "257", "320", "384", "512", "768", "1024", "2048", "2049", "4096", "1-16", "1-64", "1-256", "65-512", "1-2048")]
     public string Size { get; set; } = "1";
 
-    [Params("MemoryCopy", "CopyTo", "Vectors")]
+    [ParamsSource(nameof(Methods))]
     public string Method { get; set; } = "MemoryCopy";
+
+    public static IEnumerable<string> Methods()
+    {
+        yield return "MemoryCopy";
+        yield return "Vectors";
+        if (!Vector256.IsHardwareAccelerated) yield return "Handoff";
+    }
 
     [GlobalSetup]
     public void Setup()
@@ -49,8 +57,8 @@ public unsafe class SmallCopies
         copy = Method switch
         {
             "MemoryCopy" => &ViaMemoryCopy,
-            "CopyTo" => &ViaCopyTo,
-            _ => &ViaVectors
+            "Vectors" => &ViaVectors,
+            _ => &ViaHandoff
         };
         var expected = new byte[Spread + Largest];
         for (var i = 0; i < 4096; i++)
@@ -83,6 +91,13 @@ public unsafe class SmallCopies
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     static void ViaCopyTo(byte* from, byte* to, nuint length) => new ReadOnlySpan<byte>(from, (int)length).CopyTo(new Span<byte>(to, (int)length));
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    static void ViaHandoff(byte* from, byte* to, nuint length)
+    {
+        if (length is > 128 and < 256) Buffer.MemoryCopy(from, to, length, length);
+        else MemoryCopy.CopyUnsafe((nint)from, (nint)to, length);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     static void ViaVectors(byte* from, byte* to, nuint length) => MemoryCopy.CopyUnsafe((nint)from, (nint)to, length);
