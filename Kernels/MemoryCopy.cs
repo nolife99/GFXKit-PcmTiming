@@ -172,8 +172,12 @@ public static unsafe class MemoryCopy
     {
         ref var last = ref Unsafe.Add(ref from, length - 4 * (nuint)sizeof(T));
         ref var end = ref Unsafe.Add(ref to, length - 4 * (nuint)sizeof(T));
-        Unsafe.WriteUnaligned(ref to, Unsafe.ReadUnaligned<T>(ref from));
-        var skip = (nuint)sizeof(T) - ((nuint)Unsafe.AsPointer(ref to) & (nuint)(sizeof(T) - 1));
+        nuint skip = 0;
+        if (length >= 256)
+        {
+            Unsafe.WriteUnaligned(ref to, Unsafe.ReadUnaligned<T>(ref from));
+            skip = (nuint)sizeof(T) - ((nuint)Unsafe.AsPointer(ref to) & (nuint)(sizeof(T) - 1));
+        }
         ref var source = ref Unsafe.Add(ref from, skip);
         ref var target = ref Unsafe.Add(ref to, skip);
         for (; !Unsafe.IsAddressGreaterThan(ref target, ref end); source = ref Unsafe.Add(ref source, 4 * sizeof(T)), target = ref Unsafe.Add(ref target, 4 * sizeof(T)))
