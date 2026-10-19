@@ -1,0 +1,812 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 6 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+Unable to find .sln or .csproj file. Will use current directory /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming to search for project file. If you don't use .sln file on purpose it should not be a problem.
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/" /p:OutDir="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0/" /p:OutputPath="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0/" /p:PublishDir="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/publish/" in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1
+// command took 1.39 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/" /p:OutDir="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0/" /p:OutputPath="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0/" /p:PublishDir="/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/publish/" --output "/home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0/" in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1
+// command took 10.2 sec and exited with 0
+// ***** Done, took 00:00:11 (11.7 sec)   *****
+// Found 6 benchmarks:
+//   Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=CopyBlockUnaligned]
+//   Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=CopyTo]
+//   Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=Vectors]
+//   Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=CopyBlockUnaligned]
+//   Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=CopyTo]
+//   Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=Vectors]
+
+// **************************
+// Benchmark: Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=CopyBlockUnaligned]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-NJPIMG-1.dll --anonymousPipes 130 131 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Method: \"CopyBlockUnaligned\")" --job "EvaluateOverhead=False, Affinity=0100, IterationTime=100ms" --benchmarkId 0 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-HODWNX(EvaluateOverhead=False, Affinity=100, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 134383.00 ns, 134.3830 us/op
+WorkloadJitting  1: 1 op, 334676.00 ns, 334.6760 us/op
+
+OverheadJitting  2: 16 op, 127523.00 ns, 7.9702 us/op
+WorkloadJitting  2: 16 op, 170027.00 ns, 10.6267 us/op
+
+WorkloadPilot    1: 16 op, 44958.00 ns, 2.8099 us/op
+WorkloadPilot    2: 35600 op, 83660608.00 ns, 2.3500 us/op
+WorkloadPilot    3: 42560 op, 100325755.00 ns, 2.3573 us/op
+WorkloadPilot    4: 42432 op, 99538634.00 ns, 2.3458 us/op
+WorkloadPilot    5: 42640 op, 99418832.00 ns, 2.3316 us/op
+WorkloadPilot    6: 42896 op, 100606239.00 ns, 2.3454 us/op
+WorkloadPilot    7: 42640 op, 99643062.00 ns, 2.3368 us/op
+WorkloadPilot    8: 42800 op, 100362720.00 ns, 2.3449 us/op
+
+WorkloadWarmup   1: 42800 op, 99741781.00 ns, 2.3304 us/op
+WorkloadWarmup   2: 42800 op, 99822663.00 ns, 2.3323 us/op
+WorkloadWarmup   3: 42800 op, 100046602.00 ns, 2.3375 us/op
+WorkloadWarmup   4: 42800 op, 99843014.00 ns, 2.3328 us/op
+WorkloadWarmup   5: 42800 op, 99887872.00 ns, 2.3338 us/op
+WorkloadWarmup   6: 42800 op, 99959111.00 ns, 2.3355 us/op
+WorkloadWarmup   7: 42800 op, 100162708.00 ns, 2.3403 us/op
+WorkloadWarmup   8: 42800 op, 99791186.00 ns, 2.3316 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 42800 op, 100186034.00 ns, 2.3408 us/op
+WorkloadActual   2: 42800 op, 99972461.00 ns, 2.3358 us/op
+WorkloadActual   3: 42800 op, 100080214.00 ns, 2.3383 us/op
+WorkloadActual   4: 42800 op, 100053382.00 ns, 2.3377 us/op
+WorkloadActual   5: 42800 op, 100000603.00 ns, 2.3365 us/op
+WorkloadActual   6: 42800 op, 99933502.00 ns, 2.3349 us/op
+WorkloadActual   7: 42800 op, 100034494.00 ns, 2.3373 us/op
+WorkloadActual   8: 42800 op, 100189128.00 ns, 2.3409 us/op
+WorkloadActual   9: 42800 op, 99886440.00 ns, 2.3338 us/op
+WorkloadActual  10: 42800 op, 99781241.00 ns, 2.3313 us/op
+WorkloadActual  11: 42800 op, 112129856.00 ns, 2.6199 us/op
+WorkloadActual  12: 42800 op, 126563486.00 ns, 2.9571 us/op
+WorkloadActual  13: 42800 op, 100041585.00 ns, 2.3374 us/op
+WorkloadActual  14: 42800 op, 105696632.00 ns, 2.4695 us/op
+WorkloadActual  15: 42800 op, 77968496.00 ns, 1.8217 us/op
+WorkloadActual  16: 42800 op, 78397174.00 ns, 1.8317 us/op
+WorkloadActual  17: 42800 op, 78063880.00 ns, 1.8239 us/op
+WorkloadActual  18: 42800 op, 77401718.00 ns, 1.8085 us/op
+WorkloadActual  19: 42800 op, 77285923.00 ns, 1.8057 us/op
+WorkloadActual  20: 42800 op, 77671697.00 ns, 1.8148 us/op
+WorkloadActual  21: 42800 op, 77512986.00 ns, 1.8111 us/op
+WorkloadActual  22: 42800 op, 77326674.00 ns, 1.8067 us/op
+WorkloadActual  23: 42800 op, 77274235.00 ns, 1.8055 us/op
+WorkloadActual  24: 42800 op, 77591465.00 ns, 1.8129 us/op
+WorkloadActual  25: 42800 op, 77956398.00 ns, 1.8214 us/op
+WorkloadActual  26: 42800 op, 77235407.00 ns, 1.8046 us/op
+WorkloadActual  27: 42800 op, 77429920.00 ns, 1.8091 us/op
+WorkloadActual  28: 42800 op, 79943273.00 ns, 1.8678 us/op
+WorkloadActual  29: 42800 op, 78433730.00 ns, 1.8326 us/op
+WorkloadActual  30: 42800 op, 85869841.00 ns, 2.0063 us/op
+WorkloadActual  31: 42800 op, 77923357.00 ns, 1.8206 us/op
+WorkloadActual  32: 42800 op, 80078808.00 ns, 1.8710 us/op
+WorkloadActual  33: 42800 op, 79914761.00 ns, 1.8672 us/op
+WorkloadActual  34: 42800 op, 77121855.00 ns, 1.8019 us/op
+WorkloadActual  35: 42800 op, 77455650.00 ns, 1.8097 us/op
+WorkloadActual  36: 42800 op, 77180573.00 ns, 1.8033 us/op
+WorkloadActual  37: 42800 op, 77369769.00 ns, 1.8077 us/op
+WorkloadActual  38: 42800 op, 80374877.00 ns, 1.8779 us/op
+WorkloadActual  39: 42800 op, 78096419.00 ns, 1.8247 us/op
+WorkloadActual  40: 42800 op, 77511684.00 ns, 1.8110 us/op
+WorkloadActual  41: 42800 op, 77195155.00 ns, 1.8036 us/op
+WorkloadActual  42: 42800 op, 77633589.00 ns, 1.8139 us/op
+WorkloadActual  43: 42800 op, 88199076.00 ns, 2.0607 us/op
+WorkloadActual  44: 42800 op, 119888125.00 ns, 2.8011 us/op
+WorkloadActual  45: 42800 op, 77282077.00 ns, 1.8057 us/op
+WorkloadActual  46: 42800 op, 77373596.00 ns, 1.8078 us/op
+WorkloadActual  47: 42800 op, 79148431.00 ns, 1.8493 us/op
+WorkloadActual  48: 42800 op, 78951443.00 ns, 1.8447 us/op
+WorkloadActual  49: 42800 op, 77348227.00 ns, 1.8072 us/op
+WorkloadActual  50: 42800 op, 77352273.00 ns, 1.8073 us/op
+WorkloadActual  51: 42800 op, 77161594.00 ns, 1.8028 us/op
+WorkloadActual  52: 42800 op, 77112201.00 ns, 1.8017 us/op
+WorkloadActual  53: 42800 op, 77445175.00 ns, 1.8095 us/op
+WorkloadActual  54: 42800 op, 77457064.00 ns, 1.8097 us/op
+WorkloadActual  55: 42800 op, 79270858.00 ns, 1.8521 us/op
+WorkloadActual  56: 42800 op, 79788451.00 ns, 1.8642 us/op
+WorkloadActual  57: 42800 op, 77281737.00 ns, 1.8056 us/op
+WorkloadActual  58: 42800 op, 77209198.00 ns, 1.8040 us/op
+WorkloadActual  59: 42800 op, 77343782.00 ns, 1.8071 us/op
+WorkloadActual  60: 42800 op, 77298814.00 ns, 1.8060 us/op
+WorkloadActual  61: 42800 op, 78213578.00 ns, 1.8274 us/op
+WorkloadActual  62: 42800 op, 80012980.00 ns, 1.8695 us/op
+WorkloadActual  63: 42800 op, 77532948.00 ns, 1.8115 us/op
+WorkloadActual  64: 42800 op, 77249990.00 ns, 1.8049 us/op
+WorkloadActual  65: 42800 op, 77167444.00 ns, 1.8030 us/op
+
+// AfterActualRun
+WorkloadResult   1: 42800 op, 77968496.00 ns, 1.8217 us/op
+WorkloadResult   2: 42800 op, 78397174.00 ns, 1.8317 us/op
+WorkloadResult   3: 42800 op, 78063880.00 ns, 1.8239 us/op
+WorkloadResult   4: 42800 op, 77401718.00 ns, 1.8085 us/op
+WorkloadResult   5: 42800 op, 77285923.00 ns, 1.8057 us/op
+WorkloadResult   6: 42800 op, 77671697.00 ns, 1.8148 us/op
+WorkloadResult   7: 42800 op, 77512986.00 ns, 1.8111 us/op
+WorkloadResult   8: 42800 op, 77326674.00 ns, 1.8067 us/op
+WorkloadResult   9: 42800 op, 77274235.00 ns, 1.8055 us/op
+WorkloadResult  10: 42800 op, 77591465.00 ns, 1.8129 us/op
+WorkloadResult  11: 42800 op, 77956398.00 ns, 1.8214 us/op
+WorkloadResult  12: 42800 op, 77235407.00 ns, 1.8046 us/op
+WorkloadResult  13: 42800 op, 77429920.00 ns, 1.8091 us/op
+WorkloadResult  14: 42800 op, 79943273.00 ns, 1.8678 us/op
+WorkloadResult  15: 42800 op, 78433730.00 ns, 1.8326 us/op
+WorkloadResult  16: 42800 op, 85869841.00 ns, 2.0063 us/op
+WorkloadResult  17: 42800 op, 77923357.00 ns, 1.8206 us/op
+WorkloadResult  18: 42800 op, 80078808.00 ns, 1.8710 us/op
+WorkloadResult  19: 42800 op, 79914761.00 ns, 1.8672 us/op
+WorkloadResult  20: 42800 op, 77121855.00 ns, 1.8019 us/op
+WorkloadResult  21: 42800 op, 77455650.00 ns, 1.8097 us/op
+WorkloadResult  22: 42800 op, 77180573.00 ns, 1.8033 us/op
+WorkloadResult  23: 42800 op, 77369769.00 ns, 1.8077 us/op
+WorkloadResult  24: 42800 op, 80374877.00 ns, 1.8779 us/op
+WorkloadResult  25: 42800 op, 78096419.00 ns, 1.8247 us/op
+WorkloadResult  26: 42800 op, 77511684.00 ns, 1.8110 us/op
+WorkloadResult  27: 42800 op, 77195155.00 ns, 1.8036 us/op
+WorkloadResult  28: 42800 op, 77633589.00 ns, 1.8139 us/op
+WorkloadResult  29: 42800 op, 88199076.00 ns, 2.0607 us/op
+WorkloadResult  30: 42800 op, 77282077.00 ns, 1.8057 us/op
+WorkloadResult  31: 42800 op, 77373596.00 ns, 1.8078 us/op
+WorkloadResult  32: 42800 op, 79148431.00 ns, 1.8493 us/op
+WorkloadResult  33: 42800 op, 78951443.00 ns, 1.8447 us/op
+WorkloadResult  34: 42800 op, 77348227.00 ns, 1.8072 us/op
+WorkloadResult  35: 42800 op, 77352273.00 ns, 1.8073 us/op
+WorkloadResult  36: 42800 op, 77161594.00 ns, 1.8028 us/op
+WorkloadResult  37: 42800 op, 77112201.00 ns, 1.8017 us/op
+WorkloadResult  38: 42800 op, 77445175.00 ns, 1.8095 us/op
+WorkloadResult  39: 42800 op, 77457064.00 ns, 1.8097 us/op
+WorkloadResult  40: 42800 op, 79270858.00 ns, 1.8521 us/op
+WorkloadResult  41: 42800 op, 79788451.00 ns, 1.8642 us/op
+WorkloadResult  42: 42800 op, 77281737.00 ns, 1.8056 us/op
+WorkloadResult  43: 42800 op, 77209198.00 ns, 1.8040 us/op
+WorkloadResult  44: 42800 op, 77343782.00 ns, 1.8071 us/op
+WorkloadResult  45: 42800 op, 77298814.00 ns, 1.8060 us/op
+WorkloadResult  46: 42800 op, 78213578.00 ns, 1.8274 us/op
+WorkloadResult  47: 42800 op, 80012980.00 ns, 1.8695 us/op
+WorkloadResult  48: 42800 op, 77532948.00 ns, 1.8115 us/op
+WorkloadResult  49: 42800 op, 77249990.00 ns, 1.8049 us/op
+WorkloadResult  50: 42800 op, 77167444.00 ns, 1.8030 us/op
+
+// AfterAll
+// Benchmark Process 2917 has exited with code 0.
+
+Mean = 1.829 us, StdErr = 0.007 us (0.37%), N = 50, StdDev = 0.048 us
+Min = 1.802 us, Q1 = 1.806 us, Median = 1.810 us, Q3 = 1.831 us, Max = 2.061 us
+IQR = 0.025 us, LowerFence = 1.769 us, UpperFence = 1.868 us
+ConfidenceInterval = [1.806 us; 1.853 us] (CI 99.9%), Margin = 0.024 us (1.29% of Mean)
+Skewness = 3.32, Kurtosis = 14.97, MValue = 2
+
+// ** Remained 5 (83.3 %) benchmark(s) to run. Estimated finish 2026-10-19 4:30 (0h 0m from now) **
+// **************************
+// Benchmark: Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=CopyTo]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-NJPIMG-1.dll --anonymousPipes 130 131 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Method: \"CopyTo\")" --job "EvaluateOverhead=False, Affinity=0100, IterationTime=100ms" --benchmarkId 1 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-HODWNX(EvaluateOverhead=False, Affinity=100, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 135685.00 ns, 135.6850 us/op
+WorkloadJitting  1: 1 op, 351342.00 ns, 351.3420 us/op
+
+OverheadJitting  2: 16 op, 128214.00 ns, 8.0134 us/op
+WorkloadJitting  2: 16 op, 147543.00 ns, 9.2214 us/op
+
+WorkloadPilot    1: 16 op, 42685.00 ns, 2.6678 us/op
+WorkloadPilot    2: 37488 op, 86730345.00 ns, 2.3135 us/op
+WorkloadPilot    3: 43232 op, 114336216.00 ns, 2.6447 us/op
+WorkloadPilot    4: 37824 op, 88491420.00 ns, 2.3396 us/op
+WorkloadPilot    5: 42752 op, 96858220.00 ns, 2.2656 us/op
+WorkloadPilot    6: 44144 op, 100276052.00 ns, 2.2716 us/op
+WorkloadPilot    7: 44032 op, 99831980.00 ns, 2.2673 us/op
+WorkloadPilot    8: 44112 op, 100327179.00 ns, 2.2744 us/op
+
+WorkloadWarmup   1: 44112 op, 100462483.00 ns, 2.2774 us/op
+WorkloadWarmup   2: 44112 op, 100334980.00 ns, 2.2746 us/op
+WorkloadWarmup   3: 44112 op, 100364825.00 ns, 2.2752 us/op
+WorkloadWarmup   4: 44112 op, 100839493.00 ns, 2.2860 us/op
+WorkloadWarmup   5: 44112 op, 100294259.00 ns, 2.2736 us/op
+WorkloadWarmup   6: 44112 op, 100050720.00 ns, 2.2681 us/op
+WorkloadWarmup   7: 44112 op, 99849636.00 ns, 2.2635 us/op
+WorkloadWarmup   8: 44112 op, 100080596.00 ns, 2.2688 us/op
+WorkloadWarmup   9: 44112 op, 100139694.00 ns, 2.2701 us/op
+WorkloadWarmup  10: 44112 op, 100340829.00 ns, 2.2747 us/op
+WorkloadWarmup  11: 44112 op, 100932535.00 ns, 2.2881 us/op
+WorkloadWarmup  12: 44112 op, 99978441.00 ns, 2.2665 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 44112 op, 100687014.00 ns, 2.2825 us/op
+WorkloadActual   2: 44112 op, 103119804.00 ns, 2.3377 us/op
+WorkloadActual   3: 44112 op, 101804545.00 ns, 2.3079 us/op
+WorkloadActual   4: 44112 op, 104583229.00 ns, 2.3709 us/op
+WorkloadActual   5: 44112 op, 102717946.00 ns, 2.3286 us/op
+WorkloadActual   6: 44112 op, 99939993.00 ns, 2.2656 us/op
+WorkloadActual   7: 44112 op, 99931420.00 ns, 2.2654 us/op
+WorkloadActual   8: 44112 op, 100521163.00 ns, 2.2788 us/op
+WorkloadActual   9: 44112 op, 100729607.00 ns, 2.2835 us/op
+WorkloadActual  10: 44112 op, 100291014.00 ns, 2.2736 us/op
+WorkloadActual  11: 44112 op, 100119424.00 ns, 2.2697 us/op
+WorkloadActual  12: 44112 op, 109496953.00 ns, 2.4822 us/op
+WorkloadActual  13: 44112 op, 99921825.00 ns, 2.2652 us/op
+WorkloadActual  14: 44112 op, 99986773.00 ns, 2.2667 us/op
+WorkloadActual  15: 44112 op, 100357154.00 ns, 2.2751 us/op
+
+// AfterActualRun
+WorkloadResult   1: 44112 op, 100687014.00 ns, 2.2825 us/op
+WorkloadResult   2: 44112 op, 103119804.00 ns, 2.3377 us/op
+WorkloadResult   3: 44112 op, 101804545.00 ns, 2.3079 us/op
+WorkloadResult   4: 44112 op, 104583229.00 ns, 2.3709 us/op
+WorkloadResult   5: 44112 op, 102717946.00 ns, 2.3286 us/op
+WorkloadResult   6: 44112 op, 99939993.00 ns, 2.2656 us/op
+WorkloadResult   7: 44112 op, 99931420.00 ns, 2.2654 us/op
+WorkloadResult   8: 44112 op, 100521163.00 ns, 2.2788 us/op
+WorkloadResult   9: 44112 op, 100729607.00 ns, 2.2835 us/op
+WorkloadResult  10: 44112 op, 100291014.00 ns, 2.2736 us/op
+WorkloadResult  11: 44112 op, 100119424.00 ns, 2.2697 us/op
+WorkloadResult  12: 44112 op, 99921825.00 ns, 2.2652 us/op
+WorkloadResult  13: 44112 op, 99986773.00 ns, 2.2667 us/op
+WorkloadResult  14: 44112 op, 100357154.00 ns, 2.2751 us/op
+
+// AfterAll
+// Benchmark Process 2927 has exited with code 0.
+
+Mean = 2.291 us, StdErr = 0.009 us (0.38%), N = 14, StdDev = 0.033 us
+Min = 2.265 us, Q1 = 2.267 us, Median = 2.277 us, Q3 = 2.302 us, Max = 2.371 us
+IQR = 0.034 us, LowerFence = 2.216 us, UpperFence = 2.353 us
+ConfidenceInterval = [2.254 us; 2.328 us] (CI 99.9%), Margin = 0.037 us (1.62% of Mean)
+Skewness = 1.18, Kurtosis = 3.04, MValue = 2
+
+// ** Remained 4 (66.7 %) benchmark(s) to run. Estimated finish 2026-10-19 4:29 (0h 0m from now) **
+// **************************
+// Benchmark: Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=Vectors]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-NJPIMG-1.dll --anonymousPipes 130 131 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Method: \"Vectors\")" --job "EvaluateOverhead=False, Affinity=0100, IterationTime=100ms" --benchmarkId 2 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-HODWNX(EvaluateOverhead=False, Affinity=100, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 127863.00 ns, 127.8630 us/op
+WorkloadJitting  1: 1 op, 574500.00 ns, 574.5000 us/op
+
+OverheadJitting  2: 16 op, 138379.00 ns, 8.6487 us/op
+WorkloadJitting  2: 16 op, 406495.00 ns, 25.4059 us/op
+
+WorkloadPilot    1: 16 op, 205861.00 ns, 12.8663 us/op
+WorkloadPilot    2: 7776 op, 82348314.00 ns, 10.5901 us/op
+WorkloadPilot    3: 9456 op, 98733518.00 ns, 10.4414 us/op
+WorkloadPilot    4: 9584 op, 100855928.00 ns, 10.5234 us/op
+WorkloadPilot    5: 9504 op, 100588274.00 ns, 10.5838 us/op
+WorkloadPilot    6: 9456 op, 100543155.00 ns, 10.6327 us/op
+
+WorkloadWarmup   1: 9456 op, 104396115.00 ns, 11.0402 us/op
+WorkloadWarmup   2: 9456 op, 100132964.00 ns, 10.5894 us/op
+WorkloadWarmup   3: 9456 op, 99681962.00 ns, 10.5417 us/op
+WorkloadWarmup   4: 9456 op, 98797234.00 ns, 10.4481 us/op
+WorkloadWarmup   5: 9456 op, 103008175.00 ns, 10.8934 us/op
+WorkloadWarmup   6: 9456 op, 99775824.00 ns, 10.5516 us/op
+WorkloadWarmup   7: 9456 op, 100801637.00 ns, 10.6601 us/op
+WorkloadWarmup   8: 9456 op, 100819814.00 ns, 10.6620 us/op
+WorkloadWarmup   9: 9456 op, 99435720.00 ns, 10.5156 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 9456 op, 100837611.00 ns, 10.6639 us/op
+WorkloadActual   2: 9456 op, 101244667.00 ns, 10.7069 us/op
+WorkloadActual   3: 9456 op, 100853305.00 ns, 10.6655 us/op
+WorkloadActual   4: 9456 op, 100134377.00 ns, 10.5895 us/op
+WorkloadActual   5: 9456 op, 100912694.00 ns, 10.6718 us/op
+WorkloadActual   6: 9456 op, 101665203.00 ns, 10.7514 us/op
+WorkloadActual   7: 9456 op, 101341894.00 ns, 10.7172 us/op
+WorkloadActual   8: 9456 op, 101812837.00 ns, 10.7670 us/op
+WorkloadActual   9: 9456 op, 100312306.00 ns, 10.6083 us/op
+WorkloadActual  10: 9456 op, 113698151.00 ns, 12.0239 us/op
+WorkloadActual  11: 9456 op, 101848150.00 ns, 10.7707 us/op
+WorkloadActual  12: 9456 op, 99906853.00 ns, 10.5654 us/op
+WorkloadActual  13: 9456 op, 100694214.00 ns, 10.6487 us/op
+WorkloadActual  14: 9456 op, 100570467.00 ns, 10.6356 us/op
+WorkloadActual  15: 9456 op, 103267908.00 ns, 10.9209 us/op
+
+// AfterActualRun
+WorkloadResult   1: 9456 op, 100837611.00 ns, 10.6639 us/op
+WorkloadResult   2: 9456 op, 101244667.00 ns, 10.7069 us/op
+WorkloadResult   3: 9456 op, 100853305.00 ns, 10.6655 us/op
+WorkloadResult   4: 9456 op, 100134377.00 ns, 10.5895 us/op
+WorkloadResult   5: 9456 op, 100912694.00 ns, 10.6718 us/op
+WorkloadResult   6: 9456 op, 101665203.00 ns, 10.7514 us/op
+WorkloadResult   7: 9456 op, 101341894.00 ns, 10.7172 us/op
+WorkloadResult   8: 9456 op, 101812837.00 ns, 10.7670 us/op
+WorkloadResult   9: 9456 op, 100312306.00 ns, 10.6083 us/op
+WorkloadResult  10: 9456 op, 101848150.00 ns, 10.7707 us/op
+WorkloadResult  11: 9456 op, 99906853.00 ns, 10.5654 us/op
+WorkloadResult  12: 9456 op, 100694214.00 ns, 10.6487 us/op
+WorkloadResult  13: 9456 op, 100570467.00 ns, 10.6356 us/op
+WorkloadResult  14: 9456 op, 103267908.00 ns, 10.9209 us/op
+
+// AfterAll
+// Benchmark Process 2936 has exited with code 0.
+
+Mean = 10.692 us, StdErr = 0.024 us (0.23%), N = 14, StdDev = 0.092 us
+Min = 10.565 us, Q1 = 10.639 us, Median = 10.669 us, Q3 = 10.743 us, Max = 10.921 us
+IQR = 0.104 us, LowerFence = 10.483 us, UpperFence = 10.899 us
+ConfidenceInterval = [10.588 us; 10.795 us] (CI 99.9%), Margin = 0.103 us (0.97% of Mean)
+Skewness = 0.86, Kurtosis = 3.32, MValue = 2
+
+// ** Remained 3 (50.0 %) benchmark(s) to run. Estimated finish 2026-10-19 4:29 (0h 0m from now) **
+// **************************
+// Benchmark: Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=CopyBlockUnaligned]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-NJPIMG-1.dll --anonymousPipes 130 131 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Method: \"CopyBlockUnaligned\")" --job "EvaluateOverhead=False, Affinity=0100, IterationTime=100ms" --benchmarkId 3 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-HODWNX(EvaluateOverhead=False, Affinity=100, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 127483.00 ns, 127.4830 us/op
+WorkloadJitting  1: 1 op, 331942.00 ns, 331.9420 us/op
+
+OverheadJitting  2: 16 op, 127362.00 ns, 7.9601 us/op
+WorkloadJitting  2: 16 op, 160242.00 ns, 10.0151 us/op
+
+WorkloadPilot    1: 16 op, 44187.00 ns, 2.7617 us/op
+WorkloadPilot    2: 36224 op, 78316293.00 ns, 2.1620 us/op
+WorkloadPilot    3: 46256 op, 97830110.00 ns, 2.1150 us/op
+WorkloadPilot    4: 47296 op, 97550643.00 ns, 2.0626 us/op
+WorkloadPilot    5: 48496 op, 100079904.00 ns, 2.0637 us/op
+WorkloadPilot    6: 48464 op, 100232905.00 ns, 2.0682 us/op
+WorkloadPilot    7: 48352 op, 102530762.00 ns, 2.1205 us/op
+
+WorkloadWarmup   1: 48352 op, 101463767.00 ns, 2.0984 us/op
+WorkloadWarmup   2: 48352 op, 100273035.00 ns, 2.0738 us/op
+WorkloadWarmup   3: 48352 op, 103523914.00 ns, 2.1410 us/op
+WorkloadWarmup   4: 48352 op, 98592633.00 ns, 2.0391 us/op
+WorkloadWarmup   5: 48352 op, 100465336.00 ns, 2.0778 us/op
+WorkloadWarmup   6: 48352 op, 98515526.00 ns, 2.0375 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 48352 op, 98778715.00 ns, 2.0429 us/op
+WorkloadActual   2: 48352 op, 98645653.00 ns, 2.0402 us/op
+WorkloadActual   3: 48352 op, 98828921.00 ns, 2.0439 us/op
+WorkloadActual   4: 48352 op, 100219525.00 ns, 2.0727 us/op
+WorkloadActual   5: 48352 op, 98738764.00 ns, 2.0421 us/op
+WorkloadActual   6: 48352 op, 98396576.00 ns, 2.0350 us/op
+WorkloadActual   7: 48352 op, 99363559.00 ns, 2.0550 us/op
+WorkloadActual   8: 48352 op, 100888016.00 ns, 2.0865 us/op
+WorkloadActual   9: 48352 op, 98312218.00 ns, 2.0333 us/op
+WorkloadActual  10: 48352 op, 99057616.00 ns, 2.0487 us/op
+WorkloadActual  11: 48352 op, 99914453.00 ns, 2.0664 us/op
+WorkloadActual  12: 48352 op, 98913439.00 ns, 2.0457 us/op
+WorkloadActual  13: 48352 op, 98473603.00 ns, 2.0366 us/op
+WorkloadActual  14: 48352 op, 98818665.00 ns, 2.0437 us/op
+WorkloadActual  15: 48352 op, 98389586.00 ns, 2.0349 us/op
+
+// AfterActualRun
+WorkloadResult   1: 48352 op, 98778715.00 ns, 2.0429 us/op
+WorkloadResult   2: 48352 op, 98645653.00 ns, 2.0402 us/op
+WorkloadResult   3: 48352 op, 98828921.00 ns, 2.0439 us/op
+WorkloadResult   4: 48352 op, 98738764.00 ns, 2.0421 us/op
+WorkloadResult   5: 48352 op, 98396576.00 ns, 2.0350 us/op
+WorkloadResult   6: 48352 op, 99363559.00 ns, 2.0550 us/op
+WorkloadResult   7: 48352 op, 98312218.00 ns, 2.0333 us/op
+WorkloadResult   8: 48352 op, 99057616.00 ns, 2.0487 us/op
+WorkloadResult   9: 48352 op, 99914453.00 ns, 2.0664 us/op
+WorkloadResult  10: 48352 op, 98913439.00 ns, 2.0457 us/op
+WorkloadResult  11: 48352 op, 98473603.00 ns, 2.0366 us/op
+WorkloadResult  12: 48352 op, 98818665.00 ns, 2.0437 us/op
+WorkloadResult  13: 48352 op, 98389586.00 ns, 2.0349 us/op
+
+// AfterAll
+// Benchmark Process 2945 has exited with code 0.
+
+Mean = 2.044 us, StdErr = 0.003 us (0.12%), N = 13, StdDev = 0.009 us
+Min = 2.033 us, Q1 = 2.037 us, Median = 2.043 us, Q3 = 2.046 us, Max = 2.066 us
+IQR = 0.009 us, LowerFence = 2.023 us, UpperFence = 2.059 us
+ConfidenceInterval = [2.033 us; 2.055 us] (CI 99.9%), Margin = 0.011 us (0.54% of Mean)
+Skewness = 1.04, Kurtosis = 3.41, MValue = 2
+
+// ** Remained 2 (33.3 %) benchmark(s) to run. Estimated finish 2026-10-19 4:29 (0h 0m from now) **
+// **************************
+// Benchmark: Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=CopyTo]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-NJPIMG-1.dll --anonymousPipes 130 131 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Method: \"CopyTo\")" --job "EvaluateOverhead=False, Affinity=0100, IterationTime=100ms" --benchmarkId 4 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-HODWNX(EvaluateOverhead=False, Affinity=100, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 128014.00 ns, 128.0140 us/op
+WorkloadJitting  1: 1 op, 326354.00 ns, 326.3540 us/op
+
+OverheadJitting  2: 16 op, 124208.00 ns, 7.7630 us/op
+WorkloadJitting  2: 16 op, 160904.00 ns, 10.0565 us/op
+
+WorkloadPilot    1: 16 op, 41563.00 ns, 2.5977 us/op
+WorkloadPilot    2: 38496 op, 76474277.00 ns, 1.9866 us/op
+WorkloadPilot    3: 50352 op, 98722590.00 ns, 1.9606 us/op
+WorkloadPilot    4: 51008 op, 114166777.00 ns, 2.2382 us/op
+WorkloadPilot    5: 44688 op, 91906176.00 ns, 2.0566 us/op
+WorkloadPilot    6: 48624 op, 95811746.00 ns, 1.9705 us/op
+WorkloadPilot    7: 50752 op, 98680876.00 ns, 1.9444 us/op
+WorkloadPilot    8: 51440 op, 100794875.00 ns, 1.9595 us/op
+WorkloadPilot    9: 51040 op, 100748284.00 ns, 1.9739 us/op
+
+WorkloadWarmup   1: 51040 op, 100214677.00 ns, 1.9635 us/op
+WorkloadWarmup   2: 51040 op, 99727890.00 ns, 1.9539 us/op
+WorkloadWarmup   3: 51040 op, 99285862.00 ns, 1.9453 us/op
+WorkloadWarmup   4: 51040 op, 100104751.00 ns, 1.9613 us/op
+WorkloadWarmup   5: 51040 op, 100011379.00 ns, 1.9595 us/op
+WorkloadWarmup   6: 51040 op, 102505904.00 ns, 2.0083 us/op
+WorkloadWarmup   7: 51040 op, 99479735.00 ns, 1.9491 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 51040 op, 99801151.00 ns, 1.9554 us/op
+WorkloadActual   2: 51040 op, 99592034.00 ns, 1.9513 us/op
+WorkloadActual   3: 51040 op, 100274037.00 ns, 1.9646 us/op
+WorkloadActual   4: 51040 op, 99765207.00 ns, 1.9546 us/op
+WorkloadActual   5: 51040 op, 99958670.00 ns, 1.9584 us/op
+WorkloadActual   6: 51040 op, 99491663.00 ns, 1.9493 us/op
+WorkloadActual   7: 51040 op, 100315589.00 ns, 1.9654 us/op
+WorkloadActual   8: 51040 op, 107481441.00 ns, 2.1058 us/op
+WorkloadActual   9: 51040 op, 99988594.00 ns, 1.9590 us/op
+WorkloadActual  10: 51040 op, 99775282.00 ns, 1.9548 us/op
+WorkloadActual  11: 51040 op, 100283862.00 ns, 1.9648 us/op
+WorkloadActual  12: 51040 op, 99626157.00 ns, 1.9519 us/op
+WorkloadActual  13: 51040 op, 101750942.00 ns, 1.9936 us/op
+WorkloadActual  14: 51040 op, 100515172.00 ns, 1.9693 us/op
+WorkloadActual  15: 51040 op, 89842544.00 ns, 1.7602 us/op
+WorkloadActual  16: 51040 op, 72915002.00 ns, 1.4286 us/op
+WorkloadActual  17: 51040 op, 77183280.00 ns, 1.5122 us/op
+WorkloadActual  18: 51040 op, 71896011.00 ns, 1.4086 us/op
+WorkloadActual  19: 51040 op, 71692653.00 ns, 1.4046 us/op
+WorkloadActual  20: 51040 op, 71734126.00 ns, 1.4054 us/op
+WorkloadActual  21: 51040 op, 71660834.00 ns, 1.4040 us/op
+WorkloadActual  22: 51040 op, 71460101.00 ns, 1.4001 us/op
+WorkloadActual  23: 51040 op, 71545660.00 ns, 1.4018 us/op
+WorkloadActual  24: 51040 op, 71758953.00 ns, 1.4059 us/op
+WorkloadActual  25: 51040 op, 71538960.00 ns, 1.4016 us/op
+WorkloadActual  26: 51040 op, 71926266.00 ns, 1.4092 us/op
+WorkloadActual  27: 51040 op, 71394101.00 ns, 1.3988 us/op
+WorkloadActual  28: 51040 op, 71597930.00 ns, 1.4028 us/op
+WorkloadActual  29: 51040 op, 72000529.00 ns, 1.4107 us/op
+WorkloadActual  30: 51040 op, 71546761.00 ns, 1.4018 us/op
+WorkloadActual  31: 51040 op, 77124881.00 ns, 1.5111 us/op
+WorkloadActual  32: 51040 op, 94589677.00 ns, 1.8532 us/op
+WorkloadActual  33: 51040 op, 71502825.00 ns, 1.4009 us/op
+WorkloadActual  34: 51040 op, 71514743.00 ns, 1.4012 us/op
+WorkloadActual  35: 51040 op, 71791261.00 ns, 1.4066 us/op
+WorkloadActual  36: 51040 op, 71436415.00 ns, 1.3996 us/op
+WorkloadActual  37: 51040 op, 71496937.00 ns, 1.4008 us/op
+WorkloadActual  38: 51040 op, 71923322.00 ns, 1.4092 us/op
+WorkloadActual  39: 51040 op, 71877111.00 ns, 1.4083 us/op
+WorkloadActual  40: 51040 op, 71430016.00 ns, 1.3995 us/op
+WorkloadActual  41: 51040 op, 71621575.00 ns, 1.4032 us/op
+WorkloadActual  42: 51040 op, 71529976.00 ns, 1.4014 us/op
+WorkloadActual  43: 51040 op, 71958525.00 ns, 1.4098 us/op
+WorkloadActual  44: 51040 op, 71715447.00 ns, 1.4051 us/op
+WorkloadActual  45: 51040 op, 71387481.00 ns, 1.3987 us/op
+WorkloadActual  46: 51040 op, 71655596.00 ns, 1.4039 us/op
+WorkloadActual  47: 51040 op, 71648486.00 ns, 1.4038 us/op
+WorkloadActual  48: 51040 op, 71728396.00 ns, 1.4053 us/op
+WorkloadActual  49: 51040 op, 71674629.00 ns, 1.4043 us/op
+WorkloadActual  50: 51040 op, 71688002.00 ns, 1.4045 us/op
+WorkloadActual  51: 51040 op, 71668863.00 ns, 1.4042 us/op
+WorkloadActual  52: 51040 op, 71645088.00 ns, 1.4037 us/op
+WorkloadActual  53: 51040 op, 71756627.00 ns, 1.4059 us/op
+WorkloadActual  54: 51040 op, 72679282.00 ns, 1.4240 us/op
+WorkloadActual  55: 51040 op, 74396960.00 ns, 1.4576 us/op
+WorkloadActual  56: 51040 op, 72118784.00 ns, 1.4130 us/op
+WorkloadActual  57: 51040 op, 71522592.00 ns, 1.4013 us/op
+WorkloadActual  58: 51040 op, 71699420.00 ns, 1.4048 us/op
+WorkloadActual  59: 51040 op, 71952733.00 ns, 1.4097 us/op
+WorkloadActual  60: 51040 op, 85365255.00 ns, 1.6725 us/op
+WorkloadActual  61: 51040 op, 112336647.00 ns, 2.2010 us/op
+WorkloadActual  62: 51040 op, 71473948.00 ns, 1.4004 us/op
+WorkloadActual  63: 51040 op, 71360057.00 ns, 1.3981 us/op
+WorkloadActual  64: 51040 op, 71408270.00 ns, 1.3991 us/op
+WorkloadActual  65: 51040 op, 71638478.00 ns, 1.4036 us/op
+WorkloadActual  66: 51040 op, 71798840.00 ns, 1.4067 us/op
+WorkloadActual  67: 51040 op, 71580770.00 ns, 1.4024 us/op
+WorkloadActual  68: 51040 op, 72296483.00 ns, 1.4165 us/op
+WorkloadActual  69: 51040 op, 71732159.00 ns, 1.4054 us/op
+WorkloadActual  70: 51040 op, 71532087.00 ns, 1.4015 us/op
+WorkloadActual  71: 51040 op, 71567961.00 ns, 1.4022 us/op
+WorkloadActual  72: 51040 op, 71746541.00 ns, 1.4057 us/op
+WorkloadActual  73: 51040 op, 71894975.00 ns, 1.4086 us/op
+
+// AfterActualRun
+WorkloadResult   1: 51040 op, 72915002.00 ns, 1.4286 us/op
+WorkloadResult   2: 51040 op, 77183280.00 ns, 1.5122 us/op
+WorkloadResult   3: 51040 op, 71896011.00 ns, 1.4086 us/op
+WorkloadResult   4: 51040 op, 71692653.00 ns, 1.4046 us/op
+WorkloadResult   5: 51040 op, 71734126.00 ns, 1.4054 us/op
+WorkloadResult   6: 51040 op, 71660834.00 ns, 1.4040 us/op
+WorkloadResult   7: 51040 op, 71460101.00 ns, 1.4001 us/op
+WorkloadResult   8: 51040 op, 71545660.00 ns, 1.4018 us/op
+WorkloadResult   9: 51040 op, 71758953.00 ns, 1.4059 us/op
+WorkloadResult  10: 51040 op, 71538960.00 ns, 1.4016 us/op
+WorkloadResult  11: 51040 op, 71926266.00 ns, 1.4092 us/op
+WorkloadResult  12: 51040 op, 71394101.00 ns, 1.3988 us/op
+WorkloadResult  13: 51040 op, 71597930.00 ns, 1.4028 us/op
+WorkloadResult  14: 51040 op, 72000529.00 ns, 1.4107 us/op
+WorkloadResult  15: 51040 op, 71546761.00 ns, 1.4018 us/op
+WorkloadResult  16: 51040 op, 77124881.00 ns, 1.5111 us/op
+WorkloadResult  17: 51040 op, 71502825.00 ns, 1.4009 us/op
+WorkloadResult  18: 51040 op, 71514743.00 ns, 1.4012 us/op
+WorkloadResult  19: 51040 op, 71791261.00 ns, 1.4066 us/op
+WorkloadResult  20: 51040 op, 71436415.00 ns, 1.3996 us/op
+WorkloadResult  21: 51040 op, 71496937.00 ns, 1.4008 us/op
+WorkloadResult  22: 51040 op, 71923322.00 ns, 1.4092 us/op
+WorkloadResult  23: 51040 op, 71877111.00 ns, 1.4083 us/op
+WorkloadResult  24: 51040 op, 71430016.00 ns, 1.3995 us/op
+WorkloadResult  25: 51040 op, 71621575.00 ns, 1.4032 us/op
+WorkloadResult  26: 51040 op, 71529976.00 ns, 1.4014 us/op
+WorkloadResult  27: 51040 op, 71958525.00 ns, 1.4098 us/op
+WorkloadResult  28: 51040 op, 71715447.00 ns, 1.4051 us/op
+WorkloadResult  29: 51040 op, 71387481.00 ns, 1.3987 us/op
+WorkloadResult  30: 51040 op, 71655596.00 ns, 1.4039 us/op
+WorkloadResult  31: 51040 op, 71648486.00 ns, 1.4038 us/op
+WorkloadResult  32: 51040 op, 71728396.00 ns, 1.4053 us/op
+WorkloadResult  33: 51040 op, 71674629.00 ns, 1.4043 us/op
+WorkloadResult  34: 51040 op, 71688002.00 ns, 1.4045 us/op
+WorkloadResult  35: 51040 op, 71668863.00 ns, 1.4042 us/op
+WorkloadResult  36: 51040 op, 71645088.00 ns, 1.4037 us/op
+WorkloadResult  37: 51040 op, 71756627.00 ns, 1.4059 us/op
+WorkloadResult  38: 51040 op, 72679282.00 ns, 1.4240 us/op
+WorkloadResult  39: 51040 op, 74396960.00 ns, 1.4576 us/op
+WorkloadResult  40: 51040 op, 72118784.00 ns, 1.4130 us/op
+WorkloadResult  41: 51040 op, 71522592.00 ns, 1.4013 us/op
+WorkloadResult  42: 51040 op, 71699420.00 ns, 1.4048 us/op
+WorkloadResult  43: 51040 op, 71952733.00 ns, 1.4097 us/op
+WorkloadResult  44: 51040 op, 85365255.00 ns, 1.6725 us/op
+WorkloadResult  45: 51040 op, 71473948.00 ns, 1.4004 us/op
+WorkloadResult  46: 51040 op, 71360057.00 ns, 1.3981 us/op
+WorkloadResult  47: 51040 op, 71408270.00 ns, 1.3991 us/op
+WorkloadResult  48: 51040 op, 71638478.00 ns, 1.4036 us/op
+WorkloadResult  49: 51040 op, 71798840.00 ns, 1.4067 us/op
+WorkloadResult  50: 51040 op, 71580770.00 ns, 1.4024 us/op
+WorkloadResult  51: 51040 op, 72296483.00 ns, 1.4165 us/op
+WorkloadResult  52: 51040 op, 71732159.00 ns, 1.4054 us/op
+WorkloadResult  53: 51040 op, 71532087.00 ns, 1.4015 us/op
+WorkloadResult  54: 51040 op, 71567961.00 ns, 1.4022 us/op
+WorkloadResult  55: 51040 op, 71746541.00 ns, 1.4057 us/op
+WorkloadResult  56: 51040 op, 71894975.00 ns, 1.4086 us/op
+
+// AfterAll
+// Benchmark Process 2954 has exited with code 0.
+
+Mean = 1.415 us, StdErr = 0.006 us (0.39%), N = 56, StdDev = 0.041 us
+Min = 1.398 us, Q1 = 1.402 us, Median = 1.404 us, Q3 = 1.409 us, Max = 1.673 us
+IQR = 0.007 us, LowerFence = 1.391 us, UpperFence = 1.419 us
+ConfidenceInterval = [1.395 us; 1.434 us] (CI 99.9%), Margin = 0.019 us (1.35% of Mean)
+Skewness = 4.83, Kurtosis = 28.41, MValue = 2
+
+// ** Remained 1 (16.7 %) benchmark(s) to run. Estimated finish 2026-10-19 4:29 (0h 0m from now) **
+// **************************
+// Benchmark: Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=Vectors]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-NJPIMG-1.dll --anonymousPipes 130 131 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Method: \"Vectors\")" --job "EvaluateOverhead=False, Affinity=0100, IterationTime=100ms" --benchmarkId 5 in /home/runner/work/GFXKit-PcmTiming/GFXKit-PcmTiming/Bench/bin/Release/net10.0/Bench-Job-NJPIMG-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-HODWNX(EvaluateOverhead=False, Affinity=100, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 133803.00 ns, 133.8030 us/op
+WorkloadJitting  1: 1 op, 606808.00 ns, 606.8080 us/op
+
+OverheadJitting  2: 16 op, 129757.00 ns, 8.1098 us/op
+WorkloadJitting  2: 16 op, 422540.00 ns, 26.4088 us/op
+
+WorkloadPilot    1: 16 op, 217189.00 ns, 13.5743 us/op
+WorkloadPilot    2: 7376 op, 86502534.00 ns, 11.7276 us/op
+WorkloadPilot    3: 8528 op, 97082741.00 ns, 11.3840 us/op
+WorkloadPilot    4: 8784 op, 100605621.00 ns, 11.4533 us/op
+WorkloadPilot    5: 8736 op, 100328251.00 ns, 11.4845 us/op
+WorkloadPilot    6: 8720 op, 100311235.00 ns, 11.5036 us/op
+
+WorkloadWarmup   1: 8720 op, 100416514.00 ns, 11.5157 us/op
+WorkloadWarmup   2: 8720 op, 99785019.00 ns, 11.4432 us/op
+WorkloadWarmup   3: 8720 op, 102311381.00 ns, 11.7330 us/op
+WorkloadWarmup   4: 8720 op, 102352543.00 ns, 11.7377 us/op
+WorkloadWarmup   5: 8720 op, 101794058.00 ns, 11.6736 us/op
+WorkloadWarmup   6: 8720 op, 99678588.00 ns, 11.4310 us/op
+WorkloadWarmup   7: 8720 op, 99364533.00 ns, 11.3950 us/op
+WorkloadWarmup   8: 8720 op, 98757975.00 ns, 11.3255 us/op
+WorkloadWarmup   9: 8720 op, 100965575.00 ns, 11.5786 us/op
+WorkloadWarmup  10: 8720 op, 101568897.00 ns, 11.6478 us/op
+WorkloadWarmup  11: 8720 op, 99506717.00 ns, 11.4113 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 8720 op, 99954395.00 ns, 11.4627 us/op
+WorkloadActual   2: 8720 op, 102325403.00 ns, 11.7346 us/op
+WorkloadActual   3: 8720 op, 100220177.00 ns, 11.4931 us/op
+WorkloadActual   4: 8720 op, 101154941.00 ns, 11.6003 us/op
+WorkloadActual   5: 8720 op, 99564024.00 ns, 11.4179 us/op
+WorkloadActual   6: 8720 op, 99799792.00 ns, 11.4449 us/op
+WorkloadActual   7: 8720 op, 99186143.00 ns, 11.3746 us/op
+WorkloadActual   8: 8720 op, 101959218.00 ns, 11.6926 us/op
+WorkloadActual   9: 8720 op, 100713003.00 ns, 11.5497 us/op
+WorkloadActual  10: 8720 op, 100521824.00 ns, 11.5277 us/op
+WorkloadActual  11: 8720 op, 100791372.00 ns, 11.5586 us/op
+WorkloadActual  12: 8720 op, 101619323.00 ns, 11.6536 us/op
+WorkloadActual  13: 8720 op, 99255678.00 ns, 11.3825 us/op
+WorkloadActual  14: 8720 op, 101215012.00 ns, 11.6072 us/op
+WorkloadActual  15: 8720 op, 99793332.00 ns, 11.4442 us/op
+
+// AfterActualRun
+WorkloadResult   1: 8720 op, 99954395.00 ns, 11.4627 us/op
+WorkloadResult   2: 8720 op, 102325403.00 ns, 11.7346 us/op
+WorkloadResult   3: 8720 op, 100220177.00 ns, 11.4931 us/op
+WorkloadResult   4: 8720 op, 101154941.00 ns, 11.6003 us/op
+WorkloadResult   5: 8720 op, 99564024.00 ns, 11.4179 us/op
+WorkloadResult   6: 8720 op, 99799792.00 ns, 11.4449 us/op
+WorkloadResult   7: 8720 op, 99186143.00 ns, 11.3746 us/op
+WorkloadResult   8: 8720 op, 101959218.00 ns, 11.6926 us/op
+WorkloadResult   9: 8720 op, 100713003.00 ns, 11.5497 us/op
+WorkloadResult  10: 8720 op, 100521824.00 ns, 11.5277 us/op
+WorkloadResult  11: 8720 op, 100791372.00 ns, 11.5586 us/op
+WorkloadResult  12: 8720 op, 101619323.00 ns, 11.6536 us/op
+WorkloadResult  13: 8720 op, 99255678.00 ns, 11.3825 us/op
+WorkloadResult  14: 8720 op, 101215012.00 ns, 11.6072 us/op
+WorkloadResult  15: 8720 op, 99793332.00 ns, 11.4442 us/op
+
+// AfterAll
+// Benchmark Process 2962 has exited with code 0.
+
+Mean = 11.530 us, StdErr = 0.029 us (0.25%), N = 15, StdDev = 0.112 us
+Min = 11.375 us, Q1 = 11.445 us, Median = 11.528 us, Q3 = 11.604 us, Max = 11.735 us
+IQR = 0.159 us, LowerFence = 11.206 us, UpperFence = 11.843 us
+ConfidenceInterval = [11.410 us; 11.649 us] (CI 99.9%), Margin = 0.119 us (1.04% of Mean)
+Skewness = 0.28, Kurtosis = 1.75, MValue = 2
+
+// ** Remained 0 (0.0 %) benchmark(s) to run. Estimated finish 2026-10-19 4:29 (0h 0m from now) **
+Run time: 00:00:27 (27.11 sec), executed benchmarks: 6
+
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  out/results/Bench.Copies-report.csv
+  out/results/Bench.Copies-report-github.md
+
+// * Detailed results *
+Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=CopyBlockUnaligned]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4; GC = Concurrent Workstation
+Mean = 1.829 us, StdErr = 0.007 us (0.37%), N = 50, StdDev = 0.048 us
+Min = 1.802 us, Q1 = 1.806 us, Median = 1.810 us, Q3 = 1.831 us, Max = 2.061 us
+IQR = 0.025 us, LowerFence = 1.769 us, UpperFence = 1.868 us
+ConfidenceInterval = [1.806 us; 1.853 us] (CI 99.9%), Margin = 0.024 us (1.29% of Mean)
+Skewness = 3.32, Kurtosis = 14.97, MValue = 2
+-------------------- Histogram --------------------
+[1.799 us ; 1.843 us) | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[1.843 us ; 1.914 us) | @@@@@@@@@
+[1.914 us ; 1.986 us) | 
+[1.986 us ; 2.026 us) | @
+[2.026 us ; 2.078 us) | @
+---------------------------------------------------
+
+Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=CopyTo]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4; GC = Concurrent Workstation
+Mean = 2.291 us, StdErr = 0.009 us (0.38%), N = 14, StdDev = 0.033 us
+Min = 2.265 us, Q1 = 2.267 us, Median = 2.277 us, Q3 = 2.302 us, Max = 2.371 us
+IQR = 0.034 us, LowerFence = 2.216 us, UpperFence = 2.353 us
+ConfidenceInterval = [2.254 us; 2.328 us] (CI 99.9%), Margin = 0.037 us (1.62% of Mean)
+Skewness = 1.18, Kurtosis = 3.04, MValue = 2
+-------------------- Histogram --------------------
+[2.252 us ; 2.389 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=decode, Method=Vectors]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4; GC = Concurrent Workstation
+Mean = 10.692 us, StdErr = 0.024 us (0.23%), N = 14, StdDev = 0.092 us
+Min = 10.565 us, Q1 = 10.639 us, Median = 10.669 us, Q3 = 10.743 us, Max = 10.921 us
+IQR = 0.104 us, LowerFence = 10.483 us, UpperFence = 10.899 us
+ConfidenceInterval = [10.588 us; 10.795 us] (CI 99.9%), Margin = 0.103 us (0.97% of Mean)
+Skewness = 0.86, Kurtosis = 3.32, MValue = 2
+-------------------- Histogram --------------------
+[10.516 us ; 10.971 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=CopyBlockUnaligned]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4; GC = Concurrent Workstation
+Mean = 2.044 us, StdErr = 0.003 us (0.12%), N = 13, StdDev = 0.009 us
+Min = 2.033 us, Q1 = 2.037 us, Median = 2.043 us, Q3 = 2.046 us, Max = 2.066 us
+IQR = 0.009 us, LowerFence = 2.023 us, UpperFence = 2.059 us
+ConfidenceInterval = [2.033 us; 2.055 us] (CI 99.9%), Margin = 0.011 us (0.54% of Mean)
+Skewness = 1.04, Kurtosis = 3.41, MValue = 2
+-------------------- Histogram --------------------
+[2.028 us ; 2.071 us) | @@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=CopyTo]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4; GC = Concurrent Workstation
+Mean = 1.415 us, StdErr = 0.006 us (0.39%), N = 56, StdDev = 0.041 us
+Min = 1.398 us, Q1 = 1.402 us, Median = 1.404 us, Q3 = 1.409 us, Max = 1.673 us
+IQR = 0.007 us, LowerFence = 1.391 us, UpperFence = 1.419 us
+ConfidenceInterval = [1.395 us; 1.434 us] (CI 99.9%), Margin = 0.019 us (1.35% of Mean)
+Skewness = 4.83, Kurtosis = 28.41, MValue = 2
+-------------------- Histogram --------------------
+[1.397 us ; 1.443 us) | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[1.443 us ; 1.497 us) | @
+[1.497 us ; 1.555 us) | @@
+[1.555 us ; 1.612 us) | 
+[1.612 us ; 1.687 us) | @
+---------------------------------------------------
+
+Copies.Run: Job-NJPIMG(EvaluateOverhead=False, Affinity=0100, IterationTime=100ms) [Direction=encode, Method=Vectors]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4; GC = Concurrent Workstation
+Mean = 11.530 us, StdErr = 0.029 us (0.25%), N = 15, StdDev = 0.112 us
+Min = 11.375 us, Q1 = 11.445 us, Median = 11.528 us, Q3 = 11.604 us, Max = 11.735 us
+IQR = 0.159 us, LowerFence = 11.206 us, UpperFence = 11.843 us
+ConfidenceInterval = [11.410 us; 11.649 us] (CI 99.9%), Margin = 0.119 us (1.04% of Mean)
+Skewness = 0.28, Kurtosis = 1.75, MValue = 2
+-------------------- Histogram --------------------
+[11.315 us ; 11.794 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.15.8, Linux Ubuntu 24.04.5 LTS (Noble Numbat)
+AMD EPYC 9V45 2.60GHz, 1 CPU, 4 logical and 2 physical cores
+.NET SDK 10.0.402
+  [Host]     : .NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4
+  Job-NJPIMG : .NET 10.0.13 (10.0.13, 10.0.1326.50504), X64 RyuJIT x86-64-v4
+
+EvaluateOverhead=False  Affinity=0100  IterationTime=100ms  
+
+| Method | Direction | Method             | Mean      | Error     | StdDev    | Median    |
+|------- |---------- |------------------- |----------:|----------:|----------:|----------:|
+| Run    | decode    | CopyBlockUnaligned |  1.829 us | 0.0236 us | 0.0477 us |  1.810 us |
+| Run    | decode    | CopyTo             |  2.291 us | 0.0372 us | 0.0329 us |  2.277 us |
+| Run    | decode    | Vectors            | 10.692 us | 0.1033 us | 0.0916 us | 10.669 us |
+| Run    | encode    | CopyBlockUnaligned |  2.044 us | 0.0109 us | 0.0091 us |  2.043 us |
+| Run    | encode    | CopyTo             |  1.415 us | 0.0192 us | 0.0412 us |  1.404 us |
+| Run    | encode    | Vectors            | 11.530 us | 0.1194 us | 0.1117 us | 11.528 us |
+
+// * Legends *
+  Direction : Value of the 'Direction' parameter
+  Method    : Value of the 'Method' parameter
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Median    : Value separating the higher half of all measurements (50th percentile)
+  1 us      : 1 Microsecond (0.000001 sec)
+
+// ***** BenchmarkRunner: End *****
+Global total time: 00:00:38 (38.88 sec), executed benchmarks: 6
+// * Artifacts cleanup *
+Artifacts cleanup is finished
