@@ -1,0 +1,1980 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 20 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+Unable to find .sln or .csproj file. Will use current directory C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming to search for project file. If you don't use .sln file on purpose it should not be a problem.
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1/" /p:OutDir="C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0/" /p:OutputPath="C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0/" /p:PublishDir="C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\publish/" in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1
+// command took 1.83 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1/" /p:OutDir="C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0/" /p:OutputPath="C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0/" /p:PublishDir="C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\publish/" --output "C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0/" in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1
+// command took 19.36 sec and exited with 0
+// ***** Done, took 00:00:21 (21.28 sec)   *****
+// Found 20 benchmarks:
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=CopyTo]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Multi]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Pairs]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=PairsNT]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Tuned128]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=CopyTo]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Multi]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Pairs]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=PairsNT]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Tuned128]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=CopyTo]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Multi]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Pairs]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=PairsNT]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Tuned128]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=CopyTo]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Multi]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Pairs]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=PairsNT]
+//   Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Tuned128]
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=CopyTo]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1696 672 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 4096, Method: \"CopyTo\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 0 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 212800.00 ns, 212.8000 us/op
+WorkloadJitting  1: 1 op, 292200.00 ns, 292.2000 us/op
+
+OverheadJitting  2: 16 op, 216900.00 ns, 13.5563 us/op
+WorkloadJitting  2: 16 op, 277500.00 ns, 17.3438 us/op
+
+WorkloadPilot    1: 16 op, 71700.00 ns, 4.4813 us/op
+WorkloadPilot    2: 22320 op, 87657400.00 ns, 3.9273 us/op
+WorkloadPilot    3: 25472 op, 101381400.00 ns, 3.9801 us/op
+WorkloadPilot    4: 25136 op, 78311000.00 ns, 3.1155 us/op
+WorkloadPilot    5: 32112 op, 100106500.00 ns, 3.1174 us/op
+WorkloadPilot    6: 32080 op, 100122800.00 ns, 3.1210 us/op
+
+WorkloadWarmup   1: 32080 op, 100319800.00 ns, 3.1272 us/op
+WorkloadWarmup   2: 32080 op, 99942500.00 ns, 3.1154 us/op
+WorkloadWarmup   3: 32080 op, 100003400.00 ns, 3.1173 us/op
+WorkloadWarmup   4: 32080 op, 100214200.00 ns, 3.1239 us/op
+WorkloadWarmup   5: 32080 op, 100082000.00 ns, 3.1198 us/op
+WorkloadWarmup   6: 32080 op, 100178300.00 ns, 3.1228 us/op
+WorkloadWarmup   7: 32080 op, 100070800.00 ns, 3.1194 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 32080 op, 99989700.00 ns, 3.1169 us/op
+WorkloadActual   2: 32080 op, 99971000.00 ns, 3.1163 us/op
+WorkloadActual   3: 32080 op, 100087200.00 ns, 3.1199 us/op
+WorkloadActual   4: 32080 op, 100172900.00 ns, 3.1226 us/op
+WorkloadActual   5: 32080 op, 100099200.00 ns, 3.1203 us/op
+WorkloadActual   6: 32080 op, 99931500.00 ns, 3.1151 us/op
+WorkloadActual   7: 32080 op, 100033300.00 ns, 3.1182 us/op
+WorkloadActual   8: 32080 op, 100043900.00 ns, 3.1186 us/op
+WorkloadActual   9: 32080 op, 100050900.00 ns, 3.1188 us/op
+WorkloadActual  10: 32080 op, 100132100.00 ns, 3.1213 us/op
+WorkloadActual  11: 32080 op, 100053000.00 ns, 3.1189 us/op
+WorkloadActual  12: 32080 op, 99946800.00 ns, 3.1155 us/op
+WorkloadActual  13: 32080 op, 100026200.00 ns, 3.1180 us/op
+WorkloadActual  14: 32080 op, 100221600.00 ns, 3.1241 us/op
+WorkloadActual  15: 32080 op, 100085900.00 ns, 3.1199 us/op
+
+// AfterActualRun
+WorkloadResult   1: 32080 op, 99989700.00 ns, 3.1169 us/op
+WorkloadResult   2: 32080 op, 99971000.00 ns, 3.1163 us/op
+WorkloadResult   3: 32080 op, 100087200.00 ns, 3.1199 us/op
+WorkloadResult   4: 32080 op, 100172900.00 ns, 3.1226 us/op
+WorkloadResult   5: 32080 op, 100099200.00 ns, 3.1203 us/op
+WorkloadResult   6: 32080 op, 99931500.00 ns, 3.1151 us/op
+WorkloadResult   7: 32080 op, 100033300.00 ns, 3.1182 us/op
+WorkloadResult   8: 32080 op, 100043900.00 ns, 3.1186 us/op
+WorkloadResult   9: 32080 op, 100050900.00 ns, 3.1188 us/op
+WorkloadResult  10: 32080 op, 100132100.00 ns, 3.1213 us/op
+WorkloadResult  11: 32080 op, 100053000.00 ns, 3.1189 us/op
+WorkloadResult  12: 32080 op, 99946800.00 ns, 3.1155 us/op
+WorkloadResult  13: 32080 op, 100026200.00 ns, 3.1180 us/op
+WorkloadResult  14: 32080 op, 100085900.00 ns, 3.1199 us/op
+
+// AfterAll
+// Benchmark Process 3092 has exited with code 0.
+
+Mean = 3.119 us, StdErr = 0.001 us (0.02%), N = 14, StdDev = 0.002 us
+Min = 3.115 us, Q1 = 3.117 us, Median = 3.119 us, Q3 = 3.120 us, Max = 3.123 us
+IQR = 0.003 us, LowerFence = 3.113 us, UpperFence = 3.124 us
+ConfidenceInterval = [3.116 us; 3.121 us] (CI 99.9%), Margin = 0.002 us (0.08% of Mean)
+Skewness = 0.03, Kurtosis = 2.01, MValue = 2
+
+// ** Remained 19 (95.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Multi]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1784 1228 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 4096, Method: \"Multi\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 1 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 204300.00 ns, 204.3000 us/op
+WorkloadJitting  1: 1 op, 332900.00 ns, 332.9000 us/op
+
+OverheadJitting  2: 16 op, 212300.00 ns, 13.2688 us/op
+WorkloadJitting  2: 16 op, 335500.00 ns, 20.9688 us/op
+
+WorkloadPilot    1: 16 op, 123900.00 ns, 7.7438 us/op
+WorkloadPilot    2: 12928 op, 93646200.00 ns, 7.2437 us/op
+WorkloadPilot    3: 13808 op, 99857600.00 ns, 7.2319 us/op
+WorkloadPilot    4: 13840 op, 115168300.00 ns, 8.3214 us/op
+WorkloadPilot    5: 12032 op, 101576000.00 ns, 8.4422 us/op
+WorkloadPilot    6: 11856 op, 99588100.00 ns, 8.3998 us/op
+WorkloadPilot    7: 11920 op, 100076000.00 ns, 8.3956 us/op
+
+WorkloadWarmup   1: 11920 op, 100412200.00 ns, 8.4238 us/op
+WorkloadWarmup   2: 11920 op, 101202400.00 ns, 8.4901 us/op
+WorkloadWarmup   3: 11920 op, 105919600.00 ns, 8.8859 us/op
+WorkloadWarmup   4: 11920 op, 103833100.00 ns, 8.7108 us/op
+WorkloadWarmup   5: 11920 op, 102589800.00 ns, 8.6065 us/op
+WorkloadWarmup   6: 11920 op, 99810800.00 ns, 8.3734 us/op
+WorkloadWarmup   7: 11920 op, 100377600.00 ns, 8.4209 us/op
+WorkloadWarmup   8: 11920 op, 100611800.00 ns, 8.4406 us/op
+WorkloadWarmup   9: 11920 op, 100158400.00 ns, 8.4026 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 11920 op, 100066800.00 ns, 8.3949 us/op
+WorkloadActual   2: 11920 op, 100020800.00 ns, 8.3910 us/op
+WorkloadActual   3: 11920 op, 100048600.00 ns, 8.3933 us/op
+WorkloadActual   4: 11920 op, 100707100.00 ns, 8.4486 us/op
+WorkloadActual   5: 11920 op, 100372600.00 ns, 8.4205 us/op
+WorkloadActual   6: 11920 op, 99942900.00 ns, 8.3845 us/op
+WorkloadActual   7: 11920 op, 99784600.00 ns, 8.3712 us/op
+WorkloadActual   8: 11920 op, 99465600.00 ns, 8.3444 us/op
+WorkloadActual   9: 11920 op, 100116900.00 ns, 8.3991 us/op
+WorkloadActual  10: 11920 op, 100084000.00 ns, 8.3963 us/op
+WorkloadActual  11: 11920 op, 99831300.00 ns, 8.3751 us/op
+WorkloadActual  12: 11920 op, 99648300.00 ns, 8.3598 us/op
+WorkloadActual  13: 11920 op, 99904300.00 ns, 8.3812 us/op
+WorkloadActual  14: 11920 op, 100223500.00 ns, 8.4080 us/op
+WorkloadActual  15: 11920 op, 100370100.00 ns, 8.4203 us/op
+
+// AfterActualRun
+WorkloadResult   1: 11920 op, 100066800.00 ns, 8.3949 us/op
+WorkloadResult   2: 11920 op, 100020800.00 ns, 8.3910 us/op
+WorkloadResult   3: 11920 op, 100048600.00 ns, 8.3933 us/op
+WorkloadResult   4: 11920 op, 100372600.00 ns, 8.4205 us/op
+WorkloadResult   5: 11920 op, 99942900.00 ns, 8.3845 us/op
+WorkloadResult   6: 11920 op, 99784600.00 ns, 8.3712 us/op
+WorkloadResult   7: 11920 op, 99465600.00 ns, 8.3444 us/op
+WorkloadResult   8: 11920 op, 100116900.00 ns, 8.3991 us/op
+WorkloadResult   9: 11920 op, 100084000.00 ns, 8.3963 us/op
+WorkloadResult  10: 11920 op, 99831300.00 ns, 8.3751 us/op
+WorkloadResult  11: 11920 op, 99648300.00 ns, 8.3598 us/op
+WorkloadResult  12: 11920 op, 99904300.00 ns, 8.3812 us/op
+WorkloadResult  13: 11920 op, 100223500.00 ns, 8.4080 us/op
+WorkloadResult  14: 11920 op, 100370100.00 ns, 8.4203 us/op
+
+// AfterAll
+// Benchmark Process 9988 has exited with code 0.
+
+Mean = 8.389 us, StdErr = 0.006 us (0.07%), N = 14, StdDev = 0.021 us
+Min = 8.344 us, Q1 = 8.377 us, Median = 8.392 us, Q3 = 8.398 us, Max = 8.421 us
+IQR = 0.022 us, LowerFence = 8.344 us, UpperFence = 8.431 us
+ConfidenceInterval = [8.364 us; 8.413 us] (CI 99.9%), Margin = 0.024 us (0.29% of Mean)
+Skewness = -0.32, Kurtosis = 2.31, MValue = 2
+
+// ** Remained 18 (90.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Pairs]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1784 1228 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 4096, Method: \"Pairs\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 2 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 134100.00 ns, 134.1000 us/op
+WorkloadJitting  1: 1 op, 295600.00 ns, 295.6000 us/op
+
+OverheadJitting  2: 16 op, 228900.00 ns, 14.3063 us/op
+WorkloadJitting  2: 16 op, 259800.00 ns, 16.2375 us/op
+
+WorkloadPilot    1: 16 op, 60200.00 ns, 3.7625 us/op
+WorkloadPilot    2: 26592 op, 93206800.00 ns, 3.5051 us/op
+WorkloadPilot    3: 28544 op, 99829400.00 ns, 3.4974 us/op
+WorkloadPilot    4: 28608 op, 92872400.00 ns, 3.2464 us/op
+WorkloadPilot    5: 30816 op, 95628800.00 ns, 3.1032 us/op
+WorkloadPilot    6: 32240 op, 99863300.00 ns, 3.0975 us/op
+WorkloadPilot    7: 32288 op, 100054400.00 ns, 3.0988 us/op
+WorkloadPilot    8: 32272 op, 99866900.00 ns, 3.0945 us/op
+WorkloadPilot    9: 32320 op, 100162100.00 ns, 3.0991 us/op
+WorkloadPilot   10: 32272 op, 100092700.00 ns, 3.1015 us/op
+
+WorkloadWarmup   1: 32272 op, 100048300.00 ns, 3.1002 us/op
+WorkloadWarmup   2: 32272 op, 99847600.00 ns, 3.0939 us/op
+WorkloadWarmup   3: 32272 op, 101588300.00 ns, 3.1479 us/op
+WorkloadWarmup   4: 32272 op, 101431800.00 ns, 3.1430 us/op
+WorkloadWarmup   5: 32272 op, 100322300.00 ns, 3.1086 us/op
+WorkloadWarmup   6: 32272 op, 100109200.00 ns, 3.1020 us/op
+WorkloadWarmup   7: 32272 op, 99849700.00 ns, 3.0940 us/op
+WorkloadWarmup   8: 32272 op, 99850000.00 ns, 3.0940 us/op
+WorkloadWarmup   9: 32272 op, 100000000.00 ns, 3.0987 us/op
+WorkloadWarmup  10: 32272 op, 100053700.00 ns, 3.1003 us/op
+WorkloadWarmup  11: 32272 op, 99908400.00 ns, 3.0958 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 32272 op, 99822300.00 ns, 3.0932 us/op
+WorkloadActual   2: 32272 op, 99872500.00 ns, 3.0947 us/op
+WorkloadActual   3: 32272 op, 100229000.00 ns, 3.1058 us/op
+WorkloadActual   4: 32272 op, 100173800.00 ns, 3.1040 us/op
+WorkloadActual   5: 32272 op, 99941500.00 ns, 3.0968 us/op
+WorkloadActual   6: 32272 op, 100279400.00 ns, 3.1073 us/op
+WorkloadActual   7: 32272 op, 99849400.00 ns, 3.0940 us/op
+WorkloadActual   8: 32272 op, 100110600.00 ns, 3.1021 us/op
+WorkloadActual   9: 32272 op, 99998100.00 ns, 3.0986 us/op
+WorkloadActual  10: 32272 op, 100033400.00 ns, 3.0997 us/op
+WorkloadActual  11: 32272 op, 99710200.00 ns, 3.0897 us/op
+WorkloadActual  12: 32272 op, 99910800.00 ns, 3.0959 us/op
+WorkloadActual  13: 32272 op, 100352500.00 ns, 3.1096 us/op
+WorkloadActual  14: 32272 op, 100127600.00 ns, 3.1026 us/op
+WorkloadActual  15: 32272 op, 100918200.00 ns, 3.1271 us/op
+
+// AfterActualRun
+WorkloadResult   1: 32272 op, 99822300.00 ns, 3.0932 us/op
+WorkloadResult   2: 32272 op, 99872500.00 ns, 3.0947 us/op
+WorkloadResult   3: 32272 op, 100229000.00 ns, 3.1058 us/op
+WorkloadResult   4: 32272 op, 100173800.00 ns, 3.1040 us/op
+WorkloadResult   5: 32272 op, 99941500.00 ns, 3.0968 us/op
+WorkloadResult   6: 32272 op, 100279400.00 ns, 3.1073 us/op
+WorkloadResult   7: 32272 op, 99849400.00 ns, 3.0940 us/op
+WorkloadResult   8: 32272 op, 100110600.00 ns, 3.1021 us/op
+WorkloadResult   9: 32272 op, 99998100.00 ns, 3.0986 us/op
+WorkloadResult  10: 32272 op, 100033400.00 ns, 3.0997 us/op
+WorkloadResult  11: 32272 op, 99710200.00 ns, 3.0897 us/op
+WorkloadResult  12: 32272 op, 99910800.00 ns, 3.0959 us/op
+WorkloadResult  13: 32272 op, 100352500.00 ns, 3.1096 us/op
+WorkloadResult  14: 32272 op, 100127600.00 ns, 3.1026 us/op
+
+// AfterAll
+// Benchmark Process 6676 has exited with code 0.
+
+Mean = 3.100 us, StdErr = 0.002 us (0.05%), N = 14, StdDev = 0.006 us
+Min = 3.090 us, Q1 = 3.095 us, Median = 3.099 us, Q3 = 3.104 us, Max = 3.110 us
+IQR = 0.009 us, LowerFence = 3.082 us, UpperFence = 3.117 us
+ConfidenceInterval = [3.093 us; 3.106 us] (CI 99.9%), Margin = 0.007 us (0.21% of Mean)
+Skewness = 0.09, Kurtosis = 1.71, MValue = 2
+
+// ** Remained 17 (85.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=PairsNT]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1812 1800 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 4096, Method: \"PairsNT\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 3 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 185600.00 ns, 185.6000 us/op
+WorkloadJitting  1: 1 op, 344800.00 ns, 344.8000 us/op
+
+OverheadJitting  2: 16 op, 242800.00 ns, 15.1750 us/op
+WorkloadJitting  2: 16 op, 292400.00 ns, 18.2750 us/op
+
+WorkloadPilot    1: 16 op, 61500.00 ns, 3.8438 us/op
+WorkloadPilot    2: 26016 op, 91211200.00 ns, 3.5060 us/op
+WorkloadPilot    3: 28528 op, 99651900.00 ns, 3.4931 us/op
+WorkloadPilot    4: 28640 op, 100338900.00 ns, 3.5035 us/op
+WorkloadPilot    5: 28544 op, 93489300.00 ns, 3.2753 us/op
+WorkloadPilot    6: 30544 op, 94364000.00 ns, 3.0894 us/op
+WorkloadPilot    7: 32368 op, 99826100.00 ns, 3.0841 us/op
+WorkloadPilot    8: 32432 op, 99867700.00 ns, 3.0793 us/op
+WorkloadPilot    9: 32480 op, 100152100.00 ns, 3.0835 us/op
+WorkloadPilot   10: 32432 op, 100060600.00 ns, 3.0852 us/op
+
+WorkloadWarmup   1: 32432 op, 100528400.00 ns, 3.0997 us/op
+WorkloadWarmup   2: 32432 op, 99937500.00 ns, 3.0814 us/op
+WorkloadWarmup   3: 32432 op, 99859800.00 ns, 3.0791 us/op
+WorkloadWarmup   4: 32432 op, 99883000.00 ns, 3.0798 us/op
+WorkloadWarmup   5: 32432 op, 100110500.00 ns, 3.0868 us/op
+WorkloadWarmup   6: 32432 op, 100182100.00 ns, 3.0890 us/op
+WorkloadWarmup   7: 32432 op, 100120200.00 ns, 3.0871 us/op
+WorkloadWarmup   8: 32432 op, 99926400.00 ns, 3.0811 us/op
+WorkloadWarmup   9: 32432 op, 99940200.00 ns, 3.0815 us/op
+WorkloadWarmup  10: 32432 op, 100212900.00 ns, 3.0899 us/op
+WorkloadWarmup  11: 32432 op, 100371000.00 ns, 3.0948 us/op
+WorkloadWarmup  12: 32432 op, 101642200.00 ns, 3.1340 us/op
+WorkloadWarmup  13: 32432 op, 100735100.00 ns, 3.1060 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 32432 op, 99962600.00 ns, 3.0822 us/op
+WorkloadActual   2: 32432 op, 100092800.00 ns, 3.0862 us/op
+WorkloadActual   3: 32432 op, 100334000.00 ns, 3.0937 us/op
+WorkloadActual   4: 32432 op, 100282100.00 ns, 3.0921 us/op
+WorkloadActual   5: 32432 op, 99903200.00 ns, 3.0804 us/op
+WorkloadActual   6: 32432 op, 100008100.00 ns, 3.0836 us/op
+WorkloadActual   7: 32432 op, 100324600.00 ns, 3.0934 us/op
+WorkloadActual   8: 32432 op, 100202800.00 ns, 3.0896 us/op
+WorkloadActual   9: 32432 op, 100076900.00 ns, 3.0857 us/op
+WorkloadActual  10: 32432 op, 99926100.00 ns, 3.0811 us/op
+WorkloadActual  11: 32432 op, 99978400.00 ns, 3.0827 us/op
+WorkloadActual  12: 32432 op, 100360500.00 ns, 3.0945 us/op
+WorkloadActual  13: 32432 op, 100326000.00 ns, 3.0934 us/op
+WorkloadActual  14: 32432 op, 100134400.00 ns, 3.0875 us/op
+WorkloadActual  15: 32432 op, 100047500.00 ns, 3.0848 us/op
+
+// AfterActualRun
+WorkloadResult   1: 32432 op, 99962600.00 ns, 3.0822 us/op
+WorkloadResult   2: 32432 op, 100092800.00 ns, 3.0862 us/op
+WorkloadResult   3: 32432 op, 100334000.00 ns, 3.0937 us/op
+WorkloadResult   4: 32432 op, 100282100.00 ns, 3.0921 us/op
+WorkloadResult   5: 32432 op, 99903200.00 ns, 3.0804 us/op
+WorkloadResult   6: 32432 op, 100008100.00 ns, 3.0836 us/op
+WorkloadResult   7: 32432 op, 100324600.00 ns, 3.0934 us/op
+WorkloadResult   8: 32432 op, 100202800.00 ns, 3.0896 us/op
+WorkloadResult   9: 32432 op, 100076900.00 ns, 3.0857 us/op
+WorkloadResult  10: 32432 op, 99926100.00 ns, 3.0811 us/op
+WorkloadResult  11: 32432 op, 99978400.00 ns, 3.0827 us/op
+WorkloadResult  12: 32432 op, 100360500.00 ns, 3.0945 us/op
+WorkloadResult  13: 32432 op, 100326000.00 ns, 3.0934 us/op
+WorkloadResult  14: 32432 op, 100134400.00 ns, 3.0875 us/op
+WorkloadResult  15: 32432 op, 100047500.00 ns, 3.0848 us/op
+
+// AfterAll
+// Benchmark Process 1176 has exited with code 0.
+
+Mean = 3.087 us, StdErr = 0.001 us (0.04%), N = 15, StdDev = 0.005 us
+Min = 3.080 us, Q1 = 3.083 us, Median = 3.086 us, Q3 = 3.093 us, Max = 3.094 us
+IQR = 0.010 us, LowerFence = 3.069 us, UpperFence = 3.107 us
+ConfidenceInterval = [3.082 us; 3.093 us] (CI 99.9%), Margin = 0.005 us (0.17% of Mean)
+Skewness = 0.12, Kurtosis = 1.34, MValue = 2
+
+// ** Remained 16 (80.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Tuned128]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 672 1732 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 4096, Method: \"Tuned128\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 4 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 175700.00 ns, 175.7000 us/op
+WorkloadJitting  1: 1 op, 321000.00 ns, 321.0000 us/op
+
+OverheadJitting  2: 16 op, 217500.00 ns, 13.5938 us/op
+WorkloadJitting  2: 16 op, 283500.00 ns, 17.7188 us/op
+
+WorkloadPilot    1: 16 op, 60800.00 ns, 3.8000 us/op
+WorkloadPilot    2: 26320 op, 92384500.00 ns, 3.5100 us/op
+WorkloadPilot    3: 28496 op, 99578700.00 ns, 3.4945 us/op
+WorkloadPilot    4: 28624 op, 93149700.00 ns, 3.2543 us/op
+WorkloadPilot    5: 30736 op, 95950200.00 ns, 3.1218 us/op
+WorkloadPilot    6: 32048 op, 100071900.00 ns, 3.1226 us/op
+WorkloadPilot    7: 32032 op, 99819800.00 ns, 3.1163 us/op
+WorkloadPilot    8: 32096 op, 99750000.00 ns, 3.1079 us/op
+WorkloadPilot    9: 32176 op, 99917300.00 ns, 3.1053 us/op
+WorkloadPilot   10: 32208 op, 100122600.00 ns, 3.1086 us/op
+WorkloadPilot   11: 32176 op, 100176700.00 ns, 3.1134 us/op
+
+WorkloadWarmup   1: 32176 op, 100070700.00 ns, 3.1101 us/op
+WorkloadWarmup   2: 32176 op, 99994700.00 ns, 3.1077 us/op
+WorkloadWarmup   3: 32176 op, 100109300.00 ns, 3.1113 us/op
+WorkloadWarmup   4: 32176 op, 100133200.00 ns, 3.1120 us/op
+WorkloadWarmup   5: 32176 op, 100091000.00 ns, 3.1107 us/op
+WorkloadWarmup   6: 32176 op, 100390100.00 ns, 3.1200 us/op
+WorkloadWarmup   7: 32176 op, 99888500.00 ns, 3.1044 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 32176 op, 99885600.00 ns, 3.1044 us/op
+WorkloadActual   2: 32176 op, 100068500.00 ns, 3.1100 us/op
+WorkloadActual   3: 32176 op, 100129200.00 ns, 3.1119 us/op
+WorkloadActual   4: 32176 op, 100404500.00 ns, 3.1205 us/op
+WorkloadActual   5: 32176 op, 99959100.00 ns, 3.1066 us/op
+WorkloadActual   6: 32176 op, 100046900.00 ns, 3.1094 us/op
+WorkloadActual   7: 32176 op, 100073900.00 ns, 3.1102 us/op
+WorkloadActual   8: 32176 op, 100191200.00 ns, 3.1138 us/op
+WorkloadActual   9: 32176 op, 100250800.00 ns, 3.1157 us/op
+WorkloadActual  10: 32176 op, 100032800.00 ns, 3.1089 us/op
+WorkloadActual  11: 32176 op, 99887200.00 ns, 3.1044 us/op
+WorkloadActual  12: 32176 op, 99927800.00 ns, 3.1057 us/op
+WorkloadActual  13: 32176 op, 100107000.00 ns, 3.1112 us/op
+WorkloadActual  14: 32176 op, 100077800.00 ns, 3.1103 us/op
+WorkloadActual  15: 32176 op, 100205400.00 ns, 3.1143 us/op
+
+// AfterActualRun
+WorkloadResult   1: 32176 op, 99885600.00 ns, 3.1044 us/op
+WorkloadResult   2: 32176 op, 100068500.00 ns, 3.1100 us/op
+WorkloadResult   3: 32176 op, 100129200.00 ns, 3.1119 us/op
+WorkloadResult   4: 32176 op, 100404500.00 ns, 3.1205 us/op
+WorkloadResult   5: 32176 op, 99959100.00 ns, 3.1066 us/op
+WorkloadResult   6: 32176 op, 100046900.00 ns, 3.1094 us/op
+WorkloadResult   7: 32176 op, 100073900.00 ns, 3.1102 us/op
+WorkloadResult   8: 32176 op, 100191200.00 ns, 3.1138 us/op
+WorkloadResult   9: 32176 op, 100250800.00 ns, 3.1157 us/op
+WorkloadResult  10: 32176 op, 100032800.00 ns, 3.1089 us/op
+WorkloadResult  11: 32176 op, 99887200.00 ns, 3.1044 us/op
+WorkloadResult  12: 32176 op, 99927800.00 ns, 3.1057 us/op
+WorkloadResult  13: 32176 op, 100107000.00 ns, 3.1112 us/op
+WorkloadResult  14: 32176 op, 100077800.00 ns, 3.1103 us/op
+WorkloadResult  15: 32176 op, 100205400.00 ns, 3.1143 us/op
+
+// AfterAll
+// Benchmark Process 10088 has exited with code 0.
+
+Mean = 3.110 us, StdErr = 0.001 us (0.04%), N = 15, StdDev = 0.004 us
+Min = 3.104 us, Q1 = 3.108 us, Median = 3.110 us, Q3 = 3.113 us, Max = 3.120 us
+IQR = 0.005 us, LowerFence = 3.100 us, UpperFence = 3.121 us
+ConfidenceInterval = [3.106 us; 3.115 us] (CI 99.9%), Margin = 0.005 us (0.15% of Mean)
+Skewness = 0.47, Kurtosis = 2.57, MValue = 2
+
+// ** Remained 15 (75.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=CopyTo]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 672 1832 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 65536, Method: \"CopyTo\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 5 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 149300.00 ns, 149.3000 us/op
+WorkloadJitting  1: 1 op, 297800.00 ns, 297.8000 us/op
+
+OverheadJitting  2: 16 op, 219400.00 ns, 13.7125 us/op
+WorkloadJitting  2: 16 op, 247900.00 ns, 15.4938 us/op
+
+WorkloadPilot    1: 16 op, 39700.00 ns, 2.4813 us/op
+WorkloadPilot    2: 40304 op, 88952400.00 ns, 2.2070 us/op
+WorkloadPilot    3: 45312 op, 99796800.00 ns, 2.2024 us/op
+WorkloadPilot    4: 45408 op, 98989600.00 ns, 2.1800 us/op
+WorkloadPilot    5: 45872 op, 97046100.00 ns, 2.1156 us/op
+WorkloadPilot    6: 47280 op, 99954900.00 ns, 2.1141 us/op
+WorkloadPilot    7: 47312 op, 100199900.00 ns, 2.1179 us/op
+WorkloadPilot    8: 47232 op, 99763800.00 ns, 2.1122 us/op
+WorkloadPilot    9: 47344 op, 99975000.00 ns, 2.1117 us/op
+WorkloadPilot   10: 47360 op, 100733900.00 ns, 2.1270 us/op
+WorkloadPilot   11: 47024 op, 101364500.00 ns, 2.1556 us/op
+
+WorkloadWarmup   1: 47024 op, 99464900.00 ns, 2.1152 us/op
+WorkloadWarmup   2: 47024 op, 99132100.00 ns, 2.1081 us/op
+WorkloadWarmup   3: 47024 op, 99229300.00 ns, 2.1102 us/op
+WorkloadWarmup   4: 47024 op, 99176400.00 ns, 2.1091 us/op
+WorkloadWarmup   5: 47024 op, 99526300.00 ns, 2.1165 us/op
+WorkloadWarmup   6: 47024 op, 99547100.00 ns, 2.1169 us/op
+WorkloadWarmup   7: 47024 op, 99220900.00 ns, 2.1100 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 47024 op, 99338300.00 ns, 2.1125 us/op
+WorkloadActual   2: 47024 op, 99424100.00 ns, 2.1143 us/op
+WorkloadActual   3: 47024 op, 99387600.00 ns, 2.1136 us/op
+WorkloadActual   4: 47024 op, 99286200.00 ns, 2.1114 us/op
+WorkloadActual   5: 47024 op, 99235900.00 ns, 2.1103 us/op
+WorkloadActual   6: 47024 op, 99335800.00 ns, 2.1124 us/op
+WorkloadActual   7: 47024 op, 99434200.00 ns, 2.1145 us/op
+WorkloadActual   8: 47024 op, 99469200.00 ns, 2.1153 us/op
+WorkloadActual   9: 47024 op, 99417700.00 ns, 2.1142 us/op
+WorkloadActual  10: 47024 op, 99226900.00 ns, 2.1101 us/op
+WorkloadActual  11: 47024 op, 99284800.00 ns, 2.1114 us/op
+WorkloadActual  12: 47024 op, 99147900.00 ns, 2.1085 us/op
+WorkloadActual  13: 47024 op, 99333000.00 ns, 2.1124 us/op
+WorkloadActual  14: 47024 op, 99374000.00 ns, 2.1133 us/op
+WorkloadActual  15: 47024 op, 99298900.00 ns, 2.1117 us/op
+
+// AfterActualRun
+WorkloadResult   1: 47024 op, 99338300.00 ns, 2.1125 us/op
+WorkloadResult   2: 47024 op, 99424100.00 ns, 2.1143 us/op
+WorkloadResult   3: 47024 op, 99387600.00 ns, 2.1136 us/op
+WorkloadResult   4: 47024 op, 99286200.00 ns, 2.1114 us/op
+WorkloadResult   5: 47024 op, 99235900.00 ns, 2.1103 us/op
+WorkloadResult   6: 47024 op, 99335800.00 ns, 2.1124 us/op
+WorkloadResult   7: 47024 op, 99434200.00 ns, 2.1145 us/op
+WorkloadResult   8: 47024 op, 99469200.00 ns, 2.1153 us/op
+WorkloadResult   9: 47024 op, 99417700.00 ns, 2.1142 us/op
+WorkloadResult  10: 47024 op, 99226900.00 ns, 2.1101 us/op
+WorkloadResult  11: 47024 op, 99284800.00 ns, 2.1114 us/op
+WorkloadResult  12: 47024 op, 99147900.00 ns, 2.1085 us/op
+WorkloadResult  13: 47024 op, 99333000.00 ns, 2.1124 us/op
+WorkloadResult  14: 47024 op, 99374000.00 ns, 2.1133 us/op
+WorkloadResult  15: 47024 op, 99298900.00 ns, 2.1117 us/op
+
+// AfterAll
+// Benchmark Process 10948 has exited with code 0.
+
+Mean = 2.112 us, StdErr = 0.000 us (0.02%), N = 15, StdDev = 0.002 us
+Min = 2.108 us, Q1 = 2.111 us, Median = 2.112 us, Q3 = 2.114 us, Max = 2.115 us
+IQR = 0.002 us, LowerFence = 2.108 us, UpperFence = 2.118 us
+ConfidenceInterval = [2.110 us; 2.114 us] (CI 99.9%), Margin = 0.002 us (0.10% of Mean)
+Skewness = -0.34, Kurtosis = 2.16, MValue = 2
+
+// ** Remained 14 (70.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Multi]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1812 1772 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 65536, Method: \"Multi\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 6 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 133100.00 ns, 133.1000 us/op
+WorkloadJitting  1: 1 op, 305900.00 ns, 305.9000 us/op
+
+OverheadJitting  2: 16 op, 210200.00 ns, 13.1375 us/op
+WorkloadJitting  2: 16 op, 302500.00 ns, 18.9063 us/op
+
+WorkloadPilot    1: 16 op, 103100.00 ns, 6.4438 us/op
+WorkloadPilot    2: 15520 op, 96632200.00 ns, 6.2263 us/op
+WorkloadPilot    3: 16064 op, 100772300.00 ns, 6.2732 us/op
+WorkloadPilot    4: 15952 op, 79888100.00 ns, 5.0080 us/op
+WorkloadPilot    5: 19968 op, 93967200.00 ns, 4.7059 us/op
+WorkloadPilot    6: 21264 op, 100136000.00 ns, 4.7092 us/op
+WorkloadPilot    7: 21248 op, 100128000.00 ns, 4.7123 us/op
+
+WorkloadWarmup   1: 21248 op, 100323100.00 ns, 4.7215 us/op
+WorkloadWarmup   2: 21248 op, 100286100.00 ns, 4.7198 us/op
+WorkloadWarmup   3: 21248 op, 100243100.00 ns, 4.7178 us/op
+WorkloadWarmup   4: 21248 op, 100133700.00 ns, 4.7126 us/op
+WorkloadWarmup   5: 21248 op, 100048300.00 ns, 4.7086 us/op
+WorkloadWarmup   6: 21248 op, 100197300.00 ns, 4.7156 us/op
+WorkloadWarmup   7: 21248 op, 100425800.00 ns, 4.7264 us/op
+WorkloadWarmup   8: 21248 op, 100315900.00 ns, 4.7212 us/op
+WorkloadWarmup   9: 21248 op, 100155100.00 ns, 4.7136 us/op
+WorkloadWarmup  10: 21248 op, 100038900.00 ns, 4.7082 us/op
+WorkloadWarmup  11: 21248 op, 100166600.00 ns, 4.7142 us/op
+WorkloadWarmup  12: 21248 op, 100349700.00 ns, 4.7228 us/op
+WorkloadWarmup  13: 21248 op, 100232300.00 ns, 4.7173 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 21248 op, 100145200.00 ns, 4.7132 us/op
+WorkloadActual   2: 21248 op, 100190400.00 ns, 4.7153 us/op
+WorkloadActual   3: 21248 op, 100254200.00 ns, 4.7183 us/op
+WorkloadActual   4: 21248 op, 100389700.00 ns, 4.7247 us/op
+WorkloadActual   5: 21248 op, 100306600.00 ns, 4.7208 us/op
+WorkloadActual   6: 21248 op, 100189700.00 ns, 4.7153 us/op
+WorkloadActual   7: 21248 op, 100139100.00 ns, 4.7129 us/op
+WorkloadActual   8: 21248 op, 100133800.00 ns, 4.7126 us/op
+WorkloadActual   9: 21248 op, 100263100.00 ns, 4.7187 us/op
+WorkloadActual  10: 21248 op, 100323000.00 ns, 4.7215 us/op
+WorkloadActual  11: 21248 op, 100221000.00 ns, 4.7167 us/op
+WorkloadActual  12: 21248 op, 100162700.00 ns, 4.7140 us/op
+WorkloadActual  13: 21248 op, 100131700.00 ns, 4.7125 us/op
+WorkloadActual  14: 21248 op, 100516600.00 ns, 4.7306 us/op
+WorkloadActual  15: 21248 op, 100310700.00 ns, 4.7209 us/op
+
+// AfterActualRun
+WorkloadResult   1: 21248 op, 100145200.00 ns, 4.7132 us/op
+WorkloadResult   2: 21248 op, 100190400.00 ns, 4.7153 us/op
+WorkloadResult   3: 21248 op, 100254200.00 ns, 4.7183 us/op
+WorkloadResult   4: 21248 op, 100389700.00 ns, 4.7247 us/op
+WorkloadResult   5: 21248 op, 100306600.00 ns, 4.7208 us/op
+WorkloadResult   6: 21248 op, 100189700.00 ns, 4.7153 us/op
+WorkloadResult   7: 21248 op, 100139100.00 ns, 4.7129 us/op
+WorkloadResult   8: 21248 op, 100133800.00 ns, 4.7126 us/op
+WorkloadResult   9: 21248 op, 100263100.00 ns, 4.7187 us/op
+WorkloadResult  10: 21248 op, 100323000.00 ns, 4.7215 us/op
+WorkloadResult  11: 21248 op, 100221000.00 ns, 4.7167 us/op
+WorkloadResult  12: 21248 op, 100162700.00 ns, 4.7140 us/op
+WorkloadResult  13: 21248 op, 100131700.00 ns, 4.7125 us/op
+WorkloadResult  14: 21248 op, 100516600.00 ns, 4.7306 us/op
+WorkloadResult  15: 21248 op, 100310700.00 ns, 4.7209 us/op
+
+// AfterAll
+// Benchmark Process 4636 has exited with code 0.
+
+Mean = 4.718 us, StdErr = 0.001 us (0.03%), N = 15, StdDev = 0.005 us
+Min = 4.713 us, Q1 = 4.714 us, Median = 4.717 us, Q3 = 4.721 us, Max = 4.731 us
+IQR = 0.007 us, LowerFence = 4.703 us, UpperFence = 4.732 us
+ConfidenceInterval = [4.712 us; 4.723 us] (CI 99.9%), Margin = 0.006 us (0.12% of Mean)
+Skewness = 0.91, Kurtosis = 2.99, MValue = 2
+
+// ** Remained 13 (65.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Pairs]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1236 1748 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 65536, Method: \"Pairs\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 7 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 170400.00 ns, 170.4000 us/op
+WorkloadJitting  1: 1 op, 282100.00 ns, 282.1000 us/op
+
+OverheadJitting  2: 16 op, 227700.00 ns, 14.2313 us/op
+WorkloadJitting  2: 16 op, 251700.00 ns, 15.7313 us/op
+
+WorkloadPilot    1: 16 op, 38100.00 ns, 2.3813 us/op
+WorkloadPilot    2: 42000 op, 90304000.00 ns, 2.1501 us/op
+WorkloadPilot    3: 46512 op, 100012900.00 ns, 2.1503 us/op
+
+WorkloadWarmup   1: 46512 op, 99791800.00 ns, 2.1455 us/op
+WorkloadWarmup   2: 46512 op, 100568300.00 ns, 2.1622 us/op
+WorkloadWarmup   3: 46512 op, 98477100.00 ns, 2.1172 us/op
+WorkloadWarmup   4: 46512 op, 98519400.00 ns, 2.1182 us/op
+WorkloadWarmup   5: 46512 op, 98563300.00 ns, 2.1191 us/op
+WorkloadWarmup   6: 46512 op, 98745500.00 ns, 2.1230 us/op
+WorkloadWarmup   7: 46512 op, 98711100.00 ns, 2.1223 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 46512 op, 98498900.00 ns, 2.1177 us/op
+WorkloadActual   2: 46512 op, 98575900.00 ns, 2.1194 us/op
+WorkloadActual   3: 46512 op, 98529500.00 ns, 2.1184 us/op
+WorkloadActual   4: 46512 op, 98664100.00 ns, 2.1213 us/op
+WorkloadActual   5: 46512 op, 98596900.00 ns, 2.1198 us/op
+WorkloadActual   6: 46512 op, 98937100.00 ns, 2.1271 us/op
+WorkloadActual   7: 46512 op, 98590100.00 ns, 2.1197 us/op
+WorkloadActual   8: 46512 op, 98519700.00 ns, 2.1182 us/op
+WorkloadActual   9: 46512 op, 98725100.00 ns, 2.1226 us/op
+WorkloadActual  10: 46512 op, 98757100.00 ns, 2.1233 us/op
+WorkloadActual  11: 46512 op, 98613500.00 ns, 2.1202 us/op
+WorkloadActual  12: 46512 op, 98601400.00 ns, 2.1199 us/op
+WorkloadActual  13: 46512 op, 98579700.00 ns, 2.1194 us/op
+WorkloadActual  14: 46512 op, 98649200.00 ns, 2.1209 us/op
+WorkloadActual  15: 46512 op, 98680100.00 ns, 2.1216 us/op
+
+// AfterActualRun
+WorkloadResult   1: 46512 op, 98498900.00 ns, 2.1177 us/op
+WorkloadResult   2: 46512 op, 98575900.00 ns, 2.1194 us/op
+WorkloadResult   3: 46512 op, 98529500.00 ns, 2.1184 us/op
+WorkloadResult   4: 46512 op, 98664100.00 ns, 2.1213 us/op
+WorkloadResult   5: 46512 op, 98596900.00 ns, 2.1198 us/op
+WorkloadResult   6: 46512 op, 98590100.00 ns, 2.1197 us/op
+WorkloadResult   7: 46512 op, 98519700.00 ns, 2.1182 us/op
+WorkloadResult   8: 46512 op, 98725100.00 ns, 2.1226 us/op
+WorkloadResult   9: 46512 op, 98757100.00 ns, 2.1233 us/op
+WorkloadResult  10: 46512 op, 98613500.00 ns, 2.1202 us/op
+WorkloadResult  11: 46512 op, 98601400.00 ns, 2.1199 us/op
+WorkloadResult  12: 46512 op, 98579700.00 ns, 2.1194 us/op
+WorkloadResult  13: 46512 op, 98649200.00 ns, 2.1209 us/op
+WorkloadResult  14: 46512 op, 98680100.00 ns, 2.1216 us/op
+
+// AfterAll
+// Benchmark Process 10684 has exited with code 0.
+
+Mean = 2.120 us, StdErr = 0.000 us (0.02%), N = 14, StdDev = 0.002 us
+Min = 2.118 us, Q1 = 2.119 us, Median = 2.120 us, Q3 = 2.121 us, Max = 2.123 us
+IQR = 0.002 us, LowerFence = 2.117 us, UpperFence = 2.124 us
+ConfidenceInterval = [2.118 us; 2.122 us] (CI 99.9%), Margin = 0.002 us (0.09% of Mean)
+Skewness = 0.32, Kurtosis = 2.03, MValue = 2
+
+// ** Remained 12 (60.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=PairsNT]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 948 1220 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 65536, Method: \"PairsNT\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 8 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 173500.00 ns, 173.5000 us/op
+WorkloadJitting  1: 1 op, 316100.00 ns, 316.1000 us/op
+
+OverheadJitting  2: 16 op, 217500.00 ns, 13.5938 us/op
+WorkloadJitting  2: 16 op, 266800.00 ns, 16.6750 us/op
+
+WorkloadPilot    1: 16 op, 38600.00 ns, 2.4125 us/op
+WorkloadPilot    2: 41456 op, 89348600.00 ns, 2.1553 us/op
+WorkloadPilot    3: 46400 op, 99616100.00 ns, 2.1469 us/op
+WorkloadPilot    4: 46592 op, 99796700.00 ns, 2.1419 us/op
+WorkloadPilot    5: 46688 op, 100868600.00 ns, 2.1605 us/op
+WorkloadPilot    6: 46288 op, 98199100.00 ns, 2.1215 us/op
+WorkloadPilot    7: 47152 op, 100127500.00 ns, 2.1235 us/op
+WorkloadPilot    8: 47104 op, 99964700.00 ns, 2.1222 us/op
+WorkloadPilot    9: 47136 op, 99964800.00 ns, 2.1208 us/op
+WorkloadPilot   10: 47168 op, 100082700.00 ns, 2.1218 us/op
+
+WorkloadWarmup   1: 47168 op, 100062600.00 ns, 2.1214 us/op
+WorkloadWarmup   2: 47168 op, 100294700.00 ns, 2.1263 us/op
+WorkloadWarmup   3: 47168 op, 100198200.00 ns, 2.1243 us/op
+WorkloadWarmup   4: 47168 op, 100077400.00 ns, 2.1217 us/op
+WorkloadWarmup   5: 47168 op, 100314300.00 ns, 2.1267 us/op
+WorkloadWarmup   6: 47168 op, 100122100.00 ns, 2.1227 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 47168 op, 100131400.00 ns, 2.1229 us/op
+WorkloadActual   2: 47168 op, 100190300.00 ns, 2.1241 us/op
+WorkloadActual   3: 47168 op, 100129300.00 ns, 2.1228 us/op
+WorkloadActual   4: 47168 op, 100103700.00 ns, 2.1223 us/op
+WorkloadActual   5: 47168 op, 100049800.00 ns, 2.1211 us/op
+WorkloadActual   6: 47168 op, 100351200.00 ns, 2.1275 us/op
+WorkloadActual   7: 47168 op, 100230100.00 ns, 2.1250 us/op
+WorkloadActual   8: 47168 op, 100150900.00 ns, 2.1233 us/op
+WorkloadActual   9: 47168 op, 100031700.00 ns, 2.1208 us/op
+WorkloadActual  10: 47168 op, 100142200.00 ns, 2.1231 us/op
+WorkloadActual  11: 47168 op, 100105800.00 ns, 2.1223 us/op
+WorkloadActual  12: 47168 op, 100166300.00 ns, 2.1236 us/op
+WorkloadActual  13: 47168 op, 100112900.00 ns, 2.1225 us/op
+WorkloadActual  14: 47168 op, 100003900.00 ns, 2.1202 us/op
+WorkloadActual  15: 47168 op, 100108200.00 ns, 2.1224 us/op
+
+// AfterActualRun
+WorkloadResult   1: 47168 op, 100131400.00 ns, 2.1229 us/op
+WorkloadResult   2: 47168 op, 100190300.00 ns, 2.1241 us/op
+WorkloadResult   3: 47168 op, 100129300.00 ns, 2.1228 us/op
+WorkloadResult   4: 47168 op, 100103700.00 ns, 2.1223 us/op
+WorkloadResult   5: 47168 op, 100049800.00 ns, 2.1211 us/op
+WorkloadResult   6: 47168 op, 100230100.00 ns, 2.1250 us/op
+WorkloadResult   7: 47168 op, 100150900.00 ns, 2.1233 us/op
+WorkloadResult   8: 47168 op, 100031700.00 ns, 2.1208 us/op
+WorkloadResult   9: 47168 op, 100142200.00 ns, 2.1231 us/op
+WorkloadResult  10: 47168 op, 100105800.00 ns, 2.1223 us/op
+WorkloadResult  11: 47168 op, 100166300.00 ns, 2.1236 us/op
+WorkloadResult  12: 47168 op, 100112900.00 ns, 2.1225 us/op
+WorkloadResult  13: 47168 op, 100003900.00 ns, 2.1202 us/op
+WorkloadResult  14: 47168 op, 100108200.00 ns, 2.1224 us/op
+
+// AfterAll
+// Benchmark Process 9820 has exited with code 0.
+
+Mean = 2.123 us, StdErr = 0.000 us (0.02%), N = 14, StdDev = 0.001 us
+Min = 2.120 us, Q1 = 2.122 us, Median = 2.123 us, Q3 = 2.123 us, Max = 2.125 us
+IQR = 0.001 us, LowerFence = 2.121 us, UpperFence = 2.125 us
+ConfidenceInterval = [2.121 us; 2.124 us] (CI 99.9%), Margin = 0.001 us (0.07% of Mean)
+Skewness = -0.17, Kurtosis = 2.33, MValue = 2
+
+// ** Remained 11 (55.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Tuned128]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1668 1860 --benchmarkName "Bench.Copies.Run(Direction: \"decode\", Size: 65536, Method: \"Tuned128\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 9 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 135800.00 ns, 135.8000 us/op
+WorkloadJitting  1: 1 op, 285000.00 ns, 285.0000 us/op
+
+OverheadJitting  2: 16 op, 210500.00 ns, 13.1563 us/op
+WorkloadJitting  2: 16 op, 240200.00 ns, 15.0125 us/op
+
+WorkloadPilot    1: 16 op, 37900.00 ns, 2.3688 us/op
+WorkloadPilot    2: 42224 op, 91357200.00 ns, 2.1636 us/op
+WorkloadPilot    3: 46224 op, 99805800.00 ns, 2.1592 us/op
+WorkloadPilot    4: 46320 op, 100895300.00 ns, 2.1782 us/op
+WorkloadPilot    5: 45920 op, 98202600.00 ns, 2.1386 us/op
+WorkloadPilot    6: 46768 op, 100004600.00 ns, 2.1383 us/op
+
+WorkloadWarmup   1: 46768 op, 100224400.00 ns, 2.1430 us/op
+WorkloadWarmup   2: 46768 op, 100158400.00 ns, 2.1416 us/op
+WorkloadWarmup   3: 46768 op, 100104600.00 ns, 2.1405 us/op
+WorkloadWarmup   4: 46768 op, 100138700.00 ns, 2.1412 us/op
+WorkloadWarmup   5: 46768 op, 100024500.00 ns, 2.1387 us/op
+WorkloadWarmup   6: 46768 op, 100169100.00 ns, 2.1418 us/op
+WorkloadWarmup   7: 46768 op, 100053700.00 ns, 2.1394 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 46768 op, 100398400.00 ns, 2.1467 us/op
+WorkloadActual   2: 46768 op, 100438600.00 ns, 2.1476 us/op
+WorkloadActual   3: 46768 op, 100224100.00 ns, 2.1430 us/op
+WorkloadActual   4: 46768 op, 100068200.00 ns, 2.1397 us/op
+WorkloadActual   5: 46768 op, 100007200.00 ns, 2.1384 us/op
+WorkloadActual   6: 46768 op, 100264200.00 ns, 2.1439 us/op
+WorkloadActual   7: 46768 op, 100109900.00 ns, 2.1406 us/op
+WorkloadActual   8: 46768 op, 100115200.00 ns, 2.1407 us/op
+WorkloadActual   9: 46768 op, 99980800.00 ns, 2.1378 us/op
+WorkloadActual  10: 46768 op, 99929700.00 ns, 2.1367 us/op
+WorkloadActual  11: 46768 op, 100072100.00 ns, 2.1398 us/op
+WorkloadActual  12: 46768 op, 100100300.00 ns, 2.1404 us/op
+WorkloadActual  13: 46768 op, 100044200.00 ns, 2.1392 us/op
+WorkloadActual  14: 46768 op, 100091300.00 ns, 2.1402 us/op
+WorkloadActual  15: 46768 op, 100159600.00 ns, 2.1416 us/op
+
+// AfterActualRun
+WorkloadResult   1: 46768 op, 100224100.00 ns, 2.1430 us/op
+WorkloadResult   2: 46768 op, 100068200.00 ns, 2.1397 us/op
+WorkloadResult   3: 46768 op, 100007200.00 ns, 2.1384 us/op
+WorkloadResult   4: 46768 op, 100264200.00 ns, 2.1439 us/op
+WorkloadResult   5: 46768 op, 100109900.00 ns, 2.1406 us/op
+WorkloadResult   6: 46768 op, 100115200.00 ns, 2.1407 us/op
+WorkloadResult   7: 46768 op, 99980800.00 ns, 2.1378 us/op
+WorkloadResult   8: 46768 op, 99929700.00 ns, 2.1367 us/op
+WorkloadResult   9: 46768 op, 100072100.00 ns, 2.1398 us/op
+WorkloadResult  10: 46768 op, 100100300.00 ns, 2.1404 us/op
+WorkloadResult  11: 46768 op, 100044200.00 ns, 2.1392 us/op
+WorkloadResult  12: 46768 op, 100091300.00 ns, 2.1402 us/op
+WorkloadResult  13: 46768 op, 100159600.00 ns, 2.1416 us/op
+
+// AfterAll
+// Benchmark Process 4900 has exited with code 0.
+
+Mean = 2.140 us, StdErr = 0.001 us (0.03%), N = 13, StdDev = 0.002 us
+Min = 2.137 us, Q1 = 2.139 us, Median = 2.140 us, Q3 = 2.141 us, Max = 2.144 us
+IQR = 0.002 us, LowerFence = 2.137 us, UpperFence = 2.143 us
+ConfidenceInterval = [2.138 us; 2.142 us] (CI 99.9%), Margin = 0.002 us (0.11% of Mean)
+Skewness = 0.2, Kurtosis = 2.28, MValue = 2
+
+// ** Remained 10 (50.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=CopyTo]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1668 1860 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 4096, Method: \"CopyTo\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 10 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 160500.00 ns, 160.5000 us/op
+WorkloadJitting  1: 1 op, 339500.00 ns, 339.5000 us/op
+
+OverheadJitting  2: 16 op, 224900.00 ns, 14.0563 us/op
+WorkloadJitting  2: 16 op, 264700.00 ns, 16.5438 us/op
+
+WorkloadPilot    1: 16 op, 60600.00 ns, 3.7875 us/op
+WorkloadPilot    2: 26416 op, 84626200.00 ns, 3.2036 us/op
+WorkloadPilot    3: 31216 op, 99438900.00 ns, 3.1855 us/op
+WorkloadPilot    4: 31392 op, 99702900.00 ns, 3.1761 us/op
+WorkloadPilot    5: 31488 op, 80840400.00 ns, 2.5673 us/op
+WorkloadPilot    6: 38960 op, 82798400.00 ns, 2.1252 us/op
+WorkloadPilot    7: 47056 op, 99990500.00 ns, 2.1249 us/op
+WorkloadPilot    8: 47072 op, 101215100.00 ns, 2.1502 us/op
+WorkloadPilot    9: 46512 op, 100203700.00 ns, 2.1544 us/op
+WorkloadPilot   10: 46432 op, 99599100.00 ns, 2.1451 us/op
+WorkloadPilot   11: 46624 op, 99460800.00 ns, 2.1333 us/op
+WorkloadPilot   12: 46880 op, 100027100.00 ns, 2.1337 us/op
+
+WorkloadWarmup   1: 46880 op, 100600100.00 ns, 2.1459 us/op
+WorkloadWarmup   2: 46880 op, 101011700.00 ns, 2.1547 us/op
+WorkloadWarmup   3: 46880 op, 100862800.00 ns, 2.1515 us/op
+WorkloadWarmup   4: 46880 op, 100229600.00 ns, 2.1380 us/op
+WorkloadWarmup   5: 46880 op, 99790600.00 ns, 2.1286 us/op
+WorkloadWarmup   6: 46880 op, 100831700.00 ns, 2.1508 us/op
+WorkloadWarmup   7: 46880 op, 100786000.00 ns, 2.1499 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 46880 op, 100611800.00 ns, 2.1462 us/op
+WorkloadActual   2: 46880 op, 99020600.00 ns, 2.1122 us/op
+WorkloadActual   3: 46880 op, 99593400.00 ns, 2.1244 us/op
+WorkloadActual   4: 46880 op, 101083500.00 ns, 2.1562 us/op
+WorkloadActual   5: 46880 op, 101112900.00 ns, 2.1568 us/op
+WorkloadActual   6: 46880 op, 101482700.00 ns, 2.1647 us/op
+WorkloadActual   7: 46880 op, 101586600.00 ns, 2.1669 us/op
+WorkloadActual   8: 46880 op, 101353600.00 ns, 2.1620 us/op
+WorkloadActual   9: 46880 op, 101454000.00 ns, 2.1641 us/op
+WorkloadActual  10: 46880 op, 101579100.00 ns, 2.1668 us/op
+WorkloadActual  11: 46880 op, 101489600.00 ns, 2.1649 us/op
+WorkloadActual  12: 46880 op, 101055300.00 ns, 2.1556 us/op
+WorkloadActual  13: 46880 op, 101006400.00 ns, 2.1546 us/op
+WorkloadActual  14: 46880 op, 101589400.00 ns, 2.1670 us/op
+WorkloadActual  15: 46880 op, 101638700.00 ns, 2.1681 us/op
+
+// AfterActualRun
+WorkloadResult   1: 46880 op, 100611800.00 ns, 2.1462 us/op
+WorkloadResult   2: 46880 op, 99020600.00 ns, 2.1122 us/op
+WorkloadResult   3: 46880 op, 99593400.00 ns, 2.1244 us/op
+WorkloadResult   4: 46880 op, 101083500.00 ns, 2.1562 us/op
+WorkloadResult   5: 46880 op, 101112900.00 ns, 2.1568 us/op
+WorkloadResult   6: 46880 op, 101482700.00 ns, 2.1647 us/op
+WorkloadResult   7: 46880 op, 101586600.00 ns, 2.1669 us/op
+WorkloadResult   8: 46880 op, 101353600.00 ns, 2.1620 us/op
+WorkloadResult   9: 46880 op, 101454000.00 ns, 2.1641 us/op
+WorkloadResult  10: 46880 op, 101579100.00 ns, 2.1668 us/op
+WorkloadResult  11: 46880 op, 101489600.00 ns, 2.1649 us/op
+WorkloadResult  12: 46880 op, 101055300.00 ns, 2.1556 us/op
+WorkloadResult  13: 46880 op, 101006400.00 ns, 2.1546 us/op
+WorkloadResult  14: 46880 op, 101589400.00 ns, 2.1670 us/op
+WorkloadResult  15: 46880 op, 101638700.00 ns, 2.1681 us/op
+
+// AfterAll
+// Benchmark Process 8916 has exited with code 0.
+
+Mean = 2.155 us, StdErr = 0.004 us (0.20%), N = 15, StdDev = 0.016 us
+Min = 2.112 us, Q1 = 2.155 us, Median = 2.162 us, Q3 = 2.166 us, Max = 2.168 us
+IQR = 0.011 us, LowerFence = 2.139 us, UpperFence = 2.182 us
+ConfidenceInterval = [2.138 us; 2.173 us] (CI 99.9%), Margin = 0.018 us (0.81% of Mean)
+Skewness = -1.53, Kurtosis = 4.14, MValue = 2
+
+// ** Remained 9 (45.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Multi]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1644 1232 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 4096, Method: \"Multi\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 11 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 167800.00 ns, 167.8000 us/op
+WorkloadJitting  1: 1 op, 290400.00 ns, 290.4000 us/op
+
+OverheadJitting  2: 16 op, 229900.00 ns, 14.3688 us/op
+WorkloadJitting  2: 16 op, 323500.00 ns, 20.2188 us/op
+
+WorkloadPilot    1: 16 op, 157800.00 ns, 9.8625 us/op
+WorkloadPilot    2: 10144 op, 92162000.00 ns, 9.0854 us/op
+WorkloadPilot    3: 11008 op, 99776900.00 ns, 9.0640 us/op
+WorkloadPilot    4: 11040 op, 76032200.00 ns, 6.8870 us/op
+WorkloadPilot    5: 14528 op, 90668200.00 ns, 6.2409 us/op
+WorkloadPilot    6: 16032 op, 100173400.00 ns, 6.2483 us/op
+WorkloadPilot    7: 16016 op, 100057600.00 ns, 6.2474 us/op
+
+WorkloadWarmup   1: 16016 op, 100081200.00 ns, 6.2488 us/op
+WorkloadWarmup   2: 16016 op, 100168000.00 ns, 6.2542 us/op
+WorkloadWarmup   3: 16016 op, 100015000.00 ns, 6.2447 us/op
+WorkloadWarmup   4: 16016 op, 99965900.00 ns, 6.2416 us/op
+WorkloadWarmup   5: 16016 op, 100016600.00 ns, 6.2448 us/op
+WorkloadWarmup   6: 16016 op, 99899000.00 ns, 6.2375 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 16016 op, 99879600.00 ns, 6.2362 us/op
+WorkloadActual   2: 16016 op, 99734100.00 ns, 6.2272 us/op
+WorkloadActual   3: 16016 op, 99866600.00 ns, 6.2354 us/op
+WorkloadActual   4: 16016 op, 100062000.00 ns, 6.2476 us/op
+WorkloadActual   5: 16016 op, 99961300.00 ns, 6.2413 us/op
+WorkloadActual   6: 16016 op, 99835400.00 ns, 6.2335 us/op
+WorkloadActual   7: 16016 op, 99961600.00 ns, 6.2414 us/op
+WorkloadActual   8: 16016 op, 99810300.00 ns, 6.2319 us/op
+WorkloadActual   9: 16016 op, 99916300.00 ns, 6.2385 us/op
+WorkloadActual  10: 16016 op, 99958700.00 ns, 6.2412 us/op
+WorkloadActual  11: 16016 op, 99920500.00 ns, 6.2388 us/op
+WorkloadActual  12: 16016 op, 99889400.00 ns, 6.2369 us/op
+WorkloadActual  13: 16016 op, 99880600.00 ns, 6.2363 us/op
+WorkloadActual  14: 16016 op, 99993200.00 ns, 6.2433 us/op
+WorkloadActual  15: 16016 op, 100055900.00 ns, 6.2472 us/op
+
+// AfterActualRun
+WorkloadResult   1: 16016 op, 99879600.00 ns, 6.2362 us/op
+WorkloadResult   2: 16016 op, 99734100.00 ns, 6.2272 us/op
+WorkloadResult   3: 16016 op, 99866600.00 ns, 6.2354 us/op
+WorkloadResult   4: 16016 op, 100062000.00 ns, 6.2476 us/op
+WorkloadResult   5: 16016 op, 99961300.00 ns, 6.2413 us/op
+WorkloadResult   6: 16016 op, 99835400.00 ns, 6.2335 us/op
+WorkloadResult   7: 16016 op, 99961600.00 ns, 6.2414 us/op
+WorkloadResult   8: 16016 op, 99810300.00 ns, 6.2319 us/op
+WorkloadResult   9: 16016 op, 99916300.00 ns, 6.2385 us/op
+WorkloadResult  10: 16016 op, 99958700.00 ns, 6.2412 us/op
+WorkloadResult  11: 16016 op, 99920500.00 ns, 6.2388 us/op
+WorkloadResult  12: 16016 op, 99889400.00 ns, 6.2369 us/op
+WorkloadResult  13: 16016 op, 99880600.00 ns, 6.2363 us/op
+WorkloadResult  14: 16016 op, 99993200.00 ns, 6.2433 us/op
+WorkloadResult  15: 16016 op, 100055900.00 ns, 6.2472 us/op
+
+// AfterAll
+// Benchmark Process 10840 has exited with code 0.
+
+Mean = 6.238 us, StdErr = 0.001 us (0.02%), N = 15, StdDev = 0.006 us
+Min = 6.227 us, Q1 = 6.236 us, Median = 6.239 us, Q3 = 6.241 us, Max = 6.248 us
+IQR = 0.006 us, LowerFence = 6.228 us, UpperFence = 6.250 us
+ConfidenceInterval = [6.233 us; 6.244 us] (CI 99.9%), Margin = 0.006 us (0.09% of Mean)
+Skewness = -0.1, Kurtosis = 2.35, MValue = 2
+
+// ** Remained 8 (40.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Pairs]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1668 1860 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 4096, Method: \"Pairs\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 12 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 170200.00 ns, 170.2000 us/op
+WorkloadJitting  1: 1 op, 300900.00 ns, 300.9000 us/op
+
+OverheadJitting  2: 16 op, 223200.00 ns, 13.9500 us/op
+WorkloadJitting  2: 16 op, 263100.00 ns, 16.4438 us/op
+
+WorkloadPilot    1: 16 op, 47500.00 ns, 2.9688 us/op
+WorkloadPilot    2: 33696 op, 88463000.00 ns, 2.6253 us/op
+WorkloadPilot    3: 38096 op, 99385600.00 ns, 2.6088 us/op
+WorkloadPilot    4: 38336 op, 88818500.00 ns, 2.3168 us/op
+WorkloadPilot    5: 43168 op, 96877100.00 ns, 2.2442 us/op
+WorkloadPilot    6: 44560 op, 100387400.00 ns, 2.2529 us/op
+WorkloadPilot    7: 44400 op, 99976600.00 ns, 2.2517 us/op
+WorkloadPilot    8: 44416 op, 99987500.00 ns, 2.2512 us/op
+WorkloadPilot    9: 44432 op, 99731900.00 ns, 2.2446 us/op
+WorkloadPilot   10: 44560 op, 99973800.00 ns, 2.2436 us/op
+WorkloadPilot   11: 44576 op, 100205500.00 ns, 2.2480 us/op
+WorkloadPilot   12: 44496 op, 100309400.00 ns, 2.2543 us/op
+
+WorkloadWarmup   1: 44496 op, 100320300.00 ns, 2.2546 us/op
+WorkloadWarmup   2: 44496 op, 100103700.00 ns, 2.2497 us/op
+WorkloadWarmup   3: 44496 op, 99907500.00 ns, 2.2453 us/op
+WorkloadWarmup   4: 44496 op, 99771400.00 ns, 2.2423 us/op
+WorkloadWarmup   5: 44496 op, 100181800.00 ns, 2.2515 us/op
+WorkloadWarmup   6: 44496 op, 100354500.00 ns, 2.2554 us/op
+WorkloadWarmup   7: 44496 op, 100138500.00 ns, 2.2505 us/op
+WorkloadWarmup   8: 44496 op, 100172800.00 ns, 2.2513 us/op
+WorkloadWarmup   9: 44496 op, 99594200.00 ns, 2.2383 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 44496 op, 100164200.00 ns, 2.2511 us/op
+WorkloadActual   2: 44496 op, 100137900.00 ns, 2.2505 us/op
+WorkloadActual   3: 44496 op, 100254400.00 ns, 2.2531 us/op
+WorkloadActual   4: 44496 op, 99999800.00 ns, 2.2474 us/op
+WorkloadActual   5: 44496 op, 99889500.00 ns, 2.2449 us/op
+WorkloadActual   6: 44496 op, 100154400.00 ns, 2.2509 us/op
+WorkloadActual   7: 44496 op, 100809500.00 ns, 2.2656 us/op
+WorkloadActual   8: 44496 op, 100545400.00 ns, 2.2597 us/op
+WorkloadActual   9: 44496 op, 100237600.00 ns, 2.2527 us/op
+WorkloadActual  10: 44496 op, 100114900.00 ns, 2.2500 us/op
+WorkloadActual  11: 44496 op, 99631500.00 ns, 2.2391 us/op
+WorkloadActual  12: 44496 op, 100339600.00 ns, 2.2550 us/op
+WorkloadActual  13: 44496 op, 100716200.00 ns, 2.2635 us/op
+WorkloadActual  14: 44496 op, 100430600.00 ns, 2.2571 us/op
+WorkloadActual  15: 44496 op, 100102900.00 ns, 2.2497 us/op
+
+// AfterActualRun
+WorkloadResult   1: 44496 op, 100164200.00 ns, 2.2511 us/op
+WorkloadResult   2: 44496 op, 100137900.00 ns, 2.2505 us/op
+WorkloadResult   3: 44496 op, 100254400.00 ns, 2.2531 us/op
+WorkloadResult   4: 44496 op, 99999800.00 ns, 2.2474 us/op
+WorkloadResult   5: 44496 op, 99889500.00 ns, 2.2449 us/op
+WorkloadResult   6: 44496 op, 100154400.00 ns, 2.2509 us/op
+WorkloadResult   7: 44496 op, 100545400.00 ns, 2.2597 us/op
+WorkloadResult   8: 44496 op, 100237600.00 ns, 2.2527 us/op
+WorkloadResult   9: 44496 op, 100114900.00 ns, 2.2500 us/op
+WorkloadResult  10: 44496 op, 99631500.00 ns, 2.2391 us/op
+WorkloadResult  11: 44496 op, 100339600.00 ns, 2.2550 us/op
+WorkloadResult  12: 44496 op, 100716200.00 ns, 2.2635 us/op
+WorkloadResult  13: 44496 op, 100430600.00 ns, 2.2571 us/op
+WorkloadResult  14: 44496 op, 100102900.00 ns, 2.2497 us/op
+
+// AfterAll
+// Benchmark Process 10768 has exited with code 0.
+
+Mean = 2.252 us, StdErr = 0.002 us (0.07%), N = 14, StdDev = 0.006 us
+Min = 2.239 us, Q1 = 2.250 us, Median = 2.251 us, Q3 = 2.255 us, Max = 2.263 us
+IQR = 0.005 us, LowerFence = 2.243 us, UpperFence = 2.262 us
+ConfidenceInterval = [2.245 us; 2.259 us] (CI 99.9%), Margin = 0.007 us (0.30% of Mean)
+Skewness = -0.05, Kurtosis = 2.75, MValue = 2
+
+// ** Remained 7 (35.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=PairsNT]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1212 1656 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 4096, Method: \"PairsNT\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 13 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 131900.00 ns, 131.9000 us/op
+WorkloadJitting  1: 1 op, 299800.00 ns, 299.8000 us/op
+
+OverheadJitting  2: 16 op, 213900.00 ns, 13.3688 us/op
+WorkloadJitting  2: 16 op, 258200.00 ns, 16.1375 us/op
+
+WorkloadPilot    1: 16 op, 48300.00 ns, 3.0188 us/op
+WorkloadPilot    2: 33136 op, 87348300.00 ns, 2.6361 us/op
+WorkloadPilot    3: 37936 op, 99566900.00 ns, 2.6246 us/op
+WorkloadPilot    4: 38112 op, 91538000.00 ns, 2.4018 us/op
+WorkloadPilot    5: 41648 op, 94061000.00 ns, 2.2585 us/op
+WorkloadPilot    6: 44288 op, 100010300.00 ns, 2.2582 us/op
+
+WorkloadWarmup   1: 44288 op, 99894100.00 ns, 2.2556 us/op
+WorkloadWarmup   2: 44288 op, 99786100.00 ns, 2.2531 us/op
+WorkloadWarmup   3: 44288 op, 100015100.00 ns, 2.2583 us/op
+WorkloadWarmup   4: 44288 op, 100169900.00 ns, 2.2618 us/op
+WorkloadWarmup   5: 44288 op, 99987800.00 ns, 2.2577 us/op
+WorkloadWarmup   6: 44288 op, 99985700.00 ns, 2.2576 us/op
+WorkloadWarmup   7: 44288 op, 99639600.00 ns, 2.2498 us/op
+WorkloadWarmup   8: 44288 op, 99510200.00 ns, 2.2469 us/op
+WorkloadWarmup   9: 44288 op, 99859700.00 ns, 2.2548 us/op
+WorkloadWarmup  10: 44288 op, 100055400.00 ns, 2.2592 us/op
+WorkloadWarmup  11: 44288 op, 99954300.00 ns, 2.2569 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 44288 op, 99814000.00 ns, 2.2537 us/op
+WorkloadActual   2: 44288 op, 99673600.00 ns, 2.2506 us/op
+WorkloadActual   3: 44288 op, 99545100.00 ns, 2.2477 us/op
+WorkloadActual   4: 44288 op, 99942600.00 ns, 2.2567 us/op
+WorkloadActual   5: 44288 op, 99976600.00 ns, 2.2574 us/op
+WorkloadActual   6: 44288 op, 99978700.00 ns, 2.2575 us/op
+WorkloadActual   7: 44288 op, 99763900.00 ns, 2.2526 us/op
+WorkloadActual   8: 44288 op, 99801300.00 ns, 2.2535 us/op
+WorkloadActual   9: 44288 op, 99788400.00 ns, 2.2532 us/op
+WorkloadActual  10: 44288 op, 99967400.00 ns, 2.2572 us/op
+WorkloadActual  11: 44288 op, 100028600.00 ns, 2.2586 us/op
+WorkloadActual  12: 44288 op, 99936700.00 ns, 2.2565 us/op
+WorkloadActual  13: 44288 op, 99867300.00 ns, 2.2550 us/op
+WorkloadActual  14: 44288 op, 99889300.00 ns, 2.2554 us/op
+WorkloadActual  15: 44288 op, 100149900.00 ns, 2.2613 us/op
+
+// AfterActualRun
+WorkloadResult   1: 44288 op, 99814000.00 ns, 2.2537 us/op
+WorkloadResult   2: 44288 op, 99673600.00 ns, 2.2506 us/op
+WorkloadResult   3: 44288 op, 99545100.00 ns, 2.2477 us/op
+WorkloadResult   4: 44288 op, 99942600.00 ns, 2.2567 us/op
+WorkloadResult   5: 44288 op, 99976600.00 ns, 2.2574 us/op
+WorkloadResult   6: 44288 op, 99978700.00 ns, 2.2575 us/op
+WorkloadResult   7: 44288 op, 99763900.00 ns, 2.2526 us/op
+WorkloadResult   8: 44288 op, 99801300.00 ns, 2.2535 us/op
+WorkloadResult   9: 44288 op, 99788400.00 ns, 2.2532 us/op
+WorkloadResult  10: 44288 op, 99967400.00 ns, 2.2572 us/op
+WorkloadResult  11: 44288 op, 100028600.00 ns, 2.2586 us/op
+WorkloadResult  12: 44288 op, 99936700.00 ns, 2.2565 us/op
+WorkloadResult  13: 44288 op, 99867300.00 ns, 2.2550 us/op
+WorkloadResult  14: 44288 op, 99889300.00 ns, 2.2554 us/op
+WorkloadResult  15: 44288 op, 100149900.00 ns, 2.2613 us/op
+
+// AfterAll
+// Benchmark Process 3064 has exited with code 0.
+
+Mean = 2.255 us, StdErr = 0.001 us (0.04%), N = 15, StdDev = 0.003 us
+Min = 2.248 us, Q1 = 2.253 us, Median = 2.255 us, Q3 = 2.257 us, Max = 2.261 us
+IQR = 0.004 us, LowerFence = 2.247 us, UpperFence = 2.263 us
+ConfidenceInterval = [2.251 us; 2.259 us] (CI 99.9%), Margin = 0.004 us (0.16% of Mean)
+Skewness = -0.37, Kurtosis = 2.66, MValue = 2
+
+// ** Remained 6 (30.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Tuned128]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1212 1656 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 4096, Method: \"Tuned128\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 14 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 153700.00 ns, 153.7000 us/op
+WorkloadJitting  1: 1 op, 313000.00 ns, 313.0000 us/op
+
+OverheadJitting  2: 16 op, 216700.00 ns, 13.5438 us/op
+WorkloadJitting  2: 16 op, 270300.00 ns, 16.8938 us/op
+
+WorkloadPilot    1: 16 op, 44800.00 ns, 2.8000 us/op
+WorkloadPilot    2: 35728 op, 91699700.00 ns, 2.5666 us/op
+WorkloadPilot    3: 38976 op, 99817400.00 ns, 2.5610 us/op
+WorkloadPilot    4: 39056 op, 86849800.00 ns, 2.2237 us/op
+WorkloadPilot    5: 44976 op, 93910000.00 ns, 2.0880 us/op
+WorkloadPilot    6: 47904 op, 101856300.00 ns, 2.1263 us/op
+WorkloadPilot    7: 47040 op, 99690900.00 ns, 2.1193 us/op
+WorkloadPilot    8: 47200 op, 100961600.00 ns, 2.1390 us/op
+WorkloadPilot    9: 46752 op, 100504700.00 ns, 2.1497 us/op
+
+WorkloadWarmup   1: 46752 op, 99787100.00 ns, 2.1344 us/op
+WorkloadWarmup   2: 46752 op, 99038000.00 ns, 2.1184 us/op
+WorkloadWarmup   3: 46752 op, 98829700.00 ns, 2.1139 us/op
+WorkloadWarmup   4: 46752 op, 99780000.00 ns, 2.1342 us/op
+WorkloadWarmup   5: 46752 op, 100427900.00 ns, 2.1481 us/op
+WorkloadWarmup   6: 46752 op, 100262900.00 ns, 2.1446 us/op
+WorkloadWarmup   7: 46752 op, 99057200.00 ns, 2.1188 us/op
+WorkloadWarmup   8: 46752 op, 98910100.00 ns, 2.1156 us/op
+WorkloadWarmup   9: 46752 op, 100378900.00 ns, 2.1471 us/op
+WorkloadWarmup  10: 46752 op, 100641600.00 ns, 2.1527 us/op
+WorkloadWarmup  11: 46752 op, 100623100.00 ns, 2.1523 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 46752 op, 99917600.00 ns, 2.1372 us/op
+WorkloadActual   2: 46752 op, 97563100.00 ns, 2.0868 us/op
+WorkloadActual   3: 46752 op, 99405900.00 ns, 2.1262 us/op
+WorkloadActual   4: 46752 op, 100244300.00 ns, 2.1442 us/op
+WorkloadActual   5: 46752 op, 100351900.00 ns, 2.1465 us/op
+WorkloadActual   6: 46752 op, 99562900.00 ns, 2.1296 us/op
+WorkloadActual   7: 46752 op, 98501100.00 ns, 2.1069 us/op
+WorkloadActual   8: 46752 op, 99089600.00 ns, 2.1195 us/op
+WorkloadActual   9: 46752 op, 100325500.00 ns, 2.1459 us/op
+WorkloadActual  10: 46752 op, 100526400.00 ns, 2.1502 us/op
+WorkloadActual  11: 46752 op, 100201500.00 ns, 2.1433 us/op
+WorkloadActual  12: 46752 op, 98660500.00 ns, 2.1103 us/op
+WorkloadActual  13: 46752 op, 99675100.00 ns, 2.1320 us/op
+WorkloadActual  14: 46752 op, 99927100.00 ns, 2.1374 us/op
+WorkloadActual  15: 46752 op, 100011600.00 ns, 2.1392 us/op
+
+// AfterActualRun
+WorkloadResult   1: 46752 op, 99917600.00 ns, 2.1372 us/op
+WorkloadResult   2: 46752 op, 97563100.00 ns, 2.0868 us/op
+WorkloadResult   3: 46752 op, 99405900.00 ns, 2.1262 us/op
+WorkloadResult   4: 46752 op, 100244300.00 ns, 2.1442 us/op
+WorkloadResult   5: 46752 op, 100351900.00 ns, 2.1465 us/op
+WorkloadResult   6: 46752 op, 99562900.00 ns, 2.1296 us/op
+WorkloadResult   7: 46752 op, 98501100.00 ns, 2.1069 us/op
+WorkloadResult   8: 46752 op, 99089600.00 ns, 2.1195 us/op
+WorkloadResult   9: 46752 op, 100325500.00 ns, 2.1459 us/op
+WorkloadResult  10: 46752 op, 100526400.00 ns, 2.1502 us/op
+WorkloadResult  11: 46752 op, 100201500.00 ns, 2.1433 us/op
+WorkloadResult  12: 46752 op, 98660500.00 ns, 2.1103 us/op
+WorkloadResult  13: 46752 op, 99675100.00 ns, 2.1320 us/op
+WorkloadResult  14: 46752 op, 99927100.00 ns, 2.1374 us/op
+WorkloadResult  15: 46752 op, 100011600.00 ns, 2.1392 us/op
+
+// AfterAll
+// Benchmark Process 10204 has exited with code 0.
+
+Mean = 2.130 us, StdErr = 0.005 us (0.22%), N = 15, StdDev = 0.018 us
+Min = 2.087 us, Q1 = 2.123 us, Median = 2.137 us, Q3 = 2.144 us, Max = 2.150 us
+IQR = 0.021 us, LowerFence = 2.092 us, UpperFence = 2.175 us
+ConfidenceInterval = [2.111 us; 2.149 us] (CI 99.9%), Margin = 0.019 us (0.89% of Mean)
+Skewness = -0.99, Kurtosis = 2.97, MValue = 2
+
+// ** Remained 5 (25.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=CopyTo]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1712 1792 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 65536, Method: \"CopyTo\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 15 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 183600.00 ns, 183.6000 us/op
+WorkloadJitting  1: 1 op, 332100.00 ns, 332.1000 us/op
+
+OverheadJitting  2: 16 op, 240000.00 ns, 15.0000 us/op
+WorkloadJitting  2: 16 op, 279800.00 ns, 17.4875 us/op
+
+WorkloadPilot    1: 16 op, 32300.00 ns, 2.0188 us/op
+WorkloadPilot    2: 49536 op, 80147600.00 ns, 1.6180 us/op
+WorkloadPilot    3: 61808 op, 99614000.00 ns, 1.6117 us/op
+WorkloadPilot    4: 62048 op, 96515100.00 ns, 1.5555 us/op
+WorkloadPilot    5: 64288 op, 95496500.00 ns, 1.4854 us/op
+WorkloadPilot    6: 67328 op, 100065500.00 ns, 1.4862 us/op
+WorkloadPilot    7: 67296 op, 100120300.00 ns, 1.4878 us/op
+WorkloadPilot    8: 67216 op, 100391200.00 ns, 1.4936 us/op
+
+WorkloadWarmup   1: 67216 op, 100189400.00 ns, 1.4906 us/op
+WorkloadWarmup   2: 67216 op, 100062500.00 ns, 1.4887 us/op
+WorkloadWarmup   3: 67216 op, 99941100.00 ns, 1.4869 us/op
+WorkloadWarmup   4: 67216 op, 100045700.00 ns, 1.4884 us/op
+WorkloadWarmup   5: 67216 op, 100403000.00 ns, 1.4937 us/op
+WorkloadWarmup   6: 67216 op, 99914100.00 ns, 1.4865 us/op
+WorkloadWarmup   7: 67216 op, 99853500.00 ns, 1.4856 us/op
+WorkloadWarmup   8: 67216 op, 99957500.00 ns, 1.4871 us/op
+WorkloadWarmup   9: 67216 op, 99952800.00 ns, 1.4870 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 67216 op, 100063100.00 ns, 1.4887 us/op
+WorkloadActual   2: 67216 op, 99876200.00 ns, 1.4859 us/op
+WorkloadActual   3: 67216 op, 99952900.00 ns, 1.4870 us/op
+WorkloadActual   4: 67216 op, 100187700.00 ns, 1.4905 us/op
+WorkloadActual   5: 67216 op, 100238200.00 ns, 1.4913 us/op
+WorkloadActual   6: 67216 op, 100013700.00 ns, 1.4879 us/op
+WorkloadActual   7: 67216 op, 100227200.00 ns, 1.4911 us/op
+WorkloadActual   8: 67216 op, 99902400.00 ns, 1.4863 us/op
+WorkloadActual   9: 67216 op, 100318300.00 ns, 1.4925 us/op
+WorkloadActual  10: 67216 op, 99948500.00 ns, 1.4870 us/op
+WorkloadActual  11: 67216 op, 99952400.00 ns, 1.4870 us/op
+WorkloadActual  12: 67216 op, 99907200.00 ns, 1.4864 us/op
+WorkloadActual  13: 67216 op, 99950600.00 ns, 1.4870 us/op
+WorkloadActual  14: 67216 op, 100051400.00 ns, 1.4885 us/op
+WorkloadActual  15: 67216 op, 99962300.00 ns, 1.4872 us/op
+
+// AfterActualRun
+WorkloadResult   1: 67216 op, 100063100.00 ns, 1.4887 us/op
+WorkloadResult   2: 67216 op, 99876200.00 ns, 1.4859 us/op
+WorkloadResult   3: 67216 op, 99952900.00 ns, 1.4870 us/op
+WorkloadResult   4: 67216 op, 100187700.00 ns, 1.4905 us/op
+WorkloadResult   5: 67216 op, 100238200.00 ns, 1.4913 us/op
+WorkloadResult   6: 67216 op, 100013700.00 ns, 1.4879 us/op
+WorkloadResult   7: 67216 op, 100227200.00 ns, 1.4911 us/op
+WorkloadResult   8: 67216 op, 99902400.00 ns, 1.4863 us/op
+WorkloadResult   9: 67216 op, 100318300.00 ns, 1.4925 us/op
+WorkloadResult  10: 67216 op, 99948500.00 ns, 1.4870 us/op
+WorkloadResult  11: 67216 op, 99952400.00 ns, 1.4870 us/op
+WorkloadResult  12: 67216 op, 99907200.00 ns, 1.4864 us/op
+WorkloadResult  13: 67216 op, 99950600.00 ns, 1.4870 us/op
+WorkloadResult  14: 67216 op, 100051400.00 ns, 1.4885 us/op
+WorkloadResult  15: 67216 op, 99962300.00 ns, 1.4872 us/op
+
+// AfterAll
+// Benchmark Process 7008 has exited with code 0.
+
+Mean = 1.488 us, StdErr = 0.001 us (0.04%), N = 15, StdDev = 0.002 us
+Min = 1.486 us, Q1 = 1.487 us, Median = 1.487 us, Q3 = 1.490 us, Max = 1.492 us
+IQR = 0.003 us, LowerFence = 1.483 us, UpperFence = 1.494 us
+ConfidenceInterval = [1.486 us; 1.491 us] (CI 99.9%), Margin = 0.002 us (0.15% of Mean)
+Skewness = 0.7, Kurtosis = 1.94, MValue = 2
+
+// ** Remained 4 (20.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Multi]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1756 672 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 65536, Method: \"Multi\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 16 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 175800.00 ns, 175.8000 us/op
+WorkloadJitting  1: 1 op, 304500.00 ns, 304.5000 us/op
+
+OverheadJitting  2: 16 op, 218000.00 ns, 13.6250 us/op
+WorkloadJitting  2: 16 op, 315300.00 ns, 19.7063 us/op
+
+WorkloadPilot    1: 16 op, 78400.00 ns, 4.9000 us/op
+WorkloadPilot    2: 20416 op, 90818700.00 ns, 4.4484 us/op
+WorkloadPilot    3: 22480 op, 99314500.00 ns, 4.4179 us/op
+WorkloadPilot    4: 22640 op, 126724800.00 ns, 5.5974 us/op
+WorkloadPilot    5: 17872 op, 101022700.00 ns, 5.6526 us/op
+WorkloadPilot    6: 17696 op, 101303000.00 ns, 5.7246 us/op
+
+WorkloadWarmup   1: 17696 op, 101432800.00 ns, 5.7320 us/op
+WorkloadWarmup   2: 17696 op, 100544200.00 ns, 5.6817 us/op
+WorkloadWarmup   3: 17696 op, 97341500.00 ns, 5.5008 us/op
+WorkloadWarmup   4: 17696 op, 96941000.00 ns, 5.4781 us/op
+WorkloadWarmup   5: 17696 op, 98897600.00 ns, 5.5887 us/op
+WorkloadWarmup   6: 17696 op, 99978600.00 ns, 5.6498 us/op
+WorkloadWarmup   7: 17696 op, 99573700.00 ns, 5.6269 us/op
+WorkloadWarmup   8: 17696 op, 98152100.00 ns, 5.5466 us/op
+WorkloadWarmup   9: 17696 op, 98067300.00 ns, 5.5418 us/op
+WorkloadWarmup  10: 17696 op, 99364800.00 ns, 5.6151 us/op
+WorkloadWarmup  11: 17696 op, 100931600.00 ns, 5.7036 us/op
+WorkloadWarmup  12: 17696 op, 100088700.00 ns, 5.6560 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 17696 op, 96968000.00 ns, 5.4797 us/op
+WorkloadActual   2: 17696 op, 96567300.00 ns, 5.4570 us/op
+WorkloadActual   3: 17696 op, 98922000.00 ns, 5.5901 us/op
+WorkloadActual   4: 17696 op, 100358900.00 ns, 5.6713 us/op
+WorkloadActual   5: 17696 op, 100279000.00 ns, 5.6668 us/op
+WorkloadActual   6: 17696 op, 97444500.00 ns, 5.5066 us/op
+WorkloadActual   7: 17696 op, 97925500.00 ns, 5.5338 us/op
+WorkloadActual   8: 17696 op, 99441600.00 ns, 5.6194 us/op
+WorkloadActual   9: 17696 op, 100241300.00 ns, 5.6646 us/op
+WorkloadActual  10: 17696 op, 100587000.00 ns, 5.6842 us/op
+WorkloadActual  11: 17696 op, 96986600.00 ns, 5.4807 us/op
+WorkloadActual  12: 17696 op, 96396100.00 ns, 5.4473 us/op
+WorkloadActual  13: 17696 op, 98131500.00 ns, 5.5454 us/op
+WorkloadActual  14: 17696 op, 100075500.00 ns, 5.6553 us/op
+WorkloadActual  15: 17696 op, 101821700.00 ns, 5.7539 us/op
+
+// AfterActualRun
+WorkloadResult   1: 17696 op, 96968000.00 ns, 5.4797 us/op
+WorkloadResult   2: 17696 op, 96567300.00 ns, 5.4570 us/op
+WorkloadResult   3: 17696 op, 98922000.00 ns, 5.5901 us/op
+WorkloadResult   4: 17696 op, 100358900.00 ns, 5.6713 us/op
+WorkloadResult   5: 17696 op, 100279000.00 ns, 5.6668 us/op
+WorkloadResult   6: 17696 op, 97444500.00 ns, 5.5066 us/op
+WorkloadResult   7: 17696 op, 97925500.00 ns, 5.5338 us/op
+WorkloadResult   8: 17696 op, 99441600.00 ns, 5.6194 us/op
+WorkloadResult   9: 17696 op, 100241300.00 ns, 5.6646 us/op
+WorkloadResult  10: 17696 op, 100587000.00 ns, 5.6842 us/op
+WorkloadResult  11: 17696 op, 96986600.00 ns, 5.4807 us/op
+WorkloadResult  12: 17696 op, 96396100.00 ns, 5.4473 us/op
+WorkloadResult  13: 17696 op, 98131500.00 ns, 5.5454 us/op
+WorkloadResult  14: 17696 op, 100075500.00 ns, 5.6553 us/op
+WorkloadResult  15: 17696 op, 101821700.00 ns, 5.7539 us/op
+
+// AfterAll
+// Benchmark Process 4752 has exited with code 0.
+
+Mean = 5.584 us, StdErr = 0.025 us (0.45%), N = 15, StdDev = 0.097 us
+Min = 5.447 us, Q1 = 5.494 us, Median = 5.590 us, Q3 = 5.666 us, Max = 5.754 us
+IQR = 0.172 us, LowerFence = 5.236 us, UpperFence = 5.924 us
+ConfidenceInterval = [5.480 us; 5.688 us] (CI 99.9%), Margin = 0.104 us (1.86% of Mean)
+Skewness = 0.05, Kurtosis = 1.48, MValue = 2
+
+// ** Remained 3 (15.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Pairs]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1768 1672 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 65536, Method: \"Pairs\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 17 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 167300.00 ns, 167.3000 us/op
+WorkloadJitting  1: 1 op, 293800.00 ns, 293.8000 us/op
+
+OverheadJitting  2: 16 op, 210100.00 ns, 13.1313 us/op
+WorkloadJitting  2: 16 op, 234600.00 ns, 14.6625 us/op
+
+WorkloadPilot    1: 16 op, 30500.00 ns, 1.9063 us/op
+WorkloadPilot    2: 52464 op, 83863000.00 ns, 1.5985 us/op
+WorkloadPilot    3: 62560 op, 99523400.00 ns, 1.5908 us/op
+WorkloadPilot    4: 62864 op, 99825100.00 ns, 1.5880 us/op
+WorkloadPilot    5: 62976 op, 99756100.00 ns, 1.5840 us/op
+WorkloadPilot    6: 63136 op, 97506700.00 ns, 1.5444 us/op
+WorkloadPilot    7: 64752 op, 99969700.00 ns, 1.5439 us/op
+WorkloadPilot    8: 64784 op, 99871100.00 ns, 1.5416 us/op
+WorkloadPilot    9: 64880 op, 100002000.00 ns, 1.5413 us/op
+
+WorkloadWarmup   1: 64880 op, 100163500.00 ns, 1.5438 us/op
+WorkloadWarmup   2: 64880 op, 100133500.00 ns, 1.5434 us/op
+WorkloadWarmup   3: 64880 op, 100174800.00 ns, 1.5440 us/op
+WorkloadWarmup   4: 64880 op, 100082800.00 ns, 1.5426 us/op
+WorkloadWarmup   5: 64880 op, 100014000.00 ns, 1.5415 us/op
+WorkloadWarmup   6: 64880 op, 100140500.00 ns, 1.5435 us/op
+WorkloadWarmup   7: 64880 op, 100275300.00 ns, 1.5456 us/op
+WorkloadWarmup   8: 64880 op, 100269900.00 ns, 1.5455 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 64880 op, 100759400.00 ns, 1.5530 us/op
+WorkloadActual   2: 64880 op, 100061400.00 ns, 1.5423 us/op
+WorkloadActual   3: 64880 op, 100179700.00 ns, 1.5441 us/op
+WorkloadActual   4: 64880 op, 100344900.00 ns, 1.5466 us/op
+WorkloadActual   5: 64880 op, 100088700.00 ns, 1.5427 us/op
+WorkloadActual   6: 64880 op, 100098100.00 ns, 1.5428 us/op
+WorkloadActual   7: 64880 op, 100065300.00 ns, 1.5423 us/op
+WorkloadActual   8: 64880 op, 100762300.00 ns, 1.5531 us/op
+WorkloadActual   9: 64880 op, 101171100.00 ns, 1.5594 us/op
+WorkloadActual  10: 64880 op, 100240800.00 ns, 1.5450 us/op
+WorkloadActual  11: 64880 op, 100074100.00 ns, 1.5424 us/op
+WorkloadActual  12: 64880 op, 100004900.00 ns, 1.5414 us/op
+WorkloadActual  13: 64880 op, 100098600.00 ns, 1.5428 us/op
+WorkloadActual  14: 64880 op, 100088400.00 ns, 1.5427 us/op
+WorkloadActual  15: 64880 op, 100205600.00 ns, 1.5445 us/op
+
+// AfterActualRun
+WorkloadResult   1: 64880 op, 100061400.00 ns, 1.5423 us/op
+WorkloadResult   2: 64880 op, 100179700.00 ns, 1.5441 us/op
+WorkloadResult   3: 64880 op, 100344900.00 ns, 1.5466 us/op
+WorkloadResult   4: 64880 op, 100088700.00 ns, 1.5427 us/op
+WorkloadResult   5: 64880 op, 100098100.00 ns, 1.5428 us/op
+WorkloadResult   6: 64880 op, 100065300.00 ns, 1.5423 us/op
+WorkloadResult   7: 64880 op, 100240800.00 ns, 1.5450 us/op
+WorkloadResult   8: 64880 op, 100074100.00 ns, 1.5424 us/op
+WorkloadResult   9: 64880 op, 100004900.00 ns, 1.5414 us/op
+WorkloadResult  10: 64880 op, 100098600.00 ns, 1.5428 us/op
+WorkloadResult  11: 64880 op, 100088400.00 ns, 1.5427 us/op
+WorkloadResult  12: 64880 op, 100205600.00 ns, 1.5445 us/op
+
+// AfterAll
+// Benchmark Process 1460 has exited with code 0.
+
+Mean = 1.543 us, StdErr = 0.000 us (0.03%), N = 12, StdDev = 0.001 us
+Min = 1.541 us, Q1 = 1.542 us, Median = 1.543 us, Q3 = 1.544 us, Max = 1.547 us
+IQR = 0.002 us, LowerFence = 1.540 us, UpperFence = 1.547 us
+ConfidenceInterval = [1.541 us; 1.545 us] (CI 99.9%), Margin = 0.002 us (0.12% of Mean)
+Skewness = 0.88, Kurtosis = 2.69, MValue = 2
+
+// ** Remained 2 (10.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=PairsNT]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1232 1784 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 65536, Method: \"PairsNT\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 18 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 182900.00 ns, 182.9000 us/op
+WorkloadJitting  1: 1 op, 335000.00 ns, 335.0000 us/op
+
+OverheadJitting  2: 16 op, 247500.00 ns, 15.4688 us/op
+WorkloadJitting  2: 16 op, 278900.00 ns, 17.4313 us/op
+
+WorkloadPilot    1: 16 op, 30800.00 ns, 1.9250 us/op
+WorkloadPilot    2: 51952 op, 82782100.00 ns, 1.5934 us/op
+WorkloadPilot    3: 62768 op, 99644800.00 ns, 1.5875 us/op
+WorkloadPilot    4: 62992 op, 99716600.00 ns, 1.5830 us/op
+WorkloadPilot    5: 63184 op, 97835700.00 ns, 1.5484 us/op
+WorkloadPilot    6: 64592 op, 99999000.00 ns, 1.5482 us/op
+WorkloadPilot    7: 64608 op, 100036100.00 ns, 1.5484 us/op
+WorkloadPilot    8: 64592 op, 100141700.00 ns, 1.5504 us/op
+WorkloadPilot    9: 64512 op, 99714500.00 ns, 1.5457 us/op
+WorkloadPilot   10: 64704 op, 100165600.00 ns, 1.5481 us/op
+
+WorkloadWarmup   1: 64704 op, 100167700.00 ns, 1.5481 us/op
+WorkloadWarmup   2: 64704 op, 100313600.00 ns, 1.5503 us/op
+WorkloadWarmup   3: 64704 op, 100098400.00 ns, 1.5470 us/op
+WorkloadWarmup   4: 64704 op, 100054000.00 ns, 1.5463 us/op
+WorkloadWarmup   5: 64704 op, 100218300.00 ns, 1.5489 us/op
+WorkloadWarmup   6: 64704 op, 100151800.00 ns, 1.5478 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 64704 op, 100178400.00 ns, 1.5483 us/op
+WorkloadActual   2: 64704 op, 100125300.00 ns, 1.5474 us/op
+WorkloadActual   3: 64704 op, 100168700.00 ns, 1.5481 us/op
+WorkloadActual   4: 64704 op, 100674100.00 ns, 1.5559 us/op
+WorkloadActual   5: 64704 op, 100215600.00 ns, 1.5488 us/op
+WorkloadActual   6: 64704 op, 100228700.00 ns, 1.5490 us/op
+WorkloadActual   7: 64704 op, 100098400.00 ns, 1.5470 us/op
+WorkloadActual   8: 64704 op, 100021500.00 ns, 1.5458 us/op
+WorkloadActual   9: 64704 op, 100113800.00 ns, 1.5473 us/op
+WorkloadActual  10: 64704 op, 100190000.00 ns, 1.5484 us/op
+WorkloadActual  11: 64704 op, 100147300.00 ns, 1.5478 us/op
+WorkloadActual  12: 64704 op, 100079300.00 ns, 1.5467 us/op
+WorkloadActual  13: 64704 op, 100036500.00 ns, 1.5461 us/op
+WorkloadActual  14: 64704 op, 100150600.00 ns, 1.5478 us/op
+WorkloadActual  15: 64704 op, 100236000.00 ns, 1.5491 us/op
+
+// AfterActualRun
+WorkloadResult   1: 64704 op, 100178400.00 ns, 1.5483 us/op
+WorkloadResult   2: 64704 op, 100125300.00 ns, 1.5474 us/op
+WorkloadResult   3: 64704 op, 100168700.00 ns, 1.5481 us/op
+WorkloadResult   4: 64704 op, 100215600.00 ns, 1.5488 us/op
+WorkloadResult   5: 64704 op, 100228700.00 ns, 1.5490 us/op
+WorkloadResult   6: 64704 op, 100098400.00 ns, 1.5470 us/op
+WorkloadResult   7: 64704 op, 100021500.00 ns, 1.5458 us/op
+WorkloadResult   8: 64704 op, 100113800.00 ns, 1.5473 us/op
+WorkloadResult   9: 64704 op, 100190000.00 ns, 1.5484 us/op
+WorkloadResult  10: 64704 op, 100147300.00 ns, 1.5478 us/op
+WorkloadResult  11: 64704 op, 100079300.00 ns, 1.5467 us/op
+WorkloadResult  12: 64704 op, 100036500.00 ns, 1.5461 us/op
+WorkloadResult  13: 64704 op, 100150600.00 ns, 1.5478 us/op
+WorkloadResult  14: 64704 op, 100236000.00 ns, 1.5491 us/op
+
+// AfterAll
+// Benchmark Process 7752 has exited with code 0.
+
+Mean = 1.548 us, StdErr = 0.000 us (0.02%), N = 14, StdDev = 0.001 us
+Min = 1.546 us, Q1 = 1.547 us, Median = 1.548 us, Q3 = 1.548 us, Max = 1.549 us
+IQR = 0.001 us, LowerFence = 1.545 us, UpperFence = 1.550 us
+ConfidenceInterval = [1.547 us; 1.549 us] (CI 99.9%), Margin = 0.001 us (0.08% of Mean)
+Skewness = -0.29, Kurtosis = 1.84, MValue = 2
+
+// ** Remained 1 (5.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Tuned128]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet Bench-Job-MGUGJU-1.dll --anonymousPipes 1832 1800 --benchmarkName "Bench.Copies.Run(Direction: \"encode\", Size: 65536, Method: \"Tuned128\")" --job "EvaluateOverhead=False, IterationTime=100ms" --benchmarkId 19 in C:\a\GFXKit-PcmTiming\GFXKit-PcmTiming\Bench\bin\Release\net10.0\Bench-Job-MGUGJU-1\bin\Release\net10.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+// GC=Concurrent Workstation
+// HardwareIntrinsics=ArmBase+AdvSimd,AES,CRC32,DP,RDM,SHA1,SHA256 VectorSize=128
+// Job: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms)
+
+OverheadJitting  1: 1 op, 143400.00 ns, 143.4000 us/op
+WorkloadJitting  1: 1 op, 302700.00 ns, 302.7000 us/op
+
+OverheadJitting  2: 16 op, 221600.00 ns, 13.8500 us/op
+WorkloadJitting  2: 16 op, 246400.00 ns, 15.4000 us/op
+
+WorkloadPilot    1: 16 op, 29700.00 ns, 1.8563 us/op
+WorkloadPilot    2: 53872 op, 85153600.00 ns, 1.5807 us/op
+WorkloadPilot    3: 63280 op, 99702800.00 ns, 1.5756 us/op
+WorkloadPilot    4: 63472 op, 97400200.00 ns, 1.5345 us/op
+WorkloadPilot    5: 65168 op, 98071500.00 ns, 1.5049 us/op
+WorkloadPilot    6: 66464 op, 100235100.00 ns, 1.5081 us/op
+WorkloadPilot    7: 66320 op, 99939700.00 ns, 1.5069 us/op
+WorkloadPilot    8: 66368 op, 99936900.00 ns, 1.5058 us/op
+WorkloadPilot    9: 66416 op, 99866000.00 ns, 1.5036 us/op
+WorkloadPilot   10: 66512 op, 99985300.00 ns, 1.5033 us/op
+WorkloadPilot   11: 66528 op, 100678400.00 ns, 1.5133 us/op
+WorkloadPilot   12: 66080 op, 100399200.00 ns, 1.5194 us/op
+
+WorkloadWarmup   1: 66080 op, 100142400.00 ns, 1.5155 us/op
+WorkloadWarmup   2: 66080 op, 99361300.00 ns, 1.5037 us/op
+WorkloadWarmup   3: 66080 op, 99533200.00 ns, 1.5063 us/op
+WorkloadWarmup   4: 66080 op, 99457200.00 ns, 1.5051 us/op
+WorkloadWarmup   5: 66080 op, 99488300.00 ns, 1.5056 us/op
+WorkloadWarmup   6: 66080 op, 99595700.00 ns, 1.5072 us/op
+WorkloadWarmup   7: 66080 op, 99484200.00 ns, 1.5055 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 66080 op, 99434000.00 ns, 1.5048 us/op
+WorkloadActual   2: 66080 op, 99309100.00 ns, 1.5029 us/op
+WorkloadActual   3: 66080 op, 100498700.00 ns, 1.5209 us/op
+WorkloadActual   4: 66080 op, 99706300.00 ns, 1.5089 us/op
+WorkloadActual   5: 66080 op, 99557400.00 ns, 1.5066 us/op
+WorkloadActual   6: 66080 op, 99411800.00 ns, 1.5044 us/op
+WorkloadActual   7: 66080 op, 99586600.00 ns, 1.5071 us/op
+WorkloadActual   8: 66080 op, 99633200.00 ns, 1.5078 us/op
+WorkloadActual   9: 66080 op, 99529000.00 ns, 1.5062 us/op
+WorkloadActual  10: 66080 op, 99466900.00 ns, 1.5052 us/op
+WorkloadActual  11: 66080 op, 99476700.00 ns, 1.5054 us/op
+WorkloadActual  12: 66080 op, 99616700.00 ns, 1.5075 us/op
+WorkloadActual  13: 66080 op, 99493300.00 ns, 1.5056 us/op
+WorkloadActual  14: 66080 op, 99590500.00 ns, 1.5071 us/op
+WorkloadActual  15: 66080 op, 101156500.00 ns, 1.5308 us/op
+
+// AfterActualRun
+WorkloadResult   1: 66080 op, 99434000.00 ns, 1.5048 us/op
+WorkloadResult   2: 66080 op, 99309100.00 ns, 1.5029 us/op
+WorkloadResult   3: 66080 op, 99706300.00 ns, 1.5089 us/op
+WorkloadResult   4: 66080 op, 99557400.00 ns, 1.5066 us/op
+WorkloadResult   5: 66080 op, 99411800.00 ns, 1.5044 us/op
+WorkloadResult   6: 66080 op, 99586600.00 ns, 1.5071 us/op
+WorkloadResult   7: 66080 op, 99633200.00 ns, 1.5078 us/op
+WorkloadResult   8: 66080 op, 99529000.00 ns, 1.5062 us/op
+WorkloadResult   9: 66080 op, 99466900.00 ns, 1.5052 us/op
+WorkloadResult  10: 66080 op, 99476700.00 ns, 1.5054 us/op
+WorkloadResult  11: 66080 op, 99616700.00 ns, 1.5075 us/op
+WorkloadResult  12: 66080 op, 99493300.00 ns, 1.5056 us/op
+WorkloadResult  13: 66080 op, 99590500.00 ns, 1.5071 us/op
+
+// AfterAll
+// Benchmark Process 10888 has exited with code 0.
+
+Mean = 1.506 us, StdErr = 0.000 us (0.03%), N = 13, StdDev = 0.002 us
+Min = 1.503 us, Q1 = 1.505 us, Median = 1.506 us, Q3 = 1.507 us, Max = 1.509 us
+IQR = 0.002 us, LowerFence = 1.502 us, UpperFence = 1.510 us
+ConfidenceInterval = [1.504 us; 1.508 us] (CI 99.9%), Margin = 0.002 us (0.13% of Mean)
+Skewness = -0.23, Kurtosis = 2.22, MValue = 2
+
+// ** Remained 0 (0.0%) benchmark(s) to run. Estimated finish 2026-10-18 22:19 (0h 0m from now) **
+Successfully reverted power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+Run time: 00:01:12 (72.84 sec), executed benchmarks: 20
+
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  out\results\Bench.Copies-report.csv
+  out\results\Bench.Copies-report-github.md
+
+// * Detailed results *
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=CopyTo]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 3.119 us, StdErr = 0.001 us (0.02%), N = 14, StdDev = 0.002 us
+Min = 3.115 us, Q1 = 3.117 us, Median = 3.119 us, Q3 = 3.120 us, Max = 3.123 us
+IQR = 0.003 us, LowerFence = 3.113 us, UpperFence = 3.124 us
+ConfidenceInterval = [3.116 us; 3.121 us] (CI 99.9%), Margin = 0.002 us (0.08% of Mean)
+Skewness = 0.03, Kurtosis = 2.01, MValue = 2
+-------------------- Histogram --------------------
+[3.114 us ; 3.124 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Multi]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 8.389 us, StdErr = 0.006 us (0.07%), N = 14, StdDev = 0.021 us
+Min = 8.344 us, Q1 = 8.377 us, Median = 8.392 us, Q3 = 8.398 us, Max = 8.421 us
+IQR = 0.022 us, LowerFence = 8.344 us, UpperFence = 8.431 us
+ConfidenceInterval = [8.364 us; 8.413 us] (CI 99.9%), Margin = 0.024 us (0.29% of Mean)
+Skewness = -0.32, Kurtosis = 2.31, MValue = 2
+-------------------- Histogram --------------------
+[8.333 us ; 8.432 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Pairs]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 3.100 us, StdErr = 0.002 us (0.05%), N = 14, StdDev = 0.006 us
+Min = 3.090 us, Q1 = 3.095 us, Median = 3.099 us, Q3 = 3.104 us, Max = 3.110 us
+IQR = 0.009 us, LowerFence = 3.082 us, UpperFence = 3.117 us
+ConfidenceInterval = [3.093 us; 3.106 us] (CI 99.9%), Margin = 0.007 us (0.21% of Mean)
+Skewness = 0.09, Kurtosis = 1.71, MValue = 2
+-------------------- Histogram --------------------
+[3.086 us ; 3.113 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=PairsNT]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 3.087 us, StdErr = 0.001 us (0.04%), N = 15, StdDev = 0.005 us
+Min = 3.080 us, Q1 = 3.083 us, Median = 3.086 us, Q3 = 3.093 us, Max = 3.094 us
+IQR = 0.010 us, LowerFence = 3.069 us, UpperFence = 3.107 us
+ConfidenceInterval = [3.082 us; 3.093 us] (CI 99.9%), Margin = 0.005 us (0.17% of Mean)
+Skewness = 0.12, Kurtosis = 1.34, MValue = 2
+-------------------- Histogram --------------------
+[3.078 us ; 3.097 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=4096, Method=Tuned128]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 3.110 us, StdErr = 0.001 us (0.04%), N = 15, StdDev = 0.004 us
+Min = 3.104 us, Q1 = 3.108 us, Median = 3.110 us, Q3 = 3.113 us, Max = 3.120 us
+IQR = 0.005 us, LowerFence = 3.100 us, UpperFence = 3.121 us
+ConfidenceInterval = [3.106 us; 3.115 us] (CI 99.9%), Margin = 0.005 us (0.15% of Mean)
+Skewness = 0.47, Kurtosis = 2.57, MValue = 2
+-------------------- Histogram --------------------
+[3.102 us ; 3.123 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=CopyTo]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 2.112 us, StdErr = 0.000 us (0.02%), N = 15, StdDev = 0.002 us
+Min = 2.108 us, Q1 = 2.111 us, Median = 2.112 us, Q3 = 2.114 us, Max = 2.115 us
+IQR = 0.002 us, LowerFence = 2.108 us, UpperFence = 2.118 us
+ConfidenceInterval = [2.110 us; 2.114 us] (CI 99.9%), Margin = 0.002 us (0.10% of Mean)
+Skewness = -0.34, Kurtosis = 2.16, MValue = 2
+-------------------- Histogram --------------------
+[2.107 us ; 2.116 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Multi]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 4.718 us, StdErr = 0.001 us (0.03%), N = 15, StdDev = 0.005 us
+Min = 4.713 us, Q1 = 4.714 us, Median = 4.717 us, Q3 = 4.721 us, Max = 4.731 us
+IQR = 0.007 us, LowerFence = 4.703 us, UpperFence = 4.732 us
+ConfidenceInterval = [4.712 us; 4.723 us] (CI 99.9%), Margin = 0.006 us (0.12% of Mean)
+Skewness = 0.91, Kurtosis = 2.99, MValue = 2
+-------------------- Histogram --------------------
+[4.710 us ; 4.733 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Pairs]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 2.120 us, StdErr = 0.000 us (0.02%), N = 14, StdDev = 0.002 us
+Min = 2.118 us, Q1 = 2.119 us, Median = 2.120 us, Q3 = 2.121 us, Max = 2.123 us
+IQR = 0.002 us, LowerFence = 2.117 us, UpperFence = 2.124 us
+ConfidenceInterval = [2.118 us; 2.122 us] (CI 99.9%), Margin = 0.002 us (0.09% of Mean)
+Skewness = 0.32, Kurtosis = 2.03, MValue = 2
+-------------------- Histogram --------------------
+[2.117 us ; 2.124 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=PairsNT]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 2.123 us, StdErr = 0.000 us (0.02%), N = 14, StdDev = 0.001 us
+Min = 2.120 us, Q1 = 2.122 us, Median = 2.123 us, Q3 = 2.123 us, Max = 2.125 us
+IQR = 0.001 us, LowerFence = 2.121 us, UpperFence = 2.125 us
+ConfidenceInterval = [2.121 us; 2.124 us] (CI 99.9%), Margin = 0.001 us (0.07% of Mean)
+Skewness = -0.17, Kurtosis = 2.33, MValue = 2
+-------------------- Histogram --------------------
+[2.119 us ; 2.126 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=decode, Size=65536, Method=Tuned128]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 2.140 us, StdErr = 0.001 us (0.03%), N = 13, StdDev = 0.002 us
+Min = 2.137 us, Q1 = 2.139 us, Median = 2.140 us, Q3 = 2.141 us, Max = 2.144 us
+IQR = 0.002 us, LowerFence = 2.137 us, UpperFence = 2.143 us
+ConfidenceInterval = [2.138 us; 2.142 us] (CI 99.9%), Margin = 0.002 us (0.11% of Mean)
+Skewness = 0.2, Kurtosis = 2.28, MValue = 2
+-------------------- Histogram --------------------
+[2.136 us ; 2.145 us) | @@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=CopyTo]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 2.155 us, StdErr = 0.004 us (0.20%), N = 15, StdDev = 0.016 us
+Min = 2.112 us, Q1 = 2.155 us, Median = 2.162 us, Q3 = 2.166 us, Max = 2.168 us
+IQR = 0.011 us, LowerFence = 2.139 us, UpperFence = 2.182 us
+ConfidenceInterval = [2.138 us; 2.173 us] (CI 99.9%), Margin = 0.018 us (0.81% of Mean)
+Skewness = -1.53, Kurtosis = 4.14, MValue = 2
+-------------------- Histogram --------------------
+[2.103 us ; 2.177 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Multi]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 6.238 us, StdErr = 0.001 us (0.02%), N = 15, StdDev = 0.006 us
+Min = 6.227 us, Q1 = 6.236 us, Median = 6.239 us, Q3 = 6.241 us, Max = 6.248 us
+IQR = 0.006 us, LowerFence = 6.228 us, UpperFence = 6.250 us
+ConfidenceInterval = [6.233 us; 6.244 us] (CI 99.9%), Margin = 0.006 us (0.09% of Mean)
+Skewness = -0.1, Kurtosis = 2.35, MValue = 2
+-------------------- Histogram --------------------
+[6.224 us ; 6.251 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Pairs]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 2.252 us, StdErr = 0.002 us (0.07%), N = 14, StdDev = 0.006 us
+Min = 2.239 us, Q1 = 2.250 us, Median = 2.251 us, Q3 = 2.255 us, Max = 2.263 us
+IQR = 0.005 us, LowerFence = 2.243 us, UpperFence = 2.262 us
+ConfidenceInterval = [2.245 us; 2.259 us] (CI 99.9%), Margin = 0.007 us (0.30% of Mean)
+Skewness = -0.05, Kurtosis = 2.75, MValue = 2
+-------------------- Histogram --------------------
+[2.236 us ; 2.267 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=PairsNT]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 2.255 us, StdErr = 0.001 us (0.04%), N = 15, StdDev = 0.003 us
+Min = 2.248 us, Q1 = 2.253 us, Median = 2.255 us, Q3 = 2.257 us, Max = 2.261 us
+IQR = 0.004 us, LowerFence = 2.247 us, UpperFence = 2.263 us
+ConfidenceInterval = [2.251 us; 2.259 us] (CI 99.9%), Margin = 0.004 us (0.16% of Mean)
+Skewness = -0.37, Kurtosis = 2.66, MValue = 2
+-------------------- Histogram --------------------
+[2.246 us ; 2.263 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=4096, Method=Tuned128]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 2.130 us, StdErr = 0.005 us (0.22%), N = 15, StdDev = 0.018 us
+Min = 2.087 us, Q1 = 2.123 us, Median = 2.137 us, Q3 = 2.144 us, Max = 2.150 us
+IQR = 0.021 us, LowerFence = 2.092 us, UpperFence = 2.175 us
+ConfidenceInterval = [2.111 us; 2.149 us] (CI 99.9%), Margin = 0.019 us (0.89% of Mean)
+Skewness = -0.99, Kurtosis = 2.97, MValue = 2
+-------------------- Histogram --------------------
+[2.077 us ; 2.160 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=CopyTo]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 1.488 us, StdErr = 0.001 us (0.04%), N = 15, StdDev = 0.002 us
+Min = 1.486 us, Q1 = 1.487 us, Median = 1.487 us, Q3 = 1.490 us, Max = 1.492 us
+IQR = 0.003 us, LowerFence = 1.483 us, UpperFence = 1.494 us
+ConfidenceInterval = [1.486 us; 1.491 us] (CI 99.9%), Margin = 0.002 us (0.15% of Mean)
+Skewness = 0.7, Kurtosis = 1.94, MValue = 2
+-------------------- Histogram --------------------
+[1.485 us ; 1.494 us) | @@@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Multi]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 5.584 us, StdErr = 0.025 us (0.45%), N = 15, StdDev = 0.097 us
+Min = 5.447 us, Q1 = 5.494 us, Median = 5.590 us, Q3 = 5.666 us, Max = 5.754 us
+IQR = 0.172 us, LowerFence = 5.236 us, UpperFence = 5.924 us
+ConfidenceInterval = [5.480 us; 5.688 us] (CI 99.9%), Margin = 0.104 us (1.86% of Mean)
+Skewness = 0.05, Kurtosis = 1.48, MValue = 2
+-------------------- Histogram --------------------
+[5.441 us ; 5.581 us) | @@@@@@@
+[5.581 us ; 5.806 us) | @@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Pairs]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 1.543 us, StdErr = 0.000 us (0.03%), N = 12, StdDev = 0.001 us
+Min = 1.541 us, Q1 = 1.542 us, Median = 1.543 us, Q3 = 1.544 us, Max = 1.547 us
+IQR = 0.002 us, LowerFence = 1.540 us, UpperFence = 1.547 us
+ConfidenceInterval = [1.541 us; 1.545 us] (CI 99.9%), Margin = 0.002 us (0.12% of Mean)
+Skewness = 0.88, Kurtosis = 2.69, MValue = 2
+-------------------- Histogram --------------------
+[1.541 us ; 1.547 us) | @@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=PairsNT]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 1.548 us, StdErr = 0.000 us (0.02%), N = 14, StdDev = 0.001 us
+Min = 1.546 us, Q1 = 1.547 us, Median = 1.548 us, Q3 = 1.548 us, Max = 1.549 us
+IQR = 0.001 us, LowerFence = 1.545 us, UpperFence = 1.550 us
+ConfidenceInterval = [1.547 us; 1.549 us] (CI 99.9%), Margin = 0.001 us (0.08% of Mean)
+Skewness = -0.29, Kurtosis = 1.84, MValue = 2
+-------------------- Histogram --------------------
+[1.545 us ; 1.550 us) | @@@@@@@@@@@@@@
+---------------------------------------------------
+
+Copies.Run: Job-MGUGJU(EvaluateOverhead=False, IterationTime=100ms) [Direction=encode, Size=65536, Method=Tuned128]
+Runtime = .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a; GC = Concurrent Workstation
+Mean = 1.506 us, StdErr = 0.000 us (0.03%), N = 13, StdDev = 0.002 us
+Min = 1.503 us, Q1 = 1.505 us, Median = 1.506 us, Q3 = 1.507 us, Max = 1.509 us
+IQR = 0.002 us, LowerFence = 1.502 us, UpperFence = 1.510 us
+ConfidenceInterval = [1.504 us; 1.508 us] (CI 99.9%), Margin = 0.002 us (0.13% of Mean)
+Skewness = -0.23, Kurtosis = 2.22, MValue = 2
+-------------------- Histogram --------------------
+[1.502 us ; 1.510 us) | @@@@@@@@@@@@@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.15.8, Windows 11 (10.0.26200.9457/25H2/2025Update/HudsonValley2) (Hyper-V)
+Cobalt 100 3.40GHz, 1 CPU, 4 logical and 4 physical cores
+.NET SDK 10.0.402
+  [Host]     : .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+  Job-MGUGJU : .NET 10.0.13 (10.0.13, 10.0.1326.50504), Arm64 RyuJIT armv8.0-a
+
+EvaluateOverhead=False  IterationTime=100ms  
+
+| Method | Direction | Size  | Method   | Mean     | Error     | StdDev    |
+|------- |---------- |------ |--------- |---------:|----------:|----------:|
+| Run    | decode    | 4096  | CopyTo   | 3.119 us | 0.0024 us | 0.0022 us |
+| Run    | decode    | 4096  | Multi    | 8.389 us | 0.0242 us | 0.0214 us |
+| Run    | decode    | 4096  | Pairs    | 3.100 us | 0.0066 us | 0.0059 us |
+| Run    | decode    | 4096  | PairsNT  | 3.087 us | 0.0054 us | 0.0050 us |
+| Run    | decode    | 4096  | Tuned128 | 3.110 us | 0.0047 us | 0.0044 us |
+| Run    | decode    | 65536 | CopyTo   | 2.112 us | 0.0020 us | 0.0019 us |
+| Run    | decode    | 65536 | Multi    | 4.718 us | 0.0055 us | 0.0052 us |
+| Run    | decode    | 65536 | Pairs    | 2.120 us | 0.0018 us | 0.0016 us |
+| Run    | decode    | 65536 | PairsNT  | 2.123 us | 0.0014 us | 0.0013 us |
+| Run    | decode    | 65536 | Tuned128 | 2.140 us | 0.0024 us | 0.0020 us |
+| Run    | encode    | 4096  | CopyTo   | 2.155 us | 0.0175 us | 0.0164 us |
+| Run    | encode    | 4096  | Multi    | 6.238 us | 0.0059 us | 0.0055 us |
+| Run    | encode    | 4096  | Pairs    | 2.252 us | 0.0068 us | 0.0061 us |
+| Run    | encode    | 4096  | PairsNT  | 2.255 us | 0.0036 us | 0.0034 us |
+| Run    | encode    | 4096  | Tuned128 | 2.130 us | 0.0190 us | 0.0178 us |
+| Run    | encode    | 65536 | CopyTo   | 1.488 us | 0.0022 us | 0.0021 us |
+| Run    | encode    | 65536 | Multi    | 5.584 us | 0.1040 us | 0.0973 us |
+| Run    | encode    | 65536 | Pairs    | 1.543 us | 0.0019 us | 0.0015 us |
+| Run    | encode    | 65536 | PairsNT  | 1.548 us | 0.0012 us | 0.0010 us |
+| Run    | encode    | 65536 | Tuned128 | 1.506 us | 0.0019 us | 0.0016 us |
+
+// * Legends *
+  Direction : Value of the 'Direction' parameter
+  Size      : Value of the 'Size' parameter
+  Method    : Value of the 'Method' parameter
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  1 us      : 1 Microsecond (0.000001 sec)
+
+// ***** BenchmarkRunner: End *****
+Global total time: 00:02:10 (130.16 sec), executed benchmarks: 20
+// * Artifacts cleanup *
+Artifacts cleanup is finished
