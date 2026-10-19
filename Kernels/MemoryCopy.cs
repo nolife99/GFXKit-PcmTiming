@@ -78,59 +78,63 @@ public static unsafe class MemoryCopy
     [MethodImpl(Inline)]
     static void Pair<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
-        var width = (nuint)sizeof(T);
+        ref var last = ref Unsafe.Add(ref from, length);
+        ref var end = ref Unsafe.Add(ref to, length);
         var a = Unsafe.ReadUnaligned<T>(ref from);
-        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - width));
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Subtract(ref last, sizeof(T)));
         Unsafe.WriteUnaligned(ref to, a);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - width), b);
+        Unsafe.WriteUnaligned(ref Unsafe.Subtract(ref end, sizeof(T)), b);
     }
 
     [MethodImpl(Inline)]
     static void Three<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
-        var width = (nuint)sizeof(T);
+        ref var last = ref Unsafe.Add(ref from, length);
+        ref var end = ref Unsafe.Add(ref to, length);
         var a = Unsafe.ReadUnaligned<T>(ref from);
-        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, width));
-        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - width));
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, sizeof(T)));
+        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Subtract(ref last, sizeof(T)));
         Unsafe.WriteUnaligned(ref to, a);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, width), b);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - width), c);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, sizeof(T)), b);
+        Unsafe.WriteUnaligned(ref Unsafe.Subtract(ref end, sizeof(T)), c);
     }
 
     [MethodImpl(Inline)]
     static void Four<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
-        var width = (nuint)sizeof(T);
+        ref var last = ref Unsafe.Add(ref from, length - 2 * (nuint)sizeof(T));
+        ref var end = ref Unsafe.Add(ref to, length - 2 * (nuint)sizeof(T));
         var a = Unsafe.ReadUnaligned<T>(ref from);
-        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, width));
-        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - 2 * width));
-        var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - width));
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, sizeof(T)));
+        var c = Unsafe.ReadUnaligned<T>(ref last);
+        var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, sizeof(T)));
         Unsafe.WriteUnaligned(ref to, a);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, width), b);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 2 * width), c);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - width), d);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, sizeof(T)), b);
+        Unsafe.WriteUnaligned(ref end, c);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, sizeof(T)), d);
     }
 
     [MethodImpl(Inline)]
     static void Eight<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
-        var width = (nuint)sizeof(T);
+        ref var last = ref Unsafe.Add(ref from, length - 4 * (nuint)sizeof(T));
+        ref var end = ref Unsafe.Add(ref to, length - 4 * (nuint)sizeof(T));
         var a = Unsafe.ReadUnaligned<T>(ref from);
-        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, width));
-        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 2 * width));
-        var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 3 * width));
-        var e = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - 4 * width));
-        var f = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - 3 * width));
-        var g = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - 2 * width));
-        var h = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, length - width));
+        var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, sizeof(T)));
+        var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 2 * sizeof(T)));
+        var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, 3 * sizeof(T)));
+        var e = Unsafe.ReadUnaligned<T>(ref last);
+        var f = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, sizeof(T)));
+        var g = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, 2 * sizeof(T)));
+        var h = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, 3 * sizeof(T)));
         Unsafe.WriteUnaligned(ref to, a);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, width), b);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 2 * width), c);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 3 * width), d);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 4 * width), e);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 3 * width), f);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - 2 * width), g);
-        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, length - width), h);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, sizeof(T)), b);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 2 * sizeof(T)), c);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, 3 * sizeof(T)), d);
+        Unsafe.WriteUnaligned(ref end, e);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, sizeof(T)), f);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, 2 * sizeof(T)), g);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, 3 * sizeof(T)), h);
     }
 
     [MethodImpl(Inline)]
@@ -144,21 +148,32 @@ public static unsafe class MemoryCopy
     }
 
     [MethodImpl(Inline)]
-    static void Loop<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
+    internal static void Loop<T>(ref byte to, ref byte from, nuint length) where T : unmanaged
     {
-        var width = (nuint)sizeof(T);
+        ref var last = ref Unsafe.Add(ref from, length - 4 * (nuint)sizeof(T));
+        ref var end = ref Unsafe.Add(ref to, length - 4 * (nuint)sizeof(T));
         Unsafe.WriteUnaligned(ref to, Unsafe.ReadUnaligned<T>(ref from));
-        for (var at = width - ((nuint)Unsafe.AsPointer(ref to) & (width - 1)); at + 4 * width <= length; at += 4 * width)
+        var skip = (nuint)sizeof(T) - ((nuint)Unsafe.AsPointer(ref to) & (nuint)(sizeof(T) - 1));
+        ref var source = ref Unsafe.Add(ref from, skip);
+        ref var target = ref Unsafe.Add(ref to, skip);
+        for (; !Unsafe.IsAddressGreaterThan(ref target, ref end); source = ref Unsafe.Add(ref source, 4 * sizeof(T)), target = ref Unsafe.Add(ref target, 4 * sizeof(T)))
         {
-            var a = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, at));
-            var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, at + width));
-            var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, at + 2 * width));
-            var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref from, at + 3 * width));
-            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, at), a);
-            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, at + width), b);
-            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, at + 2 * width), c);
-            Unsafe.WriteUnaligned(ref Unsafe.Add(ref to, at + 3 * width), d);
+            var a = Unsafe.ReadUnaligned<T>(ref source);
+            var b = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref source, sizeof(T)));
+            var c = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref source, 2 * sizeof(T)));
+            var d = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref source, 3 * sizeof(T)));
+            Unsafe.WriteUnaligned(ref target, a);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref target, sizeof(T)), b);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref target, 2 * sizeof(T)), c);
+            Unsafe.WriteUnaligned(ref Unsafe.Add(ref target, 3 * sizeof(T)), d);
         }
-        Four<T>(ref Unsafe.Add(ref to, length - 4 * width), ref Unsafe.Add(ref from, length - 4 * width), 4 * width);
+        var e = Unsafe.ReadUnaligned<T>(ref last);
+        var f = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, sizeof(T)));
+        var g = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, 2 * sizeof(T)));
+        var h = Unsafe.ReadUnaligned<T>(ref Unsafe.Add(ref last, 3 * sizeof(T)));
+        Unsafe.WriteUnaligned(ref end, e);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, sizeof(T)), f);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, 2 * sizeof(T)), g);
+        Unsafe.WriteUnaligned(ref Unsafe.Add(ref end, 3 * sizeof(T)), h);
     }
 }
