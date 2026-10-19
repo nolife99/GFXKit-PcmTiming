@@ -7,5 +7,5 @@ public static partial class MemoryCopy
         public static readonly bool Wide = false;
     }
 
-    static void Wide(ref byte to, ref byte from, nuint length, CopyHint hint) => throw new PlatformNotSupportedException();
+    static void Wide(ref byte to, ref byte from, nuint length) => throw new PlatformNotSupportedException();
 }

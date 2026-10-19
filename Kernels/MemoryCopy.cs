@@ -68,7 +68,7 @@ public static unsafe partial class MemoryCopy
             if (length <= 64) Pair<Vector256<byte>>(ref to, ref from, length);
             else if (length <= 96) Three<Vector256<byte>>(ref to, ref from, length);
             else if (length <= 128) Four<Vector256<byte>>(ref to, ref from, length);
-            else if (Thresholds.Wide) Wide(ref to, ref from, length, hint);
+            else if (Thresholds.Wide && length < Thresholds.Floor) Wide(ref to, ref from, length);
             else if (Behind(ref to, ref from, length)) Backward<Vector256<byte>>(ref to, ref from, length);
             else if (Streams(length, hint) && !Behind(ref from, ref to, length)) Stream(ref to, ref from, length);
             else Forward<Vector256<byte>>(ref to, ref from, length);

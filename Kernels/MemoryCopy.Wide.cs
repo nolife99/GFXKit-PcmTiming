@@ -20,20 +20,19 @@ public static partial class MemoryCopy
     }
 
     [MethodImpl(Inline)]
-    static void Wide(ref byte to, ref byte from, nuint length, CopyHint hint)
+    static void Wide(ref byte to, ref byte from, nuint length)
     {
         if (length <= 192) Three<Vector512<byte>>(ref to, ref from, length);
         else if (length <= 256) Four<Vector512<byte>>(ref to, ref from, length);
         else if (Behind(ref to, ref from, length)) Backward<Vector512<byte>>(ref to, ref from, length);
-        else if (Streams(length, hint) && !Behind(ref from, ref to, length)) Stream(ref to, ref from, length);
         else Forward<Vector512<byte>>(ref to, ref from, length);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
-    internal static void MoveWide(ref byte to, ref byte from, nuint length, CopyHint hint)
+    internal static void MoveWide(ref byte to, ref byte from, nuint length)
     {
         _ = Thresholds.From;
-        if (length <= 128) Move(ref to, ref from, length, hint);
-        else Wide(ref to, ref from, length, hint);
+        if (length <= 128) Move(ref to, ref from, length, CopyHint.Cached);
+        else Wide(ref to, ref from, length);
     }
 }
