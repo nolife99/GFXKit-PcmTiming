@@ -49,6 +49,135 @@ static unsafe class Dispatch
         }
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void Narrow(byte* from, byte* to, nuint length)
+    {
+        if (length <= 16) Short(to, from, length);
+        else if (length <= 32) Pair<Vector128<byte>>(to, from, length);
+        else if (length <= 48) Three<Vector128<byte>>(to, from, length);
+        else if (length <= 64) Four<Vector128<byte>>(to, from, length);
+        else if (length <= 96) Ends<Vector128<byte>>(to, from, length, 3);
+        else if (length <= 128) Ends<Vector128<byte>>(to, from, length, 4);
+        else Large(from, to, length);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static void NarrowLong(byte* from, byte* to, nuint length)
+    {
+        if (length <= 16) Short(to, from, length);
+        else if (length <= 32) Pair<Vector128<byte>>(to, from, length);
+        else if (length <= 48) Three<Vector128<byte>>(to, from, length);
+        else if (length <= 64) Four<Vector128<byte>>(to, from, length);
+        else if (length <= 96) Ends<Vector128<byte>>(to, from, length, 3);
+        else if (length <= 128) Ends<Vector128<byte>>(to, from, length, 4);
+        else if (length <= 192) Ends<Vector128<byte>>(to, from, length, 6);
+        else if (length <= 256) Ends<Vector128<byte>>(to, from, length, 8);
+        else Large(from, to, length);
+    }
+
+    [MethodImpl(Inline)]
+    static void Ends<T>(byte* to, byte* from, nuint length, int half) where T : unmanaged
+    {
+        var last = from + length - (nuint)(half * sizeof(T));
+        var end = to + length - (nuint)(half * sizeof(T));
+        if (half == 3)
+        {
+            var a = Unsafe.ReadUnaligned<T>(from);
+            var b = Unsafe.ReadUnaligned<T>(from + sizeof(T));
+            var c = Unsafe.ReadUnaligned<T>(from + 2 * sizeof(T));
+            var d = Unsafe.ReadUnaligned<T>(last);
+            var e = Unsafe.ReadUnaligned<T>(last + sizeof(T));
+            var f = Unsafe.ReadUnaligned<T>(last + 2 * sizeof(T));
+            Unsafe.WriteUnaligned(to, a);
+            Unsafe.WriteUnaligned(to + sizeof(T), b);
+            Unsafe.WriteUnaligned(to + 2 * sizeof(T), c);
+            Unsafe.WriteUnaligned(end, d);
+            Unsafe.WriteUnaligned(end + sizeof(T), e);
+            Unsafe.WriteUnaligned(end + 2 * sizeof(T), f);
+        }
+        else if (half == 4)
+        {
+            var a = Unsafe.ReadUnaligned<T>(from);
+            var b = Unsafe.ReadUnaligned<T>(from + sizeof(T));
+            var c = Unsafe.ReadUnaligned<T>(from + 2 * sizeof(T));
+            var d = Unsafe.ReadUnaligned<T>(from + 3 * sizeof(T));
+            var e = Unsafe.ReadUnaligned<T>(last);
+            var f = Unsafe.ReadUnaligned<T>(last + sizeof(T));
+            var g = Unsafe.ReadUnaligned<T>(last + 2 * sizeof(T));
+            var h = Unsafe.ReadUnaligned<T>(last + 3 * sizeof(T));
+            Unsafe.WriteUnaligned(to, a);
+            Unsafe.WriteUnaligned(to + sizeof(T), b);
+            Unsafe.WriteUnaligned(to + 2 * sizeof(T), c);
+            Unsafe.WriteUnaligned(to + 3 * sizeof(T), d);
+            Unsafe.WriteUnaligned(end, e);
+            Unsafe.WriteUnaligned(end + sizeof(T), f);
+            Unsafe.WriteUnaligned(end + 2 * sizeof(T), g);
+            Unsafe.WriteUnaligned(end + 3 * sizeof(T), h);
+        }
+        else if (half == 6)
+        {
+            var a = Unsafe.ReadUnaligned<T>(from);
+            var b = Unsafe.ReadUnaligned<T>(from + sizeof(T));
+            var c = Unsafe.ReadUnaligned<T>(from + 2 * sizeof(T));
+            var d = Unsafe.ReadUnaligned<T>(from + 3 * sizeof(T));
+            var e = Unsafe.ReadUnaligned<T>(from + 4 * sizeof(T));
+            var f = Unsafe.ReadUnaligned<T>(from + 5 * sizeof(T));
+            var g = Unsafe.ReadUnaligned<T>(last);
+            var h = Unsafe.ReadUnaligned<T>(last + sizeof(T));
+            var i = Unsafe.ReadUnaligned<T>(last + 2 * sizeof(T));
+            var j = Unsafe.ReadUnaligned<T>(last + 3 * sizeof(T));
+            var k = Unsafe.ReadUnaligned<T>(last + 4 * sizeof(T));
+            var l = Unsafe.ReadUnaligned<T>(last + 5 * sizeof(T));
+            Unsafe.WriteUnaligned(to, a);
+            Unsafe.WriteUnaligned(to + sizeof(T), b);
+            Unsafe.WriteUnaligned(to + 2 * sizeof(T), c);
+            Unsafe.WriteUnaligned(to + 3 * sizeof(T), d);
+            Unsafe.WriteUnaligned(to + 4 * sizeof(T), e);
+            Unsafe.WriteUnaligned(to + 5 * sizeof(T), f);
+            Unsafe.WriteUnaligned(end, g);
+            Unsafe.WriteUnaligned(end + sizeof(T), h);
+            Unsafe.WriteUnaligned(end + 2 * sizeof(T), i);
+            Unsafe.WriteUnaligned(end + 3 * sizeof(T), j);
+            Unsafe.WriteUnaligned(end + 4 * sizeof(T), k);
+            Unsafe.WriteUnaligned(end + 5 * sizeof(T), l);
+        }
+        else
+        {
+            var a = Unsafe.ReadUnaligned<T>(from);
+            var b = Unsafe.ReadUnaligned<T>(from + sizeof(T));
+            var c = Unsafe.ReadUnaligned<T>(from + 2 * sizeof(T));
+            var d = Unsafe.ReadUnaligned<T>(from + 3 * sizeof(T));
+            var e = Unsafe.ReadUnaligned<T>(from + 4 * sizeof(T));
+            var f = Unsafe.ReadUnaligned<T>(from + 5 * sizeof(T));
+            var g = Unsafe.ReadUnaligned<T>(from + 6 * sizeof(T));
+            var h = Unsafe.ReadUnaligned<T>(from + 7 * sizeof(T));
+            var i = Unsafe.ReadUnaligned<T>(last);
+            var j = Unsafe.ReadUnaligned<T>(last + sizeof(T));
+            var k = Unsafe.ReadUnaligned<T>(last + 2 * sizeof(T));
+            var l = Unsafe.ReadUnaligned<T>(last + 3 * sizeof(T));
+            var m = Unsafe.ReadUnaligned<T>(last + 4 * sizeof(T));
+            var n = Unsafe.ReadUnaligned<T>(last + 5 * sizeof(T));
+            var o = Unsafe.ReadUnaligned<T>(last + 6 * sizeof(T));
+            var p = Unsafe.ReadUnaligned<T>(last + 7 * sizeof(T));
+            Unsafe.WriteUnaligned(to, a);
+            Unsafe.WriteUnaligned(to + sizeof(T), b);
+            Unsafe.WriteUnaligned(to + 2 * sizeof(T), c);
+            Unsafe.WriteUnaligned(to + 3 * sizeof(T), d);
+            Unsafe.WriteUnaligned(to + 4 * sizeof(T), e);
+            Unsafe.WriteUnaligned(to + 5 * sizeof(T), f);
+            Unsafe.WriteUnaligned(to + 6 * sizeof(T), g);
+            Unsafe.WriteUnaligned(to + 7 * sizeof(T), h);
+            Unsafe.WriteUnaligned(end, i);
+            Unsafe.WriteUnaligned(end + sizeof(T), j);
+            Unsafe.WriteUnaligned(end + 2 * sizeof(T), k);
+            Unsafe.WriteUnaligned(end + 3 * sizeof(T), l);
+            Unsafe.WriteUnaligned(end + 4 * sizeof(T), m);
+            Unsafe.WriteUnaligned(end + 5 * sizeof(T), n);
+            Unsafe.WriteUnaligned(end + 6 * sizeof(T), o);
+            Unsafe.WriteUnaligned(end + 7 * sizeof(T), p);
+        }
+    }
+
     [MethodImpl(MethodImplOptions.NoInlining)]
     static void Large(byte* from, byte* to, nuint length) => MemoryCopy.CopyUnsafe((nint)from, (nint)to, length);
 

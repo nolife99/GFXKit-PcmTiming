@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
@@ -22,7 +23,8 @@ public static unsafe partial class MemoryCopy
     /// <exception cref="ArgumentException"><paramref name="destination"/> is shorter than <paramref name="source"/>.</exception>
     public static void Copy<T>(scoped ReadOnlySpan<T> source, scoped Span<T> destination, CopyHint hint = CopyHint.Auto)
     {
-        if (!TryCopy(source, destination, hint)) throw new ArgumentException("The destination is shorter than the source.", nameof(destination));
+        if ((uint)source.Length > (uint)destination.Length) Shorter();
+        Unchecked(source, destination, hint);
     }
 
     /// <summary>Copies a span's elements to the start of another span if they fit.</summary>
@@ -35,11 +37,20 @@ public static unsafe partial class MemoryCopy
     public static bool TryCopy<T>(scoped ReadOnlySpan<T> source, scoped Span<T> destination, CopyHint hint = CopyHint.Auto)
     {
         if ((uint)source.Length > (uint)destination.Length) return false;
+        Unchecked(source, destination, hint);
+        return true;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    static void Unchecked<T>(scoped ReadOnlySpan<T> source, scoped Span<T> destination, CopyHint hint)
+    {
         if (RuntimeHelpers.IsReferenceOrContainsReferences<T>()) source.CopyTo(destination);
         else Move(ref Unsafe.As<T, byte>(ref MemoryMarshal.GetReference(destination)), ref Unsafe.As<T, byte>(ref MemoryMarshal.GetReference(source)),
             (nuint)source.Length * (nuint)Unsafe.SizeOf<T>(), hint);
-        return true;
     }
+
+    [DoesNotReturn, MethodImpl(MethodImplOptions.NoInlining)]
+    static void Shorter() => throw new ArgumentException("The destination is shorter than the source.", "destination");
 
     /// <summary>Copies bytes between two addresses, with no checks.</summary>
     /// <param name="source">The address of the bytes to copy.</param>
