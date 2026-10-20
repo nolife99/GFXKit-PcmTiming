@@ -31,7 +31,6 @@ public static partial class MemoryCopy
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     internal static void MoveWide(ref byte to, ref byte from, nuint length)
     {
-        _ = Thresholds.From;
         if (length <= 128) Move(ref to, ref from, length, CopyHint.Cached);
         else Wide(ref to, ref from, length);
     }

@@ -35,13 +35,8 @@ public static unsafe partial class MemoryCopy
     public static bool TryCopy<T>(scoped ReadOnlySpan<T> source, scoped Span<T> destination, CopyHint hint = CopyHint.Auto)
     {
         if ((uint)source.Length > (uint)destination.Length) return false;
-        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-        {
-            source.CopyTo(destination);
-            return true;
-        }
-        _ = Thresholds.From;
-        Move(ref Unsafe.As<T, byte>(ref MemoryMarshal.GetReference(destination)), ref Unsafe.As<T, byte>(ref MemoryMarshal.GetReference(source)),
+        if (RuntimeHelpers.IsReferenceOrContainsReferences<T>()) source.CopyTo(destination);
+        else Move(ref Unsafe.As<T, byte>(ref MemoryMarshal.GetReference(destination)), ref Unsafe.As<T, byte>(ref MemoryMarshal.GetReference(source)),
             (nuint)source.Length * (nuint)Unsafe.SizeOf<T>(), hint);
         return true;
     }
@@ -52,11 +47,8 @@ public static unsafe partial class MemoryCopy
     /// <param name="byteCount">The number of bytes to copy.</param>
     /// <param name="hint">Whether the copy may write past the cache.</param>
     /// <remarks>Both ranges must be memory the caller may read and write for as long as the copy runs, which pinned or native memory is.</remarks>
-    public static void CopyUnsafe(nint source, nint destination, nuint byteCount, CopyHint hint = CopyHint.Auto)
-    {
-        _ = Thresholds.From;
+    public static void CopyUnsafe(nint source, nint destination, nuint byteCount, CopyHint hint = CopyHint.Auto) =>
         Move(ref Unsafe.AsRef<byte>((void*)destination), ref Unsafe.AsRef<byte>((void*)source), byteCount, hint);
-    }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     internal static void Move(ref byte to, ref byte from, nuint length, CopyHint hint)

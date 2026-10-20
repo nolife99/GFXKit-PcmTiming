@@ -29,6 +29,11 @@ public enum CopyHint
 
 public static unsafe partial class MemoryCopy
 {
+#pragma warning disable CA2255
+    [ModuleInitializer]
+    internal static void ReadThresholds() => RuntimeHelpers.RunClassConstructor(typeof(Thresholds).TypeHandle);
+#pragma warning restore CA2255
+
     internal static nuint StreamingFrom => Thresholds.From;
 
     internal static nuint StreamingFloor => Thresholds.Floor;
